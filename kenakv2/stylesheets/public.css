@@ -1,0 +1,313 @@
+﻿/* Site Colors:
+	#1A446C - blue grey
+	#689DC1 - light blue
+	#D4E6F4 - very light blue
+	#EEE4B9 - light tan
+	#8D0D19 - burgundy
+	#ebf9c9 - light green
+	#558806 - green normal
+	#233a00 - dark green
+*/
+
+html { height: 100%; width: 100%; }
+body { width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px;
+	font-family: Verdana, Arial, Helvetica, sans-serif; background: #558806;
+	font-size: 13px; line-height: 15px; }
+img { border: none; }
+table, tr, td { border-collapse: collapse; vertical-align: top; font-size: 13px; line-height: 15px;}
+a
+{
+color: #8D0D19;
+text-decoration: none
+}
+
+a:hover
+{
+color: #233a00;
+text-decoration: none
+} 
+
+div.topright{
+
+
+    /*set the div in the top right corner*/
+    position:absolute;
+    top:0;
+    right:0;
+    width:300px;
+	height:85px;
+   
+  }
+
+table.sortable
+{ width: 100%;
+background-color: #fafafa;
+border: 1px #000000 solid;
+border-collapse: collapse;
+border-spacing: 0px; }
+
+table.sortable thead
+{
+background-color: #558806;
+color:#ffffff; }
+
+tr.vivliothiki
+{ border-bottom: 1px #6699CC dotted;
+text-align: left;
+font-family: Verdana, sans-serif, Arial;
+font-weight: normal;
+font-size: .7em;
+color: #404040;
+background-color: #fafafa;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 8px;
+padding-right: 0px; }
+
+tr.vivliothiki:hover
+{ border-bottom: 1px #6699CC dotted;
+text-align: left;
+font-family: Verdana, sans-serif, Arial;
+font-weight: normal;
+font-size: .7em;
+color: #404040;
+background-color: #dadada;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 8px;
+padding-right: 0px; }
+
+td.vivliothikic
+{text-align: center; }
+
+td.vivliothikil
+{text-align: left; }
+
+table.znx
+{width: 100%;
+background-color: #fafafa;
+border: 1px #000000 solid;
+border-collapse: collapse;
+border-spacing: 0px;
+
+}
+
+td.znx1
+{
+background-color: #558806;
+color:#ffffff; }
+
+tr.znx:hover
+{
+background-color: #dadada;
+}
+
+tr.znx
+{ border-bottom: 1px #6699CC dotted;
+text-align: left;
+font-family: Verdana, sans-serif, Arial;
+font-weight: normal;
+font-size: .7em;
+color: #404040;
+background-color: #fafafa;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 8px;
+padding-right: 0px; }
+
+td.znx
+{ border-bottom: 1px #6699CC dotted;
+text-align: center;
+font-family: Verdana, sans-serif, Arial;
+font-weight: normal;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 8px;
+padding-right: 0px; }
+
+
+#header { height: 80px; margin: 0px; padding: 0px; text-align: left; 
+	background: #558806; color: #D4E6F4; }
+#header h1 { padding: 1em; margin: 0px;}
+#main { margin: 0px; padding: 0px; width: 100%; background: #ebf9c9; }
+#structure { height: 600px; width: 100%; }
+#footer { height: 2em; margin: 0px; padding: 1em; text-align: center; 
+	background: #558806;  color: #D4E6F4; }
+
+/* Navigation */
+#navigation { width: 250px; height: 100% padding: 1em 2em; color: #D4E6F4; background: #233a00; }
+#navigation a { color: #D4E6F4; text-decoration: none; }
+ul.subjects { padding-left: 0; list-style: none; }
+ul.pages { padding-left: 2em; list-style: square; }
+.selected { font-weight: bold; }
+
+ul.listmenu { padding-left: 2em; list-style: circle; }
+.selected { font-weight: bold; }
+
+/* Page Content */
+#page { padding-left: 2em; vertical-align: top; background: #ebf9c9; }
+#page h2 { color: #8D0D19; margin-top: 1em;}
+#page h3 { color: #8D0D19; }
+
+input
+{
+color: #781351;
+background: #fee3ad;
+border: 1px solid #781351
+}
+
+
+
+
+/******* tabs - τοίχων χωρίς τη χρήση jquery UI και fade-in / fade-out*******/  
+#container{  
+    margin: 1em auto;  
+    width: 100%;  
+}  
+#container ul{  
+    list-style: none;  
+    list-style-position: outside;  
+}  
+#container ul.toixoi-menu li{  
+    float: left;  
+    margin-right: 5px;  
+    margin-bottom: -1px;  
+}  
+#container ul.toixoi-menu li{  
+    font-weight: 700;  
+    display: block;  
+    padding: 5px 10px 5px 10px;  
+    background: #efefef;  
+    margin-bottom: -1px;  
+    border: 1px solid #d0ccc9;  
+    border-width: 1px 1px 1px 1px;  
+    position: relative;  
+    color: #898989;  
+    cursor: pointer;  
+}  
+#container ul.toixoi-menu li.active{  
+    background: #fff;  
+    top: 1px;  
+    border-bottom: 0;  
+    color: #5f95ef;  
+}  
+/******* /μενού τοίχων *******/  
+/******* content *******/  
+.content{  
+    margin: 0pt auto;  
+    background: #efefef;  
+    background: #fff;  
+    border: 1px solid #d0ccc9;  
+    text-align: left;  
+    padding: 10px;  
+    padding-bottom: 20px;  
+    font-size: 11px;  
+}  
+.content h1{  
+    line-height: 1em;  
+    vertical-align: middle;  
+    height: 48px;  
+    padding: 10px 10px 10px 52px;  
+    font-size: 32px;  
+}  
+/******* /content *******/  
+
+/******* Βόρεια *******/  
+.content.north h1{  
+    background: transparent url(images/north.jpg) no-repeat scroll left top;  
+}  
+.content.north{  
+    display: block;  
+}  
+/******* /Βόρεια *******/ 
+ 
+/******* Ανατολικά *******/  
+.content.east h1{  
+    background: transparent url(images/east.jpg) no-repeat scroll left top;  
+}  
+.content.east{  
+    display: none;  
+}  
+/******* /Ανατολικά *******/  
+
+/******* Νότια *******/  
+.content.south h1{  
+    background: transparent url(images/south.jpg) no-repeat scroll left top;  
+}  
+.content.south{  
+    display: none;  
+}  
+.content.south a{  
+    color: #5f95ef;  
+}  
+/******* /Νότια *******/ 
+
+/******* Δυτικά *******/  
+.content.west h1{  
+    background: transparent url(images/west.jpg) no-repeat scroll left top;  
+}  
+.content.west{  
+    display: none;  
+}  
+.content.west a{  
+    color: #5f95ef;  
+}  
+/******* /Δυτικά *******/ 
+
+
+/******* tabs - τοίχων ME τη χρήση jquery UI και slidedown*******/  
+.widget {  
+width: 98%;  
+margin: 0px;  
+padding: 0px;  
+background: #f3f1eb;  
+border: 1px solid #dedbd1;  
+margin-bottom: 15px;  
+}  
+  
+.widget a {  
+color: #222;  
+text-decoration: none;  
+}  
+  
+.widget a:hover {  
+color: #009;  
+text-decoration: underline;  
+}  
+  
+.tabnav li {  
+display: inline;  
+list-style: none;  
+padding-right: 5px;  
+}  
+  
+.tabnav li a {  
+text-decoration: none;  
+ 
+color: #222;  
+font-weight: bold;  
+padding: 4px 6px;  
+outline: none;  
+}  
+  
+.tabnav li a:hover, .tabnav li a:active, .tabnav li.ui-tabs-selected a {  
+background: #dedbd1;  
+color: #222;  
+text-decoration: none;  
+}  
+  
+.tabdiv {  
+margin-top: 2px;  
+background: #fff;  
+border: 1px solid #dedbd1;  
+padding: 5px;  
+}  
+  
+.tabdiv li {  
+list-style-image: url("star.png");  
+margin-left: 20px;  
+}  
+  
+.ui-tabs-hide {  
+display: none;  
+}  

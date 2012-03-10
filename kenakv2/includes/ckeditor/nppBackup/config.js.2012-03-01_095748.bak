@@ -1,0 +1,34 @@
+﻿/*
+Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+CKEDITOR.editorConfig = function( config )
+{
+
+	config.toolbarCanCollapse = false;
+	config.defaultLanguage = 'el';
+	config.filebrowserBrowseUrl = '../filemanager/'
+	config.skin = 'v2' ;
+	config.resize_enabled = false;
+	config.filebrowserWindowHeight = '60%';
+	config.filebrowserWindowWidth = '60%';
+	config.height = 500;
+	config.htmlEncodeOutput = false;
+	
+config.toolbar_Basic =
+[
+    { name: 'document',    items : [ 'Preview','Print' ] },
+    { name: 'clipboard',   items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+    { name: 'editing',     items : [ 'Find','Replace','-','SelectAll' ] },
+    { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+    { name: 'paragraph',   items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'] },
+    { name: 'insert',      items : [ 'Image','Table','HorizontalRule','SpecialChar','PageBreak' ] },
+    '/',
+    { name: 'styles',      items : [ 'Styles','Format','Font','FontSize' ] },
+    { name: 'colors',      items : [ 'TextColor','BGColor' ] },
+    { name: 'tools',       items : [ 'Maximize', '-','About' ] }
+];	
+config.toolbar = 'Basic';
+
+};
