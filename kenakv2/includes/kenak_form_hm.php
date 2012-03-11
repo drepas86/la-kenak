@@ -100,7 +100,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$kataskeyi_hm_array = get_times_all("*", "kataskeyi_hm");
 					$kataskeyi_hm_thermansi = $kataskeyi_hm_array[0]["value"];
 					$kataskeyi_hm_klimatismos = $kataskeyi_hm_array[1]["value"];
-					
+					$vasi = "prosthiki";
 					?>
 					<h3>Μελέτες Θέρμανσης/Κλιματισμού</h3>
 					<form name="frmMain" action="kenak.php" method="post">

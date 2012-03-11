@@ -66,6 +66,7 @@ include("includes/adddel_an.php");
 include("includes/adddel_hm.php");
 include("includes/adddel_teyxos.php");
 include("includes/adddel_skiaseis.php");
+include("includes/adddel_meletis.php");
 ?>
 	
 <?php
