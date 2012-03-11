@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Copyright (C) 2012 - Labros KENAK v.1.0 
 Author: Labros Karoyntzos 
@@ -22,18 +22,37 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 όρους της άδειας GNU General Public License όπως δίδεται από το Free Software Foundation
 στην έκδοση 3 αυτής της άδειας.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
-*/?>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>La-Kenak - v<?php echo VERSION; ?> - Κλιματικά δεδομένα</title>
-		<link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="stylesheets/by_tsak1.css" media="all" rel="stylesheet" type="text/css" />
-		<script src="javascripts/sorttable.js"></script>
-		<script src="javascripts/cssfix.js"></script>
-		
-	</head>
-	<body>
-		<div id="header">
-			<h1><a href=index.php>La-Kenak v<?php echo VERSION; ?> - Κλιματικά δεδομένα</a></h1>
-		</div>
+
+***********************************************************************
+Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
+                                                                      *
+Αποθήκευση σκιάσεων τοίχων μετά από επεξεργασία των στοιχείων         *
+Καλείται από kenak_skiaseis_t   (function saveme)                     *
+                                                                      *
+***********************************************************************
+*/
+
+	require_once("connection.php");
+
+	$rec=$_GET["rec"];
+	$f=explode("|",$rec);
+
+	mysql_query("UPDATE kataskeyi_skiaseis_t_".$f[7]." SET f_hor_h='".$f[0]."' WHERE id=".$f[6]);
+	mysql_query("UPDATE kataskeyi_skiaseis_t_".$f[7]." SET f_hor_c=".$f[1]." WHERE id=".$f[6]);
+	mysql_query("UPDATE kataskeyi_skiaseis_t_".$f[7]." SET f_ov_h=".$f[2]." WHERE id=".$f[6]);
+	mysql_query("UPDATE kataskeyi_skiaseis_t_".$f[7]." SET f_ov_c=".$f[3]." WHERE id=".$f[6]);
+	mysql_query("UPDATE kataskeyi_skiaseis_t_".$f[7]." SET f_fin_h=".$f[4]." WHERE id=".$f[6]);
+	mysql_query("UPDATE kataskeyi_skiaseis_t_".$f[7]." SET f_fin_c=".$f[5]." WHERE id=".$f[6]);
+
+?>
+
+
+
+
+
+
+
+
+
+
+

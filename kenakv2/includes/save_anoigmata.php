@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Copyright (C) 2012 - Labros KENAK v.1.0 
 Author: Labros Karoyntzos 
@@ -22,17 +22,39 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 όρους της άδειας GNU General Public License όπως δίδεται από το Free Software Foundation
 στην έκδοση 3 αυτής της άδειας.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
+
+***********************************************************************
+Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
+                                                                      *
+Αποθήκευση ανοίγματος μετά από επεξεργασία των στοιχείων              *
+Καλείται από kenak_form4   (function saveme)                          *
+                                                                      *
+***********************************************************************
 */
-$file = $_GET["filename"];
-include ("functions_xml.php");
-include ("../includes/connection.php");
 
-for ($i = 0; $i <= 37; $i++) {
-insertxmldata($i,$file);
-}
-//Για τα νούμερα από 1 μέχρι 37 δες functions_xml.php ή xmltotables.php
+	require_once("connection.php");
 
+	$rec=$_GET["rec"];
+	$f=explode("|",$rec);
+
+	mysql_query("UPDATE kataskeyi_an_".$f[9]." SET name='".$f[0]."' WHERE id=".$f[8]);
+	mysql_query("UPDATE kataskeyi_an_".$f[9]." SET anoig_mikos=".$f[1]." WHERE id=".$f[8]);
+	mysql_query("UPDATE kataskeyi_an_".$f[9]." SET anoig_ypsos=".$f[2]." WHERE id=".$f[8]);
+	mysql_query("UPDATE kataskeyi_an_".$f[9]." SET anoig_u=".$f[3]." WHERE id=".$f[8]);
+	mysql_query("UPDATE kataskeyi_an_".$f[9]." SET anoig_eidos=".$f[4]." WHERE id=".$f[8]);
+	mysql_query("UPDATE kataskeyi_an_".$f[9]." SET anoig_aerismos=".$f[5]." WHERE id=".$f[8]);
+	mysql_query("UPDATE kataskeyi_an_".$f[9]." SET anoig_lampas=".$f[6]." WHERE id=".$f[8]);
+	mysql_query("UPDATE kataskeyi_an_".$f[9]." SET anoig_ankat=".$f[7]." WHERE id=".$f[8]);
 
 ?>
-<br/>
-<a href="get_files.php">Πίσω</a>
+
+
+
+
+
+
+
+
+
+
+

@@ -244,6 +244,39 @@ if ($pinakas_num == 25){
 $pinakas = "kataskeyi_therm_es";
 }
 if ($pinakas_num == 26){
+$pinakas = "kataskeyi_xsystems_coldb";
+}
+if ($pinakas_num == 27){
+$pinakas = "kataskeyi_xsystems_coldd";
+}
+if ($pinakas_num == 28){
+$pinakas = "kataskeyi_xsystems_coldp";
+}
+if ($pinakas_num == 29){
+$pinakas = "kataskeyi_xsystems_coldt";
+}
+if ($pinakas_num == 30){
+$pinakas = "kataskeyi_xsystems_thermb";
+}
+if ($pinakas_num == 31){
+$pinakas = "kataskeyi_xsystems_thermd";
+}
+if ($pinakas_num == 32){
+$pinakas = "kataskeyi_xsystems_thermp";
+}
+if ($pinakas_num == 33){
+$pinakas = "kataskeyi_xsystems_thermt";
+}
+if ($pinakas_num == 34){
+$pinakas = "kataskeyi_xsystems_znxa";
+}
+if ($pinakas_num == 35){
+$pinakas = "kataskeyi_xsystems_znxd";
+}
+if ($pinakas_num == 36){
+$pinakas = "kataskeyi_xsystems_znxp";
+}
+if ($pinakas_num == 37){
 $pinakas = "kataskeyi_xwroi";
 }
 
@@ -384,6 +417,39 @@ if ($pinakas_num == 25){
 $pinakas = "kataskeyi_therm_es";
 }
 if ($pinakas_num == 26){
+$pinakas = "kataskeyi_xsystems_coldb";
+}
+if ($pinakas_num == 27){
+$pinakas = "kataskeyi_xsystems_coldd";
+}
+if ($pinakas_num == 28){
+$pinakas = "kataskeyi_xsystems_coldp";
+}
+if ($pinakas_num == 29){
+$pinakas = "kataskeyi_xsystems_coldt";
+}
+if ($pinakas_num == 30){
+$pinakas = "kataskeyi_xsystems_thermb";
+}
+if ($pinakas_num == 31){
+$pinakas = "kataskeyi_xsystems_thermd";
+}
+if ($pinakas_num == 32){
+$pinakas = "kataskeyi_xsystems_thermp";
+}
+if ($pinakas_num == 33){
+$pinakas = "kataskeyi_xsystems_thermt";
+}
+if ($pinakas_num == 34){
+$pinakas = "kataskeyi_xsystems_znxa";
+}
+if ($pinakas_num == 35){
+$pinakas = "kataskeyi_xsystems_znxd";
+}
+if ($pinakas_num == 36){
+$pinakas = "kataskeyi_xsystems_znxp";
+}
+if ($pinakas_num == 37){
 $pinakas = "kataskeyi_xwroi";
 }
 

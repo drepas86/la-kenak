@@ -38,6 +38,8 @@ tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 //Στο φάκελο includes πρέπει να περιέχεται η γραμματοσειρά. 
 		//πάρε τις τιμές
 
+include ('database.php');
+
 	for ($i = 1; $i <= 10; $i++) {
 		${"paxos".$i}=$_GET["pax".$i];
 		${"strwsi".$i}=$_GET["str".$i];
@@ -64,7 +66,7 @@ if ($pout==1){
 
 <table style="width:50%;margin-left:auto;margin-right:auto;border:2px solid black;font-size: 13px; line-height: 15px;background: #ebf9c9;"><tr>
 <td style="text-align:center;font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 13px; line-height: 15px;">
-<br><h2>La-Kenak v2.3 - Αδιαφανή δομικά στοιχεία</h2>
+<br><h2>La-Kenak v<?php echo VERSION; ?> - Αδιαφανή δομικά στοιχεία</h2>
 Εκτυπώνεται ο πίνακας δομικού στοιχείου. Παρακαλώ περιμένετε... &nbsp;&nbsp;<img src="../images/domika/loading.gif" border=0 /><br/>&nbsp;
 </td></tr></table>
 </div>

@@ -32,6 +32,9 @@ Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
                                                                       *
 ***********************************************************************
 */
+
+include ('database.php');
+
 ob_start();
 
 ?>
@@ -96,7 +99,7 @@ if (($kef<>"ALL" && $kef==($i+1)) || $kef=="ALL"){
 document.getElementById('kef').innerHTML="Κεφάλαιο <h2><?=$i+1;?></h2>";
 </script>
 <?php
-
+set_time_limit (120);
 ob_end_flush();
 ob_flush();
 flush();
@@ -148,7 +151,7 @@ ob_end_clean();
 //Close and output PDF document
 $j=$i+1;
 $pdf->Output('PDF/printout'.$j.'.pdf', 'F');
-set_time_limit (40);
+
 }}
 
 if ($kef=="ALL"){

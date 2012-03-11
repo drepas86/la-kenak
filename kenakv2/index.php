@@ -26,8 +26,16 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 ?>
 <?php require_once("includes/connection.php"); ?>
 <?php require_once("includes/functions.php"); ?>
+<?php
+add_column_if_not_exist("anoigmata_alouminio", "rec","VARCHAR(300)");
+add_column_if_not_exist("anoigmata_alouminio_thermo", "rec","VARCHAR(300)");
+add_column_if_not_exist("anoigmata_doors", "rec","VARCHAR(300)");
+add_column_if_not_exist("anoigmata_plastic", "rec","VARCHAR(300)");
+add_column_if_not_exist("anoigmata_wood", "rec","VARCHAR(300)");
+?>
 <?php find_selected_page(); ?>
 <?php include("includes/header.php"); ?>
+<?php include("includes/scripts.php"); ?>
 <div class="topright"><img src="images/home.png" align="right"></img><a href="index.php">Βιβλιοθήκες</a><br/><a href="index_climate.php">Κλιματικά δεδομένα</a><br/><a href="index_skiaseis.php">Υπολογισμός Σκιάσεων</a><br/><a href="stoixeia_zwnis.php">Στοιχεία ζώνης</a><br/><a href="domika_kelyfos.php">Κέλυφος</a><br/><a href="kenak.php">ΚΕΝΑΚ</a></div>
 <table id="structure">
 	<tr>
@@ -39,8 +47,6 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 <?php
 include_once("includes/apotelesmata_index.php");
 ?>
-	
-	
 			<?php if ($sel_page) { ?>
 				<h2><?php echo $sel_page['menu_name']; ?></h2>
 				<div class="page-content">
@@ -54,10 +60,14 @@ include_once("includes/apotelesmata_index.php");
 						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Όνομα</td><td>U [W/(m²*K)]</td><td>g [-]</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["id"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"250\">" . $vivliothikes[$i]["name"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["u"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["g"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"4%\">" . $vivliothikes[$i]["id"] . "</td>";
+						if ($sel_page["id"]<>3){ 
+						echo "<td class=\"vivliothikil\" width=\"84%\"><a class=\"domika\" href=\"./domika_kelyfos.php?page=2&min=1&lib=".$i."&sp=".$sel_page["id"]."\" onclick=call_t(); > " . $vivliothikes[$i]["name"] . " </a></td>";
+						}else{
+						echo "<td class=\"vivliothikil\" width=\"84%\">" . $vivliothikes[$i]["name"] . "</td>";
+						}
+						echo "<td class=\"vivliothikic\" width=\"6%\">" . number_format($vivliothikes[$i]["u"], 3, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"6%\">" . number_format($vivliothikes[$i]["g"], 3, '.', ',') . "</td>";
 						echo "</tr>";
 						}
 						echo "</table>";
@@ -117,12 +127,12 @@ include_once("includes/apotelesmata_index.php");
 						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Όνομα</td><td>Θερμική Αγωγιμότητα (λ) W/(m·K)</td><td>Πυκνότητα  (ρ) kg/m³</td><td>Πάχος (L) m</td><td>Ειδική θερμότητα (cp) kJ/(kg·K)</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["id"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"250\">" . $vivliothikes[$i]["name"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["agwg_l"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["pykn_r"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["paxos"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["cp"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"5%\">" . $vivliothikes[$i]["id"] . "</td>";
+						echo "<td class=\"vivliothikil\" width=\"43%\">" . $vivliothikes[$i]["name"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"13%\">" . number_format($vivliothikes[$i]["agwg_l"], 3, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"13%\">" . $vivliothikes[$i]["pykn_r"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"13%\">" . number_format($vivliothikes[$i]["paxos"], 3, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"13%\">" . number_format($vivliothikes[$i]["cp"], 3, '.', ',') . "</td>";
 						echo "</tr>";
 						}
 						echo "</table>";
@@ -282,9 +292,9 @@ include_once("includes/apotelesmata_index.php");
 						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Όνομα</td><td>Θερμική Αντίσταση (R) (m²·K)/W</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["id"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"250\">" . $vivliothikes[$i]["name"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["r"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"10%\">" . $vivliothikes[$i]["id"] . "</td>";
+						echo "<td class=\"vivliothikil\" width=\"60%\">" . $vivliothikes[$i]["name"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"30%\">" . number_format($vivliothikes[$i]["r"], 3, '.', ',') . "</td>";
 						echo "</tr>";
 						}
 						echo "</table>";
@@ -301,16 +311,21 @@ include_once("includes/apotelesmata_index.php");
 					}
 					
 					if ($sel_page["id"] > 18 && $sel_page["id"] < 23)	{
+					$sp=$sel_page["id"];
 					$vivliothikes = get_domika($sel_page);
 						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Όνομα</td><td>U W/(m²·K)</td><td>Cm kJ/(kg·K)</td><td>Πάχος m</td><td>Βάρος kg/m²</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["id"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"250\">" . $vivliothikes[$i]["name"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["u"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["cm"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["paxos"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"20\">" . $vivliothikes[$i]["baros"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"5%\">" . $vivliothikes[$i]["id"] . "</td>";
+						if ($sp==22){ 
+						echo "<td class=\"vivliothikil\" width=\"43%\"><a class=\"domika\" href=\"./domika_kelyfos.php?page=1&min=1&lib=".$i."\" onclick=call_t(); > " . $vivliothikes[$i]["name"] . " </a></td>";
+						}else{
+						echo "<td class=\"vivliothikil\" width=\"43%\">" . $vivliothikes[$i]["name"] . "</td>";
+						}
+						echo "<td class=\"vivliothikic\" width=\"13%\">" . number_format($vivliothikes[$i]["u"], 3, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"13%\">" . number_format($vivliothikes[$i]["cm"], 3, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"13%\">" . number_format($vivliothikes[$i]["paxos"], 3, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"13%\">" . number_format($vivliothikes[$i]["baros"], 2, '.', ',') . "</td>";
 						echo "</tr>";
 						}
 						echo "</table>";
@@ -390,13 +405,13 @@ include_once("includes/apotelesmata_index.php");
 						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Όνομα</td><td>Μονάδα</td><td>f_unit (Μονάδα/MJ)</td><td>f_prim (-)</td><td>f_CO2 (KgCO2/kWh)</td><td>f_cost (€/MJ)</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["id"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"50\">" . $vivliothikes[$i]["name"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"50\">" . $vivliothikes[$i]["unit"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["funit"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["fprim"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["fco2"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["fcost"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["id"] . "</td>";
+						echo "<td class=\"vivliothiki\" width=\"47%\">" . $vivliothikes[$i]["name"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"10%\">" . $vivliothikes[$i]["unit"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"10%\">" . number_format($vivliothikes[$i]["funit"], 5, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"10%\">" . number_format($vivliothikes[$i]["fprim"], 5, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"10%\">" . number_format($vivliothikes[$i]["fco2"], 5, '.', ',') . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"10%\">" . number_format($vivliothikes[$i]["fcost"], 5, '.', ','). "</td>";
 						echo "</tr>";
 						}
 						echo "</table>";
@@ -408,32 +423,32 @@ include_once("includes/apotelesmata_index.php");
 					
 					if ($sel_page["id"] > 27)	{
 					$vivliothikes = get_synthikes($sel_page);
-						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Κατηγορία</td><td>Χρήση</td><td>Ώρες λειτουργίας (h)</td><td>Ημέρες λειτουργίας</td><td>Μήνες λειτουργίας</td><td>θ,i,h (C)</td><td>θ,i,c (C)</td><td>Χ,i,h (%)</td><td>Χ,i,c (%)</td><td>Άτομα/100m2</td><td>Νωπός αέρας (m3/h/person)</td><td>Νωπός αέρας (m3/h/m2)</td><td>Στάθμη φωτισμού (lux)</td><td>Ισχύς κτιρίου αναφοράς (W/m2)</td><td>Ώρες λειτουργίας ημέρας (h)</td><td>Ώρες λειτουργίας νύχτας (h)</td><td>ΖΝΧ (lt/άτομο/ημέρα)</td><td>ΖΝΧ (lt/m2/ημέρα)</td><td>ΖΝΧ (m3/m2/year)</td><td>Άνθρωποι (W/άτομο)</td><td>Άνθρωποι (W/m2)</td><td>Συντελεστής παρουσίας f</td></tr>";
+						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Κατηγορία</td><td>Χρήση</td><td>Ώρες λειτουρ γίας (h)</td><td>Ημέρες λειτουρ γίας</td><td>Μήνες λειτουρ γίας</td><td>θ,i,h (C)</td><td>θ,i,c (C)</td><td>Χ,i,h (%)</td><td>Χ,i,c (%)</td><td>Άτομα / 100 m2</td><td>Νωπός αέρας (m3 / h / person)</td><td>Νωπός αέρας (m3 / h / m2)</td><td>Στάθμη φωτι σμού (lux)</td><td>Ισχύς κτιρίου αναφο ράς (W/m2)</td><td>Ώρες λειτουρ γίας ημέρας (h)</td><td>Ώρες λειτουρ γίας νύχτας (h)</td><td>ΖΝΧ (lt / άτομο / ημέρα)</td><td>ΖΝΧ (lt / m2 / ημέρα)</td><td>ΖΝΧ (m3 / m2 / year)</td><td>Άνθρω ποι (W / άτομο)</td><td>Άνθρω ποι (W / m2)</td><td>Συντε λεστής παρου σίας f</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["id"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["gen_xrisi"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["xrisi"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"50\">" . $vivliothikes[$i]["hours"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"50\">" . $vivliothikes[$i]["days"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["months"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["tih"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["tic"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["xih"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["xic"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["atoma"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["nwpos_aeras_per"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["nwpos_aeras_m2"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["fwtismos"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["isxys_anaf"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["hours_day"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["hours_night"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["znx_l_p_d"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["znx_l_sq_d"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["znx_m3_sq_y"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["w_persons"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["w_m2"] . "</td>";
-						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["synt_parousias"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["id"] . "</td>";
+						echo "<td class=\"vivliothiki\" width=\"18%\">" . $vivliothikes[$i]["gen_xrisi"] . "</td>";
+						echo "<td class=\"vivliothiki\" width=\"19%\">" . $vivliothikes[$i]["xrisi"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"50\">" . $vivliothikes[$i]["hours"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"50\">" . $vivliothikes[$i]["days"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["months"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["tih"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["tic"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["xih"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["xic"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["atoma"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["nwpos_aeras_per"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["nwpos_aeras_m2"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["fwtismos"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["isxys_anaf"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["hours_day"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["hours_night"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["znx_l_p_d"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["znx_l_sq_d"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["znx_m3_sq_y"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["w_persons"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["w_m2"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["synt_parousias"] . "</td>";
 						echo "</tr>";
 						}
 						echo "</table>";

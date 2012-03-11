@@ -36,7 +36,7 @@ require_once("functions.php");
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>La-Kenak - v2.3 - Μελέτη ΚΕΝΑΚ</title>
+		<title>La-Kenak - v<?php echo VERSION; ?> - Μελέτη ΚΕΝΑΚ</title>
 		<link href="../stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
 		<link href="../stylesheets/by_tsak1.css" media="all" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="../stylesheets/colorbox.css" />

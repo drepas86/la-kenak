@@ -90,7 +90,6 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					<li><a href="#tab-xwroi">Χώροι κτιρίου</a></li>
 					<li><a href="#tab-katakoryfa">Δάπεδο-Οροφές</a></li>
 					<li><a href="#tab-thermo">Θερμογέφυρες</a></li>
-					<li><a href="#tab-energy">Θέρμανση/κλιματισμός</a></li>
 					</ul>  
 					
 					
@@ -106,8 +105,21 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$kataskeyi_meletis_owner = $kataskeyi_meletis_array[0]["owner"];
 					$kataskeyi_meletis_engs = $kataskeyi_meletis_array[0]["engs"];
 					$kataskeyi_meletis_ownerstatus = $kataskeyi_meletis_array[0]["owner_status"];
+					
+					if ($kataskeyi_meletis_ownerstatus=="0"){$kataskeyi_meletis_ownerstatus="Δημόσιο";}
+					if ($kataskeyi_meletis_ownerstatus=="1"){$kataskeyi_meletis_ownerstatus="Ιδιωτικό";}
+					if ($kataskeyi_meletis_ownerstatus=="2"){$kataskeyi_meletis_ownerstatus="Δημόσιο ιδιωτικού ενδιαφέροντος";}
+					if ($kataskeyi_meletis_ownerstatus=="3"){$kataskeyi_meletis_ownerstatus="Ιδιωτικό δημόσιου ενδιαφέροντος";}
+					
 					$kataskeyi_meletis_address = $kataskeyi_meletis_array[0]["address"];
 					$kataskeyi_meletis_contact_type = $kataskeyi_meletis_array[0]["contact_type"];
+					
+					if ($kataskeyi_meletis_contact_type=="0"){$kataskeyi_meletis_contact_type="Ιδιοκτήτης";}
+					if ($kataskeyi_meletis_contact_type=="1"){$kataskeyi_meletis_contact_type="Διαχειριστής";}
+					if ($kataskeyi_meletis_contact_type=="2"){$kataskeyi_meletis_contact_type="Ενοικιαστής";}
+					if ($kataskeyi_meletis_contact_type=="3"){$kataskeyi_meletis_contact_type="Τεχνικός υπεύθυνος";}
+					if ($kataskeyi_meletis_contact_type=="4"){$kataskeyi_meletis_contact_type="Άλλο";}
+					
 					$kataskeyi_meletis_contact_name = $kataskeyi_meletis_array[0]["contact_name"];
 					$kataskeyi_meletis_contact_tel  = $kataskeyi_meletis_array[0]["contact_tel"];
 					$kataskeyi_meletis_contact_mail = $kataskeyi_meletis_array[0]["contact_mail"];
@@ -199,6 +211,11 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$kataskeyi_meletistopo_pol_number = $kataskeyi_meletistopo_array[0]["pol_number"];
 					$kataskeyi_meletistopo_pol_year_complete = $kataskeyi_meletistopo_array[0]["pol_year_complete"];
 					$kataskeyi_meletistopo_pol_type = $kataskeyi_meletistopo_array[0]["pol_type"];
+					
+					if ($kataskeyi_meletistopo_pol_type=="0"){$kataskeyi_meletistopo_pol_type="Νέο";}
+					if ($kataskeyi_meletistopo_pol_type=="1"){$kataskeyi_meletistopo_pol_type="Παλιό";}
+					if ($kataskeyi_meletistopo_pol_type=="2"){$kataskeyi_meletistopo_pol_type="Ριζικά ανακαινιζόμενο";}
+					
 					$vasi = "prosthiki";
 					?>
 					<form name="frmMain" action="kenak.php" method="post">
@@ -738,65 +755,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					</div><!--/tab-thermo-->
 					
 					
-					
-					
-					
-					
-					<div id="tab-energy" class="tabdiv"> 
-					<h3>Συστήματα</h3>
-					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
-					<?php
-					$strSQL = "SELECT * FROM kataskeyi_hm";
-					$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-					?>
-					<img src="images/style/heat.png"></img>
-					<img src="images/style/cold.png"></img>
-					<table border="1">
-					<tr>
-					<th> <div align="center">Id</div></th>
-					<th> <div align="center">Τύπος </div></th>
-					<th> <div align="center">Τιμή</div></th>
-					<th> <div align="center">
-					<input name="CheckAll" type="checkbox" id="CheckAll" value="Y" onClick="ClickCheckAll(this);">
-					</div></th>
-					</tr>
-					<?
-					$i = 0;
-					while($objResult = mysql_fetch_array($objQuery))
-					{
-					$i++;
-					?>
-					<tr>
-					<td><div align="center"><?=$objResult["id"];?></div></td>
-					<td><?=$objResult["name"];?></td>
-					<td><?=$objResult["value"];?></td>
-					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
-					</tr>
-					<?
-					}
-					?>
-					</table>
-					<input type="hidden" name="delete_hm" value="Διαγραφή ενέργειας">
-					<input type="hidden" name="hdnCount" value="<?=$i;?>">
-					</form>
-					
-					
-					<?php
-					//προσθήκη στη βάση δεδομένων των στοιχείων
-					$vasi = "prosthiki";
-						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
-						echo "<tr><th>Id</th>";
-						echo "<th>Τύπος</th>";
-						echo "<th>Τιμή</th></tr/>";
-						echo "<tr><td>1</td>";
-						echo "<td>Θέρμανση</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_thermansi\" maxlength=\"10\" size=\"5\" /></td></tr>";
-						echo "<tr><td>2</td>";
-						echo "<td>Κλιματισμός</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_klimatismos\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
-						echo "<input type=\"submit\" name=\"" . $vasi . "_hm\" value=\"Τροποποίηση στοιχείων H/M\" />";
-					?>
-					</div><!--/ΗΜ-->
+				
 
 					</div>
 					

@@ -22,15 +22,44 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 όρους της άδειας GNU General Public License όπως δίδεται από το Free Software Foundation
 στην έκδοση 3 αυτής της άδειας.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
+*************************************************************************
+Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr       *
+-                                                                       *
+- Προσθήκη κώδικα στο adddel_an για επαναφορά εδώ μετά την προσθήκη     *
+- ή διαγραφή ανοίγματος                                                 *
+- Προσθήκη κώδικα για  επεξεργασία του πίνακα με άμεση αποθήκευση       *
+-  των αλλαγών                                                          *
+-                                                                       *
+*************************************************************************
 */
 ?>
-		<?php	if ($sel_page["id"] == 4)	{ ?>
-			<h2>ΚΕΝΑΚ - Ανοίγματα</h2>
+		<?php	if ($sel_page["id"] == 4)	{ 
+	add_column_if_not_exist("kataskeyi_an_b", "x", "DECIMAL(7,5)");
+	add_column_if_not_exist("kataskeyi_an_b", "y", "DECIMAL(7,5)");
+	add_column_if_not_exist("kataskeyi_an_a", "x", "DECIMAL(7,5)");
+	add_column_if_not_exist("kataskeyi_an_a", "y", "DECIMAL(7,5)");
+	add_column_if_not_exist("kataskeyi_an_n", "x", "DECIMAL(7,5)");
+	add_column_if_not_exist("kataskeyi_an_n", "y", "DECIMAL(7,5)");
+	add_column_if_not_exist("kataskeyi_an_d", "x", "DECIMAL(7,5)");
+	add_column_if_not_exist("kataskeyi_an_d", "y", "DECIMAL(7,5)");
+		?>
+<table width=100% id="maintable"><tr><td style="width:50%;vertical-align:middle;"><h2>ΚΕΝΑΚ - Ανοίγματα</h2></td>
+<td style="vertical-align:middle;">
+<img src="./images/domika/help.png"  width="40px" height="40px"  title="οδηγίες" style="cursor:pointer;" onclick=help_a(); />
+</td>
+</td></tr></table>
+	
 	  <script type="text/javascript">
 		document.getElementById('imgs').innerHTML="<img src=\"images/style/window.png\"></img>";
 	  </script>
 
 <script language="JavaScript">
+
+function help_a(){
+$.colorbox({inline:true,  href:"#guide", width:"600px", height:"320px"});
+}
+
+
 	function ClickCheckAll(vol,n)
 	{
 		if (n==1){var j=document.frmMain1.hdnCount1.value;}
@@ -137,10 +166,10 @@ for ($j=1;$j<=4;$j++){
 					<th> Ψ Λαμπάς</th>
 					<th> Ψ Ανωκάσι Κατωκάσι</th>
 					<th> 
-					<input name="CheckAll<?=$it[$j];?>" id="CheckAll<?=$it[$j];?>" type="checkbox" id="CheckAll" value="Y" onClick="ClickCheckAll(this,<?=$j;?>);">
+					<input name="CheckAll<?=$it[$j];?>" id="CheckAll<?=$it[$j];?>" type="checkbox" value="Y" onClick="ClickCheckAll(this,<?=$j;?>);">
 					</th>
 					</tr>
-					<?
+					<?php
 					$i = 0;
 					while($objResult = mysql_fetch_array($objQuery))
 					{
@@ -148,19 +177,20 @@ for ($j=1;$j<=4;$j++){
 					?>
 					<tr>
 <!--				<td><?=$objResult["id"];?></td> -->
+					<input type="hidden" id="id<?=$j;?><?=$i;?>" value="<?=$objResult["id"];?>">
 					<td><?=$i;?></td>
 					<td><?=$objResult["id_toixoy"];?></td>
-					<td><?=$objResult["name"];?></td>
-					<td><?=number_format($objResult["anoig_mikos"],2,".",",");?></td>
-					<td><?=number_format($objResult["anoig_ypsos"],2,".",",");?></td>
-					<td><?=number_format($objResult["anoig_u"],3,".",",");?></td>
-					<td><?=number_format($objResult["anoig_eidos"],0,".",",");?></td>
-					<td><?=number_format($objResult["anoig_aerismos"],2,".",",");?></td>
-					<td><?=number_format($objResult["anoig_lampas"],3,".",",");?></td>
-					<td><?=number_format($objResult["anoig_ankat"],3,".",",");?></td>
+					<td id="name<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("name",<?=$j;?><?=$i;?>); ><?=$objResult["name"];?></td>
+					<td id="am<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("am",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_mikos"],2,".",",");?></td>
+					<td id="ay<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("ay",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_ypsos"],2,".",",");?></td>
+					<td id="au<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("au",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_u"],2,".",",");?></td>
+					<td id="ae<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("ae",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_eidos"],0,".",",");?></td>
+					<td id="aa<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("aa",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_aerismos"],2,".",",");?></td>
+					<td id="al<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("al",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_lampas"],2,".",",");?></td>
+					<td id="ac<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("ac",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_ankat"],2,".",",");?></td>
 					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$j;?><?=$i;?>" value="<?=$objResult["id"];?>"></td>
 					</tr>
-					<?
+					<?php
 					}
 					?>
 					</table>
@@ -173,7 +203,7 @@ for ($j=1;$j<=4;$j++){
 					<?php
 					//προσθήκη στη βάση δεδομένων των στοιχείων
 					$vasi = "prosthiki";
-						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
+						echo "<table border=\"1\"><br/>";
 						?>
 						<tr>
 						<th>Id τοίχου</th>
@@ -239,7 +269,6 @@ for ($j=1;$j<=4;$j++){
 		}
 		?>
 		</div>
-<!------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------>	
 <!--         Κρυφό div class  για βοήθεια στην επιλογή θερμογεφυρών Λ               -->
 		<div style='display:none'>
@@ -249,26 +278,22 @@ for ($j=1;$j<=4;$j++){
 		}
 		?>
 		</div>
-<!------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------>	
 <!--        Κρυφό div για βοήθεια στην επιλογή ονόματος           -->
 		<div style='display:none'><div id='inline_text1' style='padding:10px; background:#ebf9c9;'>
 		Το όνομα του ανοίγματος θα μπορούσε να είναι χαρακτηριστικό του τοίχου που ανήκει αυτό <br/> μαζί με την περιγραφή του. 
 		<br/>πχ (ΙΣ-Β1-1 = Ισόγειο Βόρεια Αριθμός τοίχου 1, Αριθμός ανοίγματος 1) + Περιγραφή.
 		</div></div>
-<!------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------>	
 <!--        Κρυφό div για βοήθεια στην επιλογή μήκους           -->
 		<div style='display:none'><div id='inline_text2' style='padding:10px; background:#ebf9c9;'>
 		Η οριζόντια διάσταση του ανοίγματος (πάνω / κάτω)
 		</div></div>
-<!------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------>	
 <!--        Κρυφό div για βοήθεια στην επιλογή μήκους           -->
 		<div style='display:none'><div id='inline_text3' style='padding:10px; background:#ebf9c9;'>
 		Η κατακόρυφη διάσταση του ανοίγματος (αριστερά / δεξιά)
 		</div></div>
-<!------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------>	
 <!--        Κρυφό div για βοήθεια στην επιλογή είδους           -->
 		<div style='display:none'><div id='inline_text4' style='padding:10px; background:#ebf9c9;'>
@@ -277,7 +302,6 @@ for ($j=1;$j<=4;$j++){
 		<br/> Έτσι αν και στο φύλλο αποτελεσμάτων (.xlsx) βρίσκεται στο φύλλο των αδιαφανών δηλώνεται ως ΜΑΣΙΦ
 		<br/> ώστε να μεταφερθεί κατά την είσοδο στο ΤΕΕ-ΚΕΝΑΚ στα αδιαφανή δομικά στοιχεία.
 		</div></div>
-<!------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------>	
 <!--        Κρυφό div για βοήθεια στην επιλογή αερισμού           -->
 		<div style='display:none'><div id='inline_text5' style='padding:10px; background:#ebf9c9;'>
@@ -286,4 +310,65 @@ for ($j=1;$j<=4;$j++){
 		<br/> ο ελάχιστον σύμφωνα με την ΤΟΤΕΕ.
 		</div></div>
 <!------------------------------------------------------------------------------------>
-		<?php } ?>
+<!--        Κρυφό div για επεξεργασία των τιμών του πίνακα                          -->
+		<div style='display:none'><div id='editme' style='padding:10px; background:#ebf9c9;'>
+		<table ><tr><td>
+		<input type="text" id="editbox">&nbsp;
+		<input type="button" value="Αποθήκευση" onclick=saveme(); >
+		</td></tr></table>
+		<div id="phpout" style="display:none;"><div>
+		</div></div>
+<!------------------------------------------------------------------------------------>
+<!--        Κρυφό div για βοήθεια                                                   -->
+		<div style='display:none'><div id='guide' style='padding:10px; background:#ebf9c9;'>
+		<b>Ανοίγματα</b><hr>
+		Στη σελίδα αυτή γίνεται η εισαγωγή των ανοιγμάτων του κτιρίου.
+		Με κλικ στα εικονίδια <img src ="./images/style/help.png" style="vertical-align:middle;" /> δίνονται οδηγίες για τον τύπο του κάθε δεδομένου.<br /><br />
+		Επί πλέον, για τον συντελεστή U ανοίγει νέο παράθυρο με το φύλλο υπολογισμού του, όπου με κλικ στην τιμή του U που υπολογίστηκε, 
+		μεταφέρονται τα δεδομένα στη παρούσα  καρτέλα.<br /><br />
+		Αντίστοιχα για τον συντελεστή θερμογέφυρας, η επιλογή μπορεί να γίνει με επιλογή του είδους της από τις εικόνες που εμφανίζονται 
+		στο σχετικό παράθυρο.<hr>
+		Αν κατά την εισαγωγή των στοιχείων ενός ανοίγματος έγινε κάπου λάθος, μπορεί να διορθωθεί με κλικ στη λάθος τιμή και 
+		συμπλήρωση της σωστής στο παράθυρο που ανοίγει.
+		</div></div>
+<!------------------------------------------------------------------------------------>
+
+<script language="JavaScript">
+
+editn="";
+editm="";
+function editme(n,m){
+document.getElementById("editbox").style.width="50px";
+if (n=='name'){document.getElementById("editbox").style.width="200px";}
+document.getElementById("editbox").value=document.getElementById(n+m).innerHTML;
+$.colorbox({inline:true,  href:"#editme", onComplete:function(){document.getElementById("editbox").focus();}});
+editn=n;
+editm=m;
+}
+
+function saveme(){
+document.getElementById(editn+editm).innerHTML=document.getElementById("editbox").value;
+var m=editm;
+var x=document.getElementById("name"+m).innerHTML;
+x=x+"|"+document.getElementById("am"+m).innerHTML;
+x=x+"|"+document.getElementById("ay"+m).innerHTML;
+x=x+"|"+document.getElementById("au"+m).innerHTML;
+x=x+"|"+document.getElementById("ae"+m).innerHTML;
+x=x+"|"+document.getElementById("aa"+m).innerHTML;
+x=x+"|"+document.getElementById("al"+m).innerHTML;
+x=x+"|"+document.getElementById("ac"+m).innerHTML;
+x=x+"|"+document.getElementById("id"+m).value;
+var m1;
+if (m.toString().substr(0,1)=="1"){m1="b";}
+if (m.toString().substr(0,1)=="2"){m1="a";}
+if (m.toString().substr(0,1)=="3"){m1="n";}
+if (m.toString().substr(0,1)=="4"){m1="d";}
+x=x+"|"+m1;
+x="./includes/save_anoigmata.php?rec="+x;
+document.getElementById('phpout').innerHTML="<img src=\""+x+"\" />";
+$.fn.colorbox.close();
+}
+
+</script>
+
+<?php } ?>

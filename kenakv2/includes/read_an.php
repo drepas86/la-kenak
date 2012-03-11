@@ -24,32 +24,40 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
 
 ***********************************************************************
-tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
+Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
                                                                       *
-Αποθήκευση δομικού στοιχείου στη βάση                                 *
-Καλείται από domika_kelyfos   (function savewall)                     *
+Ανάγνωση ανοιγμάτων ενός τοίχου                                       *
+Καλείται από kenak_form3   (javascript function drawit)               *
                                                                       *
 ***********************************************************************
 */
 
 	require_once("connection.php");
 
-	$paxh=$_GET["paxh"];
-	$wid=$_GET["wid"];
-	$fid=$_GET["fid"];
-	$u=$_GET["u"];
-	$d=$_GET["d"];
-	$str=$_GET["strwseis"];
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET paxh = '$paxh' WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET paxh = '$paxh' WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET strwseis = '$str' WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET strwseis = '$str' WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET u = $u WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET u = $u WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0){ $sql = "UPDATE domika_toixoi SET paxos = $d WHERE id = $wid ";
-				 mysql_query($sql, $connection);}
+	$id=$_GET["id"];
+	
+/*
+	$temp = mysql_query("SELECT COUNT(*) FROM domika_anoigmata WHERE name='".$t[0]."'", $connection);
+	$total = mysql_fetch_row($temp);
+
+	if ($total[0]==0) {
+		mysql_query("INSERT INTO domika_anoigmata (name,rec) VALUES ('".$t[0]."','".$t[1]."') ", $connection);
+	}else{
+		$temp = mysql_query("SELECT * FROM domika_anoigmata WHERE name='".$t[0]."'", $connection);
+		while($row = mysql_fetch_array($temp))
+		{
+			$aid=$row['id'];
+			mysql_query("UPDATE domika_anoigmata SET rec = '".$t[1]."' WHERE id = ".$aid, $connection);
+		}
+	}
+*/
+
+echo $id;
 	
 ?>
+
+
+
+
+
+

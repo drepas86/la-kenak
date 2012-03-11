@@ -27,6 +27,10 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 
 		<?php	if ($sel_page["id"] == 1)	{ ?>
 			<h2>ΚΕΝΑΚ - Υπολογισμοί</h2>
+			<h4>Discontinued</h4>
+			Ο υπολογισμός αυτός αποτελεί μέρος της πρώτης έκδοσης της διανομής. Πρόκειται για φόρμα γρήγορων υπολογισμών 
+			στην οποία δεν συνεχίζεται η υλοποίηση καθώς υιοθετήθηκε η λύση της αποθήκευσης στην βάση δεδομένων.
+			Για αυτό το τμήμα του προγράμματος δεν παρέχεται κανένα README ούτε υποστηρίζεται από wikis,forum, κλπ
 	
 	
 			<form id="kenakform" accept-charset="utf-8" action="kenak.php" method="post">

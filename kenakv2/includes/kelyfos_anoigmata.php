@@ -31,10 +31,13 @@ if(add_new_table("domika_anoigmata")){
 }
 
 $p="";
+$call="";
 if (isset($_GET['p'])) $p=$_GET['p'];
-
+if (isset($_GET['lib'])) {
+$call=$_GET['lib'];
+$sp=$_GET['sp'];
+}
 ?>
-
 			<script type="text/javascript">
 				document.getElementById('imgs').innerHTML="<img src=\"images/style/window2.png\"></img>";
 			</script>
@@ -59,6 +62,7 @@ if (isset($_GET['p'])) $p=$_GET['p'];
 					
 <!-- **************		ΓΕΝΙΚΑ ΣΤΟΙΧΕΙΑ   ******************************************-->			
 					<div id="tab-an1" class="tabdiv1"> 
+					<table style="width:100%;border:1px #6699CC dotted;"><tr><td id="anoig" style="width:100%;text-align:center;font-weight:bold;background-color:#EEE4B9;">&nbsp;</td></tr></table>
 					<table  class="anoigmata"><tr><td style="vertical-align:middle;width:40%;">
 					<b>Τύπος Πλαισίου: </b><select id="syntel_plaisio" onchange=getpane()>
 						<option value=""></option>
@@ -198,8 +202,17 @@ if (isset($_GET['p'])) $p=$_GET['p'];
 		<div style='display:none'><div id='read_an' style='padding:10px; background:#ebf9c9;'>
 			<form id="test1" onSubmit="read_an1(); return false;">
 			<h2>Ανάκτηση πίνακα ανοιγμάτων</h2>
-			<?php $an = dropdown1("SELECT * FROM domika_anoigmata", "rec", "name"); 
-			echo "<select id=\"an_rec\" >" . $an . "</select>";		?>
+			<?php 
+			if ($call==""){
+			$an = dropdown1("SELECT * FROM domika_anoigmata", "rec", "name"); 
+			}else{
+			if ($sp==1)$an = dropdown1("SELECT * FROM anoigmata_alouminio", "rec", "name"); 
+			if ($sp==2)$an = dropdown1("SELECT * FROM anoigmata_alouminio_thermo", "rec", "name"); 
+			if ($sp==4)$an = dropdown1("SELECT * FROM anoigmata_plastic", "rec", "name"); 
+			if ($sp==5)$an = dropdown1("SELECT * FROM anoigmata_wood", "rec", "name"); 
+			}
+			echo "<select id=\"an_rec\" >" . $an . "</select>";		
+			?>
 			&nbsp;&nbsp;<button type="button" onclick=read_an1(); >OK</button>
 			</form>
 		</div></div>
@@ -229,10 +242,17 @@ if (isset($_GET['p'])) $p=$_GET['p'];
 <!------------------------------------------------------------------------------------------->						
 
 <?php if ($min==1){ ?>
+<?php if ($call<>""){ ?>
+		<script type="text/javascript">
+			document.getElementById('an_rec').selectedIndex=<?=$call;?>;
+			document.getElementById('anoig').innerHTML=document.getElementById('an_rec').options[document.getElementById('an_rec').selectedIndex].text;
+			read_an1();
+		</script>
+<?php }else{ ?>
 <script type="text/javascript">
 read_an();
 </script>
-<?php } ?>
+<?php }} ?>
 
 
 

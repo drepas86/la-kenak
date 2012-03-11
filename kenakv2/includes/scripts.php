@@ -24,32 +24,30 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
 
 ***********************************************************************
-tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
+Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
                                                                       *
-Αποθήκευση δομικού στοιχείου στη βάση                                 *
-Καλείται από domika_kelyfos   (function savewall)                     *
+javascripts για επιλογή από τις βιβλιοθήκες δομικών στοιχείων         *
+και μεταφορά στη σελίδα υπολογισμών                                   *
                                                                       *
 ***********************************************************************
 */
 
-	require_once("connection.php");
-
-	$paxh=$_GET["paxh"];
-	$wid=$_GET["wid"];
-	$fid=$_GET["fid"];
-	$u=$_GET["u"];
-	$d=$_GET["d"];
-	$str=$_GET["strwseis"];
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET paxh = '$paxh' WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET paxh = '$paxh' WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET strwseis = '$str' WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET strwseis = '$str' WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET u = $u WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET u = $u WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0){ $sql = "UPDATE domika_toixoi SET paxos = $d WHERE id = $wid ";
-				 mysql_query($sql, $connection);}
-	
+//	require_once("connection.php");
 ?>
+
+<script type="text/javascript">
+function call_t(){
+$(".domika").colorbox({iframe:true, width:"900px", height:"90%"});
+}
+
+</script>
+
+<style>
+.vivliothiki a{
+	display:block;
+	width:100%;
+	height:100%;
+	color: #404040;
+}
+</style>
+

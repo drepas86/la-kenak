@@ -37,11 +37,11 @@ if ($sel_page["id"] == 5)	{
 	$(".edit_t").colorbox({iframe:true, width:"80%", height:"100%"});
 	}
 	function help_t(){
-	$.colorbox({inline:true, href:"#help_t"});
+	$.colorbox({inline:true, href:"#helpme"});
 	}
 </script>
 
-<table width=100%><tr><td style="width:50%;vertical-align:middle;"><h2>ΚΕΝΑΚ - Τεύχος</h2></td>
+<table width=100% id="maintable"><tr><td style="width:50%;vertical-align:middle;"><h2>ΚΕΝΑΚ - Τεύχος</h2></td>
 <td style="vertical-align:middle;">
 <a href="./includes/print_teyxos_pdf.php" target="_blank"><img src="./images/domika/pdf.png" width="40px" height="40px" title="δημιουργία αρχείων pdf" style="cursor:pointer;" /></a>
 &nbsp;&nbsp;
@@ -113,9 +113,15 @@ echo "</div>";
 <!------------------------------------------------------------------------------------------->						
 <!--              κρυφό div για HELP                                                       -->
 <!------------------------------------------------------------------------------------------->						
-<div style='display:none'><div id='help_t' style='width:600px;padding:10px; background:#ebf9c9;'>
-<h3>ΚΕΝΑΚ - Τεύχος</h3><hr>
-Το τεύχος εκτυπώνεται με βάση ένα πρότυπο τεύχος που είναι αποθηκευμένο στη βάση και περιέχει τα σταθερά κείμενα και ορισμένες ετικέτες(tags) που αντικαθίστανται από τα δεδομένα της τρέχουσας μελέτης.<br />
+<div id ="helpbox" style='display:none'>
+<div id="helpme" class="widget" style="height:570px;">
+<ul class="tabnav" style="margin-bottom:6px;">
+<li><a href="#help_t" >ΚΕΝΑΚ - Τεύχος</a></li>
+<li><a href="#help_e" >File Manager</a></li>
+</ul>
+
+<div id='help_t' class="tabdiv" style='width:600px;padding:10px;'>
+<br /><br />Το τεύχος εκτυπώνεται με βάση ένα πρότυπο τεύχος που είναι αποθηκευμένο στη βάση και περιέχει τα σταθερά κείμενα και ορισμένες ετικέτες(tags) που αντικαθίστανται από τα δεδομένα της τρέχουσας μελέτης.<br />
 Η επεξεργασία του πρότυπου τεύχους είναι δυνατή με κλικ στο εικονίδιο <img src="./images/domika/edit.png" style="vertical-align:middle;width:30px;height:30px;" /><br />
 Με την επιλογή 'Τεύχος' στο αριστερό μενού, δημιουργείται το τεύχος και εμφανίζεται στην οθόνη. 
 Αν θέλουμε διορθώσεις πριν την τελική εκτύπωση, μπορούν να γίνουν και να αποθηκευθούν ώστε να περιληφθούν στο τελικό PDF. 
@@ -125,7 +131,25 @@ echo "</div>";
 <img src="./images/domika/pdf.png" style="vertical-align:middle;width:30px;height:30px;" /> Παραγωγή όλων των PDF, ένα για κάθε κεφάλαιο.<br /><br />
 <img src="./images/domika/pdf1.png" style="vertical-align:middle;width:30px;height:30px;" /> Παραγωγή του PDF του ενεργού κεφαλαίου.<br /><br />
 <img src="./images/domika/printer.png" style="vertical-align:middle;width:30px;height:30px;" /> Συνένωση όλων των PDF σε ένα ενιαίο τεύχος.<hr>
-</div></div>
+Σημ.: Η εμφάνιση στην οθόνη δεν είναι ίδια με αυτήν που θα προκύψει στο PDF. Οι γραμματοσειρές που χρησιμοποιούνται είναι διαφορετικές, 
+όπως επίσης και η μορφοποίηση των πινάκων. <br /><br /><br /><br /><br /><br />
+
+</div>
+<div id='help_e' class="tabdiv" style='display:none;width:600px;padding:10px;'>
+Μία χρήσιμη λειτουργία του επεξεργαστή κειμένου της εφαρμογής είναι η εισαγωγή αρχείου εικόνας στο κείμενο.<br />
+<table border="0" align="center" width="140" height="80px"><tr><td><img src="./images/domika/h1.png"  style="vertical-align:middle;width:140px;height:80px;" /></td></tr></table>
+Με την επιλογή του σχετικού εικονιδίου ανοίγει ένα παράθυρο στο οποίο μπορούν να ρυθμιστούν οι ιδιότητες της εικόνας<br /><br />
+<table border="0" align="center" width="442" height="136px"><tr><td><img src="./images/domika/h2.png"  style="vertical-align:middle;width:442px;height:136px;" /></td></tr></table>
+Την τοποθεσία στην οποία βρίσκεται η εικόνα ή την πληκτρολογούμε ή για ευκολία την επιλέγουμε από τον διαχειριστή αρχείων που βρίσκονται στον διακομιστή.<br />
+Ανοίγει άλλο παράθυρο όπου εμφανίζονται τα αρχεία του διακομιστή. Εκεί ή επιλέγουμε μία από τις εικόνες που ήδη υπάρχουν ή πρώτα ανεβάζουμε στον διακομιστή ένα αρχείο από το δίσκο του υπολογιστή μας.<br /><br />
+<table border="0" align="center" width="406" height="55px"><tr><td><img src="./images/domika/h3.png"  style="vertical-align:middle;width:406px;height:55px;" /></td></tr></table>
+Επιλέγουμε το αρχείο και με το πλήκτρο Upload το ανεβάζουμε στον  διακομιστή. <br />
+Η εισαγωγή του αρχείου στο κείμενο γίνεται με το πλήκτρο Select: <img src="./images/domika/h4.png"  style="vertical-align:middle;width:134px;height:56px;" />
+
+</div>
+</div>
+
+</div>
 <!------------------------------------------------------------------------------------------->						
 
 <script type="text/javascript">
@@ -135,7 +159,8 @@ for (i=1;i<=8;i++){
 	if (x!=="none"){
 		active_tab=i;
 	}
-}}
+}
+}
 </script>
 <?php
 }

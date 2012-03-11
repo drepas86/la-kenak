@@ -38,6 +38,9 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή σκίασης Βόρειου τοίχου επιτυχής.";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#sk_toix_b"</script><?php
+	exit;
 }
 
 	
@@ -69,6 +72,9 @@ if (isset($_POST['prosthiki_sk_t_b'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε σκίαση Βόρειου τοίχου επιτυχώς";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#sk_toix_b"</script><?php
+	exit;
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
@@ -89,13 +95,16 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή σκίασης Ανατολικού τοίχου επιτυχής.";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#sk_toix_a"</script><?php
+	exit;
 }
 
 	
 	
 	
 //υποβλήθηκε η φόρμα για προσθήκη σκίασης τοίχου ΑΝΑΤΟΛΙΚΑ
-if (isset($_POST['prosthiki_sk_a'])) {
+if (isset($_POST['prosthiki_sk_t_a'])) {
 // Δεδομένα για τη φόρμα
 		$prosthiki_id_toixoy = trim(mysql_prep($_POST['prosthiki_id_toixoy']));
 		$prosthiki_f_hor_h_t = trim(mysql_prep($_POST['prosthiki_f_hor_h_t']));
@@ -120,6 +129,9 @@ if (isset($_POST['prosthiki_sk_a'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε σκίαση Ανατολικού τοίχου επιτυχώς";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#sk_toix_a"</script><?php
+	exit;
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
@@ -141,13 +153,16 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή σκίασης Νότιου τοίχου επιτυχής.";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#sk_toix_n"</script><?php
+	exit;
 }
 
 	
 	
 	
 //υποβλήθηκε η φόρμα για προσθήκη σκίασης τοίχου ΝΟΤΙΑ
-if (isset($_POST['prosthiki_sk_n'])) {
+if (isset($_POST['prosthiki_sk_t_n'])) {
 // Δεδομένα για τη φόρμα
 		$prosthiki_id_toixoy = trim(mysql_prep($_POST['prosthiki_id_toixoy']));
 		$prosthiki_f_hor_h_t = trim(mysql_prep($_POST['prosthiki_f_hor_h_t']));
@@ -172,6 +187,9 @@ if (isset($_POST['prosthiki_sk_n'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε σκίαση Νότιου τοίχου επιτυχώς";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#sk_toix_n"</script><?php
+	exit;
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
@@ -193,13 +211,16 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή σκίασης Δυτικού τοίχου επιτυχής.";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#sk_toix_d"</script><?php
+	exit;
 }
 
 	
 	
 	
 //υποβλήθηκε η φόρμα για προσθήκη σκίασης τοίχου ΔΥΤΙΚΑ
-if (isset($_POST['prosthiki_sk_d'])) {
+if (isset($_POST['prosthiki_sk_t_d'])) {
 // Δεδομένα για τη φόρμα
 		$prosthiki_id_toixoy = trim(mysql_prep($_POST['prosthiki_id_toixoy']));
 		$prosthiki_f_hor_h_t = trim(mysql_prep($_POST['prosthiki_f_hor_h_t']));
@@ -224,6 +245,9 @@ if (isset($_POST['prosthiki_sk_d'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε σκίαση Δυτικού τοίχου επιτυχώς";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#sk_toix_d"</script><?php
+	exit;
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
@@ -245,6 +269,9 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή σκίασης Βόρειου ανοίγματος επιτυχής.";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=8#sk_an_b"</script><?php
+	exit;
 }
 
 	
@@ -276,6 +303,9 @@ if (isset($_POST['prosthiki_sk_an_b'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε σκίαση Βόρειου ανοίγματος επιτυχώς";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=8#sk_an_b"</script><?php
+	exit;
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
@@ -298,6 +328,9 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή σκίασης Ανατολικού ανοίγματος επιτυχής.";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=8#sk_an_a"</script><?php
+	exit;
 }
 
 	
@@ -329,6 +362,9 @@ if (isset($_POST['prosthiki_sk_an_a'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε σκίαση Ανατολικού ανοίγματος επιτυχώς";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=8#sk_an_a"</script><?php
+	exit;
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
@@ -352,6 +388,9 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή σκίασης Νότιου ανοίγματος επιτυχής.";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=8#sk_an_n"</script><?php
+	exit;
 }
 
 	
@@ -383,6 +422,9 @@ if (isset($_POST['prosthiki_sk_an_n'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε σκίαση Νότιου ανοίγματος επιτυχώς";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=8#sk_an_n"</script><?php
+	exit;
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
@@ -405,6 +447,9 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή σκίασης Δυτικού ανοίγματος επιτυχής.";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=8#sk_an_d"</script><?php
+	exit;
 }
 
 	
@@ -436,6 +481,9 @@ if (isset($_POST['prosthiki_sk_an_d'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε σκίαση Δυτικού ανοίγματος επιτυχώς";
+	//Tsak mod
+	?><script type="text/javascript">window.location = "./kenak.php?page=8#sk_an_d"</script><?php
+	exit;
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";

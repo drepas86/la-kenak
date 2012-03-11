@@ -108,6 +108,7 @@ $.fn.colorbox.close();
 document.getElementById("an_name").value=document.getElementById("an_rec").options[document.getElementById("an_rec").selectedIndex].text;
 var rec=document.getElementById('an_rec').value;
 var x=rec.split("^");
+if (isNaN(x[4])){x[4]="";}
 document.getElementById('syntel_plaisio').selectedIndex=x[0];
 document.getElementById('ekp').selectedIndex=x[1];
 document.getElementById('dias').selectedIndex=x[2];
@@ -126,6 +127,7 @@ for (i=1;i<=5;i++){
 }
 getpane();
 checkall();
+document.getElementById('anoig').innerHTML=document.getElementById('an_rec').options[document.getElementById('an_rec').selectedIndex].text;
 }
 
 function save_an(){
@@ -213,7 +215,8 @@ for (i=1;i<=10;i++){
 	if (i<10){s += "|";}
 }
 var u=document.getElementById("U").value;
-var x="includes/save_wall.php?paxh="+p+"&wid="+wallid+"&fid="+floorid+"&strwseis="+s+"&u="+u;
+var d=document.getElementById("sum2").value;
+var x="includes/save_wall.php?paxh="+p+"&wid="+wallid+"&fid="+floorid+"&strwseis="+s+"&u="+u+"&d="+d;
 document.getElementById('inline_content1').innerHTML="<img src=\""+x+"\"></img>";
 document.getElementById('inline_content1').innerHTML="<center>Το δομικό στοιχείο αποθηκεύθηκε</center>";
 $.colorbox({inline:true, width:"30%", href:"#inline_content1"});

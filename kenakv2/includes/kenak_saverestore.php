@@ -41,14 +41,21 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 <a class="iframe" href="./save-scripts/get_files.php" title="" onclick=get_iframe();>Ανάκτηση/Διαγραφή μελέτης από αρχείο XML</a><br/>
 
 <br/><br/>
+<img src="./images/style/xml-tee.png"></img>
+<br/>
+<a class="iframe" href="./xml/xml-tee.php" title="" onclick=get_iframe();>Παραγωγή αρχείου XML-TEE</a><br/>
+
+<br/><br/>
 <img src="./images/style/sql.png"></img>
 <br/>
 <a class="iframe" href="./save-scripts/save-script-sql.php" title="" onclick=get_iframe();>Αποθήκευση τρέχουσας μελέτης σε αρχείο SQL</a><br/>
 <a class="iframe" href="./save-scripts/sql-import2.php" title="" onclick=get_iframe();>Ανάκτηση/Διαγραφή μελέτης από αρχείο SQL</a><br/>
 <br/>
-Προσοχή: Τα αρχεία XML και SQL τα οποία δημιουργούνται ΔΕΝ προορίζονται για εισαγωγή σε άλλο λογισμικό συμπεριλαμβανομένου και του ΤΕΕ-ΚΕΝΑΚ.<br/>
-Αφορούν τη δυνατότητα αποθήκευσης και ανάκτησης των δεδομένων που εισάγουμε για αυτό το λογισμικό. Όταν προστεθεί η δυνατότητα εξαγωγής XML
-αρχείου για την είσοδο στο ΤΕΕ-ΚΕΝΑΚ θα δηλωθεί ρητά στους παραπάνω συνδέσμους.
+Προσοχή: Τα αρχεία XML τα οποία δημιουργούνται έχουν την εξής μορφή: <br/>
+labros_kenakv2-lakenak-"time".xml για αποθήκευση-ανάκτηση μελέτης από το παρόν λογισμικό και βρίσκονται στο φάκελο /save-scripts.<br/>
+tee-kenak-"time".xml για είσοδο στο πρόγραμμα του ΤΕΕ-ΚΕΝΑΚ και βρίσκονται στο φάκελο /xml της διανομής.<br/><br/>
+
+<b>Τα αρχεία με πρόθεμα tee-kenak-1234567.xml είναι τα μόνα που μπορείτε να προσθέσετε στο TEE-KENAK</b>
 
 
 <?php	} ?>

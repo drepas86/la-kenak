@@ -42,6 +42,11 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		$('#tabvanilla > ul').tabs();  
 		}); 
 		</script>
+		<script>
+		$(document).ready(function() {  
+		$('#helpme > ul').tabs();  
+		}); 
+		</script>
 		
 		<script>
 		$("#kenakform").validator();
@@ -109,4 +114,4 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		<div id="header">
 			<h1><a href=index.php>La-Kenak v<?php echo VERSION; ?> - Μελέτη ΚΕΝΑΚ</a></h1>
 		</div>
-		<div id="main">
+<!--		<div id="main"> -->

@@ -25,11 +25,28 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 */	
 $p="";
 $tk="";
+$call="";
 if (isset($_GET['p'])) $p=$_GET['p'];
 if (isset($_GET['t'])) $tk=$_GET['t'];
+if (isset($_GET['t'])) $tk=$_GET['t'];
+if (isset($_GET['lib'])) {
+$call=$_GET['lib'];
+}
 if (!isset($paxos)) $paxos="";
+	add_column_if_not_exist("domika_ylika_beton", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_diafora", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_epifstraera", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_epixrismata", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_gypsosanides", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_keramidia", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_ksyleia", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_monwtika", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_monwtikadow", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_plakes", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_skyrodemata", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_toyvla", "hatch", "INT(2)");
+	add_column_if_not_exist("domika_ylika_ygromonwseis", "hatch", "INT(2)");
 ?>
-
 	  <script type="text/javascript">
 		document.getElementById('imgs').innerHTML="<img src=\"images/style/wall1.png\"></img><img src=\"images/style/floor.png\"></img><img src=\"images/style/roof.png\"></img>";
 	  </script>
@@ -95,8 +112,8 @@ if (!isset($paxos)) $paxos="";
 							<td colspan="2" align="center">
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=showgraph(0); >Σκαρίφημα</button>
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=savewall(); >Αποθήκευση</button>
-							<button type="button" style="background-color:#fee3ad;cursor:pointer;"  >Διαγραφή</button>
-							<button type="button" style="background-color:#fee3ad;cursor:pointer;"  >Προσθήκη</button>
+							<button type="button" style="background-color:#fee3ad;cursor:pointer;"  disabled="disabled">Διαγραφή</button>
+							<button type="button" style="background-color:#fee3ad;cursor:pointer;"  disabled="disabled">Προσθήκη</button>
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=getwall(); >Ανάκτηση</button>
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;"  onclick=showgraph(1); >Εκτύπωση</button>
 							</td> 
@@ -173,4 +190,13 @@ if (!isset($paxos)) $paxos="";
 				
 					</form>
 					<div id="graph"style="width:740px;height:300px;"> </div>
+
+<?php if ($call<>""){ ?>
+		<script type="text/javascript">
+			document.getElementById('walls').selectedIndex=<?=$call;?>;
+			document.getElementById('Ria').selectedIndex=1;
+			getname('walls');
+		</script>
+<?php } ?>
+					
 </div>					

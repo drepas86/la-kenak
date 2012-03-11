@@ -66,4 +66,4 @@ read_an1();
 			<h1><a href=index.php>La-Kenak v<?php echo VERSION; ?> - Δομικά στοιχεία κελύφους</a></h1>
 		</div>
 <?php }?>
-		<div id="main">
+		

@@ -1817,16 +1817,12 @@ $f14 .="ΔΕΝ ικανοποιείται η απαίτηση.";
 $f14 .= "</td></tr></table>";
 //*********************************************************************************************
 
-
-
 /*
-
 $f3 = "<table>".
 "<tr><td style=\"text-align:left;width:25%;\"><b></b></td>".
 "<td style=\"text-align:center;width:15%;\"><b></b></td>".
 "<td style=\"text-align:center;width:15%;\"><b></b></td>".
 "<td style=\"text-align:center;width:15%;\"><b></b></td></tr>";
-
 
 $f4 .= "<tr><td style=\"text-align:left;\"></td>".
 "<td style=\"text-align:center;\"></td>".
@@ -1839,7 +1835,70 @@ $f4 .= "<tr><td style=\"text-align:left;\"></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td></tr>";
 */
+$maxtd=2;
+for ($tab=1;$tab<=4;$tab++){
+$sgl=0;
+$ntd=1;
+//${"toixoi".$tab}="<table><tr>";
+${"toixoi".$tab}="";
+$t[1]="b";
+$t[2]="a";
+$t[3]="n";
+$t[4]="d";
+$strSQL = "SELECT * FROM kataskeyi_t_".$t[$tab];
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$im=0;
+while($objResult = mysql_fetch_array($objQuery)){
+$im++;
+$name=$objResult["name"];
+$tl=$objResult["t_mikos"];
+$th=$objResult["t_ypsos"];
+$dh=$objResult["d_ypsos"];
+$yl=$objResult["yp_mikos"];
+$yd=$objResult["yp_len"];
+if ($yd=="")$yd="0";
 
+$strSQL1 = "SELECT * FROM kataskeyi_an_".$t[$tab]." WHERE id_toixoy=".$objResult["id"];
+$objQuery1 = mysql_query($strSQL1) or die ("Error Query [".$strSQL1."]");
+$k = 0;
+while($objResult1 = mysql_fetch_array($objQuery1)){
+$k++;
+$anw[$k]=$objResult1["anoig_mikos"];
+$anh[$k]=$objResult1["anoig_ypsos"];
+$anx[$k]=$objResult1["x"];
+$any[$k]=$objResult1["y"];
+}
+$ans=$k;
+$anrec="";
+for ($k=1;$k<=$ans;$k++){
+	$anrec=$anrec.$anw[$k]."|".$anh[$k]."|".$anx[$k]."|".$any[$k];
+	if ($k<$ans)$anrec.="^";
+}
+$gl=300*$tl/$th;
+$gh=300;
+if ($gl>800){$gl=800;$gh=800*$th/$tl;}
+$output="file";
+include ('includes/draw_wall.php');
+//${"toixoi".$tab}.="<td>Τοίχος <b>".$name."</b> ".number_format($tl,2,".",",")." x ".number_format($th,2,".",",")."<br />";
+//${"toixoi".$tab}.="<img src=\"http://localhost/kenakv2/includes/PDF/image".$tab.$im.".png\" style=\"width:".$gl ."px;height:".$gh ."px;\" ></img></td>";
+${"toixoi".$tab}.="<br />Τοίχος <b>".$name."</b> ".number_format($tl,2,".",",")." x ".number_format($th,2,".",",")." &nbsp;";
+${"toixoi".$tab}.="<img src=\"http://localhost/kenakv2/includes/PDF/image".$tab.$im.".png\" style=\"width:".$gl/2 ."px;height:".$gh/2 ."px; border:1px solid black; \" ></img><br /><br />";
+/*
+$sgl+=$gl;
+$ntd+=1;
+if ($sgl>1200 || $ntd>$maxtd){
+for ($td=1;$td<=($maxtd-$ntd-1);$td++){${"toixoi".$tab}.="<td>&nbsp;</td>";}
+${"toixoi".$tab}.="</tr><tr>";
+$sgl=0;
+$ntd=1;
+}
+*/
+}
+/*
+for ($td=1;$td<=($maxtd-$ntd-1);$td++){${"toixoi".$tab}.="<td>&nbsp;</td>";}
+${"toixoi".$tab}.="</tr></table>";
+*/
+}
 
 
 //****************************************************************************************************************
@@ -1977,11 +2036,6 @@ $z1[41+$j]=addslashes(${"f".$j});
 $z1[41+$j]="";
 }}
 
-
-$z[60]="<table>";
-$z1[60]="<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" style=\"width:100%;\" >";
-
-
 //Στοιχεία μελέτης
 $temp1 = mysql_query("SELECT * FROM kataskeyi_meletis");
 while($row1 = mysql_fetch_array($temp1)){
@@ -1998,7 +2052,6 @@ $z[63]="{OWNER1}";
 $z1[63]=$owner;
 $z[64]="{ENGS1}";
 $z1[64]=$engs;
-
 
 //Στοιχεία τοπογραφίας
 $temp1 = mysql_query("SELECT * FROM kataskeyi_meletis_topo");
@@ -2018,6 +2071,18 @@ $z[68]="{VELTKLISI1}";
 $z1[68]=$klisi;
 $z[69]="{THER3}";
 $z1[69]=$thermansi_value13;
+
+for ($j=1;$j<=4;$j++){
+$z[69+$j]="{TOIXOI$j}";
+if (!is_null(${"toixoi".$j})){
+$z1[69+$j]=addslashes(${"toixoi".$j});
+}else{
+$z1[69+$j]="";
+}}
+
+
+$z[99]="<table>";
+$z1[99]="<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" style=\"width:100%;\" >";
 
 $teyxos = str_replace($z, $z1, $teyxos);
 

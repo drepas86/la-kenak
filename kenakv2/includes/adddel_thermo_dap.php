@@ -38,7 +38,6 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή χώρου επιτυχής.";
-	echo "<br/><a href=\"kenak.php?page=2#tab-thermo\">Πίσω</a>";
 }
 
 	
@@ -65,8 +64,6 @@ if (isset($_POST['prosthiki_therm_dap'])) {
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση για τη θερμογέφυρα δαπέδου.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
-			echo "<br/><a href=\"kenak.php?page=2#tab-thermo\">Πίσω</a>";
 		}
-		
 	
 ?>

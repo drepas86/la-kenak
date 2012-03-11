@@ -624,6 +624,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	//(αναζήτηση βάσης, το όνομα στήλης στη βάση που περιέχει τις τιμές, το όνομα στήλης στη βάση που περιέχει τα ονόματα, το όνομα του select_box) 
 	function dropdown1($query, $value, $name){
 		global $connection;
+		$menu="";
 	    $drop_set = mysql_query($query, $connection);
 	    while ($result = mysql_fetch_array($drop_set)) {
 	        $menu .= "<option value=\"" . $result[$value]. "\">" . $result[$name] . "</option>";

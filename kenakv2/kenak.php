@@ -34,14 +34,15 @@ include("includes/header_kenak.php");
 	<tr>
 		<td id="navigation">
 		<ol type="circle">
-			<li><a href="kenak.php?page=1">Υπολογισμοί (discontinued)</a><br/></li>
+			<!--<li><a href="kenak.php?page=1">ΚΕΝΑΚ Υπολογισμοί</a><br/></li>-->
 			<li><a href="kenak.php?page=9">Αποθήκευση/Ανάκτηση</a><br/></li>
 			<li><a href="kenak.php?page=2">Γενικά στοιχεία</a><br/></li>
+			<li><a href="kenak.php?page=10">Συστήματα</a><br/></li>
 			<li><a href="kenak.php?page=3">Δομικά στοιχεία</a><br/></li>
 			<li><a href="kenak.php?page=4">Ανοίγματα</a><br/></li>
 			<li><a href="kenak.php?page=7">Σκιάσεις Τοίχων</a><br/></li>
 			<li><a href="kenak.php?page=8">Σκιάσεις Ανοιγμάτων</a><br/></li>
-			<li><a href="kenak.php?page=5">Τεύχος (PDF)</a><br/></li>
+			<li><a href="kenak.php?page=5">Τεύχος</a><br/></li>
 			<li><a href="kenak.php?page=6">Αποτελέσματα</a><br/></li>
 		</ol>	
 			<div id="imgs" style="width:50%;margin-left:auto;margin-right:auto;"></div>
@@ -55,7 +56,6 @@ include("includes/apotelesmata_kenak.php");
 <?php
 //τα αρχεία των υπολογισμών αν υποβλήθηκε κάποια από τις φόρμες για προσθήκη (γενικά) στο δεύτερο στοιχείο του μενού.
 include("includes/adddel_xwrwn.php");
-include("includes/adddel_meletis.php");
 include("includes/adddel_stoixeia.php");
 include("includes/adddel_daporo.php");
 include("includes/adddel_thermo_dap.php");
@@ -95,6 +95,8 @@ include("includes/kenak_form5.php");
 
 //Η φόρμα για το έκτο στοιχείο του μενού. Αποτελέσματα για τους αποθηκευμένους πίνακες
 include("includes/kenak_saverestore.php");
+
+include("includes/kenak_form_hm.php");
 ?>	
 		</td>
 	</tr>

@@ -24,7 +24,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
 
 ***********************************************************************
-tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
+Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
                                                                       *
 Εκτύπωση του φύλλου υπολογισμού δομικού στοιχείου σε pdf              *
 Καλείται από image_creation_wall και image_creation_floor             *
@@ -47,7 +47,7 @@ class MYPDF extends TCPDF {
 		// Set font
 		$this->SetFont('helvetica', 'B', 10);
 		// Title
-		$this->Cell(0, 15, 'La-Kenak v2.3', 'B', false, 'C', 0, '', 0, false, 'M', 'B');
+		$this->Cell(0, 15, 'La-Kenak v'. VERSION, 'B', false, 'C', 0, '', 0, false, 'M', 'B');
 	}
 	// Page footer
 	public function Footer() {

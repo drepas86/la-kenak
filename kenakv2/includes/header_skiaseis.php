@@ -42,6 +42,6 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			<h1><a href=index.php>La-Kenak v<?php echo VERSION; ?> - Υπολογισμοί Σκιάσεων</a></h1>
 		</div>
 		<?php }?>
-<div id="main">
+
 
 

@@ -38,7 +38,6 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή χώρου επιτυχής.";
-	echo "<br/><a href=\"kenak.php?page=2#tab-xwroi\">Πίσω</a>";
 }
 
 	
@@ -69,7 +68,6 @@ if (isset($_POST['prosthiki_xwrwn'])) {
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
-			echo "<br/><a href=\"kenak.php?page=2#tab-xwroi\">Πίσω</a>";
 		}
 	
 ?>

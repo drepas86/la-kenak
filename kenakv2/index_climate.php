@@ -97,7 +97,7 @@ for ($i=41;$i<=55;$i++){
 					?>
 				</div>
 			<?php } else { ?>
-				<h2>Welcome to La-Kenak v<?php echo VERSION; ?> <br/><br/><br/><br/> <img src="images/intro.png"></img></h2>
+				<h2>Welcome to La-Kenak v<?=VERSION?> <br/><br/><br/><br/> <img src="images/intro.png"></img></h2>
 			<?php } ?>
 		</td>
 	</tr>

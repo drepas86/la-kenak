@@ -34,7 +34,9 @@ Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 ***********************************************************************
 */
 ob_start();
-include_once("database.php");
+
+include ('database.php');
+
 for($i=0;$i<7;$i++)
 {	
 echo'
@@ -42,7 +44,7 @@ echo'
 <div id="loading" style="position:absolute; width:100%; text-align:center; top:300px;">
 <table style="width:50%;margin-left:auto;margin-right:auto;border:2px solid black;font-size: 13px; line-height: 15px;background: #ebf9c9;"><tr>
 <td style="text-align:center;font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 13px; line-height: 15px;">
-<br><h2>La-Kenak v'.VERSION.' - Tεύχος</h2>
+<br><h2>La-Kenak v'. VERSION .' - Tεύχος</h2>
 Εκτυπώνεται το τεύχος. Παρακαλώ περιμένετε...&nbsp;&nbsp; <img src="../images/domika/loading.gif" border=0 /><br/>&nbsp;
 </td></tr></table>
 </div>

@@ -24,7 +24,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
 
 ***********************************************************************
-tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
+Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
                                                                       *
 Εκτύπωση του φύλλου υπολογισμού ανοιγμάτων σε pdf                     *
 Καλείται από kelyfos_anoigmata                                        *
@@ -32,6 +32,8 @@ tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
                                                                       *
 ***********************************************************************
 */
+include ('database.php');
+
 	for ($i = 1; $i <= 10; $i++) {
 		${"aw".$i}=$_GET["aw".$i];
 		${"ah".$i}=$_GET["ah".$i];
@@ -57,7 +59,7 @@ echo'
 <div id="loading" style="position:absolute; width:100%; text-align:center; top:300px;">
 <table style="width:50%;margin-left:auto;margin-right:auto;border:2px solid black;font-size: 13px; line-height: 15px;background: #ebf9c9;"><tr>
 <td style="text-align:center;font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 13px; line-height: 15px;">
-<br><h2>La-Kenak v2.3 - Διαφανή δομικά στοιχεία</h2>
+<br><h2>La-Kenak v'. VERSION .' - Διαφανή δομικά στοιχεία</h2>
 Εκτυπώνεται ο πίνακας ανοιγμάτων. Παρακαλώ περιμένετε...&nbsp;&nbsp; <img src="../images/domika/loading.gif" border=0 /><br/>&nbsp;
 </td></tr></table>
 </div>
@@ -74,6 +76,7 @@ ob_start();
 require_once('./tcpdf/config/lang/eng.php');
 require_once('./tcpdf/tcpdf.php');
 
+
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF {
 	//Page header
@@ -84,7 +87,7 @@ class MYPDF extends TCPDF {
 		// Set font
 		$this->SetFont('helvetica', 'B', 10);
 		// Title
-		$this->Cell(0, 15, 'La-Kenak v2.1', 'B', false, 'C', 0, '', 0, false, 'M', 'B');
+		$this->Cell(0, 15, 'La-Kenak v'. VERSION , 'B', false, 'C', 0, '', 0, false, 'M', 'B');
 	}
 	// Page footer
 	public function Footer() {

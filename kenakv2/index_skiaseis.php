@@ -28,6 +28,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 <?php require_once("includes/functions_skiaseis.php"); ?>
 <?php include_once("includes/form_functions.php"); ?>
 <?php 
+$min=0;
 if (isset($_GET['min'])) $min=$_GET['min'];
 if (isset($_POST['min'])) $min=$_POST['min'];
 ?>
