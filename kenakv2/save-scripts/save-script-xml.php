@@ -31,6 +31,7 @@ $user=DB_USER;
 $pass=DB_PASS;
 $name=DB_NAME;
 $table_prefix = "kataskeyi";
+$namefile = $_GET['name'];
 
 //Σύνδεση, Χρησιμοποιώ διαφορετική από το connect . Για την ίδια αλλάξτε το $link σε $connection
 $link = mysql_connect($host,$user,$pass);
@@ -93,9 +94,9 @@ if(mysql_num_rows($result))
 	
 	//Τέλος σώσε το αρχείο
 	
-	$handle = fopen($name.'-lakenak-'.time().'.xml','w+');
+	$handle = fopen('lakenak-xml-'.$namefile.'.xml','w+');
 	fwrite($handle,$xml);
-	echo "Το αρχείο " . $name . "-lakenak-" . time() . ".xml" . " εγγράφηκε επιτυχώς";
+	echo "Το αρχείο lakenak-xml-" . $namefile . ".xml" . " εγγράφηκε επιτυχώς";
 	fclose($handle);
 }
 ?>

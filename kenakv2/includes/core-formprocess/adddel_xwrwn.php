@@ -27,41 +27,49 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	include_once("includes/form_functions.php");
 	
 //υποβλήθηκε η φόρμα για διαγραφή χώρων
-if (isset($_POST['delete_therm_dap'])) {
+if (isset($_POST['delete_xwrwn'])) {
 for($i=0;$i<count($_POST["delcheck"]);$i++)
 	{
 		if($_POST["delcheck"][$i] != "")
 		{
-			$strSQL = "DELETE FROM kataskeyi_therm_dap ";
+			$strSQL = "DELETE FROM kataskeyi_xwroi ";
 			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
 			$objQuery = mysql_query($strSQL);
 		}
 	}
 	echo "Διαγραφή χώρου επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-xwroi"</script><?php
 }
 
 	
 	
 	
 //υποβλήθηκε η φόρμα για προσθήκη χώρων
-if (isset($_POST['prosthiki_therm_dap'])) {
+if (isset($_POST['prosthiki_xwrwn'])) {
 // Δεδομένα για τη φόρμα
-		$prosthiki_thermo_dap = trim(mysql_prep($_POST['prosthiki_thermo_dap']));
-		$prosthiki_perimetros = trim(mysql_prep($_POST['prosthiki_perimetros']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
+		$prosthiki_name = trim(mysql_prep($_POST['prosthiki_name']));
+		$prosthiki_mikos = trim(mysql_prep($_POST['prosthiki_mikos']));
+		$prosthiki_platos = trim(mysql_prep($_POST['prosthiki_platos']));
+		$prosthiki_ypsos = trim(mysql_prep($_POST['prosthiki_ypsos']));
 
-			$query = "UPDATE kataskeyi_therm_dap ";
-			$query .= "SET therm_dap=";
-			$query .= "'" . $prosthiki_thermo_dap . "',";
-			$query .= " perimetros=";
-			$query .= "'" . $prosthiki_perimetros . "'";
-			$query .= " WHERE id=1";
+			$query = "INSERT INTO kataskeyi_xwroi ";
+			$query .= "(id_zwnis, name, mikos, platos, ypsos)";
+			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
+			$query .= $prosthiki_name . "', '";
+			$query .= $prosthiki_mikos . "', '";
+			$query .= $prosthiki_platos . "', '";
+			$query .= $prosthiki_ypsos . "')";
+			
 			$result = mysql_query($query);
 			if ($result) {
 			// Εγγραφή επιτυχής
-			echo "Τροποποιήθηκε η θερμογέφυρα δαπέδου και η περίμετρος δαπέδου επιτυχώς";
+			echo "Προστέθηκε ο χώρος επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-xwroi"</script><?php
 			} else {
 			// Λάθος.
-			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση για τη θερμογέφυρα δαπέδου.</p>";
+			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
 		}

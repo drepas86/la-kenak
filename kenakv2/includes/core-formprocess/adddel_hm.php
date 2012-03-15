@@ -41,6 +41,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή στοιχείων επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-meletes"</script><?php
 }
 
 	
@@ -66,6 +67,7 @@ if (isset($_POST['prosthiki_hm'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Τροποποιήθηκαν τα στοιχεία θέρμανσης/κλιματισμού επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-meletes"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";

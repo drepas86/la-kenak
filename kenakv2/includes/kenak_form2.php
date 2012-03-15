@@ -26,7 +26,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 ?>
 		<!--/Δεύτερος τρόπος εισαγωγής δεδομένων στη βάση-->
 		<?php	if ($sel_page["id"] == 2)	{ ?>
-			<h2>ΚΕΝΑΚ - Αποθήκευση (γενικά)</h2>
+			<h2>ΚΕΝΑΚ - Γενικά στοιχεία</h2>
 	  <script type="text/javascript">
 		document.getElementById('imgs').innerHTML="<img src=\"images/style/home.png\"></img>";
 	  </script>
@@ -460,6 +460,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					<table border="1">
 					<tr>
 					<th> <div align="center">Id</div></th>
+					<th> <div align="center">Id ζώνης</div></th>
 					<th> <div align="center">Όνομα χώρου </div></th>
 					<th> <div align="center">Μήκος </div></th>
 					<th> <div align="center">Πλάτος </div></th>
@@ -476,6 +477,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
+					<td><div align="center"><?=$objResult["id_zwnis"];?></div></td>
 					<td><?=$objResult["name"];?></td>
 					<td><?=$objResult["mikos"];?></td>
 					<td><div align="center"><?=$objResult["platos"];?></div></td>
@@ -493,20 +495,24 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					
 					<?php
 					//προσθήκη στη βάση δεδομένων των χώρων
-					$vasi = "prosthiki_xwrwn";
+					$vasi = "prosthiki";
 						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
 						echo "<tr><th>Id</th>";
+						echo "<th>Id Ζώνης</th>";
 						echo "<th>Όνομα χώρου</th>";
 						echo "<th>Μήκος</th>";
 						echo "<th>Πλάτος</th>";
 						echo "<th>Ύψος</th></tr>";
 						echo "<tr><td></td>";
+						$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_zwni");
+						echo "<td>".$id_zwnis."</td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_name\" required=\"required\" maxlength=\"200\" size=\"30\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_mikos\" required=\"required\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_platos\" required=\"required\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_ypsos\" required=\"required\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
-						echo "<input type=\"submit\" name=\"" . $vasi . "\" value=\"Προσθήκη χώρου\" />";
+						echo "<input type=\"submit\" name=\"" . $vasi . "_xwrwn\" value=\"Προσθήκη χώρου\" />";
 					?>
+					</form>
 					</div><!--/xwroi-->
 					
 					
@@ -523,6 +529,8 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					<table border="1">
 					<tr>
 					<th> <div align="center">Id</div></th>
+					<th> <div align="center">Id ζώνης</div></th>
+					<th> <div align="center">Τύπος</div></th>
 					<th> <div align="center">Όνομα </div></th>
 					<th> <div align="center">Εμβαδόν </div></th>
 					<th> <div align="center">U </div></th>
@@ -535,9 +543,17 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					while($objResult = mysql_fetch_array($objQuery))
 					{
 					$i++;
+					if ( $objResult["type"] == "0"){$typos="Δάπεδο";}
+					if ( $objResult["type"] == "1"){$typos="Οροφή";}
+					
+					$dapedo_zwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
+					if (isset($dapedo_zwni_array[0]["name"])){$dapedo_zwni = $dapedo_zwni_array[0]["name"];}
+					else {$dapedo_zwni="Η ζώνη έχει διαγραφεί!!!";}
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
+					<td><div align="center"><?=$dapedo_zwni;?></div></td>
+					<td><div align="center"><?=$typos;?></div></td>
 					<td><?=$objResult["name"];?></td>
 					<td><div align="center"><?=$objResult["emvadon"];?></div></td>
 					<td align="right"><?=$objResult["u"];?></td>
@@ -547,7 +563,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					}
 					?>
 					</table>
-					<input type="hidden" name="delete_daporo" value="Διαγραφή δαπέδων/οροφών">
+					<input type="submit" name="delete_daporo" value="Διαγραφή δαπέδων/οροφών">
 					<input type="hidden" name="hdnCount" value="<?=$i;?>">
 					</form>
 					
@@ -555,95 +571,38 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					<?php
 					//προσθήκη στη βάση δεδομένων των δαπέδων/οροφών
 					$vasi = "prosthiki";
-						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
-						?>
-						<tr><th>Id</th>
+					$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_zwni");
+					?>
+					
+						<table border="1"><br/><form action="kenak.php" method="post">
+						<tr>
+						<th>Id</th>
+						<th>Id ζώνης</th>
 						<th>Όνομα</th>
 						<th>Εμβαδόν</th>
 						<th>U<a class='iframe' href="./domika_kelyfos.php?page=1&min=1" onclick=iframe_oriz_u();><img src="./images/style/help.png" /></a></th></tr>
-						<?php
-						echo "<tr><td>1</td>";
-						echo "<td>Δάπεδο επί εδάφους</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_dapedo_emv1\" required=\"required\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_dapedo_u1\" required=\"required\" maxlength=\"10\" size=\"5\" /></td></tr>";
-						echo "<tr><td>2</td>";
-						echo "<td>Δάπεδο επί μη θερμ. χώρου</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_dapedo_emv2\" required=\"required\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_dapedo_u2\" required=\"required\" maxlength=\"10\" size=\"5\" /></td></tr>";
-						echo "<tr><td>3</td>";
-						echo "<td>Οροφή με κεραμίδι</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_orofi_emv1\" required=\"required\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_orofi_u1\" required=\"required\" maxlength=\"10\" size=\"5\" /></td></tr>";
-						echo "<tr><td>4</td>";
-						echo "<td>Οροφή πλάκα</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_orofi_emv2\" required=\"required\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_orofi_u2\" required=\"required\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
-						echo "<input type=\"submit\" name=\"" . $vasi . "_daporo\" value=\"Τροποποίηση δαπέδων/οροφών\" />";
-					?>
+						<tr>
+						<td></td>
+						<td><?=$id_zwnis ?></td>
+						<td>
+						<select name="<?=$vasi."_type";?>"/>
+						<option value="0">Δάπεδο</option> 
+						<option value="0">Οροφή</option> 
+						</select>
+						</td>
+						<td><input type="text" name="<?=$vasi."_name";?>" required="required" maxlength="10" size="30" /></td>
+						<td><input type="text" name="<?=$vasi."_emvadon";?>" required="required" maxlength="10" size="7" /></td>
+						<td><input type="text" name="<?=$vasi."_u";?>" required="required" maxlength="10" size="5" /></td>
+						</tr></table>
+						<input type="submit" name="<?=$vasi."_daporo";?>" value="Προσθήκη δαπέδων/οροφών" />
+						</form>
 					</div><!--/tab-katakoryfa-->
 					
 					
 					
 					
 					<div id="tab-thermo" class="tabdiv"> 
-					<h3>Θερμογέφυρα δαπέδου</h3>
-					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
-					<?php
-					$strSQL = "SELECT * FROM kataskeyi_therm_dap";
-					$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-					?>
-					<table border="1">
-					<tr>
-					<th> <div align="center">Id</div></th>
-					<th> <div align="center">Θερμογέφυρα δαπέδου </div></th>
-					<th> <div align="center">Περίμετρος </div></th>
-					<th> <div align="center">
-					<input name="CheckAll" type="checkbox" id="CheckAll" value="Y" onClick="ClickCheckAll(this);">
-					</div></th>
-					</tr>
-					<?
-					$i = 0;
-					while($objResult = mysql_fetch_array($objQuery))
-					{
-					$i++;
-					?>
-					<tr>
-					<td><div align="center"><?=$objResult["id"];?></div></td>
-					<td><?=$objResult["therm_dap"];?></td>
-					<td><?=$objResult["perimetros"];?></td>
-					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
-					</tr>
-					<?
-					}
-					?>
-					</table>
-					<input type="hidden" name="delete_therm_dap" value="Διαγραφή Θερμογέφυρας δαπέδου">
-					<input type="hidden" name="hdnCount" value="<?=$i;?>">
-					</form>
 					
-					
-					<?php
-					//προσθήκη στη βάση δεδομένων των θερμογέφυρας δαπέδου
-					$vasi = "prosthiki";
-						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
-						echo "<tr><th>Id</th>";
-						?>
-						<th>Θερμογέφυρα δαπέδου <a class="dap" href="./images/thermo/d/d4.jpg" title="" onclick=get_thermo_dap();><img src="./images/style/help.png"/></a></th>
-						<th>Περίμετρος</th></tr>
-						<?php
-						echo "<tr><td>1</td>";
-						$thermo_dapedo1_drop = dropdown1("SELECT name, y FROM thermo_d", "y", "name");
-						$thermo_dapedo2_drop = dropdown1("SELECT name, y FROM thermo_oe", "y", "name");
-						$thermo_dapedo3_drop = dropdown1("SELECT name, y FROM thermo_ed", "y", "name");
-						$thermo_dapedo4_drop = dropdown1("SELECT name, y FROM thermo_edp", "y", "name");
-						$thermo_dapedo5_drop = dropdown1("SELECT name, y FROM thermo_de", "y", "name");
-						$thermo_dapedo6_drop = dropdown1("SELECT name, y FROM thermo_dp", "y", "name");
-						echo "<td><select name=\"prosthiki_thermo_dap\">" . $thermo_dapedo1_drop . $thermo_dapedo2_drop . $thermo_dapedo3_drop . $thermo_dapedo4_drop . $thermo_dapedo5_drop . $thermo_dapedo6_drop . "</select></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_perimetros\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
-						echo "<input type=\"submit\" name=\"" . $vasi . "_therm_dap\" value=\"Τροποποίηση θερμογέφυρας δαπέδου\" />";
-					?>
-					
-					<br/><br/><br/><br/>
 					<h3>Θερμογέφυρες εξωτερικών γωνιών</h3>
 					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
 					<?php
@@ -653,6 +612,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					<table border="1">
 					<tr>
 					<th> <div align="center">Id</div></th>
+					<th> <div align="center">Id ζώνης</div></th>
 					<th> <div align="center">Θερμογέφυρα Εξωτερικής γωνίας </div></th>
 					<th> <div align="center">Πλήθος </div></th>
 					<th> <div align="center">Ύψος </div></th>
@@ -668,6 +628,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
+					<td><div align="center"><?=$objResult["id_zwnis"];?></div></td>
 					<td><?=$objResult["thermo_u"];?></td>
 					<td><?=$objResult["plithos"];?></td>
 					<td><?=$objResult["ypsos"];?></td>
@@ -696,9 +657,10 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_ypsos\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
 						echo "<input type=\"submit\" name=\"" . $vasi . "_therm_eks\" value=\"Προσθήκη θερμογέφυρας εξ. γωνίας\" />";
 					?>
+					</form>
 					
 					
-					<br/><br/><br/><br/>
+					<br/><br/>
 					<h3>Θερμογέφυρες εσωτερικών γωνιών</h3>
 					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
 					<?php
@@ -708,6 +670,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					<table border="1">
 					<tr>
 					<th> <div align="center">Id</div></th>
+					<th> <div align="center">Id ζώνης</div></th>
 					<th> <div align="center">Θερμογέφυρα Εσωτερικής γωνίας </div></th>
 					<th> <div align="center">Πλήθος </div></th>
 					<th> <div align="center">Ύψος </div></th>
@@ -723,6 +686,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
+					<td><div align="center"><?=$objResult["id_zwnis"];?></div></td>
 					<td><?=$objResult["thermo_u"];?></td>
 					<td><?=$objResult["plithos"];?></td>
 					<td><?=$objResult["ypsos"];?></td>
@@ -751,7 +715,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_ypsos\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
 						echo "<input type=\"submit\" name=\"" . $vasi . "_therm_es\" value=\"Προσθήκη θερμογέφυρας εσ. γωνίας\" />";
 					?>
-					
+					</form>
 					</div><!--/tab-thermo-->
 					
 					

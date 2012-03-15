@@ -36,23 +36,24 @@ Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 
 	$rec=$_GET["rec"];
 	$f=explode("|",$rec);
-
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET name='".$f[0]."' WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET t_mikos=".$f[1]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET t_ypsos=".$f[2]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET t_platos=".$f[3]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET t_u=".$f[4]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET t_thermo=".$f[5]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET d_ypsos=".$f[6]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET d_u=".$f[7]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET d_thermo=".$f[8]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET yp_mikos=".$f[9]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET yp_plithos=".$f[10]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET yp_u=".$f[11]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET yp_thermo=".$f[12]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET syr_mikos=".$f[13]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET syr_ypsos=".$f[14]." WHERE id=".$f[16]);
-	mysql_query("UPDATE kataskeyi_t_".$f[17]." SET syr_u=".$f[15]." WHERE id=".$f[16]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET id_zwnis='".$f[0]."' WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET name='".$f[1]."' WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET t_mikos=".$f[2]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET t_ypsos=".$f[3]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET t_platos=".$f[4]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET t_u=".$f[5]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET t_thermo=".$f[6]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET t_thermodap=".$f[7]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET d_ypsos=".$f[8]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET d_u=".$f[9]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET d_thermo=".$f[10]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET yp_mikos=".$f[11]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET yp_plithos=".$f[12]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET yp_u=".$f[13]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET yp_thermo=".$f[14]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET syr_mikos=".$f[15]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET syr_ypsos=".$f[16]." WHERE id=".$f[18]);
+	mysql_query("UPDATE kataskeyi_t_".$f[19]." SET syr_u=".$f[17]." WHERE id=".$f[18]);
 
 ?>
 

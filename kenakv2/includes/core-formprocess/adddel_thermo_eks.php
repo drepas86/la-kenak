@@ -38,6 +38,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή θερμογέφυρας εξ. γωνίας επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-thermo"</script><?php
 }
 
 	
@@ -60,6 +61,7 @@ if (isset($_POST['prosthiki_therm_eks'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε νέα θερμογέφυρα εξ. γωνίας επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-thermo"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση για τη θερμογέφυρα εξ. γωνίας.</p>";

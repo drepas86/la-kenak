@@ -27,10 +27,10 @@ $file = $_GET["filename"];
 include ("functions_xml.php");
 include ("../includes/connection.php");
 
-for ($i = 0; $i <= 37; $i++) {
+for ($i = 0; $i <= 38; $i++) {
 insertxmldata($i,$file);
 }
-//Για τα νούμερα από 1 μέχρι 37 δες functions_xml.php ή xmltotables.php
+//Για τα νούμερα από 1 μέχρι 38 δες functions_xml.php ή xmltotables.php
 
 
 ?>

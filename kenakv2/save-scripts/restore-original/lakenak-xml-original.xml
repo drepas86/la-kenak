@@ -12,6 +12,8 @@
 			<column name="anoig_aerismos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="anoig_lampas" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="anoig_ankat" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="x" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="y" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 		</columns>
 		<records>
 			<record>
@@ -25,6 +27,8 @@
 				<anoig_aerismos>6.80000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>2</id>
@@ -37,6 +41,8 @@
 				<anoig_aerismos>6.80000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>3</id>
@@ -49,6 +55,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>4</id>
@@ -61,6 +69,8 @@
 				<anoig_aerismos>6.80000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 		</records>
 	</table>
@@ -76,6 +86,8 @@
 			<column name="anoig_aerismos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="anoig_lampas" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="anoig_ankat" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="x" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="y" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 		</columns>
 		<records>
 			<record>
@@ -89,6 +101,8 @@
 				<anoig_aerismos>6.80000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x>1.00000</x>
+				<y>1.00000</y>
 			</record>
 			<record>
 				<id>4</id>
@@ -101,6 +115,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>5</id>
@@ -113,6 +129,8 @@
 				<anoig_aerismos>6.80000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>6</id>
@@ -125,6 +143,8 @@
 				<anoig_aerismos>6.80000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>7</id>
@@ -137,6 +157,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>8</id>
@@ -149,6 +171,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 		</records>
 	</table>
@@ -164,6 +188,8 @@
 			<column name="anoig_aerismos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="anoig_lampas" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="anoig_ankat" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="x" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="y" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 		</columns>
 		<records>
 			<record>
@@ -177,6 +203,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>3</id>
@@ -189,6 +217,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>4</id>
@@ -201,6 +231,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>5</id>
@@ -213,6 +245,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>6</id>
@@ -225,6 +259,8 @@
 				<anoig_aerismos>5.30000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 		</records>
 	</table>
@@ -240,6 +276,8 @@
 			<column name="anoig_aerismos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="anoig_lampas" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="anoig_ankat" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="x" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="y" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_an_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 		</columns>
 		<records>
 			<record>
@@ -253,6 +291,8 @@
 				<anoig_aerismos>6.80000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 			<record>
 				<id>2</id>
@@ -265,6 +305,8 @@
 				<anoig_aerismos>6.80000</anoig_aerismos>
 				<anoig_lampas>0.20000</anoig_lampas>
 				<anoig_ankat>0.30000</anoig_ankat>
+				<x></x>
+				<y></y>
 			</record>
 		</records>
 	</table>
@@ -280,16 +322,16 @@
 		<records>
 			<record>
 				<id>1</id>
-				<plaisio>Συνθετικό πλαίσιο - PVC - πολυθαλαμικό</plaisio>
-				<ukoyf>1.5</ukoyf>
+				<plaisio>Ξύλινο πλαίσιο σκληρή ξυλεία - μέσο πλάτος 5cm</plaisio>
+				<ukoyf>2.4</ukoyf>
 				<platos>10</platos>
 				<pane>Διπλός υαλοπίνακας  4-12-4  χωρίς επίστρωση χαμηλής εκπομπής και αέρα στο διάκενο</pane>
 				<upane>2.8</upane>
 			</record>
 			<record>
 				<id>2</id>
-				<plaisio>Συνθετικό πλαίσιο - PVC - πολυθαλαμικό</plaisio>
-				<ukoyf>1.5</ukoyf>
+				<plaisio>Ξύλινο πλαίσιο σκληρή ξυλεία - μέσο πλάτος 5cm</plaisio>
+				<ukoyf>2.4</ukoyf>
 				<platos>10</platos>
 				<pane>Διπλός υαλοπίνακας  4-12-4  χωρίς επίστρωση χαμηλής εκπομπής και αέρα στο διάκενο</pane>
 				<upane>2.8</upane>
@@ -299,6 +341,7 @@
 	<table name="kataskeyi_daporo">
 		<columns>
 			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_daporo" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="id_zwnis" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_daporo" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="name" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_daporo" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="emvadon" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_daporo" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_daporo" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
@@ -306,24 +349,28 @@
 		<records>
 			<record>
 				<id>1</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Δάπεδο επί εδάφους</name>
 				<emvadon>66.6300</emvadon>
 				<u>0.3200</u>
 			</record>
 			<record>
 				<id>2</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Δάπεδο σε μη θερμ. χώρο</name>
 				<emvadon>67.4750</emvadon>
 				<u>0.5960</u>
 			</record>
 			<record>
 				<id>3</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Οροφή με κεραμίδι</name>
 				<emvadon>63.4550</emvadon>
 				<u>0.5499</u>
 			</record>
 			<record>
 				<id>4</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Οροφή πλάκα</name>
 				<emvadon>2.1000</emvadon>
 				<u>0.5384</u>
@@ -342,7 +389,7 @@
 				<id>1</id>
 				<name>Θέρμανση (τιμή από μελέτη θέρμανσης)</name>
 				<type>thermansi</type>
-				<value>5200</value>
+				<value>5210</value>
 			</record>
 			<record>
 				<id>2</id>
@@ -637,12 +684,14 @@
 	<table name="kataskeyi_t_a">
 		<columns>
 			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_t_a" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="id_zwnis" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_t_a" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="name" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_t_a" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_platos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_thermo" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="t_thermodap" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_thermo" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
@@ -653,73 +702,85 @@
 			<column name="syr_mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="syr_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="syr_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_a" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="yp_len" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_t_a" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 		</columns>
 		<records>
 			<record>
 				<id>1</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Α1</name>
 				<t_mikos>2.10000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>2</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Α2</name>
 				<t_mikos>4.50000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.75000</yp_mikos>
 				<yp_plithos>3</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>3</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Α3</name>
 				<t_mikos>3.35000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>4</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υ-Α1</name>
 				<t_mikos>2.10000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
 				<t_u>0.51317</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
 				<d_u>0.55397</d_u>
 				<d_thermo>0.00000</d_thermo>
@@ -730,15 +791,18 @@
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
 				<syr_u>0.20671</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>5</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υ-Α2</name>
 				<t_mikos>7.85000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
 				<t_u>0.51317</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
 				<d_u>0.55397</d_u>
 				<d_thermo>0.00000</d_thermo>
@@ -749,75 +813,87 @@
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
 				<syr_u>0.20671</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>6</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Α1</name>
 				<t_mikos>4.00000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.50000</yp_mikos>
 				<yp_plithos>2</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>7</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Α2</name>
 				<t_mikos>2.62000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.50000</yp_mikos>
 				<yp_plithos>2</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>8</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Α3</name>
 				<t_mikos>3.35000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 		</records>
 	</table>
 	<table name="kataskeyi_t_b">
 		<columns>
 			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_t_b" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="id_zwnis" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_t_b" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="name" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_t_b" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_platos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_thermo" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="t_thermodap" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_thermo" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
@@ -828,133 +904,154 @@
 			<column name="syr_mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="syr_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="syr_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_b" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="yp_len" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_t_b" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 		</columns>
 		<records>
 			<record>
 				<id>1</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Β1</name>
 				<t_mikos>4.30000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.50000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len> 0</yp_len>
 			</record>
 			<record>
 				<id>2</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Β2</name>
 				<t_mikos>3.70000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>3</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Y-B1</name>
 				<t_mikos>4.30000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.00000</d_thermo>
 				<yp_mikos>0.50000</yp_mikos>
 				<yp_plithos>2</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.00000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>4</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υ-Β2</name>
 				<t_mikos>3.70000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.00000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.00000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>5</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Β1</name>
 				<t_mikos>4.30000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.50000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>6</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Β2</name>
 				<t_mikos>3.70000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>1.05000</syr_mikos>
 				<syr_ypsos>2.30000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 		</records>
 	</table>
 	<table name="kataskeyi_t_d">
 		<columns>
 			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_t_d" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="id_zwnis" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_t_d" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="name" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_t_d" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_platos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_thermo" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="t_thermodap" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_thermo" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
@@ -965,54 +1062,63 @@
 			<column name="syr_mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="syr_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="syr_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_d" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="yp_len" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_t_d" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 		</columns>
 		<records>
 			<record>
 				<id>1</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Δ1</name>
 				<t_mikos>3.35000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.20000</yp_mikos>
 				<yp_plithos>0</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>2</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Δ2</name>
 				<t_mikos>6.60000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>1.00000</yp_mikos>
 				<yp_plithos>0</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>3</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υ-Δ1</name>
 				<t_mikos>3.35000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
 				<t_u>0.51317</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
 				<d_u>0.55397</d_u>
 				<d_thermo>0.00000</d_thermo>
@@ -1023,15 +1129,18 @@
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
 				<syr_u>0.20671</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>4</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υ-Δ2</name>
 				<t_mikos>6.60000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
 				<t_u>0.51317</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
 				<d_u>0.55397</d_u>
 				<d_thermo>0.00000</d_thermo>
@@ -1042,56 +1151,65 @@
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
 				<syr_u>0.20671</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>5</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Δ1</name>
 				<t_mikos>3.35000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.50000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>6</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Δ2</name>
 				<t_mikos>6.60000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.50000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 		</records>
 	</table>
 	<table name="kataskeyi_t_n">
 		<columns>
 			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_t_n" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="id_zwnis" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_t_n" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="name" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_t_n" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_platos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="t_thermo" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="t_thermodap" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="d_thermo" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
@@ -1102,54 +1220,63 @@
 			<column name="syr_mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="syr_ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="syr_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_t_n" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="yp_len" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_t_n" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 		</columns>
 		<records>
 			<record>
 				<id>1</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Ν1</name>
 				<t_mikos>6.70000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>1.25000</yp_mikos>
 				<yp_plithos>0</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>2</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΙΣ-Ν2</name>
 				<t_mikos>1.30000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>0</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>3</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υ-Ν1</name>
 				<t_mikos>6.70000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
 				<t_u>0.51317</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
 				<d_u>0.55397</d_u>
 				<d_thermo>0.00000</d_thermo>
@@ -1160,15 +1287,18 @@
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
 				<syr_u>0.20671</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>4</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υ-Ν2</name>
 				<t_mikos>1.30000</t_mikos>
 				<t_ypsos>3.00000</t_ypsos>
 				<t_platos>0.25000</t_platos>
 				<t_u>0.51317</t_u>
 				<t_thermo>0.00000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
 				<d_u>0.55397</d_u>
 				<d_thermo>0.00000</d_thermo>
@@ -1179,63 +1309,73 @@
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
 				<syr_u>0.20671</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>5</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Ν1</name>
 				<t_mikos>0.90000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>6</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Ν2</name>
 				<t_mikos>5.80000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>1.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 			<record>
 				<id>7</id>
+				<id_zwnis>1</id_zwnis>
 				<name>ΟΡ-Ν3</name>
 				<t_mikos>1.30000</t_mikos>
 				<t_ypsos>3.30000</t_ypsos>
 				<t_platos>0.25000</t_platos>
-				<t_u>0.51317</t_u>
+				<t_u>0.51300</t_u>
 				<t_thermo>0.45000</t_thermo>
+				<t_thermodap>0.00000</t_thermodap>
 				<d_ypsos>0.20000</d_ypsos>
-				<d_u>0.55397</d_u>
+				<d_u>0.55400</d_u>
 				<d_thermo>0.25000</d_thermo>
 				<yp_mikos>0.25000</yp_mikos>
 				<yp_plithos>1</yp_plithos>
-				<yp_u>0.55397</yp_u>
+				<yp_u>0.55400</yp_u>
 				<yp_thermo>0.30000</yp_thermo>
 				<syr_mikos>0.00000</syr_mikos>
 				<syr_ypsos>0.00000</syr_ypsos>
-				<syr_u>0.20671</syr_u>
+				<syr_u>0.20700</syr_u>
+				<yp_len></yp_len>
 			</record>
 		</records>
 	</table>
@@ -1627,6 +1767,7 @@
 	<table name="kataskeyi_therm_eks">
 		<columns>
 			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_therm_eks" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="id_zwnis" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_therm_eks" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="thermo_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_therm_eks" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="plithos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_therm_eks" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_therm_eks" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
@@ -1634,18 +1775,21 @@
 		<records>
 			<record>
 				<id>1</id>
+				<id_zwnis>0</id_zwnis>
 				<thermo_u>0.15</thermo_u>
 				<plithos>6</plithos>
 				<ypsos>3</ypsos>
 			</record>
 			<record>
 				<id>2</id>
+				<id_zwnis>0</id_zwnis>
 				<thermo_u>0.15</thermo_u>
 				<plithos>6</plithos>
 				<ypsos>3</ypsos>
 			</record>
 			<record>
 				<id>3</id>
+				<id_zwnis>0</id_zwnis>
 				<thermo_u>0.15</thermo_u>
 				<plithos>7</plithos>
 				<ypsos>3</ypsos>
@@ -1655,6 +1799,7 @@
 	<table name="kataskeyi_therm_es">
 		<columns>
 			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_therm_es" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="id_zwnis" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_therm_es" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="thermo_u" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_therm_es" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="plithos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_therm_es" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="ypsos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_therm_es" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
@@ -1662,27 +1807,302 @@
 		<records>
 			<record>
 				<id>1</id>
+				<id_zwnis>0</id_zwnis>
 				<thermo_u>0.10</thermo_u>
 				<plithos>2</plithos>
 				<ypsos>3</ypsos>
 			</record>
 			<record>
 				<id>2</id>
+				<id_zwnis>0</id_zwnis>
 				<thermo_u>0.10</thermo_u>
 				<plithos>2</plithos>
 				<ypsos>3</ypsos>
 			</record>
 			<record>
 				<id>3</id>
+				<id_zwnis>0</id_zwnis>
 				<thermo_u>0.10</thermo_u>
 				<plithos>3</plithos>
 				<ypsos>3</ypsos>
 			</record>
 		</records>
 	</table>
+	<table name="kataskeyi_xsystems_coldb">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_coldb" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldb" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="number" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldb" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="isxys" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldb" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_coldd">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_coldd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="0" primary_key="0" table="kataskeyi_xsystems_coldd" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="isxys" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldd" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="xwros" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldd" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="monwsi" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>1</id>
+				<type>Δίκτυο διανομής ψυχρού μέσου</type>
+				<isxys>0.00</isxys>
+				<xwros>0</xwros>
+				<bathm>0.00</bathm>
+				<monwsi>0</monwsi>
+			</record>
+			<record>
+				<id>2</id>
+				<type>Αεραγωγοί</type>
+				<isxys>0.00</isxys>
+				<xwros>0</xwros>
+				<bathm>0.00</bathm>
+				<monwsi>0</monwsi>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_coldp">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_coldp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="pigienergy" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="isxys" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="eer" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jan" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="feb" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="mar" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="apr" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="may" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jun" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jul" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="aug" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="sep" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="okt" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="nov" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="decem" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>1</id>
+				<type>0</type>
+				<pigienergy>3</pigienergy>
+				<isxys>3.00</isxys>
+				<bathm>0.66</bathm>
+				<eer>1.00</eer>
+				<jan>0.00</jan>
+				<feb>0.00</feb>
+				<mar>0.00</mar>
+				<apr>0.00</apr>
+				<may>1.00</may>
+				<jun>1.00</jun>
+				<jul>1.00</jul>
+				<aug>1.00</aug>
+				<sep>1.00</sep>
+				<okt>0.00</okt>
+				<nov>0.00</nov>
+				<decem>0.00</decem>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_coldt">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_coldt" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="0" primary_key="0" table="kataskeyi_xsystems_coldt" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_coldt" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>1</id>
+				<type>τοπικές αντλίες θερμότητας</type>
+				<bathm>0.92</bathm>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_thermb">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_thermb" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermb" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="number" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermb" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="isxys" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermb" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_thermd">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_thermd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="0" primary_key="0" table="kataskeyi_xsystems_thermd" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="isxys" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermd" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="xwros" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermd" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="monwsi" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>1</id>
+				<type>Δίκτυο διανομής θερμού μέσου</type>
+				<isxys>0.00</isxys>
+				<xwros>0</xwros>
+				<bathm>0.00</bathm>
+				<monwsi>0</monwsi>
+			</record>
+			<record>
+				<id>2</id>
+				<type>Αεραγωγοί</type>
+				<isxys>0.00</isxys>
+				<xwros>0</xwros>
+				<bathm>0.00</bathm>
+				<monwsi>0</monwsi>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_thermp">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_thermp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="pigienergy" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="isxys" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="cop" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jan" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="feb" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="mar" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="apr" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="may" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jun" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jul" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="aug" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="sep" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="okt" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="nov" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="decem" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>5</id>
+				<type>0</type>
+				<pigienergy>3</pigienergy>
+				<isxys>5.00</isxys>
+				<bathm>0.66</bathm>
+				<cop>1.00</cop>
+				<jan>1.00</jan>
+				<feb>9.99</feb>
+				<mar>1.00</mar>
+				<apr>1.00</apr>
+				<may>0.00</may>
+				<jun>0.00</jun>
+				<jul>0.00</jul>
+				<aug>0.00</aug>
+				<sep>0.00</sep>
+				<okt>0.00</okt>
+				<nov>1.00</nov>
+				<decem>1.00</decem>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_thermt">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_thermt" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="0" primary_key="0" table="kataskeyi_xsystems_thermt" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_thermt" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>1</id>
+				<type>σωματα καλοριφερ</type>
+				<bathm>0.90</bathm>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_znxa">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_znxa" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="0" primary_key="0" table="kataskeyi_xsystems_znxa" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxa" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>1</id>
+				<type>θερμαντήρες σε εσ.χωρ.</type>
+				<bathm>1.00</bathm>
+			</record>
+			<record>
+				<id>2</id>
+				<type>θερμαντήρες σε εσ.χωρ.</type>
+				<bathm>1.00</bathm>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_znxd">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_znxd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="0" primary_key="0" table="kataskeyi_xsystems_znxd" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="anakykloforia" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="xwros" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxd" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxd" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>1</id>
+				<type></type>
+				<anakykloforia>0</anakykloforia>
+				<xwros>0</xwros>
+				<bathm>0.00</bathm>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_xsystems_znxp">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xsystems_znxp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="type" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="pigienergy" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="isxys" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="bathm" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jan" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="feb" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="mar" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="apr" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="may" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jun" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="jul" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="aug" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="sep" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="okt" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="nov" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="decem" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xsystems_znxp" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>2</id>
+				<type>0</type>
+				<pigienergy>3</pigienergy>
+				<isxys>3.00</isxys>
+				<bathm>0.89</bathm>
+				<jan>1.00</jan>
+				<feb>1.00</feb>
+				<mar>1.00</mar>
+				<apr>1.00</apr>
+				<may>1.00</may>
+				<jun>1.00</jun>
+				<jul>1.00</jul>
+				<aug>1.00</aug>
+				<sep>1.00</sep>
+				<okt>1.00</okt>
+				<nov>1.00</nov>
+				<decem>1.00</decem>
+			</record>
+		</records>
+	</table>
 	<table name="kataskeyi_xwroi">
 		<columns>
 			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_xwroi" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="id_zwnis" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_xwroi" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="name" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="0" primary_key="0" table="kataskeyi_xwroi" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="mikos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_xwroi" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
 			<column name="platos" blob="0" maxlength="" multiple_key="0" not_null="0" numeric="1" primary_key="0" table="kataskeyi_xwroi" type="real" default="" unique_key="0" unsigned="0" zerofill="0" />
@@ -1691,6 +2111,7 @@
 		<records>
 			<record>
 				<id>3</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Ισόγειο 1</name>
 				<mikos>3.7000</mikos>
 				<platos>7.8500</platos>
@@ -1698,6 +2119,7 @@
 			</record>
 			<record>
 				<id>4</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Ισόγειο 2</name>
 				<mikos>4.3000</mikos>
 				<platos>6.6000</platos>
@@ -1705,6 +2127,7 @@
 			</record>
 			<record>
 				<id>5</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Ισόγειο 3</name>
 				<mikos>3.3500</mikos>
 				<platos>2.7500</platos>
@@ -1712,6 +2135,7 @@
 			</record>
 			<record>
 				<id>6</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Όροφος 1</name>
 				<mikos>4.3000</mikos>
 				<platos>6.6000</platos>
@@ -1719,6 +2143,7 @@
 			</record>
 			<record>
 				<id>7</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Όροφος 2</name>
 				<mikos>3.5000</mikos>
 				<platos>5.8000</platos>
@@ -1726,6 +2151,7 @@
 			</record>
 			<record>
 				<id>8</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Όροφος 3</name>
 				<mikos>2.6000</mikos>
 				<platos>3.7000</platos>
@@ -1733,6 +2159,7 @@
 			</record>
 			<record>
 				<id>9</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υπόγειο 1</name>
 				<mikos>3.7000</mikos>
 				<platos>7.8500</platos>
@@ -1740,17 +2167,41 @@
 			</record>
 			<record>
 				<id>10</id>
+				<id_zwnis>0</id_zwnis>
 				<name>Υπόγειο 2</name>
 				<mikos>4.3000</mikos>
 				<platos>6.6000</platos>
 				<ypsos>3.0000</ypsos>
 			</record>
 			<record>
-				<id>11</id>
+				<id>17</id>
+				<id_zwnis>1</id_zwnis>
 				<name>Υπόγειο 3</name>
 				<mikos>3.3500</mikos>
 				<platos>2.7500</platos>
 				<ypsos>3.0000</ypsos>
+			</record>
+		</records>
+	</table>
+	<table name="kataskeyi_zwnes">
+		<columns>
+			<column name="id" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="1" table="kataskeyi_zwnes" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="name" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="0" primary_key="0" table="kataskeyi_zwnes" type="string" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="xrisi" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_zwnes" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+			<column name="thermoeparkeia" blob="0" maxlength="" multiple_key="0" not_null="1" numeric="1" primary_key="0" table="kataskeyi_zwnes" type="int" default="" unique_key="0" unsigned="0" zerofill="0" />
+		</columns>
+		<records>
+			<record>
+				<id>1</id>
+				<name>Ζώνη 1</name>
+				<xrisi>1</xrisi>
+				<thermoeparkeia>1</thermoeparkeia>
+			</record>
+			<record>
+				<id>2</id>
+				<name>Ζώνη 2</name>
+				<xrisi>1</xrisi>
+				<thermoeparkeia>0</thermoeparkeia>
 			</record>
 		</records>
 	</table>

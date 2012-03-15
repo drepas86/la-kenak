@@ -49,12 +49,14 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 //υποβλήθηκε η φόρμα για προσθήκη Β τοίχου
 if (isset($_POST['prosthiki_toixoib'])) {
 // Δεδομένα για τη φόρμα
+		$prosthiki_id_zwnis = trim(mysql_prep($_POST['prosthiki_id_zwnis']));
 		$prosthiki_name = trim(mysql_prep($_POST['prosthiki_name']));
 		$prosthiki_t_mikos = trim(mysql_prep($_POST['prosthiki_t_mikos']));
 		$prosthiki_t_ypsos = trim(mysql_prep($_POST['prosthiki_t_ypsos']));
 		$prosthiki_t_platos = trim(mysql_prep($_POST['prosthiki_t_platos']));
 		$prosthiki_t_u = trim(mysql_prep($_POST['prosthiki_t_u']));
 		$prosthiki_t_thermo = trim(mysql_prep($_POST['prosthiki_t_thermo']));
+		$prosthiki_t_thermodap = trim(mysql_prep($_POST['prosthiki_t_thermodap']));
 		$prosthiki_d_ypsos = trim(mysql_prep($_POST['prosthiki_d_ypsos']));
 		$prosthiki_d_u = trim(mysql_prep($_POST['prosthiki_d_u']));
 		$prosthiki_d_thermo = trim(mysql_prep($_POST['prosthiki_d_thermo']));
@@ -67,14 +69,16 @@ if (isset($_POST['prosthiki_toixoib'])) {
 		$prosthiki_syr_u = trim(mysql_prep($_POST['prosthiki_syr_u']));
 
 			$query = "INSERT INTO kataskeyi_t_b ";
-			$query .= "(name, t_mikos, t_ypsos, t_platos, t_u, t_thermo, d_ypsos, d_u, d_thermo, yp_mikos, yp_plithos, yp_u, yp_thermo, syr_mikos, syr_ypsos, syr_u)";
+			$query .= "(id_zwnis, name, t_mikos, t_ypsos, t_platos, t_u, t_thermo, t_thermodap, d_ypsos, d_u, d_thermo, yp_mikos, yp_plithos, yp_u, yp_thermo, syr_mikos, syr_ypsos, syr_u)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_id_zwnis . "', '";
 			$query .= $prosthiki_name . "', '";
 			$query .= $prosthiki_t_mikos . "', '";
 			$query .= $prosthiki_t_ypsos . "', '";
 			$query .= $prosthiki_t_platos . "', '";
 			$query .= $prosthiki_t_u . "', '";
 			$query .= $prosthiki_t_thermo . "', '";
+			$query .= $prosthiki_t_thermodap . "', '";
 			$query .= $prosthiki_d_ypsos . "', '";
 			$query .= $prosthiki_d_u . "', '";
 			$query .= $prosthiki_d_thermo . "', '";
@@ -124,12 +128,14 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 //υποβλήθηκε η φόρμα για προσθήκη Α τοίχου
 if (isset($_POST['prosthiki_toixoia'])) {
 // Δεδομένα για τη φόρμα
+		$prosthiki_id_zwnis = trim(mysql_prep($_POST['prosthiki_id_zwnis']));
 		$prosthiki_name = trim(mysql_prep($_POST['prosthiki_name']));
 		$prosthiki_t_mikos = trim(mysql_prep($_POST['prosthiki_t_mikos']));
 		$prosthiki_t_ypsos = trim(mysql_prep($_POST['prosthiki_t_ypsos']));
 		$prosthiki_t_platos = trim(mysql_prep($_POST['prosthiki_t_platos']));
 		$prosthiki_t_u = trim(mysql_prep($_POST['prosthiki_t_u']));
 		$prosthiki_t_thermo = trim(mysql_prep($_POST['prosthiki_t_thermo']));
+		$prosthiki_t_thermodap = trim(mysql_prep($_POST['prosthiki_t_thermodap']));
 		$prosthiki_d_ypsos = trim(mysql_prep($_POST['prosthiki_d_ypsos']));
 		$prosthiki_d_u = trim(mysql_prep($_POST['prosthiki_d_u']));
 		$prosthiki_d_thermo = trim(mysql_prep($_POST['prosthiki_d_thermo']));
@@ -142,14 +148,16 @@ if (isset($_POST['prosthiki_toixoia'])) {
 		$prosthiki_syr_u = trim(mysql_prep($_POST['prosthiki_syr_u']));
 
 			$query = "INSERT INTO kataskeyi_t_a ";
-			$query .= "(name, t_mikos, t_ypsos, t_platos, t_u, t_thermo, d_ypsos, d_u, d_thermo, yp_mikos, yp_plithos, yp_u, yp_thermo, syr_mikos, syr_ypsos, syr_u)";
+			$query .= "(id_zwnis, name, t_mikos, t_ypsos, t_platos, t_u, t_thermo, t_thermodap, d_ypsos, d_u, d_thermo, yp_mikos, yp_plithos, yp_u, yp_thermo, syr_mikos, syr_ypsos, syr_u)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_id_zwnis . "', '";
 			$query .= $prosthiki_name . "', '";
 			$query .= $prosthiki_t_mikos . "', '";
 			$query .= $prosthiki_t_ypsos . "', '";
 			$query .= $prosthiki_t_platos . "', '";
 			$query .= $prosthiki_t_u . "', '";
 			$query .= $prosthiki_t_thermo . "', '";
+			$query .= $prosthiki_t_thermodap . "', '";
 			$query .= $prosthiki_d_ypsos . "', '";
 			$query .= $prosthiki_d_u . "', '";
 			$query .= $prosthiki_d_thermo . "', '";
@@ -198,12 +206,14 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 //υποβλήθηκε η φόρμα για προσθήκη Ν τοίχου
 if (isset($_POST['prosthiki_toixoin'])) {
 // Δεδομένα για τη φόρμα
+		$prosthiki_id_zwnis = trim(mysql_prep($_POST['prosthiki_id_zwnis']));
 		$prosthiki_name = trim(mysql_prep($_POST['prosthiki_name']));
 		$prosthiki_t_mikos = trim(mysql_prep($_POST['prosthiki_t_mikos']));
 		$prosthiki_t_ypsos = trim(mysql_prep($_POST['prosthiki_t_ypsos']));
 		$prosthiki_t_platos = trim(mysql_prep($_POST['prosthiki_t_platos']));
 		$prosthiki_t_u = trim(mysql_prep($_POST['prosthiki_t_u']));
 		$prosthiki_t_thermo = trim(mysql_prep($_POST['prosthiki_t_thermo']));
+		$prosthiki_t_thermodap = trim(mysql_prep($_POST['prosthiki_t_thermodap']));
 		$prosthiki_d_ypsos = trim(mysql_prep($_POST['prosthiki_d_ypsos']));
 		$prosthiki_d_u = trim(mysql_prep($_POST['prosthiki_d_u']));
 		$prosthiki_d_thermo = trim(mysql_prep($_POST['prosthiki_d_thermo']));
@@ -216,14 +226,16 @@ if (isset($_POST['prosthiki_toixoin'])) {
 		$prosthiki_syr_u = trim(mysql_prep($_POST['prosthiki_syr_u']));
 
 			$query = "INSERT INTO kataskeyi_t_n ";
-			$query .= "(name, t_mikos, t_ypsos, t_platos, t_u, t_thermo, d_ypsos, d_u, d_thermo, yp_mikos, yp_plithos, yp_u, yp_thermo, syr_mikos, syr_ypsos, syr_u)";
+			$query .= "(id_zwnis, name, t_mikos, t_ypsos, t_platos, t_u, t_thermo, t_thermodap, d_ypsos, d_u, d_thermo, yp_mikos, yp_plithos, yp_u, yp_thermo, syr_mikos, syr_ypsos, syr_u)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_id_zwnis . "', '";
 			$query .= $prosthiki_name . "', '";
 			$query .= $prosthiki_t_mikos . "', '";
 			$query .= $prosthiki_t_ypsos . "', '";
 			$query .= $prosthiki_t_platos . "', '";
 			$query .= $prosthiki_t_u . "', '";
 			$query .= $prosthiki_t_thermo . "', '";
+			$query .= $prosthiki_t_thermodap . "', '";
 			$query .= $prosthiki_d_ypsos . "', '";
 			$query .= $prosthiki_d_u . "', '";
 			$query .= $prosthiki_d_thermo . "', '";
@@ -275,12 +287,14 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 //υποβλήθηκε η φόρμα για προσθήκη D τοίχου
 if (isset($_POST['prosthiki_toixoid'])) {
 // Δεδομένα για τη φόρμα
+		$prosthiki_id_zwnis = trim(mysql_prep($_POST['prosthiki_id_zwnis']));
 		$prosthiki_name = trim(mysql_prep($_POST['prosthiki_name']));
 		$prosthiki_t_mikos = trim(mysql_prep($_POST['prosthiki_t_mikos']));
 		$prosthiki_t_ypsos = trim(mysql_prep($_POST['prosthiki_t_ypsos']));
 		$prosthiki_t_platos = trim(mysql_prep($_POST['prosthiki_t_platos']));
 		$prosthiki_t_u = trim(mysql_prep($_POST['prosthiki_t_u']));
 		$prosthiki_t_thermo = trim(mysql_prep($_POST['prosthiki_t_thermo']));
+		$prosthiki_t_thermodap = trim(mysql_prep($_POST['prosthiki_t_thermodap']));
 		$prosthiki_d_ypsos = trim(mysql_prep($_POST['prosthiki_d_ypsos']));
 		$prosthiki_d_u = trim(mysql_prep($_POST['prosthiki_d_u']));
 		$prosthiki_d_thermo = trim(mysql_prep($_POST['prosthiki_d_thermo']));
@@ -293,14 +307,16 @@ if (isset($_POST['prosthiki_toixoid'])) {
 		$prosthiki_syr_u = trim(mysql_prep($_POST['prosthiki_syr_u']));
 
 			$query = "INSERT INTO kataskeyi_t_d ";
-			$query .= "(name, t_mikos, t_ypsos, t_platos, t_u, t_thermo, d_ypsos, d_u, d_thermo, yp_mikos, yp_plithos, yp_u, yp_thermo, syr_mikos, syr_ypsos, syr_u)";
+			$query .= "(id_zwnis, name, t_mikos, t_ypsos, t_platos, t_u, t_thermo, t_thermodap, d_ypsos, d_u, d_thermo, yp_mikos, yp_plithos, yp_u, yp_thermo, syr_mikos, syr_ypsos, syr_u)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_id_zwnis . "', '";
 			$query .= $prosthiki_name . "', '";
 			$query .= $prosthiki_t_mikos . "', '";
 			$query .= $prosthiki_t_ypsos . "', '";
 			$query .= $prosthiki_t_platos . "', '";
 			$query .= $prosthiki_t_u . "', '";
 			$query .= $prosthiki_t_thermo . "', '";
+			$query .= $prosthiki_t_thermodap . "', '";
 			$query .= $prosthiki_d_ypsos . "', '";
 			$query .= $prosthiki_d_u . "', '";
 			$query .= $prosthiki_d_thermo . "', '";

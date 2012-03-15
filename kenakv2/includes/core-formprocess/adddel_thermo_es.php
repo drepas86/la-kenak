@@ -27,45 +27,44 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	include_once("includes/form_functions.php");
 	
 //υποβλήθηκε η φόρμα για διαγραφή χώρων
-if (isset($_POST['delete_xwrwn'])) {
+if (isset($_POST['delete_therm_es'])) {
 for($i=0;$i<count($_POST["delcheck"]);$i++)
 	{
 		if($_POST["delcheck"][$i] != "")
 		{
-			$strSQL = "DELETE FROM kataskeyi_xwroi ";
+			$strSQL = "DELETE FROM kataskeyi_therm_es ";
 			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
 			$objQuery = mysql_query($strSQL);
 		}
 	}
-	echo "Διαγραφή χώρου επιτυχής.";
+	echo "Διαγραφή θερμογέφυρας εσωτερικής γωνίας επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-thermo"</script><?php
 }
 
 	
 	
 	
 //υποβλήθηκε η φόρμα για προσθήκη χώρων
-if (isset($_POST['prosthiki_xwrwn'])) {
+if (isset($_POST['prosthiki_therm_es'])) {
 // Δεδομένα για τη φόρμα
-		$prosthiki_xwrwn_name = trim(mysql_prep($_POST['prosthiki_xwrwn_name']));
-		$prosthiki_xwrwn_mikos = trim(mysql_prep($_POST['prosthiki_xwrwn_mikos']));
-		$prosthiki_xwrwn_platos = trim(mysql_prep($_POST['prosthiki_xwrwn_platos']));
-		$prosthiki_xwrwn_ypsos = trim(mysql_prep($_POST['prosthiki_xwrwn_ypsos']));
+		$prosthiki_thermo_drop = trim(mysql_prep($_POST['prosthiki_thermo_drop']));
+		$prosthiki_plithos = trim(mysql_prep($_POST['prosthiki_plithos']));
+		$prosthiki_ypsos = trim(mysql_prep($_POST['prosthiki_ypsos']));
 
-			$query = "INSERT INTO kataskeyi_xwroi ";
-			$query .= "(name, mikos, platos, ypsos)";
+			$query = "INSERT INTO kataskeyi_therm_es ";
+			$query .= "(thermo_u, plithos, ypsos)";
 			$query .= "VALUES ('";
-			$query .= $prosthiki_xwrwn_name . "', '";
-			$query .= $prosthiki_xwrwn_mikos . "', '";
-			$query .= $prosthiki_xwrwn_platos . "', '";
-			$query .= $prosthiki_xwrwn_ypsos . "')";
-			
+			$query .= $prosthiki_thermo_drop . "', '";
+			$query .= $prosthiki_plithos . "', '";
+			$query .= $prosthiki_ypsos . "')";
 			$result = mysql_query($query);
 			if ($result) {
 			// Εγγραφή επιτυχής
-			echo "Προστέθηκε ο χώρος επιτυχώς";
+			echo "Προστέθηκε νέα θερμογέφυρα εσ. γωνίας επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-thermo"</script><?php
 			} else {
 			// Λάθος.
-			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
+			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση για τη θερμογέφυρα εσ. γωνίας.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
 		}

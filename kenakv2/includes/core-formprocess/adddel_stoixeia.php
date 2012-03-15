@@ -38,7 +38,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή στοιχείων ζώνης επιτυχής.";
-	echo "<br/><a href=\"kenak.php?page=2#tab-zwni\">Πίσω</a>";
+	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-zwni"</script><?php
 }
 
 	
@@ -72,12 +72,13 @@ if (isset($_POST['prosthiki_stoixeia'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκαν τα στοιχεία ζώνης επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-zwni"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
-			echo "<br/><a href=\"kenak.php?page=2#tab-zwni\">Πίσω</a>";
+			
 		}
 
 
@@ -107,11 +108,12 @@ if (isset($_POST['prosthiki_stoixeia_dros'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκαν τα στοιχεία ζώνης επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-zwni"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
-			echo "<br/><a href=\"kenak.php?page=2#tab-zwni\">Πίσω</a>";
+			
 		}		
 ?>

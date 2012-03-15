@@ -37,6 +37,7 @@ include("includes/header_kenak.php");
 			<!--<li><a href="kenak.php?page=1">ΚΕΝΑΚ Υπολογισμοί</a><br/></li>-->
 			<li><a href="kenak.php?page=9">Αποθήκευση/Ανάκτηση</a><br/></li>
 			<li><a href="kenak.php?page=2">Γενικά στοιχεία</a><br/></li>
+			<li><a href="kenak.php?page=11">Θερμικές ζώνες</a><br/></li>
 			<li><a href="kenak.php?page=10">Συστήματα</a><br/></li>
 			<li><a href="kenak.php?page=3">Δομικά στοιχεία</a><br/></li>
 			<li><a href="kenak.php?page=4">Ανοίγματα</a><br/></li>
@@ -49,55 +50,56 @@ include("includes/header_kenak.php");
 		</td>
 		<td id="page">
 
-<?php //το αρχείο των υπολογισμών αν υποβλήθηκε η φόρμα στο πρώτο στοιχείο του μενού.
+<?php //το αρχείο των υπολογισμών αν υποβλήθηκε η φόρμα στο πρώτο στοιχείο του μενού. Ανενεργό
 include("includes/apotelesmata_kenak.php");
 ?>	
 
 <?php
-//τα αρχεία των υπολογισμών αν υποβλήθηκε κάποια από τις φόρμες για προσθήκη (γενικά) στο δεύτερο στοιχείο του μενού.
-include("includes/adddel_xwrwn.php");
-include("includes/adddel_stoixeia.php");
-include("includes/adddel_daporo.php");
-include("includes/adddel_thermo_dap.php");
-include("includes/adddel_thermo_eks.php");
-include("includes/adddel_thermo_es.php");
-include("includes/adddel_toixoi.php");
-include("includes/adddel_an.php");
-include("includes/adddel_hm.php");
-include("includes/adddel_teyxos.php");
-include("includes/adddel_skiaseis.php");
-include("includes/adddel_meletis.php");
+//τα αρχεία των υπολογισμών (προσθήκη δεδομένων από τις φόρμες στη βάση) αν υποβλήθηκε κάποια από τις φόρμες.
+include("includes/core-formprocess/adddel_xwrwn.php");
+include("includes/core-formprocess/adddel_stoixeia.php");
+include("includes/core-formprocess/adddel_daporo.php");
+include("includes/core-formprocess/adddel_thermo_dap.php");
+include("includes/core-formprocess/adddel_thermo_eks.php");
+include("includes/core-formprocess/adddel_thermo_es.php");
+include("includes/core-formprocess/adddel_toixoi.php");
+include("includes/core-formprocess/adddel_an.php");
+include("includes/core-formprocess/adddel_hm.php");
+include("includes/core-formprocess/adddel_teyxos.php");
+include("includes/core-formprocess/adddel_skiaseis.php");
+include("includes/core-formprocess/adddel_meletis.php");
+include("includes/core-formprocess/adddel_zwnwn.php");
+
 ?>
 	
 <?php
-//Η φόρμα για το πρώτο στοιχείο του μενού. Υπολογισμός με POST σε μία και μόνο φόρμα
-include("includes/kenak_form1.php");
+//Η φόρμα για το πρώτο στοιχείο του μενού. Υπολογισμός με POST σε μία και μόνο φόρμα - DISCONTINUED
+//include("includes/kenak_form1.php");
 
-//Η φόρμα για το δεύτερο στοιχείο του μενού. Τροποποίηση της βάσης δεδομένων για τα στοιχεία μελέτης
+//ΜΕΝΟΥ-ΑΠΟΘΗΚΕΥΣΗ-ΑΝΑΚΤΗΣΗ
+include("includes/kenak_saverestore.php");
+//ΜΕΝΟΥ-ΓΕΝΙΚΑ ΣΤΟΙΧΕΙΑ
 include("includes/kenak_form2.php");
-
-//Η φόρμα για το τρίτο στοιχείο του μενού. Τροποποίηση της βάσης δεδομένων για τοιχοποιίες
+//ΜΕΝΟΥ-ΘΕΡΜΙΚΕΣ ΖΩΝΕΣ
+include("includes/kenak_zwnes.php");
+//ΜΕΝΟΥ-ΣΥΣΤΗΜΑΤΑ
+include("includes/kenak_form_hm.php");
+//ΜΕΝΟΥ-ΔΟΜΙΚΑ ΣΤΟΙΧΕΙΑ (ΤΟΙΧΟΙ)
 include("includes/kenak_form3.php");
-
-//Η φόρμα για το τέταρτο στοιχείο του μενού. Τροποποίηση της βάσης δεδομένων για ανοίγματα
+//ΜΕΝΟΥ-ΑΝΟΙΓΜΑΤΑ
 include("includes/kenak_form4.php");
-
-//Η φόρμα για το στοιχείο του μενού με τις σκιάσεις. Σκιάσεις τοίχων
+//ΜΕΝΟΥ-ΣΚΙΑΣΕΙΣ ΤΟΙΧΩΝ
 include("includes/kenak_skiaseis_t.php");
-
-//Η φόρμα για το στοιχείο του μενού με τις σκιάσεις. Σκιάσεις ανοιγμάτων
+//ΜΕΝΟΥ-ΣΚΙΑΣΕΙΣ ΑΝΟΙΓΜΑΤΩΝ
 include("includes/kenak_skiaseis_an.php");
-
-//Η φόρμα για το πέμπτο στοιχείο του μενού. Τεύχος
+//ΜΕΝΟΥ-ΤΕΥΧΟΣ
 include("includes/kenak_formteyxos.php");
-
-//Η φόρμα για το έκτο στοιχείο του μενού. Αποτελέσματα για τους αποθηκευμένους πίνακες
+//ΜΕΝΟΥ-ΠΡΟΕΠΙΣΚΟΠΙΣΗ ΑΠΟΤΕΛΕΣΜΑΤΩΝ - DOCX-XLSX
 include("includes/kenak_form5.php");
 
-//Η φόρμα για το έκτο στοιχείο του μενού. Αποτελέσματα για τους αποθηκευμένους πίνακες
-include("includes/kenak_saverestore.php");
 
-include("includes/kenak_form_hm.php");
+
+
 ?>	
 		</td>
 	</tr>

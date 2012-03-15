@@ -30,13 +30,19 @@ backup_tables(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
 
 
 /* backup βάσης. Η function είναι παρακάτω */
-function backup_tables($host,$user,$pass,$name,$tables = 'kataskeyi_stoixeia,kataskeyi_teyxos,kataskeyi_therm_dap,
-kataskeyi_therm_eks,kataskeyi_therm_es,kataskeyi_t_a,kataskeyi_t_b,kataskeyi_t_d,kataskeyi_t_n,
-kataskeyi_an_a,kataskeyi_an_b,kataskeyi_an_d,kataskeyi_an_n,kataskeyi_an_s,kataskeyi_xwroi,
+function backup_tables($host,$user,$pass,$name,$tables = 'kataskeyi_an_a,
+kataskeyi_an_b,kataskeyi_an_d,kataskeyi_an_n,kataskeyi_an_s,kataskeyi_daporo,
+kataskeyi_hm,kataskeyi_meletis,kataskeyi_meletis_topo,
 kataskeyi_skiaseis_an_a,kataskeyi_skiaseis_an_b,kataskeyi_skiaseis_an_d,kataskeyi_skiaseis_an_n,
-kataskeyi_skiaseis_t_a,kataskeyi_skiaseis_t_b,kataskeyi_skiaseis_t_d,kataskeyi_skiaseis_t_n')
+kataskeyi_skiaseis_t_a,kataskeyi_skiaseis_t_b,kataskeyi_skiaseis_t_d,kataskeyi_skiaseis_t_n,
+kataskeyi_stoixeia,kataskeyi_teyxos,kataskeyi_therm_dap,kataskeyi_therm_eks,kataskeyi_therm_es,
+kataskeyi_t_a,kataskeyi_t_b,kataskeyi_t_d,kataskeyi_t_n,
+kataskeyi_xsystems_coldb,kataskeyi_xsystems_coldd,kataskeyi_xsystems_coldp,kataskeyi_xsystems_coldt,
+kataskeyi_xsystems_thermb,kataskeyi_xsystems_thermd,kataskeyi_xsystems_thermp,kataskeyi_xsystems_thermt,
+kataskeyi_xsystems_znxa,kataskeyi_xsystems_znxd,kataskeyi_xsystems_znxp,
+kataskeyi_xwroi,kataskeyi_zwnes')
 {
-	
+$namefile = $_GET["name"];	
 	$link = mysql_connect($host,$user,$pass);
 	mysql_select_db($name,$link);
 	mysql_query("SET NAMES 'utf8'", $link);
@@ -82,10 +88,12 @@ kataskeyi_skiaseis_t_a,kataskeyi_skiaseis_t_b,kataskeyi_skiaseis_t_d,kataskeyi_s
 		}
 		$return.="\n\n\n";
 	}
-	
+
 	//Αρχείο
-	$handle = fopen('db-backup-'.time().'-'.(md5(implode(',',$tables))).'.sql','w+');
-	echo "Το αρχείο db-backup-" . time() . "-" . (md5(implode(',',$tables))). ".sql εγγράφηκε επιτυχώς";
+	$date = date("d-m-Y-His", time());
+	
+	$handle = fopen('lakenak-sql-'.$namefile.'.sql','w+');
+	echo "Το αρχείο lakenak-sql-" . $namefile . ".sql εγγράφηκε επιτυχώς";
 	fwrite($handle,$return);
 	fclose($handle);
 }

@@ -130,12 +130,14 @@ for ($j=1;$j<=4;$j++){
 					while($objResult = mysql_fetch_array($objQuery))
 					{
 					$i++;
+					$name_toixoy_array = get_times("name", "kataskeyi_t_".$it[$j], $objResult["id_toixoy"]);
+					$name_toixoy = $name_toixoy_array[0]["name"];
 					?>
 					<input type="hidden" id="id<?=$j;?><?=$i;?>" value="<?=$objResult["id"];?>">
 					<tr>
 	<!--				<td><div align="center"><?=$objResult["id"];?></div></td> -->
 					<td><div align="center"><?=$i;?></div></td>
-					<td><?=$objResult["id_toixoy"];?></td>
+					<td><?=$name_toixoy;?></td>
 					<td id="f1<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("f1",<?=$j;?><?=$i;?>); ><?=number_format($objResult["f_hor_h"],3,".",",");?></td>
 					<td id="f2<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("f2",<?=$j;?><?=$i;?>); ><?=number_format($objResult["f_hor_c"],3,".",",");?></td>
 					<td id="f3<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("f3",<?=$j;?><?=$i;?>); ><?=number_format($objResult["f_ov_h"],3,".",",");?></td>
@@ -168,7 +170,7 @@ for ($j=1;$j<=4;$j++){
 						<th>F_fin_c<br/><a class='iframe' href="./index_skiaseis.php?page=23&min=1" onclick=iframe_sk();><img src="./images/style/help.png" /></a></th>
 					<?php
 						echo "<tr>";
-						$id_toixoy = dropdown1("SELECT id, name FROM kataskeyi_t_b", "id", "name");
+						$id_toixoy = dropdown1("SELECT id, name FROM kataskeyi_t_".$it[$j], "id", "name");
 						echo "<td><select name=\"" . $vasi . "_id_toixoy\"/>" . $id_toixoy . "</select></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_f_hor_h_t\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_f_hor_c_t\" maxlength=\"10\" size=\"5\" /></td>";

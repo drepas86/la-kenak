@@ -99,6 +99,9 @@ var nt=new Array();
 function get_thermo_or(){
 $(".orofis").colorbox({iframe:true, width:"685px", height:"90%"});
 }
+function get_thermo_dap(){
+$(".thermodap").colorbox({iframe:true, width:"685px", height:"90%"});
+}
 function get_thermo_dok(){
 $(".dok").colorbox({iframe:true, width:"685px", height:"90%"});
 }
@@ -128,6 +131,10 @@ document.getElementById("d_thermo"+x).selectedIndex=n-1;
 function getpsi2(n,x){
 $.fn.colorbox.close();
 document.getElementById("yp_thermo"+x).selectedIndex=n-1;
+}
+function getpsi3(n,x){
+$.fn.colorbox.close();
+document.getElementById("t_thermodap"+x).selectedIndex=n-1;
 }
 function get_ut(n,x,t,d){
 $.fn.colorbox.close();
@@ -186,7 +193,7 @@ for ($j=1;$j<=4;$j++){
 					<table border="1" id="domika">
 					<tr>
 					<th id="header<?=$j;?>1" style="vertical-align:middle;">Id</th>
-					<th colspan=6> Τοίχος </th><th colspan=3> Δοκός </th><th colspan=4> Υποστύλωμα </th><th colspan=3> Συρόμενα </th>
+					<th colspan=8> Τοίχος </th><th colspan=3> Δοκός </th><th colspan=4> Υποστύλωμα </th><th colspan=3> Συρόμενα </th>
 					<th id="header<?=$j;?>2" style="vertical-align:middle;"> 
 					<input name="CheckAll<?=$it[$j];?>" type="checkbox" id="CheckAll<?=$it[$j];?>" value="Y" onClick="ClickCheckAll(this,<?=$j;?>);">
 					</th>
@@ -195,7 +202,7 @@ for ($j=1;$j<=4;$j++){
 					document.getElementById("header<?=$j;?>2").rowSpan="2";
 					</script>					
 					</tr><tr>
-					<th> Όνομα</th><th> Μήκος</th><th> Ύψος</th><th> Πλάτος</th><th> U</th><th> Ψ</th>
+					<th> Id ζώνης</th><th> Όνομα</th><th> Μήκος</th><th> Ύψος</th><th> Πάχος</th><th> U</th><th> Ψ οροφής</th><th> Ψ δαπέδου</th>
 					<th> Ύψος</th><th> U</th><th> Ψ</th>
 					<th> Μήκος</th><th> Πλήθος</th><th> U</th><th> Ψ</th>
 					<th> Μήκος</th><th> Ύψος</th><th> U</th>
@@ -235,12 +242,14 @@ for ($j=1;$j<=4;$j++){
 					}
 					?>
 					<td><div align="center"><?=$i;?></div></td>
+					<td id="idzwnis<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("idzwnis",<?=$j;?><?=$i;?>); ><?=$objResult["id_zwnis"];?></td>
 					<td id="name<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("name",<?=$j;?><?=$i;?>); ><?=$objResult["name"];?></td>
 					<td id="tl<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("tl",<?=$j;?><?=$i;?>); ><?=number_format($objResult["t_mikos"],2,".",",");?></td>
 					<td id="th<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("th",<?=$j;?><?=$i;?>); ><?=number_format($objResult["t_ypsos"],2,".",",");?></td>
 					<td id="tp<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("tp",<?=$j;?><?=$i;?>); ><?=number_format($objResult["t_platos"],2,".",",");?></td>
 					<td id="tu<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("tu",<?=$j;?><?=$i;?>); ><?=number_format($objResult["t_u"],3,".",",");?></td>
 					<td id="tt<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("tt",<?=$j;?><?=$i;?>); ><?=number_format($objResult["t_thermo"],3,".",",");?></td>
+					<td id="td<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("td",<?=$j;?><?=$i;?>); ><?=number_format($objResult["t_thermodap"],3,".",",");?></td>
 					<td id="dh<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("dh",<?=$j;?><?=$i;?>); ><?=number_format($objResult["d_ypsos"],2,".",",");?></td>
 					<td id="du<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("du",<?=$j;?><?=$i;?>); ><?=number_format($objResult["d_u"],3,".",",");?></td>
 					<td id="dt<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("dt",<?=$j;?><?=$i;?>); ><?=number_format($objResult["d_thermo"],3,".",",");?></td>
@@ -275,21 +284,26 @@ for ($j=1;$j<=4;$j++){
 						$thermo_edp = dropdown1("SELECT name, y FROM thermo_edp", "y", "name");
 						?>
 						<tr>
-						<th colspan=6>Τοίχος</th></tr><tr>
+						<th colspan=8>Τοίχος</th></tr><tr>
+						<th>Ζώνη</th>
 						<th>Όνομα<br/><a class="inline" href="#inline_content1" onclick=get_inlinetext(1);><img src="./images/style/help.png"/></a></th>
 						<th>Μήκος<br/><a class="inline" href="#inline_content2" onclick=get_inlinetext(2);><img src="./images/style/help.png"/></a></th>
 						<th>Ύψος<br/><a class="inline" href="#inline_content3" onclick=get_inlinetext(3);><img src="./images/style/help.png"/></a></th>
-						<th>Πλάτος<br/><a class="inline" href="#inline_content4" onclick=get_inlinetext(4);><img src="./images/style/help.png"/></a></th>
+						<th>Πάχος<br/><a class="inline" href="#inline_content4" onclick=get_inlinetext(4);><img src="./images/style/help.png"/></a></th>
 						<th>U<br/><a class="iframe" href="./domika_kelyfos.php?page=1&min=1&t=t&p=<?=$j;?>" onclick=iframe_t_u();><img src="./images/style/help.png" /></a></th>
-						<th>Ψ<br/><a class="orofis" href="./includes/kenak_help1.php?p=<?=$j;?>" title="" onclick=get_thermo_or();><img src="./images/style/help.png"/></a></th>
+						<th>Ψ οροφής<br/><a class="orofis" href="./includes/kenak_help1.php?p=<?=$j;?>" title="" onclick=get_thermo_or();><img src="./images/style/help.png"/></a></th>
+						<th>Ψ δαπέδου<br/><a class="thermodap" href="./includes/kenak_help6.php?p=<?=$j;?>" title="" onclick=get_thermo_dap();><img src="./images/style/help.png"/></a></th>
 						</tr/><tr>
 						<?php
+						$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_id_zwnis");
+						echo "<td>".$id_zwnis."</td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_name\" maxlength=\"50\" size=\"25\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_mikos\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_ypsos\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_platos\" id=\"t_p".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_u\" id=\"t_u".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><select name=\"" . $vasi . "_t_thermo\" id=\"t_thermo".$j."\"/>" . $thermo_d . $thermo_oe . $thermo_pr . "</select></td>";
+						echo "<td><select name=\"" . $vasi . "_t_thermodap\" id=\"t_thermodap".$j."\"/>" . $thermo_d . $thermo_oe . $thermo_pr . "</select></td>";
 					?>
 						</tr><tr></table><br /><table border=1 align="center"><tr>
 						
@@ -558,12 +572,14 @@ $.colorbox({inline:true,  href:"#editme", onComplete:function(){document.getElem
 function saveme(){
 document.getElementById(editn+editm).innerHTML=document.getElementById("editbox").value;
 var m=editm;
-var x=document.getElementById("name"+m).innerHTML;
+var x=document.getElementById("idzwnis"+m).innerHTML;
+x=x+"|"+document.getElementById("name"+m).innerHTML;
 x=x+"|"+document.getElementById("tl"+m).innerHTML;
 x=x+"|"+document.getElementById("th"+m).innerHTML;
 x=x+"|"+document.getElementById("tp"+m).innerHTML;
 x=x+"|"+document.getElementById("tu"+m).innerHTML;
 x=x+"|"+document.getElementById("tt"+m).innerHTML;
+x=x+"|"+document.getElementById("td"+m).innerHTML;
 x=x+"|"+document.getElementById("dh"+m).innerHTML;
 x=x+"|"+document.getElementById("du"+m).innerHTML;
 x=x+"|"+document.getElementById("dt"+m).innerHTML;

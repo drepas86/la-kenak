@@ -38,7 +38,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή στοιχείων μελέτης επιτυχής.";
-	echo "<br/><a href=\"kenak.php?page=2#tab-meletis\">Πίσω</a>";
+	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-meletis"</script><?php
 }
 
 	
@@ -72,12 +72,13 @@ if (isset($_POST['prosthiki_meletis'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκαν τα στοιχεία ιδιοκτητών/μελετητών επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-meletis"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
-			echo "<br/><a href=\"kenak.php?page=2#tab-meletis\">Πίσω</a>";
+			
 		}
 
 //υποβλήθηκε η φόρμα για προσθήκη meletis_contact
@@ -102,12 +103,13 @@ if (isset($_POST['prosthiki_meletis_contact'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκαν τα στοιχεία υπευθύνου επικοινωνίας επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-meletis"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
-			echo "<br/><a href=\"kenak.php?page=2#tab-meletis\">Πίσω</a>";
+			
 		}
 		
 		
@@ -124,7 +126,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή στοιχείων τοπογραφίας επιτυχής.";
-	echo "<br/><a href=\"kenak.php?page=2#tab-zwni\">Πίσω</a>";
+	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-zwni"</script><?php
 }
 
 	
@@ -152,12 +154,13 @@ if (isset($_POST['prosthiki_meletis_topo'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκαν τα στοιχεία τοπογραφίας επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-zwni"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
-			echo "<br/><a href=\"kenak.php?page=2#tab-zwni\">Πίσω</a>";
+			
 		}
 
 
@@ -187,11 +190,12 @@ if (isset($_POST['prosthiki_meletis_topo_pol'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκαν τα στοιχεία πολεοδομίας επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-meletis"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
 			echo "<p>" . mysql_error() . "</p>";
 			}
-			echo "<br/><a href=\"kenak.php?page=2#tab-meletis\">Πίσω</a>";
+			
 		}		
 ?>

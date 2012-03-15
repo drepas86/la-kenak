@@ -174,12 +174,14 @@ for ($j=1;$j<=4;$j++){
 					while($objResult = mysql_fetch_array($objQuery))
 					{
 					$i++;
+					$name_toixoy_array = get_times("name", "kataskeyi_t_".$it[$j], $objResult["id_toixoy"]);
+					$name_toixoy = $name_toixoy_array[0]["name"];
 					?>
 					<tr>
 <!--				<td><?=$objResult["id"];?></td> -->
 					<input type="hidden" id="id<?=$j;?><?=$i;?>" value="<?=$objResult["id"];?>">
 					<td><?=$i;?></td>
-					<td><?=$objResult["id_toixoy"];?></td>
+					<td><?=$name_toixoy;?></td>
 					<td id="name<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("name",<?=$j;?><?=$i;?>); ><?=$objResult["name"];?></td>
 					<td id="am<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("am",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_mikos"],2,".",",");?></td>
 					<td id="ay<?=$j;?><?=$i;?>" style="cursor:pointer;" onclick=editme("ay",<?=$j;?><?=$i;?>); ><?=number_format($objResult["anoig_ypsos"],2,".",",");?></td>

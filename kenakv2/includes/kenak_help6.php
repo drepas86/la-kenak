@@ -22,14 +22,36 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 όρους της άδειας GNU General Public License όπως δίδεται από το Free Software Foundation
 στην έκδοση 3 αυτής της άδειας.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
+
+*************************************************************************
+tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr       *
+- Επιλογή θερμογεφυρών τοίχων                                           *
+- Χρησιμοποιείται από kenak_form3                                       *
+-                                                                       *
+*************************************************************************
+
 */
-$file = $_GET["filename"];
-include ("functions_xml.php");
 
-for ($i = 0; $i <= 38; $i++) {
-retrivexmldata($i,$file);
-}
-//Για τα νούμερα από 1 μέχρι 38 δες functions_xml.php ή xmltotables.php
-
+$p=$_GET['p'];
 ?>
-<a href="get_files.php">Πίσω</a>
+		<table height="100%"><tr><td style="vertical-align:middle;">
+		<?php 
+		for ($i = 1; $i <= 65; $i++) {
+		echo "<img src=\"../images/thermo/d/d/d" . $i . ".gif\" onclick=\"parent.getpsi3(".$i.",".$p.");\" style=\"cursor:pointer;\" border=1></img>";
+		if ($i%4==0)echo"<br />";
+		}
+		echo"<br />";
+		for ($i = 1; $i <= 26; $i++) {
+		$j=$i+65;
+		echo "<img src=\"../images/thermo/oe/oe/oe" . $i . ".gif\" onclick=\"parent.getpsi3(".$j.",".$p.");\" style=\"cursor:pointer;\" border=1></img>";
+		if ($i%4==0)echo"<br />";
+		}
+		echo"<br />";
+		for ($i = 1; $i <= 4; $i++) {
+		$j=$i+91;
+		echo "<img src=\"../images/thermo/pr/pr/pr" . $i . ".gif\" onclick=\"parent.getpsi3(".$j.",".$p.");\" style=\"cursor:pointer;\" border=1></img>";
+		if ($i%4==0)echo"<br />";
+		}
+		?>
+		</td></tr></table>
+		

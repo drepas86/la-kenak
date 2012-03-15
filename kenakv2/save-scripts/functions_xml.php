@@ -279,6 +279,9 @@ $pinakas = "kataskeyi_xsystems_znxp";
 if ($pinakas_num == 37){
 $pinakas = "kataskeyi_xwroi";
 }
+if ($pinakas_num == 38){
+$pinakas = "kataskeyi_zwnes";
+}
 
 
 //Μετράω τις στήλες του πίνακα και βάζω τα ονόματά τους στη μεταβλητή ${"column".$i}
@@ -452,7 +455,9 @@ $pinakas = "kataskeyi_xsystems_znxp";
 if ($pinakas_num == 37){
 $pinakas = "kataskeyi_xwroi";
 }
-
+if ($pinakas_num == 38){
+$pinakas = "kataskeyi_zwnes";
+}
 
 //Μετράω τις στήλες του πίνακα και βάζω τα ονόματά τους στη μεταβλητή ${"column".$i}
 $count_columns = 1+(count($array["database"]["table"][$pinakas_num]["columns"]["column"])-2)/2;
