@@ -45,8 +45,8 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 <br/><br/>
 <img src="./images/style/xml-tee.png"></img>
 <br/>
-<a class="iframe" href="./xml/xml-tee.php" id="teesavelink" title="" onclick=get_iframe();>Παραγωγή αρχείου XML-TEE</a><br/>
-<a class="iframe" href="./xml/excel-domika.php" title="" onclick=get_iframe();>Προεπισκόπηση Δομικών στοιχείων σε EXCEL</a><br/>
+<a class="iframe" href="./xml/xml-tee_anazwni.php" id="teesavelink" title="" onclick=get_iframe();>Παραγωγή αρχείου XML-TEE</a><br/>
+<a class="iframe" href="./xml/excel-domika_anazwni.php" title="" onclick=get_iframe();>Προεπισκόπηση Δομικών στοιχείων σε EXCEL</a><br/>
 
 <br/><br/>
 <img src="./images/style/sql.png"></img>
