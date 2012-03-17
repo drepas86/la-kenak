@@ -70,6 +70,7 @@ tee-kenak-onoma.xml για είσοδο στο πρόγραμμα του ΤΕΕ-
 		linktee.href= './xml/xml-tee.php?name='+encodeURIComponent(input.value);
 
     };
+	document.getElementById('xmlname').focus();
 </script>
 
 <?php	} ?>

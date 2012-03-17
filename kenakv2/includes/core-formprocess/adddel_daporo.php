@@ -40,7 +40,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 	if ($objQuery) {
 			// Εγγραφή επιτυχής
 	echo "Διαγραφή οριζόντιου στοιχείου επιτυχώς.";
-	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-katakoryfa"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=11#tab-katakoryfa"</script><?php
 	} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο του οριζόντιου στοιχείου.</p>";
@@ -71,7 +71,7 @@ if (isset($_POST['prosthiki_daporo'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε το οριζόντιο στοιχείο επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-katakoryfa"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=11#tab-katakoryfa"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο του οριζόντιου στοιχείου.</p>";

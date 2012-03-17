@@ -85,28 +85,11 @@ if (isset($_POST['min'])) $min=$_POST['min'];
 
 <?php if ($min!=1){?>
 
-<div class="topright">
-<img src="images/home.png" align="right"></img>
-<a href="index.php">Βιβλιοθήκες</a><br/>
-<a href="index_climate.php">Κλιματικά δεδομένα</a><br/>
-<a href="index_skiaseis.php">Υπολογισμός Σκιάσεων</a><br/>
-<a href="stoixeia_zwnis.php">Στοιχεία ζώνης</a><br/>
-<a href="domika_kelyfos.php">Κέλυφος</a><br/>
-<a href="kenak.php">ΚΕΝΑΚ</a>
-</div>
+<div class="topright"><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
 <table id="structure">
 	<tr>
-		<td id="navigation">
-			<ol type="circle">
-				<li><a href="domika_kelyfos.php?page=1"><b>Αδιαφανή</b> Δομικά Στοιχεία</a><br/></li>
-				<li><a href="domika_kelyfos.php?page=2"><b>Διαφανή</b> Δομικά Στοιχεία</a><br/></li>
-				<li><a href="domika_kelyfos.php?page=3">Ισοδύναμοι Συντελεστές</a><br/></li>
-			</ol>
-			<br />
-			<br />
-			<div id="imgs" style="width:50%;margin-left:auto;margin-right:auto;"></div>
-		</td>
 <td id="page">
+<!--			<div id="imgs" style="width:50%;margin-left:auto;margin-right:auto;"></div> -->
 <?php }else{ ?><table style="width:100%"><tr><td><?php } ?>
 		
 		

@@ -36,12 +36,15 @@ add_column_if_not_exist("anoigmata_wood", "rec","VARCHAR(300)");
 <?php find_selected_page(); ?>
 <?php include("includes/header.php"); ?>
 <?php include("includes/scripts.php"); ?>
-<div class="topright"><img src="images/home.png" align="right"></img><a href="index.php">Βιβλιοθήκες</a><br/><a href="index_climate.php">Κλιματικά δεδομένα</a><br/><a href="index_skiaseis.php">Υπολογισμός Σκιάσεων</a><br/><a href="stoixeia_zwnis.php">Στοιχεία ζώνης</a><br/><a href="domika_kelyfos.php">Κέλυφος</a><br/><a href="kenak.php">ΚΕΝΑΚ</a></div>
+<div class="topright"><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
 <table id="structure">
 	<tr>
-		<td id="navigation">
+
+<?php if ($sel_page) { ?>
+	<td id="navigation">
 			<?php echo public_navigation($sel_subject, $sel_page); ?>
 		</td>
+<?php } ?>
 		<td id="page">
 	
 <?php

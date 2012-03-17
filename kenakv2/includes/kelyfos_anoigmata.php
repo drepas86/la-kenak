@@ -41,17 +41,17 @@ $sp=$_GET['sp'];
 			<script type="text/javascript">
 				document.getElementById('imgs').innerHTML="<img src=\"images/style/window2.png\"></img>";
 			</script>
-			<table width=100%><tr><td style="width:50%;vertical-align:middle;"><h2 onclick=read_an1();>Υπολογισμός U Ανοιγμάτων</h2></td>
+			<table width=100%><tr><td style="width:40%;vertical-align:middle;"><h2 onclick=read_an1();>Υπολογισμός U Ανοιγμάτων</h2></td>
 			<td style="width:5%;vertical-align:middle;"><img src="./images/domika/qm.png" title="οδηγίες" style="cursor:pointer;" onclick=help_an(); /></td>
 			<td style="width:5%;vertical-align:middle;" ><img src="./images/domika/Pin_Green.png" width="30px" height="30px" title="επιλογή για την παρούσα μελέτη" style="cursor:pointer;" onclick=set_default(); /></td>
-			<td style="width:20%;vertical-align:middle;text-align:right;">
+			<td style="width:10%;vertical-align:middle;text-align:right;">
 			Ζώνη: <select id="an_zwni" onchange=checkall(); >
 			<option value="3.2">&nbsp; Α </option>
 			<option value="3.0">&nbsp; Β </option>
 			<option value="2.8">&nbsp; Γ </option>
 			<option value="2.6">&nbsp; Δ </option>
 			</select>
-			</td><td style="width:20%;vertical-align:middle;"><class id="an_umax"><b>&nbsp;Umax ανοιγμάτων=3.2</b></class></td></tr></table>
+			</td><td style="width:40%;vertical-align:middle;"><class id="an_umax"><b>&nbsp;Umax ανοιγμάτων=3.2</b></class></td></tr></table>
 
 <!--
 			<div id="tabvanila" class="widget">

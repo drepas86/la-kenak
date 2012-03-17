@@ -38,7 +38,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή χώρου επιτυχής.";
-	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-xwroi"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=11#tab-xwroi"</script><?php
 }
 
 	
@@ -66,7 +66,7 @@ if (isset($_POST['prosthiki_xwrwn'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε ο χώρος επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-xwroi"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=11#tab-xwroi"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";

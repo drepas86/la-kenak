@@ -1,5 +1,32 @@
 ﻿<?php
+/*
+Copyright (C) 2012 - Labros KENAK v.1.0 
+Author: Labros Karoyntzos 
 
+Labros KENAK v.1.0 from Labros Karountzos is free software: 
+you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License version 3
+along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
+
+Το παρόν με την ονομασία Labros KENAK v.1.0. με δημιουργό τον Λάμπρο Καρούντζο
+στοιχεία επικοινωνίας info@chem-lab.gr www.chem-lab.gr
+είναι δωρεάν λογισμικό. Μπορείτε να το τροποποιήσετε και επαναδιανείμετε υπό τους
+όρους της άδειας GNU General Public License όπως δίδεται από το Free Software Foundation
+στην έκδοση 3 αυτής της άδειας.
+Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
+*/
+?>
+
+			<?php
+			require_once("functions.php");
 			//Γενικά στοιχεία
 			$strSQL = "SELECT * FROM kataskeyi_stoixeia";
 			$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -37,6 +64,7 @@
 			$velt_klisi_array = get_times("place", "climate44", $velt_klisi_id);
 			$velt_klisi = $velt_klisi_array[0]["place"];
 			
+			
 
 			//Δάπεδα οροφές
 			$strSQL = "SELECT * FROM kataskeyi_daporo";
@@ -47,20 +75,29 @@
 			while($objResult = mysql_fetch_array($objQuery))
 			{
 			$i++;
-			${"dapedo_id_zwnis".$i} = $objResult["id_zwnis"];
-			${"dapedo_type".$i} = $objResult["type"];
 			${"dapedo_name".$i} = $objResult["name"];
 			${"dapedo_emvadon".$i} = $objResult["emvadon"];
 			${"dapedo_u".$i} = $objResult["u"];
-			if (${"dapedo_type".$i} == "0"){$dapedo_pol = 0.5;}
-			if (${"dapedo_type".$i} == "1"){$dapedo_pol = 1;}
-			$dapedo_embadon += ${"dapedo_emvadon".$i};
-			${"dapedo_ua".$i} = ${"dapedo_emvadon".$i} * ${"dapedo_u".$i} * $dapedo_pol;
-			$dapedo_ua += ${"dapedo_ua".$i};
 			}
 			
-			
-			
+			$dapedo_embadon1 = $dapedo_emvadon1;
+			$dapedo_u1 = $dapedo_u1;
+			$dapedo_embadon2 = $dapedo_emvadon2;
+			$dapedo_u2 = $dapedo_u2;
+			$orofi_embadon1 = $dapedo_emvadon3;
+			$orofi_u1 = $dapedo_u3;
+			$orofi_embadon2 = $dapedo_emvadon4;
+			$orofi_u2 = $dapedo_u4;
+		
+		//Υπολογισμοί U*A δαπέδων - οροφών
+		$dapedo_ua1 = $dapedo_embadon1 * $dapedo_u1;
+		$dapedo_ua2 = $dapedo_embadon2 * $dapedo_u2;
+		$dapedo_ua = $dapedo_ua1*0.5 + $dapedo_ua2*0.5;
+		$orofi_ua1 = $orofi_embadon1 * $orofi_u1;
+		$orofi_ua2 = $orofi_embadon2 * $orofi_u2;
+		$orofi_ua = $orofi_ua1 + $orofi_ua2;
+		
+
 			//Χώροι κτιρίου
 			$strSQL = "SELECT * FROM kataskeyi_xwroi";
 			$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -70,7 +107,6 @@
 			while($objResult = mysql_fetch_array($objQuery))
 			{
 			$i++;
-			${"xwroi_id_zwnis".$i} = $objResult["id_zwnis"];
 			${"xwroi_name".$i} = $objResult["name"];
 			${"xwroi_mikos".$i} = $objResult["mikos"];
 			${"xwroi_platos".$i} = $objResult["platos"];
@@ -103,7 +139,6 @@
 			while($objResult = mysql_fetch_array($objQuery))
 			{
 			$i++;
-			${"thermo_eksw_id_zwnis".$i} = $objResult["id_zwnis"];
 			${"thermo_eksw_drop".$i} = $objResult["thermo_u"];
 			${"thermo_eksw_gwnia_p".$i} = $objResult["plithos"];
 			${"thermo_eksw_gwnia_ypsos".$i} = $objResult["ypsos"];
@@ -120,7 +155,6 @@
 			while($objResult = mysql_fetch_array($objQuery))
 			{
 			$i++;
-			${"thermo_esw_id_zwnis".$i} = $objResult["id_zwnis"];
 			${"thermo_esw_drop".$i} = $objResult["thermo_u"];
 			${"thermo_esw_gwnia_p".$i} = $objResult["plithos"];
 			${"thermo_esw_gwnia_ypsos".$i} = $objResult["ypsos"];
@@ -140,14 +174,12 @@
 			$i++;
 			$t = "_b";
 			${"id".$t.$i} = $objResult["id"];
-			${"id_zwnis".$t.$i} = $objResult["id_zwnis"];
 			${"name".$t.$i} = $objResult["name"];
 			${"mikos".$t.$i} = $objResult["t_mikos"];
 			${"ypsos".$t.$i} = $objResult["t_ypsos"];
 			${"paxos".$t.$i} = $objResult["t_platos"];
 			${"u".$t.$i} = $objResult["t_u"];
 			${"thermo_orofis_drop".$t.$i} = $objResult["t_thermo"];
-			${"thermo_orofis_dap".$t.$i} = $objResult["t_thermodap"];
 			${"dokos".$t.$i} = $objResult["d_ypsos"];
 			${"u_dok".$t.$i} = $objResult["d_u"];
 			${"thermo_dokoy_drop".$t.$i} = $objResult["d_thermo"];
@@ -172,14 +204,12 @@
 			$i++;
 			$t = "_a";
 			${"id".$t.$i} = $objResult["id"];
-			${"id_zwnis".$t.$i} = $objResult["id_zwnis"];
 			${"name".$t.$i} = $objResult["name"];
 			${"mikos".$t.$i} = $objResult["t_mikos"];
 			${"ypsos".$t.$i} = $objResult["t_ypsos"];
 			${"paxos".$t.$i} = $objResult["t_platos"];
 			${"u".$t.$i} = $objResult["t_u"];
 			${"thermo_orofis_drop".$t.$i} = $objResult["t_thermo"];
-			${"thermo_orofis_dap".$t.$i} = $objResult["t_thermodap"];
 			${"dokos".$t.$i} = $objResult["d_ypsos"];
 			${"u_dok".$t.$i} = $objResult["d_u"];
 			${"thermo_dokoy_drop".$t.$i} = $objResult["d_thermo"];
@@ -204,14 +234,12 @@
 			$i++;
 			$t = "_n";
 			${"id".$t.$i} = $objResult["id"];
-			${"id_zwnis".$t.$i} = $objResult["id_zwnis"];
 			${"name".$t.$i} = $objResult["name"];
 			${"mikos".$t.$i} = $objResult["t_mikos"];
 			${"ypsos".$t.$i} = $objResult["t_ypsos"];
 			${"paxos".$t.$i} = $objResult["t_platos"];
 			${"u".$t.$i} = $objResult["t_u"];
 			${"thermo_orofis_drop".$t.$i} = $objResult["t_thermo"];
-			${"thermo_orofis_dap".$t.$i} = $objResult["t_thermodap"];
 			${"dokos".$t.$i} = $objResult["d_ypsos"];
 			${"u_dok".$t.$i} = $objResult["d_u"];
 			${"thermo_dokoy_drop".$t.$i} = $objResult["d_thermo"];
@@ -236,14 +264,12 @@
 			$i++;
 			$t = "_d";
 			${"id".$t.$i} = $objResult["id"];
-			${"id_zwnis".$t.$i} = $objResult["id_zwnis"];
 			${"name".$t.$i} = $objResult["name"];
 			${"mikos".$t.$i} = $objResult["t_mikos"];
 			${"ypsos".$t.$i} = $objResult["t_ypsos"];
 			${"paxos".$t.$i} = $objResult["t_platos"];
 			${"u".$t.$i} = $objResult["t_u"];
 			${"thermo_orofis_drop".$t.$i} = $objResult["t_thermo"];
-			${"thermo_orofis_dap".$t.$i} = $objResult["t_thermodap"];
 			${"dokos".$t.$i} = $objResult["d_ypsos"];
 			${"u_dok".$t.$i} = $objResult["d_u"];
 			${"thermo_dokoy_drop".$t.$i} = $objResult["d_thermo"];
@@ -515,7 +541,6 @@
 			
 
 		//Υπολογισμοί τοίχων ανοιγμάτων
-		
 		for ($i = 1; $i <= $t_boreia; $i++) {
 		$t = "b";
 		$an = "an_b_";
@@ -523,8 +548,8 @@
 		${"epifaneia_toixoy_".$t.$i} = ${"mikos_".$t.$i} * ${"ypsos_".$t.$i};
 		${"epifaneia_toixoy_syr_".$t.$i} = ${"mikos_syr_".$t.$i} * ${"ypsos_syr_".$t.$i};
 		${"epifaneia_dokos_".$t.$i} = ${"mikos_".$t.$i} * ${"dokos_".$t.$i};
-		${"epifaneia_ypost_".$t.$i} = ${"ypostil_".$t.$i} * (${"ypsos_".$t.$i} - ${"dokos_".$t.$i});
-		${"thermogefyres_toixoy_".$t.$i} = (${"mikos_".$t.$i} * ${"thermo_orofis_drop_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_orofis_dap_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_dokoy_drop_".$t.$i}) + (${"ypsos_".$t.$i} * ${"arithmos_ypost_".$t.$i} * ${"thermo_ypost_drop_".$t.$i} * 2);
+		${"epifaneia_ypost_".$t.$i} = ${"ypostil_".$t.$i} * ${"ypsos_".$t.$i};
+		${"thermogefyres_toixoy_".$t.$i} = (${"mikos_".$t.$i} * ${"thermo_orofis_drop_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_dokoy_drop_".$t.$i}) + (${"ypsos_".$t.$i} * ${"arithmos_ypost_".$t.$i} * ${"thermo_ypost_drop_".$t.$i} * 2);
 		${"thermogefyres_toixoy_".$t} += ${"thermogefyres_toixoy_".$t.$i};
 		${"mikos_toixoy_".$t} += ${"mikos_".$t.$i};
 		${"epifaneia_toixoy_".$t} += ${"epifaneia_toixoy_".$t.$i};
@@ -585,8 +610,8 @@
 		${"epifaneia_toixoy_".$t.$i} = ${"mikos_".$t.$i} * ${"ypsos_".$t.$i};
 		${"epifaneia_toixoy_syr_".$t.$i} = ${"mikos_syr_".$t.$i} * ${"ypsos_syr_".$t.$i};
 		${"epifaneia_dokos_".$t.$i} = ${"mikos_".$t.$i} * ${"dokos_".$t.$i};
-		${"epifaneia_ypost_".$t.$i} = ${"ypostil_".$t.$i} * (${"ypsos_".$t.$i} - ${"dokos_".$t.$i});
-		${"thermogefyres_toixoy_".$t.$i} = (${"mikos_".$t.$i} * ${"thermo_orofis_drop_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_orofis_dap_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_dokoy_drop_".$t.$i}) + (${"ypsos_".$t.$i} * ${"arithmos_ypost_".$t.$i} * ${"thermo_ypost_drop_".$t.$i} * 2);
+		${"epifaneia_ypost_".$t.$i} = ${"ypostil_".$t.$i} * ${"ypsos_".$t.$i};
+		${"thermogefyres_toixoy_".$t.$i} = (${"mikos_".$t.$i} * ${"thermo_orofis_drop_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_dokoy_drop_".$t.$i}) + (${"ypsos_".$t.$i} * ${"arithmos_ypost_".$t.$i} * ${"thermo_ypost_drop_".$t.$i} * 2);
 		${"thermogefyres_toixoy_".$t} += ${"thermogefyres_toixoy_".$t.$i};
 		${"mikos_toixoy_".$t} += ${"mikos_".$t.$i};
 		${"epifaneia_toixoy_".$t} += ${"epifaneia_toixoy_".$t.$i};
@@ -649,8 +674,8 @@
 		${"epifaneia_toixoy_".$t.$i} = ${"mikos_".$t.$i} * ${"ypsos_".$t.$i};
 		${"epifaneia_toixoy_syr_".$t.$i} = ${"mikos_syr_".$t.$i} * ${"ypsos_syr_".$t.$i};
 		${"epifaneia_dokos_".$t.$i} = ${"mikos_".$t.$i} * ${"dokos_".$t.$i};
-		${"epifaneia_ypost_".$t.$i} = ${"ypostil_".$t.$i} * (${"ypsos_".$t.$i} - ${"dokos_".$t.$i});
-		${"thermogefyres_toixoy_".$t.$i} = (${"mikos_".$t.$i} * ${"thermo_orofis_drop_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_orofis_dap_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_dokoy_drop_".$t.$i}) + (${"ypsos_".$t.$i} * ${"arithmos_ypost_".$t.$i} * ${"thermo_ypost_drop_".$t.$i} * 2);
+		${"epifaneia_ypost_".$t.$i} = ${"ypostil_".$t.$i} * ${"ypsos_".$t.$i};
+		${"thermogefyres_toixoy_".$t.$i} = (${"mikos_".$t.$i} * ${"thermo_orofis_drop_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_dokoy_drop_".$t.$i}) + (${"ypsos_".$t.$i} * ${"arithmos_ypost_".$t.$i} * ${"thermo_ypost_drop_".$t.$i} * 2);
 		${"thermogefyres_toixoy_".$t} += ${"thermogefyres_toixoy_".$t.$i};
 		${"mikos_toixoy_".$t} += ${"mikos_".$t.$i};
 		${"epifaneia_toixoy_".$t} += ${"epifaneia_toixoy_".$t.$i};
@@ -712,8 +737,8 @@
 		${"epifaneia_toixoy_".$t.$i} = ${"mikos_".$t.$i} * ${"ypsos_".$t.$i};
 		${"epifaneia_toixoy_syr_".$t.$i} = ${"mikos_syr_".$t.$i} * ${"ypsos_syr_".$t.$i};
 		${"epifaneia_dokos_".$t.$i} = ${"mikos_".$t.$i} * ${"dokos_".$t.$i};
-		${"epifaneia_ypost_".$t.$i} = ${"ypostil_".$t.$i} * (${"ypsos_".$t.$i} - ${"dokos_".$t.$i});
-		${"thermogefyres_toixoy_".$t.$i} = (${"mikos_".$t.$i} * ${"thermo_orofis_drop_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_orofis_dap_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_dokoy_drop_".$t.$i}) + (${"ypsos_".$t.$i} * ${"arithmos_ypost_".$t.$i} * ${"thermo_ypost_drop_".$t.$i} * 2);
+		${"epifaneia_ypost_".$t.$i} = ${"ypostil_".$t.$i} * ${"ypsos_".$t.$i};
+		${"thermogefyres_toixoy_".$t.$i} = (${"mikos_".$t.$i} * ${"thermo_orofis_drop_".$t.$i}) + (${"mikos_".$t.$i} * ${"thermo_dokoy_drop_".$t.$i}) + (${"ypsos_".$t.$i} * ${"arithmos_ypost_".$t.$i} * ${"thermo_ypost_drop_".$t.$i} * 2);
 		${"thermogefyres_toixoy_".$t} += ${"thermogefyres_toixoy_".$t.$i};
 		${"mikos_toixoy_".$t} += ${"mikos_".$t.$i};
 		${"epifaneia_toixoy_".$t} += ${"epifaneia_toixoy_".$t.$i};
@@ -786,13 +811,11 @@
 		
 		//Υπολογισμός θερμογεφυρών 
 		$thermogefyres_anoig = ($thermogefyres_anoig_b + $thermogefyres_anoig_a + $thermogefyres_anoig_n + $thermogefyres_anoig_d); //εδώ έχω υπολογίσει θερμογεφυρες ανω/κατω-κασι,λαμπας
-		$thermogefyres_enwsi = ($thermogefyres_toixoy_b + $thermogefyres_toixoy_a + $thermogefyres_toixoy_n + $thermogefyres_toixoy_d);//εδώ έχω υπολογίσει θερμογεφυρες υποστύλωμα,δοκό,οροφή,δάπεδο,συρόμενα
+		$thermogefyres_enwsi = ($thermogefyres_toixoy_b + $thermogefyres_toixoy_a + $thermogefyres_toixoy_n + $thermogefyres_toixoy_d);//εδώ έχω υπολογίσει θερμογεφυρες υποστύλωμα,δοκό,οροφή,συρόμενα
 			
 			//Υπολογισμοί των υπόλοιπων θερμογεφυρών
-			//$thermogefyres_dapedoy = $perimetros * $thermo_dapedo_drop;//εδώ υπολογίζονταν με τον παλαιότερο τρόπο οι θερμογέφυρες δαπέδου με βάση την περίμετρο.
-			//Αυτές προστέθηκαν στους τοίχους για να καλυφθεί και το ενδιάμεσο δάπεδο.
-			
-			$thermogefyres = $thermogefyres_orofi + $thermogefyres_gwnia + $thermogefyres_anoig + $thermogefyres_enwsi;
+			$thermogefyres_dapedoy = $perimetros * $thermo_dapedo_drop;//εδώ έχω υπολογίσει θερμογεφυρες δαπεδου
+			$thermogefyres = $thermogefyres_orofi + $thermogefyres_dapedoy + $thermogefyres_gwnia + $thermogefyres_anoig + $thermogefyres_enwsi;
 			
 			//Υπολογισμός UA
 			$ua_dromikoy = $ua_dromikoy_b + $ua_dromikoy_a + $ua_dromikoy_n + $ua_dromikoy_d;
@@ -812,13 +835,13 @@
 			$a_ypost = $epifaneia_ypost_b + $epifaneia_ypost_a + $epifaneia_ypost_n + $epifaneia_ypost_d;
 			
 			//Υπολογισμός συνόλων ανά κατηγορία Α
-			$a_oriz_adiafanwn = $dapedo_embadon;
+			$a_oriz_adiafanwn = $dapedo_embadon1 + $dapedo_embadon2 + $orofi_embadon1 + $orofi_embadon2;
 			$a_kat_adiafanwn = $a_adiafanwn_anoigmatwn + $a_dromikoy + $a_syr + $a_dokoy + $a_ypost;
 			$a_diafanwn = $a_diafanwn_anoigmatwn;
 			$a_thermoperatotitas = $a_oriz_adiafanwn + $a_kat_adiafanwn + $a_diafanwn;
 			
 			//Υπολογισμός συνόλων ανά κατηγορία UA
-			$ua_oriz_adiafanwn = $dapedo_ua;
+			$ua_oriz_adiafanwn = $dapedo_ua + $orofi_ua;
 			$ua_kat_adiafanwn = $ua_masif + $ua_dromikoy + $ua_syr + $ua_dok + $ua_ypost;
 			$ua_diafanwn = $ua_anoigmatos;
 			$ua_thermoperatotitas = $ua_oriz_adiafanwn + $ua_kat_adiafanwn + $ua_diafanwn;			
@@ -848,25 +871,16 @@
 			$umax = palindromisi($grammi1,$grammi2,$umax1,$umax2,$aprosv);
 			
 			}
-			
+
 			$sygkrisiua = $uadiaa  / $umax;
-			if ($sygkrisiua>1)$elegxosua="ΔΕΝ τηρείται U &lt;= Umax";
-			if ($sygkrisiua<=1)$elegxosua="ΙΣΧΥΕΙ U &lt;= Umax";
 			
 			$drop_xrisi = $xrisi_id;
 			$drop_nero_diktyoy = $nero_dikt_id;
 			$drop_velt_klisi = $velt_klisi_id;
 
 			$array_xrisis_znx = get_times("xrisi,znx_l_sq_d", "energy_conditions", $drop_xrisi);
-			$array_xrisis_znx1 = get_times("gen_xrisi", "energy_conditions", $drop_xrisi);
-			$array_xrisis_znx2 = get_times("znx_m3_sq_y", "energy_conditions", $drop_xrisi);
-			$xrisi_gen = $array_xrisis_znx1[0][0];
 			$xrisi_znx_iliakos = $array_xrisis_znx[0][0];
-			
-			$xrisi_text = $xrisi_gen . ', ' . $xrisi_znx_iliakos;
 			$syntelestis_znx_iliakos = $array_xrisis_znx[0][1];
-			$syntelestis_znx_iliakos2 = $array_xrisis_znx2[0][0];
-			$mesi_katanalwsi_znx=$syntelestis_znx_iliakos2*$synoliko_embadon;
 			$t_znx = 50; //Θερμοκρασία ΖΝΧ
 			$vd_iliakoy = $syntelestis_znx_iliakos * $synoliko_embadon;
 			
@@ -1038,93 +1052,133 @@ $domika417 = $array_domika41[6][0];
 $domika418 = $array_domika41[7][0];
 $domika419 = $array_domika41[8][0];
 
-$array_leitoyrgias = get_times("*", "energy_conditions", $drop_xrisi);
+$pin43 = "<table><tr><td>Δομικό στοιχείο</td><td>Φύλλο ελέγχου</td><td>U [W/(m2K)]</td><td>Umax [W/(m2K)] [Πίνακας 4.1]</td></tr>";
+$pin43 .= "<tr><td>Εξωτερική τοιχοποιία σε επαφή με εξωτερικό αέρα</td><td></td><td></td><td>" . $domika412 . "</td></tr>";
+$pin43 .= "<tr><td>Εξωτερική τοιχοποιία σε επαφή με εξωτερικό αέρα επένδυση πέτρα</td><td></td><td></td><td>" . $domika412 . "</td></tr>";
+$pin43 .= "<tr><td>Εξωτερική δοκός/υποστύλωμα/τοίχωμα σε επαφή με εξωτερικό αέρα και επένδυση πέτρα</td><td></td><td></td><td>" . $domika412 . "</td></tr>";
+$pin43 .= "<tr><td>Εξωτερική δοκός/υποστύλωμα/τοίχωμα σε επαφή με εξωτερικό αέρα</td><td></td><td></td><td>" . $domika412 . "</td></tr>";
+$pin43 .= "<tr><td>Τοιχοποιία συρομένων σε επαφή με εξωτερικό αέρα</td><td></td><td></td><td>" . $domika412 . "</td></tr>";
+$pin43 .= "<tr><td>Τοιχοποιία συρομένων σε επαφή με εξωτερικό αέρα και επένδυση πέτρα</td><td></td><td></td><td>" . $domika412 . "</td></tr>";
+$pin43 .= "<tr><td>Δοκός/υποστύλωμα/τοίχωμα σε επαφή με μη θερμαινόμενο χώρο</td><td></td><td></td><td>" . $domika414 . "</td></tr>";
+$pin43 .= "<tr><td>Δώμα βατό  σε επαφή με εξωτερικό αέρα</td><td></td><td></td><td>" . $domika413 . "</td></tr>";
+$pin43 .= "<tr><td>Δάπεδο σε προεξοχή/πυλωτή σε επαφή με εξωτερικό αέρα</td><td></td><td></td><td>" . $domika413 . "</td></tr>";
+$pin43 .= "<tr><td>Οροφή κεραμίδι με μόνωση επ’ αυτού, σε επαφή με εξωτερικό αέρα</td><td></td><td></td><td>" . $domika413 . "</td></tr>";
+$pin43 .= "<tr><td>Δάπεδο σε επαφή με μη θερμαινόμενο χώρο.</td><td></td><td></td><td>" . $domika416 . "</td></tr>";
+$pin43 .= "<tr><td>Δάπεδο σε επαφή με το έδαφος</td><td></td><td></td><td>" . $domika417 . "</td></tr>";
+$pin43 .= "<tr><td>Τοιχώματα χωρίς θερμομόνωση σε επαφή με τον εξωτερικό αέρα</td><td></td><td></td><td>Δεν υπάρχει απαίτηση</td></tr>";
+$pin43 .= "<tr><td>Τοιχώματα χωρίς θερμομόνωση σε επαφή με το έδαφος</td><td></td><td></td><td>Δεν υπάρχει απαίτηση</td></tr>";
+$pin43 .= "<tr><td>Δάπεδο Υπογείου σε επαφή με το έδαφος</td><td></td><td></td><td>Δεν υπάρχει απαίτηση</td></tr>";
+$pin43 .= "<tr><td>Οροφή χωρίς θερμομόνωση σε επαφή με εξωτερικό αέρα</td><td></td><td></td><td>Δεν υπάρχει απαίτηση</td></tr>";
+$pin43 .= "</table>";
+		
+		
+$pin44 = "<table><tr><td>Δομικό στοιχείο</td><td>Φύλλο ελέγχου</td><td>U [W/(m2K)]</td><td>Μέσο βάθος z [m]</td><td>U' [W/(m2K)]</td></tr>";		
+$pin44 .= "<tr><td>Δάπεδο ισογείου σε επαφή με το έδαφος</td><td>" . $dapedo_u1 . "</td><td></td><td>0</td><td></td></tr>";
+$pin44 .= "<tr><td>Δάπεδο ισογείου σε επαφή με μη θερμαινόμενο χώρο</td><td>" . $dapedo_u2 . "</td><td></td><td>0</td><td></td></tr>";
+$pin44 .= "</table>";
 
-$array_hm = get_times_all("*", "kataskeyi_hm");
-$thermansi_value = $array_hm[0]["value"];
-$klimatismos_value = $array_hm[1]["value"];
-$thermansi_value_kw = $thermansi_value*1.163/1000;
-$thermansi_value_kw13 = $thermansi_value_kw*1.3;
-$thermansi_value13 = $thermansi_value*1.3;
-$klimatismos_value_kw = $klimatismos_value*0.000293;
+$ukoyfmax = "<=" . $domika418;
 
-$pososto_iliaka_100 = $pososto_iliaka*100;
+$pinkoyf = "<table><tr><td>Άνοιγμα</td><td>Τύπος</td><td>U [W/(m2K)]</td><td>Umax [W/(m2K)]</td></tr>";
+for ($j = 1; $j <= $anoig_t_boreia; $j++) {
+$t = "b";
+$an = "an_b_";
+if (${$an."anoig_eidos".$j} == 1) {$anoig_type = "Αδιαφανές άνοιγμα";}
+if (${$an."anoig_eidos".$j} == 2) {$anoig_type = "Συρόμενο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 3) {$anoig_type = "Ανοιγόμενο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 4) {$anoig_type = "Επάλληλο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 5) {$anoig_type = "Συρόμενη πόρτα απλή";}
+if (${$an."anoig_eidos".$j} == 6) {$anoig_type = "Συρόμενη πόρτα διπλή";}
+if (${$an."anoig_eidos".$j} == 7) {$anoig_type = "Ανοιγόμενη πόρτα μονή";}
+if (${$an."anoig_eidos".$j} == 8) {$anoig_type = "Ανοιγόμενη πόρτα διπλή";}
+if (${$an."anoig_eidos".$j} == 9) {$anoig_type = "Επάλληλη πόρτα";}
 
-if ($zwni=="a")$zwni="A";
-if ($zwni=="b")$zwni="B";
-if ($zwni=="g")$zwni="Γ";
-if ($zwni=="d")$zwni="Δ";
-
-$Vstore = $vd_iliakoy/5;
-$eklogi_thermantira = round(($Vstore + 50),-1);
-$Pn_levita = $fortio_znx_day_feb/5;
-$Pn_levita1 = $Pn_levita*1.3;
-$Pn_levita2 = $Pn_levita*1.3*860.1179;
-
-$apolavi_aktinov1 = $apolavi_aktinov*1.099;
-$apolavi_aktinov2 = $apolavi_aktinov*2.9;
-
-$znx_pos_synol = (($fortio_znx_day_feb/5)*1.3)*$pososto_petr;
-$znx_pos_kat = $znx_pos_synol/$thermansi_value_kw13;
-
-//Πλαίσιο
-$temp = mysql_query("SELECT * FROM kataskeyi_an_s");
-while($row = mysql_fetch_array($temp)){
-$plaisio=$row['plaisio'];
-$ukoyf=$row['ukoyf'];
-$platos=$row['platos'];
-$pane=$row['pane'];
-$upane=$row['upane'];
+$pinkoyf .= "<tr><td>" . ${$an."name".$j} . "</td><td>" . $anoig_type . "</td><td>" . ${$an."anoig_u".$j} . "</td><td>" . $domika418 . "</td></tr>";
 }
+$pinkoyf .= "</table>";
 
-//Στοιχεία μελέτης
-$temp1 = mysql_query("SELECT * FROM kataskeyi_meletis");
-while($row1 = mysql_fetch_array($temp1)){
-$project=$row1['project'];
-$place=$row1['place'];
-$owner=$row1['owner'];
-$engs=$row1['engs'];
-$owner_status=$row1['owner_status'];
-$address=$row1['address'];
-$contact_type=$row1['contact_type'];
-$contact_name=$row1['contact_name'];
-$contact_tel=$row1['contact_tel'];
-$contact_mail=$row1['contact_mail'];
+$pinkoyf .= "<table><tr><td>Άνοιγμα</td><td>Τύπος</td><td>U [W/(m2K)]</td><td>Umax [W/(m2K)]</td></tr>";
+for ($j = 1; $j <= $anoig_t_anatolika; $j++) {
+$t = "a";
+$an = "an_a_";
+if (${$an."anoig_eidos".$j} == 1) {$anoig_type = "Αδιαφανές άνοιγμα";}
+if (${$an."anoig_eidos".$j} == 2) {$anoig_type = "Συρόμενο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 3) {$anoig_type = "Ανοιγόμενο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 4) {$anoig_type = "Επάλληλο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 5) {$anoig_type = "Συρόμενη πόρτα απλή";}
+if (${$an."anoig_eidos".$j} == 6) {$anoig_type = "Συρόμενη πόρτα διπλή";}
+if (${$an."anoig_eidos".$j} == 7) {$anoig_type = "Ανοιγόμενη πόρτα μονή";}
+if (${$an."anoig_eidos".$j} == 8) {$anoig_type = "Ανοιγόμενη πόρτα διπλή";}
+if (${$an."anoig_eidos".$j} == 9) {$anoig_type = "Επάλληλη πόρτα";}
+
+$pinkoyf .= "<tr><td>" . ${$an."name".$j} . "</td><td>" . $anoig_type . "</td><td>" . ${$an."anoig_u".$j} . "</td><td>" . $domika418 . "</td></tr>";
 }
+$pinkoyf .= "</table>";
 
-//Στοιχεία τοπογραφίας
-$temp1 = mysql_query("SELECT * FROM kataskeyi_meletis_topo");
-while($row1 = mysql_fetch_array($temp1)){
-$sxedio=$row1['project'];
-$odos=$row1['odos'];
-$apostaseis=$row1['apostaseis'];
-$klisi=$row1['klisi'];
-$pol_grafeio=$row1['pol_grafeio'];
-$pol_year=$row1['pol_year'];
-$pol_number=$row1['pol_number'];
-$pol_year_complete=$row1['pol_year_complete'];
-$pol_type=$row1['pol_type'];
+$pinkoyf .= "<table><tr><td>Άνοιγμα</td><td>Τύπος</td><td>U [W/(m2K)]</td><td>Umax [W/(m2K)]</td></tr>";
+for ($j = 1; $j <= $anoig_t_notia; $j++) {
+$t = "n";
+$an = "an_n_";
+if (${$an."anoig_eidos".$j} == 1) {$anoig_type = "Αδιαφανές άνοιγμα";}
+if (${$an."anoig_eidos".$j} == 2) {$anoig_type = "Συρόμενο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 3) {$anoig_type = "Ανοιγόμενο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 4) {$anoig_type = "Επάλληλο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 5) {$anoig_type = "Συρόμενη πόρτα απλή";}
+if (${$an."anoig_eidos".$j} == 6) {$anoig_type = "Συρόμενη πόρτα διπλή";}
+if (${$an."anoig_eidos".$j} == 7) {$anoig_type = "Ανοιγόμενη πόρτα μονή";}
+if (${$an."anoig_eidos".$j} == 8) {$anoig_type = "Ανοιγόμενη πόρτα διπλή";}
+if (${$an."anoig_eidos".$j} == 9) {$anoig_type = "Επάλληλη πόρτα";}
+
+$pinkoyf .= "<tr><td>" . ${$an."name".$j} . "</td><td>" . $anoig_type . "</td><td>" . ${$an."anoig_u".$j} . "</td><td>" . $domika418 . "</td></tr>";
 }
+$pinkoyf .= "</table>";
 
-if ($pol_type=="0") {$pol_type="Νέο κτίριο";}
-if ($pol_type=="1") {$pol_type="Υπάρχον κτίριο";}
-if ($pol_type=="2") {$pol_type="Ριζικά ανακαινιζόμενο κτίριο";}
+$pinkoyf .= "<table><tr><td>Άνοιγμα</td><td>Τύπος</td><td>U [W/(m2K)]</td><td>Umax [W/(m2K)]</td></tr>";
+for ($j = 1; $j <= $anoig_t_dytika; $j++) {
+$t = "d";
+$an = "an_d_";
+if (${$an."anoig_eidos".$j} == 1) {$anoig_type = "Αδιαφανές άνοιγμα";}
+if (${$an."anoig_eidos".$j} == 2) {$anoig_type = "Συρόμενο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 3) {$anoig_type = "Ανοιγόμενο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 4) {$anoig_type = "Επάλληλο παράθυρο";}
+if (${$an."anoig_eidos".$j} == 5) {$anoig_type = "Συρόμενη πόρτα απλή";}
+if (${$an."anoig_eidos".$j} == 6) {$anoig_type = "Συρόμενη πόρτα διπλή";}
+if (${$an."anoig_eidos".$j} == 7) {$anoig_type = "Ανοιγόμενη πόρτα μονή";}
+if (${$an."anoig_eidos".$j} == 8) {$anoig_type = "Ανοιγόμενη πόρτα διπλή";}
+if (${$an."anoig_eidos".$j} == 9) {$anoig_type = "Επάλληλη πόρτα";}
 
-if ($zwni=="a") {$xml_zwni=0;}
-if ($zwni=="b") {$xml_zwni=1;}
-if ($zwni=="g") {$xml_zwni=2;}
-if ($zwni=="d") {$xml_zwni=3;}
-
-//Στοιχεία δροσισμού κλπ
-$kataskeyi_stoixeia_array = get_times_all("*", "kataskeyi_stoixeia");
-$kataskeyi_stoixeia_anigmeni_thermo = $kataskeyi_stoixeia_array[0]["anigmeni_thermo"];
-$kataskeyi_stoixeia_aytomatismoi = $kataskeyi_stoixeia_array[0]["aytomatismoi"];
-$kataskeyi_stoixeia_kaminades = $kataskeyi_stoixeia_array[0]["kaminades"];
-$kataskeyi_stoixeia_eksaerismos = $kataskeyi_stoixeia_array[0]["eksaerismos"];
-$kataskeyi_stoixeia_anem_orofis = $kataskeyi_stoixeia_array[0]["anem_orofis"];
+$pinkoyf .= "<tr><td>" . ${$an."name".$j} . "</td><td>" . $anoig_type . "</td><td>" . ${$an."anoig_u".$j} . "</td><td>" . $domika418 . "</td></tr>";
+}
+$pinkoyf .= "</table>";
 
 
-$perimetros_dapedoy_array = get_times_all("*", "kataskeyi_therm_dap");
-$perimetros_dapedoy = $perimetros_dapedoy_array[0]["perimetros"];
 
-?>
+$pinepar = "<table><tr><td>Είδος</td><td>Επιφάνεια</td><td>U*A</td></tr>";		
+$pinepar .= "<tr><td>Στοιχεία κατακόρυφων αδιαφανών</td><td>" . $a_kat_adiafanwn . "</td><td>" . $ua_kat_adiafanwn . "</td></tr>";
+$pinepar .= "<tr><td>Στοιχεία οριζόντιων αδιαφανών</td><td>" . $a_oriz_adiafanwn . "</td><td>" . $ua_oriz_adiafanwn . "</td></tr>";
+$pinepar .= "<tr><td>Στοιχεία διαφανών</td><td>" . $a_diafanwn . "</td><td>" . $ua_diafanwn . "</td></tr>";
+$pinepar .= "<tr><td>Σύνολο</td><td>" . $a_thermoperatotitas . "</td><td>" . $ua_thermoperatotitas . "</td></tr>";
+$pinepar .= "</table>";
+
+
+$pinepar1 = "<table><tr><td>Είδος</td><td>Τιμή</td></tr>";	
+$pinepar1 .= "<tr><td>U*A θερμογεφυρών</td><td>" . $thermogefyres . "</td></tr>";
+$pinepar1 .= "<tr><td>Σύνολικό U*A</td><td>" . $sunolo_ua . "</td></tr>";
+$pinepar1 .= "<tr><td>A/V</td><td>" . $aprosv . "</td></tr>";
+$pinepar1 .= "<tr><td>Τιμή (U*A)/Α</td><td>" . $uadiaa . "</td></tr>";
+$pinepar1 .= "<tr><td>Umax  [W/(m2·Κ)] :</td><td>" . $umax . "</td></tr>";
+$pinepar1 .= "<tr><td>ΕΛΕΓΧΟΣ</td><td>" . $elegxosua . "</td></tr>";
+$pinepar1 .= "</table>";
+
+
+
+
+
+
+
+
+
+
+
+	
+ ?>

@@ -274,12 +274,15 @@ if ($pinakas_num == 35){
 $pinakas = "kataskeyi_xsystems_znxd";
 }
 if ($pinakas_num == 36){
-$pinakas = "kataskeyi_xsystems_znxp";
+$pinakas = "kataskeyi_xsystems_znxiliakos";
 }
 if ($pinakas_num == 37){
-$pinakas = "kataskeyi_xwroi";
+$pinakas = "kataskeyi_xsystems_znxp";
 }
 if ($pinakas_num == 38){
+$pinakas = "kataskeyi_xwroi";
+}
+if ($pinakas_num == 39){
 $pinakas = "kataskeyi_zwnes";
 }
 
@@ -450,12 +453,15 @@ if ($pinakas_num == 35){
 $pinakas = "kataskeyi_xsystems_znxd";
 }
 if ($pinakas_num == 36){
-$pinakas = "kataskeyi_xsystems_znxp";
+$pinakas = "kataskeyi_xsystems_znxiliakos";
 }
 if ($pinakas_num == 37){
-$pinakas = "kataskeyi_xwroi";
+$pinakas = "kataskeyi_xsystems_znxp";
 }
 if ($pinakas_num == 38){
+$pinakas = "kataskeyi_xwroi";
+}
+if ($pinakas_num == 39){
 $pinakas = "kataskeyi_zwnes";
 }
 

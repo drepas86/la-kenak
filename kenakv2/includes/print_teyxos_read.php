@@ -37,7 +37,7 @@ if (isset($_GET['save'])) $save=$_GET['save'];
 if ($save=="*"){
 
 //Το αρχείο υπολογισμών
-include("/core-calc/core_calculate.php");
+include("core-calc/core_calculate.php");
 
 
 $pin43  = "<table><tr>";
@@ -863,7 +863,7 @@ include ('includes/draw_wall.php');
 //${"toixoi".$tab}.="<td>Τοίχος <b>".$name."</b> ".number_format($tl,2,".",",")." x ".number_format($th,2,".",",")."<br />";
 //${"toixoi".$tab}.="<img src=\"http://localhost/kenakv2/includes/PDF/image".$tab.$im.".png\" style=\"width:".$gl ."px;height:".$gh ."px;\" ></img></td>";
 ${"toixoi".$tab}.="<br />Τοίχος <b>".$name."</b> ".number_format($tl,2,".",",")." x ".number_format($th,2,".",",")." &nbsp;";
-${"toixoi".$tab}.="<img src=\"http://localhost/kenakv2/includes/PDF/image".$tab.$im.".png\" style=\"width:".$gl/2 ."px;height:".$gh/2 ."px; border:1px solid black; \" ></img><br /><br />";
+${"toixoi".$tab}.="<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/PDF/image".$tab.$im.".png\" style=\"width:".$gl/2 ."px;height:".$gh/2 ."px; border:1px solid black; vertical-align:middle;\" ></img><br /><br />";
 /*
 $sgl+=$gl;
 $ntd+=1;

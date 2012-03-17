@@ -28,7 +28,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 <?php require_once("includes/functions.php"); ?>
 <?php find_selected_page(); ?>
 <?php include("includes/header_climate.php"); ?>
-<div class="topright"><img src="images/home.png" align="right"></img><a href="index.php">Βιβλιοθήκες</a><br/><a href="index_climate.php">Κλιματικά δεδομένα</a><br/><a href="index_skiaseis.php">Υπολογισμός Σκιάσεων</a><br/><a href="stoixeia_zwnis.php">Στοιχεία ζώνης</a><br/><a href="domika_kelyfos.php">Κέλυφος</a><br/><a href="kenak.php">ΚΕΝΑΚ</a></div>
+<div class="topright"><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
 
 <table id="structure">
 	<tr>
@@ -97,7 +97,7 @@ for ($i=41;$i<=55;$i++){
 					?>
 				</div>
 			<?php } else { ?>
-				<h2>Welcome to La-Kenak v<?=VERSION?> <br/><br/><br/><br/> <img src="images/intro.png"></img></h2>
+				<h2>Welcome to La-Kenak v.1.0 <br/><br/><br/><br/> <img src="images/intro.png"></img></h2>
 			<?php } ?>
 		</td>
 	</tr>

@@ -63,7 +63,7 @@ read_an1();
 	<body onload=checkread();>
 <?php if ($min!=1){?>	
 		<div id="header">
-			<h1><a href=index.php>La-Kenak v<?php echo VERSION; ?> - Δομικά στοιχεία κελύφους</a></h1>
 		</div>
+<?php include ('menu.php'); ?>
 <?php }?>
 		

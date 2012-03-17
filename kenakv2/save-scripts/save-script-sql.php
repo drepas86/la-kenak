@@ -39,7 +39,7 @@ kataskeyi_stoixeia,kataskeyi_teyxos,kataskeyi_therm_dap,kataskeyi_therm_eks,kata
 kataskeyi_t_a,kataskeyi_t_b,kataskeyi_t_d,kataskeyi_t_n,
 kataskeyi_xsystems_coldb,kataskeyi_xsystems_coldd,kataskeyi_xsystems_coldp,kataskeyi_xsystems_coldt,
 kataskeyi_xsystems_thermb,kataskeyi_xsystems_thermd,kataskeyi_xsystems_thermp,kataskeyi_xsystems_thermt,
-kataskeyi_xsystems_znxa,kataskeyi_xsystems_znxd,kataskeyi_xsystems_znxp,
+kataskeyi_xsystems_znxa,kataskeyi_xsystems_znxd,kataskeyi_xsystems_znxiliakos,kataskeyi_xsystems_znxp,
 kataskeyi_xwroi,kataskeyi_zwnes')
 {
 $namefile = $_GET["name"];	

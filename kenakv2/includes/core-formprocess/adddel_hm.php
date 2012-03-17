@@ -76,10 +76,57 @@ if (isset($_POST['prosthiki_hm'])) {
 		}
 
 
-//ΘΕΡΜΑΝΣΗ
-//ΔΙΑΓΡΑΦΗ, ΠΡΟΣΘΗΚΗ και UPDATE
+//ΘΕΡΜΑΝΣΗ - ΨΎΞΗ
+//ΔΙΑΓΡΑΦΗ
+
+//-------------------------------------------ΘΕΡΜΑΝΣΗ-----------------------------------------------------
 
 //υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_thermp
+if (isset($_POST['delete_thermb'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_thermb ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της μονάδας (βοηθητικής) θέρμανσης επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-thermansi"</script><?php
+			exit;
+}
+
+if (isset($_POST['delete_thermd'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_thermd ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή του δικτύου διανομής θέρμανσης επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-thermansi"</script><?php
+			exit;
+}
+
+if (isset($_POST['delete_thermt'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_thermt ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της τερματικής μονάδας θέρμανσης επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-thermansi"</script><?php
+			exit;
+}
+
 if (isset($_POST['delete_thermp'])) {
 for($i=0;$i<count($_POST["delcheck"]);$i++)
 	{
@@ -96,10 +143,156 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 }
 
 
+//-------------------------------------------ΨΥΞΗ-----------------------------------------------------
+
+
+//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_coldb
+if (isset($_POST['delete_coldb'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_coldb ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της μονάδας παραγωγής ψυξης επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-psyksi"</script><?php
+			exit;
+}
+
+//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_coldd
+if (isset($_POST['delete_coldd'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_coldd ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της μονάδας παραγωγής ψυξης επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-psyksi"</script><?php
+			exit;
+}
+
+//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_coldp
+if (isset($_POST['delete_coldp'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_coldp ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της μονάδας παραγωγής ψυξης επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-psyksi"</script><?php
+			exit;
+}
+
+
+//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_coldt
+if (isset($_POST['delete_coldt'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_coldt ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της μονάδας παραγωγής ψυξης επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-psyksi"</script><?php
+			exit;
+}
+
+//-------------------------------------------ZNX-----------------------------------------------------
+
+//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_znxa
+if (isset($_POST['delete_znxa'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_znxa ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της μονάδας παραγωγής ZNX επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-znx"</script><?php
+			exit;
+}
+
+//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_znxd
+if (isset($_POST['delete_znxd'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_znxd ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της μονάδας παραγωγής ZNX επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-znx"</script><?php
+			exit;
+}
+
+//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_znxp
+if (isset($_POST['delete_znxp'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_znxp ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή της μονάδας παραγωγής ZNX επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-znx"</script><?php
+			exit;
+}
+
+
+//-------------------------------------------ΗΛΙΑΚΟΣ-----------------------------------------------------
+
+//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_znxiliakos
+if (isset($_POST['delete_systemiliakos'])) {
+for($i=0;$i<count($_POST["delcheck"]);$i++)
+	{
+		if($_POST["delcheck"][$i] != "")
+		{
+			$strSQL = "DELETE FROM kataskeyi_xsystems_znxiliakos ";
+			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
+			$objQuery = mysql_query($strSQL);
+		}
+	}
+	echo "Διαγραφή του ηλιακού επιτυχής.";
+	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-iliakos"</script><?php
+			exit;
+}
+
+
+
+
+
+//ΘΕΡΜΑΝΣΗ - ΨΎΞΗ - ZNX
+//ΠΡΟΣΘΗΚΕΣ
+
+//-------------------------------------------ΘΕΡΜΑΝΣΗ-----------------------------------------------------
 
 //υποβλήθηκε η φόρμα για προσθήκη στον πίνακα kataskeyi_xsystems_thermp
 if (isset($_POST['prosthiki_thermp'])) {
 // Δεδομένα για τη φόρμα
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
 		$prosthiki_type = trim(mysql_prep($_POST['prosthiki_type']));
 		$prosthiki_pigienergy = trim(mysql_prep($_POST['prosthiki_pigienergy']));
 		$prosthiki_isxys = trim(mysql_prep($_POST['prosthiki_isxys']));
@@ -119,8 +312,9 @@ if (isset($_POST['prosthiki_thermp'])) {
 		$prosthiki_dec = trim(mysql_prep($_POST['prosthiki_dec']));
 
 			$query = "INSERT INTO kataskeyi_xsystems_thermp ";
-			$query .= "(type, pigienergy, isxys, bathm, cop, jan, feb, mar, apr, nov, decem) ";
+			$query .= "(id_zwnis, type, pigienergy, isxys, bathm, cop, jan, feb, mar, apr, nov, decem) ";
 			$query .= "VALUES ( '";
+			$query .= $prosthiki_zwni . "', '";
 			$query .= $prosthiki_type . "', '";
 			$query .= $prosthiki_pigienergy . "', '";
 			$query .= $prosthiki_isxys . "', '";
@@ -146,84 +340,57 @@ if (isset($_POST['prosthiki_thermp'])) {
 			}
 		}
 
-//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_thermd (πρώτη φόρμα)
-if (isset($_POST['prosthiki_thermd1'])) {
-// Δεδομένα για τη φόρμα
-		$prosthiki_thermd_isxys1 = trim(mysql_prep($_POST['prosthiki_thermd_isxys1']));
-		$prosthiki_thermd_xwros1 = trim(mysql_prep($_POST['prosthiki_thermd_xwros1']));
-		$prosthiki_thermd_bathm1 = trim(mysql_prep($_POST['prosthiki_thermd_bathm1']));
-		$prosthiki_thermd_monwsi1 = trim(mysql_prep($_POST['prosthiki_thermd_monwsi1']));
-
-			$query = "UPDATE kataskeyi_xsystems_thermd ";
-			$query .= "SET isxys=";
-			$query .= "'" . $prosthiki_thermd_isxys1 . "',";
-			$query .= " xwros=";
-			$query .= "'" . $prosthiki_thermd_xwros1 . "',";
-			$query .= " bathm=";
-			$query .= "'" . $prosthiki_thermd_bathm1 . "',";
-			$query .= " monwsi=";
-			$query .= "'" . $prosthiki_thermd_monwsi1 . "'";
-			$query .= " WHERE id=1";
-			$result = mysql_query($query);
-			
-			if ($result) {
-			// Εγγραφή επιτυχής
-			echo "Τροποποιήθηκαν τα στοιχεία Δίκτυο διανομής θερμού μέσου επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-thermansi"</script><?php
-			exit;
-			} else {
-			// Λάθος.
-			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
-			echo "<p>" . mysql_error() . "</p>";
-			}
-		}
-
-//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_thermd (δεύτερη φόρμα)		
-if (isset($_POST['prosthiki_thermd2'])) {
-// Δεδομένα για τη φόρμα
-		$prosthiki_thermd_isxys2 = trim(mysql_prep($_POST['prosthiki_thermd_isxys2']));
-		$prosthiki_thermd_xwros2 = trim(mysql_prep($_POST['prosthiki_thermd_xwros2']));
-		$prosthiki_thermd_bathm2 = trim(mysql_prep($_POST['prosthiki_thermd_bathm2']));
-		$prosthiki_thermd_monwsi2 = trim(mysql_prep($_POST['prosthiki_thermd_monwsi2']));
-
-			$query = "UPDATE kataskeyi_xsystems_thermd ";
-			$query .= "SET isxys=";
-			$query .= "'" . $prosthiki_thermd_isxys2 . "',";
-			$query .= " xwros=";
-			$query .= "'" . $prosthiki_thermd_xwros2 . "',";
-			$query .= " bathm=";
-			$query .= "'" . $prosthiki_thermd_bathm2 . "',";
-			$query .= " monwsi=";
-			$query .= "'" . $prosthiki_thermd_monwsi2 . "'";
-			$query .= " WHERE id=2";
-			$result = mysql_query($query);
-			
-			if ($result) {
-			// Εγγραφή επιτυχής
-			echo "Τροποποιήθηκαν τα στοιχεία Αεραγωγοί επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-thermansi"</script><?php
-			exit;
-			} else {
-			// Λάθος.
-			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
-			echo "<p>" . mysql_error() . "</p>";
-			}
-		}
-
 		
+		
+//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_thermd
+if (isset($_POST['prosthiki_thermd'])) {
+// Δεδομένα για τη φόρμα
+		$prosthiki_thermd_isxys = trim(mysql_prep($_POST['prosthiki_thermd_isxys']));
+		$prosthiki_thermd_xwros = trim(mysql_prep($_POST['prosthiki_thermd_xwros']));
+		$prosthiki_thermd_bathm = trim(mysql_prep($_POST['prosthiki_thermd_bathm']));
+		$prosthiki_thermd_monwsi = trim(mysql_prep($_POST['prosthiki_thermd_monwsi']));
+		$prosthiki_thermd_type = trim(mysql_prep($_POST['prosthiki_thermd_type']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
+
+			$query = "INSERT INTO kataskeyi_xsystems_thermd ";
+			$query .= "(id_zwnis, type, isxys, xwros, bathm, monwsi) ";
+			$query .= "VALUES ( '";
+			$query .= $prosthiki_zwni . "', '";
+			$query .= $prosthiki_thermd_type . "', '";
+			$query .= $prosthiki_thermd_isxys . "', '";
+			$query .= $prosthiki_thermd_xwros . "', '";
+			$query .= $prosthiki_thermd_bathm . "', '";
+			$query .= $prosthiki_thermd_monwsi . "')";
+
+			$result = mysql_query($query);
+			
+			if ($result) {
+			// Εγγραφή επιτυχής
+			echo "Τροποποιήθηκαν τα στοιχεία δικτύου διανομής θερμού μέσου επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-thermansi"</script><?php
+			exit;
+			} else {
+			// Λάθος.
+			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
+			echo "<p>" . mysql_error() . "</p>";
+			}
+		}
+
 		
 //υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_thermt
 if (isset($_POST['prosthiki_thermt'])) {
 // Δεδομένα για τη φόρμα
 		$prosthiki_thermt_type = trim(mysql_prep($_POST['prosthiki_thermt_type']));
 		$prosthiki_thermt_bathm = trim(mysql_prep($_POST['prosthiki_thermt_bathm']));
-
-			$query = "UPDATE kataskeyi_xsystems_thermt ";
-			$query .= "SET type=";
-			$query .= "'" . $prosthiki_thermt_type . "',";
-			$query .= " bathm=";
-			$query .= "'" . $prosthiki_thermt_bathm . "'";
-			$query .= " WHERE id=1";
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
+		
+			$query = "INSERT INTO kataskeyi_xsystems_thermt ";
+			$query .= "(id_zwnis, type, bathm) ";
+			$query .= "VALUES ( '";
+			$query .= $prosthiki_zwni . "', '";
+			$query .= $prosthiki_thermt_type . "', '";
+			$query .= $prosthiki_thermt_bathm . "')";
+			
 			$result = mysql_query($query);
 			
 			if ($result) {
@@ -238,26 +405,6 @@ if (isset($_POST['prosthiki_thermt'])) {
 			}
 		}
 		
-		
-		
-		
-//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_thermb
-if (isset($_POST['delete_thermb'])) {
-for($i=0;$i<count($_POST["delcheck"]);$i++)
-	{
-		if($_POST["delcheck"][$i] != "")
-		{
-			$strSQL = "DELETE FROM kataskeyi_xsystems_thermb ";
-			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
-			$objQuery = mysql_query($strSQL);
-		}
-	}
-	echo "Διαγραφή της βοηθητικής μονάδας θέρμανσης επιτυχής.";
-	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-thermansi"</script><?php
-			exit;
-}
-
-
 
 //υποβλήθηκε η φόρμα για προσθήκη στον πίνακα kataskeyi_xsystems_thermb
 if (isset($_POST['prosthiki_thermb'])) {
@@ -265,10 +412,12 @@ if (isset($_POST['prosthiki_thermb'])) {
 		$prosthiki_type = trim(mysql_prep($_POST['prosthiki_type']));
 		$prosthiki_number = trim(mysql_prep($_POST['prosthiki_number']));
 		$prosthiki_isxys = trim(mysql_prep($_POST['prosthiki_isxys']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
 
 			$query = "INSERT INTO kataskeyi_xsystems_thermb ";
-			$query .= "(type, number, isxys)";
+			$query .= "(id_zwnis, type, number, isxys)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
 			$query .= $prosthiki_type . "', '";
 			$query .= $prosthiki_number . "', '";
 			$query .= $prosthiki_isxys . "')";
@@ -289,36 +438,13 @@ if (isset($_POST['prosthiki_thermb'])) {
 		
 
 
-		
-		
-		
-		
-		
-		
-//ΨΥΞΗ
-//ΔΙΑΓΡΑΦΗ, ΠΡΟΣΘΗΚΗ και UPDATE
-
-//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_coldp
-if (isset($_POST['delete_coldp'])) {
-for($i=0;$i<count($_POST["delcheck"]);$i++)
-	{
-		if($_POST["delcheck"][$i] != "")
-		{
-			$strSQL = "DELETE FROM kataskeyi_xsystems_coldp ";
-			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
-			$objQuery = mysql_query($strSQL);
-		}
-	}
-	echo "Διαγραφή της μονάδας παραγωγής ψυξης επιτυχής.";
-	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-psyksi"</script><?php
-			exit;
-}
-
+//-------------------------------------------ΨΥΞΗ-----------------------------------------------------
 
 
 //υποβλήθηκε η φόρμα για προσθήκη στον πίνακα kataskeyi_xsystems_coldp
 if (isset($_POST['prosthiki_coldp'])) {
 // Δεδομένα για τη φόρμα
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
 		$prosthiki_type = trim(mysql_prep($_POST['prosthiki_type']));
 		$prosthiki_pigienergy = trim(mysql_prep($_POST['prosthiki_pigienergy']));
 		$prosthiki_isxys = trim(mysql_prep($_POST['prosthiki_isxys']));
@@ -338,8 +464,9 @@ if (isset($_POST['prosthiki_coldp'])) {
 		$prosthiki_dec = trim(mysql_prep($_POST['prosthiki_dec']));
 
 			$query = "INSERT INTO kataskeyi_xsystems_coldp ";
-			$query .= "(type, pigienergy, isxys, bathm, eer, may, jun, jul, aug, sep)";
+			$query .= "(id_zwnis, type, pigienergy, isxys, bathm, eer, may, jun, jul, aug, sep)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
 			$query .= $prosthiki_type . "', '";
 			$query .= $prosthiki_pigienergy . "', '";
 			$query .= $prosthiki_isxys . "', '";
@@ -364,24 +491,29 @@ if (isset($_POST['prosthiki_coldp'])) {
 			}
 		}
 
-//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_coldd (πρώτη φόρμα)
-if (isset($_POST['prosthiki_coldd1'])) {
+		
+		
+//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_coldd
+if (isset($_POST['prosthiki_coldd'])) {
 // Δεδομένα για τη φόρμα
-		$prosthiki_coldd_isxys1 = trim(mysql_prep($_POST['prosthiki_coldd_isxys1']));
-		$prosthiki_coldd_xwros1 = trim(mysql_prep($_POST['prosthiki_coldd_xwros1']));
-		$prosthiki_coldd_bathm1 = trim(mysql_prep($_POST['prosthiki_coldd_bathm1']));
-		$prosthiki_coldd_monwsi1 = trim(mysql_prep($_POST['prosthiki_coldd_monwsi1']));
+		$prosthiki_coldd_isxys = trim(mysql_prep($_POST['prosthiki_coldd_isxys']));
+		$prosthiki_coldd_xwros = trim(mysql_prep($_POST['prosthiki_coldd_xwros']));
+		$prosthiki_coldd_bathm = trim(mysql_prep($_POST['prosthiki_coldd_bathm']));
+		$prosthiki_coldd_monwsi = trim(mysql_prep($_POST['prosthiki_coldd_monwsi']));
+		$prosthiki_coldd_type = trim(mysql_prep($_POST['prosthiki_coldd_type']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
 
-			$query = "UPDATE kataskeyi_xsystems_coldd ";
-			$query .= "SET isxys=";
-			$query .= "'" . $prosthiki_coldd_isxys1 . "',";
-			$query .= " xwros=";
-			$query .= "'" . $prosthiki_coldd_xwros1 . "',";
-			$query .= " bathm=";
-			$query .= "'" . $prosthiki_coldd_bathm1 . "',";
-			$query .= " monwsi=";
-			$query .= "'" . $prosthiki_coldd_monwsi1 . "'";
-			$query .= " WHERE id=1";
+		
+			$query = "INSERT INTO kataskeyi_xsystems_coldd ";
+			$query .= "(id_zwnis, type, isxys, xwros, bathm, monwsi)";
+			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
+			$query .= $prosthiki_coldd_type . "', '";
+			$query .= $prosthiki_coldd_isxys . "', '";
+			$query .= $prosthiki_coldd_xwros . "', '";
+			$query .= $prosthiki_coldd_bathm . "', '";
+			$query .= $prosthiki_coldd_monwsi . "')";
+			
 			$result = mysql_query($query);
 			
 			if ($result) {
@@ -396,57 +528,27 @@ if (isset($_POST['prosthiki_coldd1'])) {
 			}
 		}
 
-//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_coldd (δεύτερη φόρμα)		
-if (isset($_POST['prosthiki_coldd2'])) {
-// Δεδομένα για τη φόρμα
-		$prosthiki_coldd_isxys2 = trim(mysql_prep($_POST['prosthiki_coldd_isxys2']));
-		$prosthiki_coldd_xwros2 = trim(mysql_prep($_POST['prosthiki_coldd_xwros2']));
-		$prosthiki_coldd_bathm2 = trim(mysql_prep($_POST['prosthiki_coldd_bathm2']));
-		$prosthiki_coldd_monwsi2 = trim(mysql_prep($_POST['prosthiki_coldd_monwsi2']));
-
-			$query = "UPDATE kataskeyi_xsystems_coldd ";
-			$query .= "SET isxys=";
-			$query .= "'" . $prosthiki_coldd_isxys2 . "',";
-			$query .= " xwros=";
-			$query .= "'" . $prosthiki_coldd_xwros2 . "',";
-			$query .= " bathm=";
-			$query .= "'" . $prosthiki_coldd_bathm2 . "',";
-			$query .= " monwsi=";
-			$query .= "'" . $prosthiki_coldd_monwsi2 . "'";
-			$query .= " WHERE id=2";
-			$result = mysql_query($query);
-			
-			if ($result) {
-			// Εγγραφή επιτυχής
-			echo "Τροποποιήθηκαν τα στοιχεία Αεραγωγοί ψυξης επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-psyksi"</script><?php
-			exit;
-			} else {
-			// Λάθος.
-			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
-			echo "<p>" . mysql_error() . "</p>";
-			}
-		}
-
+	
 		
-		
-//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_coldt
+//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_thermt
 if (isset($_POST['prosthiki_coldt'])) {
 // Δεδομένα για τη φόρμα
 		$prosthiki_coldt_type = trim(mysql_prep($_POST['prosthiki_coldt_type']));
 		$prosthiki_coldt_bathm = trim(mysql_prep($_POST['prosthiki_coldt_bathm']));
-
-			$query = "UPDATE kataskeyi_xsystems_coldt ";
-			$query .= "SET type=";
-			$query .= "'" . $prosthiki_coldt_type . "',";
-			$query .= " bathm=";
-			$query .= "'" . $prosthiki_coldt_bathm . "'";
-			$query .= " WHERE id=1";
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
+		
+			$query = "INSERT INTO kataskeyi_xsystems_coldt ";
+			$query .= "(id_zwnis, type, bathm) ";
+			$query .= "VALUES ( '";
+			$query .= $prosthiki_zwni . "', '";
+			$query .= $prosthiki_coldt_type . "', '";
+			$query .= $prosthiki_coldt_bathm . "')";
+			
 			$result = mysql_query($query);
 			
 			if ($result) {
 			// Εγγραφή επιτυχής
-			echo "Τροποποιήθηκαν τα στοιχεία τερματικές μονάδες ψυξης επιτυχώς";
+			echo "Τροποποιήθηκαν τα στοιχεία τερματικές μονάδες ψύξης επιτυχώς";
 			?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-psyksi"</script><?php
 			exit;
 			} else {
@@ -457,23 +559,6 @@ if (isset($_POST['prosthiki_coldt'])) {
 		}
 		
 		
-		
-		
-//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_coldb
-if (isset($_POST['delete_coldb'])) {
-for($i=0;$i<count($_POST["delcheck"]);$i++)
-	{
-		if($_POST["delcheck"][$i] != "")
-		{
-			$strSQL = "DELETE FROM kataskeyi_xsystems_coldb ";
-			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
-			$objQuery = mysql_query($strSQL);
-		}
-	}
-	echo "Διαγραφή της βοηθητικής μονάδας ψύξης επιτυχής.";
-	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-psyksi"</script><?php
-			exit;
-}
 
 
 
@@ -483,10 +568,12 @@ if (isset($_POST['prosthiki_coldb'])) {
 		$prosthiki_type = trim(mysql_prep($_POST['prosthiki_type']));
 		$prosthiki_number = trim(mysql_prep($_POST['prosthiki_number']));
 		$prosthiki_isxys = trim(mysql_prep($_POST['prosthiki_isxys']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
 
 			$query = "INSERT INTO kataskeyi_xsystems_coldb ";
-			$query .= "(type, number, isxys)";
+			$query .= "(id_zwnis, type, number, isxys)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
 			$query .= $prosthiki_type . "', '";
 			$query .= $prosthiki_number . "', '";
 			$query .= $prosthiki_isxys . "')";
@@ -507,29 +594,10 @@ if (isset($_POST['prosthiki_coldb'])) {
 		
 		
 		
-		
-		
-		
-//ZNX
-//ΔΙΑΓΡΑΦΗ, ΠΡΟΣΘΗΚΗ και UPDATE
-
-//υποβλήθηκε η φόρμα για διαγραφή στον πίνακα kataskeyi_xsystems_znxp
-if (isset($_POST['delete_znxp'])) {
-for($i=0;$i<count($_POST["delcheck"]);$i++)
-	{
-		if($_POST["delcheck"][$i] != "")
-		{
-			$strSQL = "DELETE FROM kataskeyi_xsystems_znxp ";
-			$strSQL .="WHERE id = '".$_POST["delcheck"][$i]."' ";
-			$objQuery = mysql_query($strSQL);
-		}
-	}
-	echo "Διαγραφή της μονάδας παραγωγής ZNX επιτυχής.";
-	?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-znx"</script><?php
-			exit;
-}
+//-------------------------------------------ΨΥΞΗ-----------------------------------------------------	
 
 
+//ZNX ΠΡΟΣΘΗΚΗ
 
 //υποβλήθηκε η φόρμα για προσθήκη στον πίνακα kataskeyi_xsystems_znxp
 if (isset($_POST['prosthiki_znxp'])) {
@@ -550,10 +618,12 @@ if (isset($_POST['prosthiki_znxp'])) {
 		$prosthiki_okt = trim(mysql_prep($_POST['prosthiki_okt']));
 		$prosthiki_nov = trim(mysql_prep($_POST['prosthiki_nov']));
 		$prosthiki_dec = trim(mysql_prep($_POST['prosthiki_dec']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
 
 			$query = "INSERT INTO kataskeyi_xsystems_znxp ";
-			$query .= "(type, pigienergy, isxys, bathm, jan, feb, mar, apr, may, jun, jul, aug, sep, okt, nov, decem)";
+			$query .= "(id_zwnis, type, pigienergy, isxys, bathm, jan, feb, mar, apr, may, jun, jul, aug, sep, okt, nov, decem)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
 			$query .= $prosthiki_type . "', '";
 			$query .= $prosthiki_pigienergy . "', '";
 			$query .= $prosthiki_isxys . "', '";
@@ -592,17 +662,18 @@ if (isset($_POST['prosthiki_znxd'])) {
 		$prosthiki_znxd_anakykloforia = trim(mysql_prep($_POST['prosthiki_znxd_anakykloforia']));
 		$prosthiki_znxd_xwros = trim(mysql_prep($_POST['prosthiki_znxd_xwros']));
 		$prosthiki_znxd_bathm = trim(mysql_prep($_POST['prosthiki_znxd_bathm']));
-
-			$query = "UPDATE kataskeyi_xsystems_znxd ";
-			$query .= "SET type=";
-			$query .= "'" . $prosthiki_znxd_type . "',";
-			$query .= " anakykloforia=";
-			$query .= "'" . $prosthiki_znxd_anakykloforia . "',";
-			$query .= " xwros=";
-			$query .= "'" . $prosthiki_znxd_xwros . "',";
-			$query .= " bathm=";
-			$query .= "'" . $prosthiki_znxd_bathm . "'";
-			$query .= " WHERE id=1";
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
+			
+			
+			$query = "INSERT INTO kataskeyi_xsystems_znxd ";
+			$query .= "(id_zwnis, type, anakykloforia, xwros, bathm)";
+			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
+			$query .= $prosthiki_znxd_type . "', '";
+			$query .= $prosthiki_znxd_anakykloforia . "', '";
+			$query .= $prosthiki_znxd_xwros . "', '";
+			$query .= $prosthiki_znxd_bathm . "')";
+			
 			$result = mysql_query($query);
 			
 			if ($result) {
@@ -623,10 +694,12 @@ if (isset($_POST['prosthiki_znxa'])) {
 // Δεδομένα για τη φόρμα
 		$prosthiki_znxa_type = trim(mysql_prep($_POST['prosthiki_znxa_type']));
 		$prosthiki_znxa_bathm = trim(mysql_prep($_POST['prosthiki_znxa_bathm']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
 
 			$query = "INSERT INTO kataskeyi_xsystems_znxa ";
-			$query .= "(type, bathm)";
+			$query .= "(id_zwnis, type, bathm)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
 			$query .= $prosthiki_znxa_type . "', '";
 			$query .= $prosthiki_znxa_bathm . "')";
 			
@@ -635,6 +708,35 @@ if (isset($_POST['prosthiki_znxa'])) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε η αποθηκευτική μονάδα ΖΝΧ επιτυχώς";
 			?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-znx"</script><?php
+			exit;
+			} else {
+			// Λάθος.
+			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση.</p>";
+			echo "<p>" . mysql_error() . "</p>";
+			}
+		}
+		
+//-------------------------------------------ΗΛΙΑΚΟΣ-----------------------------------------------------	
+		
+		
+//υποβλήθηκε η φόρμα για UPDATE στον πίνακα kataskeyi_xsystems_znxiliakos
+if (isset($_POST['prosthiki_systemiliakos'])) {
+// Δεδομένα για τη φόρμα
+		$prosthiki_epifaneia = trim(mysql_prep($_POST['prosthiki_epifaneia']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
+
+			$query = "INSERT INTO kataskeyi_xsystems_znxiliakos ";
+			$query .= "(id_zwnis, epifaneia) ";
+			$query .= "VALUES ( '";
+			$query .= $prosthiki_zwni . "', '";
+			$query .= $prosthiki_epifaneia . "')";
+
+			$result = mysql_query($query);
+			
+			if ($result) {
+			// Εγγραφή επιτυχής
+			echo "Τροποποιήθηκαν τα στοιχεία δικτύου διανομής θερμού μέσου επιτυχώς";
+			?><script type="text/javascript">window.location = "./kenak.php?page=10#tab-iliakos"</script><?php
 			exit;
 			} else {
 			// Λάθος.

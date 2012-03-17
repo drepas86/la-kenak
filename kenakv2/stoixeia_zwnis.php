@@ -28,15 +28,9 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 <?php find_selected_page(); ?>
 
 <?php include("includes/header_znx.php"); ?>
-<div class="topright"><img src="images/home.png" align="right"></img><a href="index.php">Βιβλιοθήκες</a><br/><a href="index_climate.php">Κλιματικά δεδομένα</a><br/><a href="index_skiaseis.php">Υπολογισμός Σκιάσεων</a><br/><a href="stoixeia_zwnis.php">Στοιχεία ζώνης</a><br/><a href="domika_kelyfos.php">Κέλυφος</a><br/><a href="kenak.php">ΚΕΝΑΚ</a></div>
+<div class="topright"><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
 <table id="structure">
 	<tr>
-		<td id="navigation">
-		<ol type="circle">
-			<li><a href="stoixeia_zwnis.php?page=1">Μέση κατανάλωση ΖΝΧ</a><br/></li>
-			<li><a href="stoixeia_zwnis.php?page=2">Διείσδυση αέρα από κουφώματα</a><br/></li>
-		</ol>	
-		</td>
 		<td id="page">
 <?php
 include("includes/apotelesmata_mesi_kat_znx.php");

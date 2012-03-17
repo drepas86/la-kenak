@@ -30,43 +30,52 @@ include ("../includes/connection.php");
 include ("../includes/functions.php");
 $namefile = $_GET['name'];
 
+
 //Το αρχείο των υπολογισμών
-include("../includes/core-calc/core_calculate.php");
+include("../includes/core-calc/core_calculate_anazwni.php");
 
 
+$strSQL = "SELECT * FROM kataskeyi_zwnes";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$arithmos_thermzwnes = mysql_num_rows($objQuery);
 
+$i = 0;
+while($objResult = mysql_fetch_array($objQuery))
+{
+$i++;
+${"thermiki_zwni".$i} = $objResult["id"];
 //Δημιουργία array σε μορφή για το xml του ΤΕΕ
 //Ορίζω τις array για τις στηλες που θα μπούν στο τεε-κενακ (15 στήλες αδιαφανών, 14 στήλες διαφανών)
-$array_adiafani_type = array();
-$array_adiafani_name = array();
-$array_adiafani_g = array();
-$array_adiafani_b = array();
-$array_adiafani_edrom = array();
-$array_adiafani_u = array();
-$array_adiafani_a = array();
-$array_adiafani_e = array();
-$array_adiafani_fhorh = array();
-$array_adiafani_fhorc = array();
-$array_adiafani_fovh = array();
-$array_adiafani_fovc = array();
-$array_adiafani_ffinh = array();
-$array_adiafani_ffinc = array();
+${"array_adiafani_type".$i} = array();
+${"array_adiafani_name".$i} = array();
+${"array_adiafani_g".$i} = array();
+${"array_adiafani_b".$i} = array();
+${"array_adiafani_edrom".$i} = array();
+${"array_adiafani_u".$i} = array();
+${"array_adiafani_a".$i} = array();
+${"array_adiafani_e".$i} = array();
+${"array_adiafani_fhorh".$i} = array();
+${"array_adiafani_fhorc".$i} = array();
+${"array_adiafani_fovh".$i} = array();
+${"array_adiafani_fovc".$i} = array();
+${"array_adiafani_ffinh".$i} = array();
+${"array_adiafani_ffinc".$i} = array();
 
-$array_diafani_type = array();
-$array_diafani_name = array();
-$array_diafani_g = array();
-$array_diafani_b = array();
-$array_diafani_edrom = array();
-$array_diafani_typos = array();
-$array_diafani_u = array();
-$array_diafani_gw = array();
-$array_diafani_fhorh = array();
-$array_diafani_fhorc = array();
-$array_diafani_fovh = array();
-$array_diafani_fovc = array();
-$array_diafani_ffinh = array();
-$array_diafani_ffinc = array();
-
+${"array_diafani_type".$i} = array();
+${"array_diafani_name".$i} = array();
+${"array_diafani_g".$i} = array();
+${"array_diafani_b".$i} = array();
+${"array_diafani_edrom".$i} = array();
+${"array_diafani_typos".$i} = array();
+${"array_diafani_u".$i} = array();
+${"array_diafani_gw".$i} = array();
+${"array_diafani_fhorh".$i} = array();
+${"array_diafani_fhorc".$i} = array();
+${"array_diafani_fovh".$i} = array();
+${"array_diafani_fovc".$i} = array();
+${"array_diafani_ffinh".$i} = array();
+${"array_diafani_ffinc".$i} = array();
+}
 
 //Για τους 4 προσανατολισμούς tων τοίχων
 for ($p=4;$p<=7;$p++){
@@ -184,46 +193,54 @@ for ($z = 1; $z <= $skiaseis_t_d; $z++){
 		}
 }
 
+
+
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+
+
+if (${"id_zwnis_".$t.$i} == ${"thermiki_zwni".$z}) { //ο τοίχος ανήκει σε αυτή τη ζώνη
+
 //Προσθήκη στο τέλος της κάθε array των τιμών για κάθε επανάληψη.
 if (${"epifaneia_toixoy_syr_".$t.$i} != 0){
-array_push($array_adiafani_type, $type_toixwn, $type_ypost, $type_syr);
-array_push($array_adiafani_name, ${"name_".$t.$i}, "Δοκοί-Υποστ. ".${"name_".$t.$i}, "Συρόμ. ".${"name_".$t.$i});
-array_push($array_adiafani_g, $prosanatolismos, $prosanatolismos, $prosanatolismos);
-array_push($array_adiafani_b, $klisi_epifaneias, $klisi_epifaneias, $klisi_epifaneias);
-array_push($array_adiafani_edrom, ${"epifaneia_dromikoy_".$t.$i}, (${"epifaneia_dokos_".$t.$i} + ${"epifaneia_ypost_".$t.$i}), ${"epifaneia_toixoy_syr_".$t.$i});
-array_push($array_adiafani_u, ${"u_".$t.$i}, ${"u_dok_".$t.$i}, ${"u_syr_".$t.$i});
-array_push($array_adiafani_a, $a_epifaneias, $a_epifaneias, $a_epifaneias);
-array_push($array_adiafani_e, $e_epifaneias, $e_epifaneias, $e_epifaneias);
-array_push($array_adiafani_fhorh, $fhorh_epifaneias, $fhorh_epifaneias, $fhorh_epifaneias);
-array_push($array_adiafani_fhorc, $fhorc_epifaneias, $fhorc_epifaneias, $fhorc_epifaneias);
-array_push($array_adiafani_fovh, $fovh_epifaneias, $fovh_epifaneias, $fovh_epifaneias);
-array_push($array_adiafani_fovc, $fovc_epifaneias, $fovc_epifaneias, $fovc_epifaneias);
-array_push($array_adiafani_ffinh, $ffinh_epifaneias, $ffinh_epifaneias, $ffinh_epifaneias);
-array_push($array_adiafani_ffinc, $ffinc_epifaneias, $ffinc_epifaneias, $ffinc_epifaneias);
+array_push(${"array_adiafani_type".$z}, $type_toixwn, $type_ypost, $type_syr);
+array_push(${"array_adiafani_name".$z}, ${"name_".$t.$i}, "Δοκοί-Υποστ. ".${"name_".$t.$i}, "Συρόμ. ".${"name_".$t.$i});
+array_push(${"array_adiafani_g".$z}, $prosanatolismos, $prosanatolismos, $prosanatolismos);
+array_push(${"array_adiafani_b".$z}, $klisi_epifaneias, $klisi_epifaneias, $klisi_epifaneias);
+array_push(${"array_adiafani_edrom".$z}, ${"epifaneia_dromikoy_".$t.$i}, (${"epifaneia_dokos_".$t.$i} + ${"epifaneia_ypost_".$t.$i}), ${"epifaneia_toixoy_syr_".$t.$i});
+array_push(${"array_adiafani_u".$z}, ${"u_".$t.$i}, ${"u_dok_".$t.$i}, ${"u_syr_".$t.$i});
+array_push(${"array_adiafani_a".$z}, $a_epifaneias, $a_epifaneias, $a_epifaneias);
+array_push(${"array_adiafani_e".$z}, $e_epifaneias, $e_epifaneias, $e_epifaneias);
+array_push(${"array_adiafani_fhorh".$z}, $fhorh_epifaneias, $fhorh_epifaneias, $fhorh_epifaneias);
+array_push(${"array_adiafani_fhorc".$z}, $fhorc_epifaneias, $fhorc_epifaneias, $fhorc_epifaneias);
+array_push(${"array_adiafani_fovh".$z}, $fovh_epifaneias, $fovh_epifaneias, $fovh_epifaneias);
+array_push(${"array_adiafani_fovc".$z}, $fovc_epifaneias, $fovc_epifaneias, $fovc_epifaneias);
+array_push(${"array_adiafani_ffinh".$z}, $ffinh_epifaneias, $ffinh_epifaneias, $ffinh_epifaneias);
+array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias, $ffinc_epifaneias, $ffinc_epifaneias);
 }
 if (${"epifaneia_toixoy_syr_".$t.$i} == 0){
-array_push($array_adiafani_type, $type_toixwn, $type_ypost);
-array_push($array_adiafani_name, ${"name_".$t.$i}, "Δοκοί-Υποστ. ".${"name_".$t.$i});
-array_push($array_adiafani_g, $prosanatolismos, $prosanatolismos);
-array_push($array_adiafani_b, $klisi_epifaneias, $klisi_epifaneias);
-array_push($array_adiafani_edrom, ${"epifaneia_dromikoy_".$t.$i}, (${"epifaneia_dokos_".$t.$i} + ${"epifaneia_ypost_".$t.$i}));
-array_push($array_adiafani_u, ${"u_".$t.$i}, ${"u_dok_".$t.$i});
-array_push($array_adiafani_a, $a_epifaneias, $a_epifaneias);
-array_push($array_adiafani_e, $e_epifaneias, $e_epifaneias);
-array_push($array_adiafani_fhorh, $fhorh_epifaneias, $fhorh_epifaneias);
-array_push($array_adiafani_fhorc, $fhorc_epifaneias, $fhorc_epifaneias);
-array_push($array_adiafani_fovh, $fovh_epifaneias, $fovh_epifaneias);
-array_push($array_adiafani_fovc, $fovc_epifaneias, $fovc_epifaneias);
-array_push($array_adiafani_ffinh, $ffinh_epifaneias, $ffinh_epifaneias);
-array_push($array_adiafani_ffinc, $ffinc_epifaneias, $ffinc_epifaneias);
+array_push(${"array_adiafani_type".$z}, $type_toixwn, $type_ypost);
+array_push(${"array_adiafani_name".$z}, ${"name_".$t.$i}, "Δοκοί-Υποστ. ".${"name_".$t.$i});
+array_push(${"array_adiafani_g".$z}, $prosanatolismos, $prosanatolismos);
+array_push(${"array_adiafani_b".$z}, $klisi_epifaneias, $klisi_epifaneias);
+array_push(${"array_adiafani_edrom".$z}, ${"epifaneia_dromikoy_".$t.$i}, (${"epifaneia_dokos_".$t.$i} + ${"epifaneia_ypost_".$t.$i}));
+array_push(${"array_adiafani_u".$z}, ${"u_".$t.$i}, ${"u_dok_".$t.$i});
+array_push(${"array_adiafani_a".$z}, $a_epifaneias, $a_epifaneias);
+array_push(${"array_adiafani_e".$z}, $e_epifaneias, $e_epifaneias);
+array_push(${"array_adiafani_fhorh".$z}, $fhorh_epifaneias, $fhorh_epifaneias);
+array_push(${"array_adiafani_fhorc".$z}, $fhorc_epifaneias, $fhorc_epifaneias);
+array_push(${"array_adiafani_fovh".$z}, $fovh_epifaneias, $fovh_epifaneias);
+array_push(${"array_adiafani_fovc".$z}, $fovc_epifaneias, $fovc_epifaneias);
+array_push(${"array_adiafani_ffinh".$z}, $ffinh_epifaneias, $ffinh_epifaneias);
+array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias, $ffinc_epifaneias);
 }
 
+}//ο τοίχος δεν ανήκει σε αυτή τη ζώνη
+}//τελειώνει η επανάληψη για τις ζώνες
 
 
+}//τελειώνει η επανάληψη των τοίχων
 
-}
-
-}
+}//τελειώνει η επανάληψη των προσανατολισμών
 
 /*
 $array_diafani_type = array();
@@ -398,54 +415,64 @@ $typos_an = "Επάλληλη πόρτα";
 }//Επάλληλη πόρτα
 
 
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+
+$id_zwnis_an_array = get_times("id_zwnis", "kataskeyi_t_".$t, ${$an."id_toixoy".$i});
+$id_zwnis_an = $id_zwnis_an_array[0][0];
+if ($id_zwnis_an == ${"thermiki_zwni".$z}) {
+
 
 //Εάν το άνοιγμα είναι μασίφ πέρνα το στις array αδιαφανών
 if (${$an."anoig_eidos".$i} == 1) {
 $epifaneia_anoigmatos = ${"epifaneia_masif_".$t.$i};
-array_push($array_adiafani_type, $type_anoigmatwn);
-array_push($array_adiafani_name, ${$an."name".$i});
-array_push($array_adiafani_g, $prosanatolismos);
-array_push($array_adiafani_b, $klisi_an);
-array_push($array_adiafani_edrom, $epifaneia_anoigmatos);
-array_push($array_adiafani_u, ${$an."anoig_u".$i});
-array_push($array_adiafani_a, "0.80");
-array_push($array_adiafani_e, "0.80");
-array_push($array_adiafani_fhorh, $fhorh_an);
-array_push($array_adiafani_fhorc, $fhorc_an);
-array_push($array_adiafani_fovh, $fovh_an);
-array_push($array_adiafani_fovc, $fovc_an);
-array_push($array_adiafani_ffinh, $ffinh_an);
-array_push($array_adiafani_ffinc, $ffinc_an);
+array_push(${"array_adiafani_type".$z}, $type_anoigmatwn);
+array_push(${"array_adiafani_name".$z}, ${$an."name".$i});
+array_push(${"array_adiafani_g".$z}, $prosanatolismos);
+array_push(${"array_adiafani_b".$z}, $klisi_an);
+array_push(${"array_adiafani_edrom".$z}, $epifaneia_anoigmatos);
+array_push(${"array_adiafani_u".$z}, ${$an."anoig_u".$i});
+array_push(${"array_adiafani_a".$z}, "0.80");
+array_push(${"array_adiafani_e".$z}, "0.80");
+array_push(${"array_adiafani_fhorh".$z}, $fhorh_an);
+array_push(${"array_adiafani_fhorc".$z}, $fhorc_an);
+array_push(${"array_adiafani_fovh".$z}, $fovh_an);
+array_push(${"array_adiafani_fovc".$z}, $fovc_an);
+array_push(${"array_adiafani_ffinh".$z}, $ffinh_an);
+array_push(${"array_adiafani_ffinc".$z}, $ffinc_an);
 }
 
 //Εάν το άνοιγμα δεν είναι μασίφ (όλες οι άλλες περιπτώσεις) πέρνα το στις array διαφανών
 if (${$an."anoig_eidos".$i} != 1) {
 $epifaneia_anoigmatos = ${"epifaneia_anoigmatos_".$t.$i};
-array_push($array_diafani_type, $type_anoigmatwn);
-array_push($array_diafani_name, ${$an."name".$i});
-array_push($array_diafani_g, $prosanatolismos);
-array_push($array_diafani_b, $klisi_an);
-array_push($array_diafani_edrom, $epifaneia_anoigmatos);
-array_push($array_diafani_typos, $typos_an);
-array_push($array_diafani_u, ${$an."anoig_u".$i});
-array_push($array_diafani_gw, $gw_an);
-array_push($array_diafani_fhorh, $fhorh_an);
-array_push($array_diafani_fhorc, $fhorc_an);
-array_push($array_diafani_fovh, $fovh_an);
-array_push($array_diafani_fovc, $fovc_an);
-array_push($array_diafani_ffinh, $ffinh_an);
-array_push($array_diafani_ffinc, $ffinc_an);
+array_push(${"array_diafani_type".$z}, $type_anoigmatwn);
+array_push(${"array_diafani_name".$z}, ${$an."name".$i});
+array_push(${"array_diafani_g".$z}, $prosanatolismos);
+array_push(${"array_diafani_b".$z}, $klisi_an);
+array_push(${"array_diafani_edrom".$z}, $epifaneia_anoigmatos);
+array_push(${"array_diafani_typos".$z}, $typos_an);
+array_push(${"array_diafani_u".$z}, ${$an."anoig_u".$i});
+array_push(${"array_diafani_gw".$z}, $gw_an);
+array_push(${"array_diafani_fhorh".$z}, $fhorh_an);
+array_push(${"array_diafani_fhorc".$z}, $fhorc_an);
+array_push(${"array_diafani_fovh".$z}, $fovh_an);
+array_push(${"array_diafani_fovc".$z}, $fovc_an);
+array_push(${"array_diafani_ffinh".$z}, $ffinh_an);
+array_push(${"array_diafani_ffinc".$z}, $ffinc_an);
 }
 
 
-}
-}
+}//το άνοιγμα ανήκει σε αυτή τη ζώνη
+}//τελειώνει η επανάληψη των θερμικών ζωνών
+
+}//τελειώνει η επανάληψη των ανοιγμάτων
+}//τελειώνει η επανάληψη των προσανατολισμών
 
 
 //Μετράω τις γραμμές
-$count_adiafani = count($array_adiafani_type);
-$count_diafani = count($array_diafani_type);
- 
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+${"count_adiafani".$z} = count(${"array_adiafani_type".$z});
+${"count_diafani".$z} = count(${"array_diafani_type".$z});
+}
  
  
  
@@ -459,11 +486,21 @@ require_once '../includes/PHPExcel.php';
 echo date('H:i:s') . " Νέο PHPExcel object\n";
 $objPHPExcel = new PHPExcel();
 
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 //Αντίγραφο του πρώτου στυλ φύλλου σε ένα 2ο όπου θα προστεθούν μετά τα αδιαφανή.
 $objWorkSheetBase = $objPHPExcel->getSheet();
-$objWorkSheet1 = clone $objWorkSheetBase;
-$objWorkSheet1->setTitle('Cloned Sheet');
-$objPHPExcel->addSheet($objWorkSheet1);
+${"objWorkSheet".$z} = clone $objWorkSheetBase;
+${"objWorkSheet".$z}->setTitle('sheet'.$z);
+$objPHPExcel->addSheet(${"objWorkSheet".$z});
+
+$objWorkSheetBase = $objPHPExcel->getSheet();
+${"objWorkSheet".$z+1} = clone $objWorkSheetBase;
+${"objWorkSheet".$z+1}->setTitle('sheet'.$z);
+$objPHPExcel->addSheet(${"objWorkSheet".$z+1});
+}
+
+// Ενεργό το φύλλο 1
+$objPHPExcel->setActiveSheetIndex(0);
 
 // Set properties
 $objPHPExcel->getProperties()->setCreator("la-kenak")
@@ -475,54 +512,60 @@ $objPHPExcel->getProperties()->setCreator("la-kenak")
 							 ->setCategory("Domika result file");
 
 
-for ($i=1; $i<=$count_diafani; $i++){
-$objPHPExcel->setActiveSheetIndex(1)
-            ->setCellValue("A".$i, $array_diafani_type[$i-1])
-			->setCellValue("B".$i, $array_diafani_name[$i-1])
-			->setCellValue("C".$i, $array_diafani_g[$i-1])
-			->setCellValue("D".$i, $array_diafani_b[$i-1])
-			->setCellValue("E".$i, $array_diafani_edrom[$i-1])
-			->setCellValue("F".$i, $array_diafani_typos[$i-1])
-			->setCellValue("G".$i, $array_diafani_u[$i-1])
-			->setCellValue("H".$i, $array_diafani_gw[$i-1])
-			->setCellValue("I".$i, $array_diafani_fhorh[$i-1])
-			->setCellValue("J".$i, $array_diafani_fhorc[$i-1])
-			->setCellValue("K".$i, $array_diafani_fovh[$i-1])
-			->setCellValue("L".$i, $array_diafani_fovc[$i-1])
-			->setCellValue("M".$i, $array_diafani_ffinh[$i-1])
-			->setCellValue("N".$i, $array_diafani_ffinc[$i-1]);
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+
+for ($i=1; $i<=${"count_diafani".$z}; $i++){
+$objPHPExcel->setActiveSheetIndex($z)
+            ->setCellValue("A".$i, ${"array_diafani_type".$z}[$i-1])
+			->setCellValue("B".$i, ${"array_diafani_name".$z}[$i-1])
+			->setCellValue("C".$i, ${"array_diafani_g".$z}[$i-1])
+			->setCellValue("D".$i, ${"array_diafani_b".$z}[$i-1])
+			->setCellValue("E".$i, ${"array_diafani_edrom".$z}[$i-1])
+			->setCellValue("F".$i, ${"array_diafani_typos".$z}[$i-1])
+			->setCellValue("G".$i, ${"array_diafani_u".$z}[$i-1])
+			->setCellValue("H".$i, ${"array_diafani_gw".$z}[$i-1])
+			->setCellValue("I".$i, ${"array_diafani_fhorh".$z}[$i-1])
+			->setCellValue("J".$i, ${"array_diafani_fhorc".$z}[$i-1])
+			->setCellValue("K".$i, ${"array_diafani_fovh".$z}[$i-1])
+			->setCellValue("L".$i, ${"array_diafani_fovc".$z}[$i-1])
+			->setCellValue("M".$i, ${"array_diafani_ffinh".$z}[$i-1])
+			->setCellValue("N".$i, ${"array_diafani_ffinc".$z}[$i-1]);
+}
+// Αλλαγή ονόματος του φύλλου 1
+$objPHPExcel->getActiveSheet()->setTitle('DIAFAN-zwni'.$z);
 }
 
-// Αλλαγή ονόματος του φύλλου 1
-$objPHPExcel->getActiveSheet()->setTitle('TEE-DIAFANI');
 
 
 //ΦΥΛΛΟ ΑΝΟΙΓΜΑΤΩΝ
-//Ενεργό το 2ο φύλλο
-$objPHPExcel->setActiveSheetIndex(1);
 
-for ($i=1; $i<=$count_adiafani; $i++){
-$objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue("A".$i, $array_adiafani_type[$i-1])
-			->setCellValue("B".$i, $array_adiafani_name[$i-1])
-			->setCellValue("C".$i, $array_adiafani_g[$i-1])
-			->setCellValue("D".$i, $array_adiafani_b[$i-1])
-			->setCellValue("E".$i, $array_adiafani_edrom[$i-1])
-			->setCellValue("F".$i, $array_adiafani_u[$i-1])
-			->setCellValue("G".$i, $array_adiafani_a[$i-1])
-			->setCellValue("H".$i, $array_adiafani_e[$i-1])
-			->setCellValue("I".$i, $array_adiafani_fhorh[$i-1])
-			->setCellValue("J".$i, $array_adiafani_fhorc[$i-1])
-			->setCellValue("K".$i, $array_adiafani_fovh[$i-1])
-			->setCellValue("L".$i, $array_adiafani_fovc[$i-1])
-			->setCellValue("M".$i, $array_adiafani_ffinh[$i-1])
-			->setCellValue("N".$i, $array_adiafani_ffinc[$i-1]);
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+
+$objPHPExcel->setActiveSheetIndex($arithmos_thermzwnes+$z);
+
+for ($i=1; $i<=${"count_adiafani".$z}; $i++){
+$objPHPExcel->setActiveSheetIndex($arithmos_thermzwnes+$z)
+            ->setCellValue("A".$i, ${"array_adiafani_type".$z}[$i-1])
+			->setCellValue("B".$i, ${"array_adiafani_name".$z}[$i-1])
+			->setCellValue("C".$i, ${"array_adiafani_g".$z}[$i-1])
+			->setCellValue("D".$i, ${"array_adiafani_b".$z}[$i-1])
+			->setCellValue("E".$i, ${"array_adiafani_edrom".$z}[$i-1])
+			->setCellValue("F".$i, ${"array_adiafani_u".$z}[$i-1])
+			->setCellValue("G".$i, ${"array_adiafani_a".$z}[$i-1])
+			->setCellValue("H".$i, ${"array_adiafani_e".$z}[$i-1])
+			->setCellValue("I".$i, ${"array_adiafani_fhorh".$z}[$i-1])
+			->setCellValue("J".$i, ${"array_adiafani_fhorc".$z}[$i-1])
+			->setCellValue("K".$i, ${"array_adiafani_fovh".$z}[$i-1])
+			->setCellValue("L".$i, ${"array_adiafani_fovc".$z}[$i-1])
+			->setCellValue("M".$i, ${"array_adiafani_ffinh".$z}[$i-1])
+			->setCellValue("N".$i, ${"array_adiafani_ffinc".$z}[$i-1]);
+}
+// Αλλαγή ονόματος του φύλλου 2
+$objPHPExcel->getActiveSheet()->setTitle('ADIAF-zwni'.$z);
 }
 
 
 
-// Αλλαγή ονόματος του φύλλου 2
-$objPHPExcel->getActiveSheet()->setTitle('TEE-ADIAFANI');
 
 // Ενεργό το φύλλο 1
 $objPHPExcel->setActiveSheetIndex(0);

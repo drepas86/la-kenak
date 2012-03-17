@@ -63,10 +63,16 @@ target="_blank"><img src="./images/domika/pdf1.png" width="40px" height="40px" t
 
 	
 
+
+<div id="tabvanilla" class="widget" style="height:100%;">
+
+<div id="wait">
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<center><img src="images/domika/loading.gif" /></center>
+</div>
+
 <?php
-
 include_once("print_teyxos_read.php");
-
 $strSQL = "SELECT * FROM teyxos_f";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 while($objResult[] = mysql_fetch_array($objQuery));
@@ -78,11 +84,12 @@ $kef5=$objResult[4]["text"];
 $kef6=$objResult[5]["text"];
 $kef7=$objResult[6]["text"];
 $kef8=$objResult[7]["text"];
-
-
 ?>	
 
-<div id="tabvanilla" class="widget">
+<script type="text/javascript">
+	document.getElementById('wait').innerHTML="";
+</script>
+
 <ul class="tabnav">
 <?php
 for ($i=1;$i<=8;$i++){
@@ -104,7 +111,7 @@ echo"<div id=\"container\" style=\"background:#eee;border:1px solid #000000;padd
 echo"<textarea name=\"kef".$j."a\" id=\"kef".$j."a\" >".${'kef'.$j}."</textarea>";
 echo"<script type=\"text/javascript\">CKEDITOR.replace('kef".$j."a');</script>";
 echo"<input type=\"hidden\" name=\"kef\" value=\"".$j."\"><br/>";
-echo"</div><input type=\"submit\" value=\"Αποθήκευση Κεφαλαίου\" />";
+echo"</div>";
 echo"</form></div>";
 }
 echo "</div>";

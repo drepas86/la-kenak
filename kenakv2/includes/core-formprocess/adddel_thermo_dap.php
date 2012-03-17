@@ -38,7 +38,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή χώρου επιτυχής.";
-	?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-thermo"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=11#tab-thermo"</script><?php
 }
 
 	
@@ -60,7 +60,7 @@ if (isset($_POST['prosthiki_therm_dap'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Τροποποιήθηκε η θερμογέφυρα δαπέδου και η περίμετρος δαπέδου επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=2#tab-thermo"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=11#tab-thermo"</script><?php
 			} else {
 			// Λάθος.
 			echo "<p>Λάθος κατά την είσοδο δεδομένων στη βάση για τη θερμογέφυρα δαπέδου.</p>";

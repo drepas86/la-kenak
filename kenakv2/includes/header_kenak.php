@@ -112,6 +112,5 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	</head>
 	<body onload=get_active();>
 		<div id="header">
-			<h1><a href=index.php>La-Kenak v<?php echo VERSION; ?> - Μελέτη ΚΕΝΑΚ</a></h1>
 		</div>
-<!--		<div id="main"> -->
+<?php include ('menu.php'); ?>

@@ -29,25 +29,9 @@ find_selected_page();
 include("includes/header_kenak.php"); 
 ?>
 
-<div class="topright"><img src="images/home.png" align="right"></img><a href="index.php">Βιβλιοθήκες</a><br/><a href="index_climate.php">Κλιματικά δεδομένα</a><br/><a href="index_skiaseis.php">Υπολογισμός Σκιάσεων</a><br/><a href="stoixeia_zwnis.php">Στοιχεία ζώνης</a><br/><a href="domika_kelyfos.php">Κέλυφος</a><br/><a href="kenak.php">ΚΕΝΑΚ</a></div>
+<div class="topright"><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
 <table id="structure">
 	<tr>
-		<td id="navigation">
-		<ol type="circle">
-			<!--<li><a href="kenak.php?page=1">ΚΕΝΑΚ Υπολογισμοί</a><br/></li>-->
-			<li><a href="kenak.php?page=9">Αποθήκευση/Ανάκτηση</a><br/></li>
-			<li><a href="kenak.php?page=2">Γενικά στοιχεία</a><br/></li>
-			<li><a href="kenak.php?page=11">Θερμικές ζώνες</a><br/></li>
-			<li><a href="kenak.php?page=10">Συστήματα</a><br/></li>
-			<li><a href="kenak.php?page=3">Δομικά στοιχεία</a><br/></li>
-			<li><a href="kenak.php?page=4">Ανοίγματα</a><br/></li>
-			<li><a href="kenak.php?page=7">Σκιάσεις Τοίχων</a><br/></li>
-			<li><a href="kenak.php?page=8">Σκιάσεις Ανοιγμάτων</a><br/></li>
-			<li><a href="kenak.php?page=5">Τεύχος</a><br/></li>
-			<li><a href="kenak.php?page=6">Αποτελέσματα</a><br/></li>
-		</ol>	
-			<div id="imgs" style="width:50%;margin-left:auto;margin-right:auto;"></div>
-		</td>
 		<td id="page">
 
 <?php //το αρχείο των υπολογισμών αν υποβλήθηκε η φόρμα στο πρώτο στοιχείο του μενού. Ανενεργό
@@ -77,25 +61,25 @@ include("includes/core-formprocess/adddel_zwnwn.php");
 //include("includes/kenak_form1.php");
 
 //ΜΕΝΟΥ-ΑΠΟΘΗΚΕΥΣΗ-ΑΝΑΚΤΗΣΗ
-include("includes/kenak_saverestore.php");
+include("includes/kenak_menu_saverestore.php");
 //ΜΕΝΟΥ-ΓΕΝΙΚΑ ΣΤΟΙΧΕΙΑ
-include("includes/kenak_form2.php");
+include("includes/kenak_menu_stoixeia.php");
 //ΜΕΝΟΥ-ΘΕΡΜΙΚΕΣ ΖΩΝΕΣ
-include("includes/kenak_zwnes.php");
+include("includes/kenak_menu_zwnes.php");
 //ΜΕΝΟΥ-ΣΥΣΤΗΜΑΤΑ
-include("includes/kenak_form_hm.php");
+include("includes/kenak_menu_hm.php");
 //ΜΕΝΟΥ-ΔΟΜΙΚΑ ΣΤΟΙΧΕΙΑ (ΤΟΙΧΟΙ)
-include("includes/kenak_form3.php");
+include("includes/kenak_menu_t.php");
 //ΜΕΝΟΥ-ΑΝΟΙΓΜΑΤΑ
-include("includes/kenak_form4.php");
+include("includes/kenak_menu_an.php");
 //ΜΕΝΟΥ-ΣΚΙΑΣΕΙΣ ΤΟΙΧΩΝ
-include("includes/kenak_skiaseis_t.php");
+include("includes/kenak_menu_sk_t.php");
 //ΜΕΝΟΥ-ΣΚΙΑΣΕΙΣ ΑΝΟΙΓΜΑΤΩΝ
-include("includes/kenak_skiaseis_an.php");
+include("includes/kenak_menu_sk_an.php");
 //ΜΕΝΟΥ-ΤΕΥΧΟΣ
-include("includes/kenak_formteyxos.php");
-//ΜΕΝΟΥ-ΠΡΟΕΠΙΣΚΟΠΙΣΗ ΑΠΟΤΕΛΕΣΜΑΤΩΝ - DOCX-XLSX
-include("includes/kenak_form5.php");
+include("includes/kenak_menu_teyxos.php");
+//ΜΕΝΟΥ-ΠΡΟΕΠΙΣΚΟΠΙΣΗ ΑΠΟΤΕΛΕΣΜΑΤΩΝ - DOCX-XLSX - DISCONTINUED
+//include("includes/kenak_form5.php");
 
 
 

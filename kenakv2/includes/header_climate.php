@@ -35,5 +35,5 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	</head>
 	<body>
 		<div id="header">
-			<h1><a href=index.php>La-Kenak v<?php echo VERSION; ?> - Κλιματικά δεδομένα</a></h1>
 		</div>
+<?php include ('menu.php'); ?>

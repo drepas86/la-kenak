@@ -56,13 +56,23 @@ if (isset($_POST['prosthiki_zwnis'])) {
 		$prosthiki_name = trim(mysql_prep($_POST['prosthiki_name']));
 		$prosthiki_xrisi = trim(mysql_prep($_POST['prosthiki_xrisi']));
 		$prosthiki_thermoeparkeia = trim(mysql_prep($_POST['prosthiki_thermoeparkeia']));
+		$prosthiki_anigmeni_thermo = trim(mysql_prep($_POST['prosthiki_anigmeni_thermo']));
+		$prosthiki_aytomatismoi = trim(mysql_prep($_POST['prosthiki_aytomatismoi']));
+		$prosthiki_kaminades = trim(mysql_prep($_POST['prosthiki_kaminades']));
+		$prosthiki_eksaerismos = trim(mysql_prep($_POST['prosthiki_eksaerismos']));
+		$prosthiki_anem_orofis = trim(mysql_prep($_POST['prosthiki_anem_orofis']));
 
 			$query = "INSERT INTO kataskeyi_zwnes ";
-			$query .= "(name, xrisi, thermoeparkeia)";
+			$query .= "(name, xrisi, thermoeparkeia, anigmeni_thermo, aytomatismoi, kaminades, eksaerismos, anem_orofis)";
 			$query .= "VALUES ('";
 			$query .= $prosthiki_name . "', '";
 			$query .= $prosthiki_xrisi . "', '";
-			$query .= $prosthiki_thermoeparkeia . "')";
+			$query .= $prosthiki_thermoeparkeia . "', '";
+			$query .= $prosthiki_anigmeni_thermo . "', '";
+			$query .= $prosthiki_aytomatismoi . "', '";
+			$query .= $prosthiki_kaminades . "', '";
+			$query .= $prosthiki_eksaerismos . "', '";
+			$query .= $prosthiki_anem_orofis . "')";
 			
 			$result = mysql_query($query);
 			if ($result) {

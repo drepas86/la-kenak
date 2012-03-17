@@ -1,6 +1,6 @@
 
 <table style="border:0px;width:100%"><tr><td >
-<img style="position:absolute;left:220px;top:170px;z-index:0;" src="images/intro.png" />
+<img style="position:absolute;left:20px;top:170px;z-index:0;" src="images/intro.png" />
 		<h2>Welcome to La-Kenak v.<?=VERSION?> </h2>
 		<div id="timeline" >
 		<ul id="dates">
