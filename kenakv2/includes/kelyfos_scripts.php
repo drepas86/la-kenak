@@ -42,6 +42,9 @@ function set_default(){
 function help_an(){
 $.colorbox({inline:true, href:"#help_an"});
 }
+function help_dom(){
+$.colorbox({inline:true, href:"#help_box"});
+}
 
 function number_format (number, decimals, dec_point, thousands_sep) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
@@ -106,6 +109,7 @@ $.colorbox({inline:true, href:"#read_an"});
 function read_an1(){
 $.fn.colorbox.close();
 document.getElementById("an_name").value=document.getElementById("an_rec").options[document.getElementById("an_rec").selectedIndex].text;
+document.getElementById('anoig').innerHTML=document.getElementById("an_name").value;
 var rec=document.getElementById('an_rec').value;
 var x=rec.split("^");
 if (isNaN(x[4])){x[4]="";}
@@ -127,7 +131,6 @@ for (i=1;i<=5;i++){
 }
 getpane();
 checkall();
-document.getElementById('anoig').innerHTML=document.getElementById('an_rec').options[document.getElementById('an_rec').selectedIndex].text;
 }
 
 function save_an(){
@@ -195,6 +198,13 @@ $.fn.colorbox.close();
 function savewall(){
 var p="";
 var i;
+var name=document.getElementById("descr").value;
+var kind=document.getElementById("Ria").selectedIndex;
+
+if (kind<1){alert("Δεν έχετε επιλέξει αντιστάσεις θερμικής μετάβασης");return;}
+if (trim(name)==""){alert("Δεν έχετε συμπληρώσει την περιγραφή του στοιχείου");return;}
+
+
 for (i=1;i<=10;i++){
 	var t=document.getElementById("paxos"+i).value;
 	if (isNaN(t)) {t="0";}
@@ -216,7 +226,7 @@ for (i=1;i<=10;i++){
 }
 var u=document.getElementById("U").value;
 var d=document.getElementById("sum2").value;
-var x="includes/save_wall.php?paxh="+p+"&wid="+wallid+"&fid="+floorid+"&strwseis="+s+"&u="+u+"&d="+d;
+var x="includes/save_wall.php?paxh="+p+"&wid="+wallid+"&fid="+floorid+"&name="+name+"&kind="+kind+"&strwseis="+s+"&u="+u+"&d="+d;
 document.getElementById('inline_content1').innerHTML="<img src=\""+x+"\"></img>";
 document.getElementById('inline_content1').innerHTML="<center>Το δομικό στοιχείο αποθηκεύθηκε</center>";
 $.colorbox({inline:true, width:"30%", href:"#inline_content1"});
@@ -449,7 +459,9 @@ document.getElementById("sum5").value=sol;
 if (sol>0){
 u=1/sol;
 u=u.toFixed(3)
+var ut=document.getElementById("U").value;
 document.getElementById("U").value=u;
+if (ut!==u){showgraph(0);}
 }else{
 document.getElementById("U").value="";
 }
@@ -678,6 +690,15 @@ function checkall(){
 
 var p=document.getElementById("an_zwni").value;
 document.getElementById('an_umax').innerHTML="<b>&nbsp;Umax ανοιγμάτων="+p+"</b>";
+
+for (i=1;i<=10;i++){
+	document.getElementById("ae"+i).value="";
+	document.getElementById("ye"+i).value="";
+	document.getElementById("pe"+i).value="";
+	document.getElementById("pp"+i).value="";
+	document.getElementById("lg"+i).value="";
+	document.getElementById("uw"+i).value="";
+}
 
 for (i=1;i<=10;i++){
 	if (get_u(i)==1){break;}

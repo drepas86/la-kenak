@@ -72,7 +72,7 @@ target="_blank"><img src="./images/domika/pdf1.png" width="40px" height="40px" t
 </div>
 
 <?php
-include_once("print_teyxos_read.php");
+include_once("print_teyxos_read_anazwni.php");
 $strSQL = "SELECT * FROM teyxos_f";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 while($objResult[] = mysql_fetch_array($objQuery));

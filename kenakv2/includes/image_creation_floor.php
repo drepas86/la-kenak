@@ -39,6 +39,7 @@ tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 		//πάρε τις τιμές
 
 include ('database.php');
+require_once("connection.php");
 
 	for ($i = 1; $i <= 10; $i++) {
 		${"paxos".$i}=$_GET["pax".$i];
@@ -58,6 +59,7 @@ include ('database.php');
 	$rd=$_GET["rd"];
 	$umax=$_GET["umax"];
 	$floor=$_GET["floor"];
+	
 if ($pout==1){
 
 ?>
@@ -78,6 +80,24 @@ ob_flush();
 flush();
 
 }		
+$ylika=array();
+$ylika[1]='epifstraera';
+$ylika[2]='beton';
+$ylika[3]='epixrismata';
+$ylika[4]='gypsosanides';
+$ylika[5]='keramidia';
+$ylika[6]='ksyleia';
+$ylika[7]='monwtika';
+$ylika[8]='monwtikadow';
+$ylika[9]='plakes';
+$ylika[10]='skyrodemata';
+$ylika[11]='toyvla';
+$ylika[12]='ygromonwseis';
+$ylika[13]='diafora';
+
+
+include ('hatch.php');
+$values = array();
 	
 // θέσε HTTP header type σε PNG
 header("Content-type: image/png");
@@ -121,38 +141,25 @@ for ($i = 1; $i <= 10; $i++) {
 for ($i = 10; $i >= 1; $i--) {
 	if (${"paxos".$i}>0){
 		$l -= ${"paxos".$i}*500;
-		if (${"eidos".$i}=="7" || ${"eidos".$i}=="8"){
-			$src = @imagecreatefromjpeg('../images/domika/insulH.jpg');
-			imagecopyresized($im, $src, 30 ,$l,  0, 0 ,200, ${"paxos".$i}*500, 200, 34);
-			ImageDestroy($src);
-		}
-		if (${"eidos".$i}=="2" || ${"eidos".$i}=="10"){
-			$src = @imagecreatefromjpeg('../images/domika/concrH.jpg');
-			imagecopyresized($im, $src, 30, $l,  0, 0, 200, ${"paxos".$i}*500, 200, 99);
-			ImageDestroy($src);
-		}
-		if (${"eidos".$i}=="3"){
-			$src = @imagecreatefromjpeg('../images/domika/plasterH.jpg');
-			imagecopyresized($im, $src, 30, $l,  0, 0, 200, ${"paxos".$i}*500, 200, 10);
-			ImageDestroy($src);
-		}
-		if (${"eidos".$i}=="6"){
-			$src = @imagecreatefromjpeg('../images/domika/woodH.jpg');
-			imagecopyresized($im, $src, 30, $l,  0, 0, 200, ${"paxos".$i}*500, 200, 10);
-			ImageDestroy($src);
-		}
-		if (${"eidos".$i}=="5"){
-			$src = @imagecreatefromjpeg('../images/domika/tile.jpg');
-			imagecopyresized($im, $src, 30, $l,  0, 0, 200, ${"paxos".$i}*500, 200, 10);
-			ImageDestroy($src);
-		}
-		if (${"eidos".$i}=="9"){
-			$src = @imagecreatefromjpeg('../images/domika/tile1.jpg');
-			imagecopyresized($im, $src, 30, $l,  0, 0, 200, ${"paxos".$i}*500, 200, 10);
-			ImageDestroy($src);
-		}
+		$strSQL = "SELECT * FROM domika_ylika_" . $ylika[${"eidos".$i}]." WHERE name='".${"strwsin".$i}."'";
+		$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+		while($objResult = mysql_fetch_array($objQuery)){$hatch=$ha[$objResult["hatch"]];}
+		$imagebg = imageCreateFromPNG ($hatch);
+		imageSetTile ($im, $imagebg);
+		$values[0]=30;
+		$values[1]=$l;
+		$values[2]=230;
+		$values[3]=$l;
+		$values[4]=230;
+		$values[5]=$l+${"paxos".$i}*500;
+		$values[6]=30;
+		$values[7]=$l+${"paxos".$i}*500;
+		imagefilledpolygon($im, $values, 4, IMG_COLOR_TILED);
+		imagepolygon($im, $values, 4, $black);
+		imagedestroy ($imagebg);
 	}
 }
+
 $l=$height-20;
 $c=250;
 imagecopyresized($im, $linev, 30,$l, 0, 0, 200,1,200,1);

@@ -64,9 +64,7 @@ if (isset($_POST['prosthiki_stoixeia'])) {
 			$query .= " nero_dikt=";
 			$query .= "'" . $prosthiki_nero_dikt . "',";
 			$query .= " velt_klisi=";
-			$query .= "'" . $prosthiki_velt_klisi . "',";
-			$query .= " iliakos=";
-			$query .= "'" . $prosthiki_iliakos . "'";
+			$query .= "'" . $prosthiki_velt_klisi . "'";
 			$query .= " WHERE id=1";
 			$result = mysql_query($query);
 			if ($result) {

@@ -48,10 +48,19 @@ if (!isset($paxos)) $paxos="";
 	add_column_if_not_exist("domika_ylika_ygromonwseis", "hatch", "INT(2)");
 ?>
 	  <script type="text/javascript">
-		document.getElementById('imgs').innerHTML="<img src=\"images/style/wall1.png\"></img><img src=\"images/style/floor.png\"></img><img src=\"images/style/roof.png\"></img>";
+<!--document.getElementById('imgs').innerHTML="<img src=\"images/style/wall1.png\"></img><img src=\"images/style/floor.png\"></img><img src=\"images/style/roof.png\"></img>";-->
+		floorid=0;
+		wallid=0;
 	  </script>
-	  <h2>Υπολογισμός U δομικού στοιχείου</h2>
-	  <div id="tab-toix" class="tabdiv1"> 
+		<table width=100%><tr><td style="width:55%;vertical-align:middle;"><h2>Υπολογισμός U δομικού στοιχείου</h2></td>
+		<td style="width:2%;vertical-align:middle;"><img src="./images/domika/save1.png" width="32px" height="32px" title="αποθήκευση" style="cursor:pointer;" onclick=savewall(); /></td>
+		<td style="width:2%;vertical-align:middle;"><img src="./images/domika/load.png" width="32px" height="32px" title="ανάκτηση" style="cursor:pointer;" onclick=getwall(); /></td>
+		<td style="width:5%;vertical-align:middle;"><img src="./images/domika/print.png" width="32px" height="32px" title="εκτύπωση" style="cursor:pointer;" onclick=showgraph(1); /></td>
+		<td style="width:5%;vertical-align:middle;"><img src="./images/domika/qm.png" title="οδηγίες" style="cursor:pointer;" onclick=help_dom(); /></td>
+		<td style="width:31%;vertical-align:middle;">&nbsp;</td>
+		</tr></table>
+
+	  <div id="tab-toix" class="tabdiv1" style="background-image: url(images/style/beige.png);" > 
 			<form name="form_strwseis" accept-charset="utf-8" action="domika_kelyfos.php" method="post">
 					<table border=0><tr><td>
 					<b>Δομικό Στοιχείο: </b><input type="text" name="descr" id="descr" size="70" value="" />&nbsp;</td><td>
@@ -62,15 +71,21 @@ if (!isset($paxos)) $paxos="";
 						<option value="0.40|0.70|0.70|0.35|0.35|0.70|0.70">Ζώνη Δ</option>
 						</select></td><td id="umax" name="umax"><b>&nbsp;</b>
 						</td></tr></table><br />
-<!------------------------------------------------------------------------------------>	
-<!--      Κρυφό div που ανοίγει με jquery για την επιλογή τοίχου από τη βάση        -->
+<!--------------------------------------------------------------------------------------->	
+<!--    Κρυφό div που ανοίγει με jquery για την επιλογή δομικού στοιχείου από τη βάση  -->
 		<div style='display:none'><div id='inline_content' style='padding:10px; background:#ebf9c9;'>
-			<table><tr><td>
+			<table><tr><td style="text-align:right;">
 			Επιλογή τοίχου: </td><td>
-			<?php echo dropdown2("SELECT * FROM domika_toixoi","paxh","strwseis","name","walls"); ?></td><td>
-			&nbsp;<input type="button" style="cursor:pointer;" value="επιλογή" onclick=getname('walls'); /></td></tr><tr><td>
+			<select name="floors" id="walls"  size="1">
+			<?php echo dropdown2("SELECT * FROM domika_toixoi","paxh","strwseis","name","walls"); ?>
+			</select></td><td>
+			&nbsp;<input type="button" style="cursor:pointer;" value="επιλογή" onclick=getname('walls'); /></td></tr><tr><td style="text-align:right;">
 			<br/>Επιλογή δαπέδου - οροφής: </td><td>
-			<br/><?php echo dropdown2("SELECT * FROM domika_floors","paxh","strwseis","name","floors"); ?></td><td>
+			<br/><select name="floors" id="floors"  size="1">
+			<?php echo dropdown2("SELECT * FROM domika_orofes ORDER by name","paxh","strwseis","name"); ?>
+			<?php echo dropdown2("SELECT * FROM domika_pilotis ORDER by name","paxh","strwseis","name"); ?>
+			<?php echo dropdown2("SELECT * FROM domika_dapedo_edafous ORDER by name","paxh","strwseis","name"); ?>
+			</select></td><td>
 			<br/>&nbsp;<input type="button" style="cursor:pointer;" value="επιλογή" onclick=getname('floors'); /></td></tr></table>
 		</div></div>
 <!------------------------------------------------------------------------------------>						
@@ -79,12 +94,17 @@ if (!isset($paxos)) $paxos="";
 			
 		</div></div>
 <!------------------------------------------------------------------------------------>						
-					<table border="1" width="770px;">
-						<tr><td>A/A</td><td>Πάχος (m)</td><td>Είδος στρώσης</td><td>Tύπος στρώσης</td><td>Συντ. λ</td><td align="center">d/λ</td></tr>
+					<table border="1" style="width:98%;background:#efefef;">
+						<tr style="background:#d6e2bc;"><td style="text-align:center;width:80px;">A/A</td>
+						<td style="text-align:center;">Πάχος (m)</td>
+						<td style="text-align:center;">Είδος στρώσης</td>
+						<td style="text-align:center;">Tύπος στρώσης</td>
+						<td style="text-align:center;">Συντ. λ</td>
+						<td style="text-align:center;">d/λ</td></tr>
 						<?php for ($i = 1; $i <= 10; $i++) {
 						echo "<tr><td align=\"center\">" . $i . "</td>";
 						echo "<td align=\"center\"><input type=\"text\" style=\"text-align:center;width:70px;\" name=\"paxos" . $i . "\" id=\"paxos" . $i . "\" maxlength=\"10\" value=\"" . htmlentities($paxos) . "\" onchange=getcl(".$i.") /></td>";?>
-						<td align="center"><select name="eidos<?php echo $i; ?>" id="eidos<?php echo $i; ?>"  size="1" onchange="document.getElementById('strwsi<?php echo $i; ?>').innerHTML=getmat(<?php echo $i; ?>);">
+						<td align="center"><select name="eidos<?php echo $i; ?>" id="eidos<?php echo $i; ?>"  size="1" style="width:300px;" onchange="document.getElementById('strwsi<?php echo $i; ?>').innerHTML=getmat(<?php echo $i; ?>);">
 						<?php
 							echo "<option value=\" \" selected=\"selected\"> </option>";
 							echo "<option value=\"1\">Επιφανειακή στρώση αέρα</option>";
@@ -100,8 +120,8 @@ if (!isset($paxos)) $paxos="";
 							echo "<option value=\"11\">Τούβλα</option>";
 							echo "<option value=\"12\">Υγρομονώσεις</option>";
 							echo "<option value=\"13\">Διάφορα</option>";
-							echo "</select></td><td width='300px'  align=\"center\">";
-						echo "<select name=\"strwsi" . $i . "\" id=\"strwsi" . $i . "\" style=\"width:260px;\" onchange=getcl(".$i.");>";
+							echo "</select></td><td   align=\"center\">";
+						echo "<select name=\"strwsi" . $i . "\" id=\"strwsi" . $i . "\" style=\"width:300px;\" onchange=getcl(".$i.");>";
 						echo "<option>&nbsp;</option>";
 						echo "</select></td><td align=\"center\"><input type=\"text\" id=\"cl".$i."\" style=\"text-align:center;width:50px;\" disabled=\"disabled\"  class=\"disabled\"/></td>";
 						echo "<td align=\"center\"><input type=\"text\" id=\"dl".$i."\" style=\"text-align:center;width:50px;\" disabled=\"disabled\"  class=\"disabled\"/></td>";
@@ -110,18 +130,20 @@ if (!isset($paxos)) $paxos="";
 						</tr><tr>
 							<td></td><td align="center"><input type="text" id="sum2" style="text-align:center;width:70px;font-weight:bold;" disabled="disabled" class="disabled" value="0.000" /></td>
 							<td colspan="2" align="center">
+<!--
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=showgraph(0); >Σκαρίφημα</button>
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=savewall(); >Αποθήκευση</button>
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;"  disabled="disabled">Διαγραφή</button>
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;"  disabled="disabled">Προσθήκη</button>
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=getwall(); >Ανάκτηση</button>
 							<button type="button" style="background-color:#fee3ad;cursor:pointer;"  onclick=showgraph(1); >Εκτύπωση</button>
+-->
 							</td> 
 							<td align="right">R<sub>Λ</sub>=</td>
 							<td align="center"><input type="text" id="sum1" style="text-align:center;width:50px;font-weight:bold;" disabled="disabled" class="disabled" value="0.000" />
 							</td>
 						</tr></tr>
-						<tr>
+						<tr style="background:#ffffff;">
 						<td align="center" colspan="4" id="myHeader1" style="vertical-align:middle;">αντιστάσεις θερμικής μετάβασης:&nbsp;
 							<select name="Ria" id="Ria" onchange=getria()>
 							<option value=" | "></option>
@@ -137,11 +159,11 @@ if (!isset($paxos)) $paxos="";
 						<td align="right">R<sub>i</sub>=</td>
 						<td align="center"><input type="text" id="sum3" style="text-align:center;width:50px;font-weight:bold;" disabled="disabled" class="disabled" />
 						</tr>
-						<tr>
+						<tr style="background:#efefef;">
 						<script type="text/javascript">document.getElementById("myHeader1").rowSpan="2";</script>
-						<td align="right">R<sub>a</sub>=</td>
-						<td align="center"><input type="text" id="sum4" style="text-align:center;width:50px;font-weight:bold;" disabled="disabled" class="disabled" />
-						</tr><tr>
+						<td style="background:#ffffff;text-align:right;">R<sub>a</sub>=</td>
+						<td style="background:#ffffff;text-align:center;"><input type="text" id="sum4" style="text-align:center;width:50px;font-weight:bold;" disabled="disabled" class="disabled" />
+						</tr><tr style="background:#efefef;">
 						<td align="center" colspan="4" style="vertical-align:middle;">θερμική αντίσταση κεραμοσκεπής:&nbsp;
 							<select name="Roof" id="Roof" onchange=getroof()>
 							<option value=" | "></option>
@@ -152,8 +174,8 @@ if (!isset($paxos)) $paxos="";
 						</select></td>
 						<td align="right">R<sub>u</sub>=</td>
 						<td align="center"><input type="text" id="sum6" style="text-align:center;width:50px;font-weight:bold;" disabled="disabled" class="disabled" />
-						</tr><tr>
-						<td align="center" colspan="4" style="vertical-align:middle;">στρώμα αέρα πάχους:&nbsp;
+						</tr><tr style="background:#ffffff;">
+						<td colspan="4" style="vertical-align:middle;text-align:center;">στρώμα αέρα πάχους:&nbsp;
 							<select name="air" id="air" onchange=getair()>
 							<option value=" | "></option>
 							<option value=".11|.11|.11|.19|.19|.19|.18|.18|.18|.17|.17|.17">5</option>
@@ -175,10 +197,10 @@ if (!isset($paxos)) $paxos="";
 						<input type="radio" id="refl3" name="refl" value="3" onclick=getair() />0.10
 						<input type="radio" id="refl4" name="refl" value="4" onclick=getair() />0.20
 						</td>
-						<td align="right"style="vertical-align:middle;">R<sub>δ</sub>=</td>
-						<td align="center"style="vertical-align:middle;"><input type="text" id="sum7" style="text-align:center;width:50px;font-weight:bold;" disabled="disabled" class="disabled" />
-						</tr><tr>
-						<td align="center" colspan="4" style="vertical-align:middle;">
+						<td style="vertical-align:middle;text-align:right;">R<sub>δ</sub>=</td>
+						<td style="vertical-align:middle;text-align:center;"><input type="text" id="sum7" style="text-align:center;width:50px;font-weight:bold;" disabled="disabled" class="disabled" /></td>
+						</tr><tr style="vertical-align:middle;background:#d6e2bc;">
+						<td colspan="4" style="vertical-align:middle;text-align:center;">
 						U = <input type="text" id="U" style="cursor:pointer;text-align:center;width:50px;font-weight:bold;" class="disabled" 
 						onclick=parent.get_ut(this.value,<?=$p;?>,'<?=$tk;?>',document.getElementById('sum2').value); />
 						<img id="OK" src="images/domika/blank.png" style="vertical-align:middle;"></img>
@@ -191,6 +213,32 @@ if (!isset($paxos)) $paxos="";
 					</form>
 					<div id="graph"style="width:740px;height:300px;"> </div>
 
+					
+<!------------------------------------------------------------------------------------------->						
+<!--              κρυφό div για HELP                                                       -->
+<!------------------------------------------------------------------------------------------->						
+<div style='display:none'><div id='help_box' style='width:500px;padding:10px; background:#ebf9c9;'>
+<strong>Υπολογισμός U Δομικών Στοιχείων</strong><hr />
+Στη σελίδα αυτή γίνονται οι υπολογισμοί της θερμοπερατότητας τοίχων, δαπέδων και οροφών.<br /><br /> 
+Επιλέξτε για κάθε στρώση πρώτα την κατηγορία (είδος) της στρώσης και έπειτα το υλικό (τύπο) της στρώσης.<br /><br />
+Συμπληρώνοντας τα πάχη (σε μέτρα) των στρώσεων, το πρόγραμμα εκτελεί τους απαραίτητους υπολογισμούς.<br /><br />
+Για να υπολογιστεί το U πρέπει να επιλεγούν τουλάχιστον οι συντελεστές θερμικής μετάβασης.<br /><br />
+Είναι δυνατή επίσης και η επιλογή τυχόν κεραμοσκεπής πάνω από μονωμένη οροφή καθώς και κενού στρώματος αέρα.
+<hr />Με το εικονίδιο <img src="./images/domika/load.png" width="32px" height="32px" style="vertical-align:middle;" /> (ανάκτηση) 
+ανακτούνται από το αρχείο τα στοιχεία του δομικού στοιχείου που θα επιλεγεί στο παράθυρο που ανοίγει.<br /><br />
+Με το εικονίδιο <img src="./images/domika/save1.png" width="32px" height="32px" style="vertical-align:middle;"  /> (αποθήκευση ) 
+αποθηκεύονται οι αλλαγές που ενδεχομένως έγιναν στο στοιχείο. 
+Αν πρόκειται για νέο δομικό στοιχείο τότε γίνεται εισαγωγή του στη βάση. Το ίδιο συμβαίνει για στοιχείο του οποίου ανακτήθηκαν τα δεδομένα 
+αλλά τροποποιήθηκε το όνομά του.<br /><br />
+Με το εικονίδιο <img src="./images/domika/print.png" width="32px" height="32px" style="vertical-align:middle;"  /> (εκτύπωση) 
+δημιουργείται αρχείο PDF με τους υπολογισμούς και το σκαρίφημα του δομικού στοιχείου.
+<hr />
+Αν η σελίδα αυτή έχει κληθεί από το "ΜΕΛΕΤΗ - Δομικά Στοιχεία", με κλικ στην τιμή του U μεταφέρονται οι τιμές στο δομικό στοιχείο από το οποίο έγινε η κλήση.
+
+</div></div>
+<!------------------------------------------------------------------------------------------->						
+					
+					
 <?php if ($call<>""){ ?>
 		<script type="text/javascript">
 			document.getElementById('walls').selectedIndex=<?=$call;?>;

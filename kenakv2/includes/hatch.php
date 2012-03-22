@@ -22,12 +22,28 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 όρους της άδειας GNU General Public License όπως δίδεται από το Free Software Foundation
 στην έκδοση 3 αυτής της άδειας.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
+
+***********************************************************************
+Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
+                                                                      *
+Σχεδίαση δομικών στοιχείων                                            *
+bitmaps για τη σχεδίαση των υλικών                                    *
+                                                                      *
+***********************************************************************
 */
-// Για τη βάση δεδομένων
-define("DB_SERVER", "localhost"); //το όνομα του διακομιστή.Για xampp,mamp κλπ χρησιμοποιείστε localhost
-define("DB_USER", "root"); //το όνομα του χρήστη.Συνήθως root (xampp)
-define("DB_PASS", "12345"); //το συνθηματικό για τον παραπάνω χρήστη. Το έχετε δηλώσει στο http://localhost/security/index.php για xampp
-define("DB_NAME", "labros_kenakv2"); //το όνομα της βάσης δεδομένων
-define("VERSION", "2.5"); //Η τρέχουσα έκδοση της διανομής
+
+
+$ha =array();
+
+$ha[0]='../images/hatch/blank.png';
+$ha[1]='../images/hatch/bricks.png';
+$ha[2]='../images/hatch/sand.png';
+$ha[3]='../images/hatch/insul.png';
+$ha[4]='../images/hatch/concr.png';
+$ha[5]='../images/hatch/metal.png';
+$ha[6]='../images/hatch/wood.png';
+$ha[7]='../images/hatch/stone.png';
+$ha[8]='../images/hatch/tile.png';
+
 
 ?>

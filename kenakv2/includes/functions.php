@@ -948,7 +948,8 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	function dropdown2($query, $value1, $value2, $name, $drop_name){
 		global $connection;
 	    $drop_set = mysql_query($query, $connection);
-	    $menu = '<select name="' . $drop_name . '" id="' . $drop_name . '">';
+		//$menu = '<select name="' . $drop_name . '" id="' . $drop_name . '">';
+		$menu="";
 	    while ($result = mysql_fetch_array($drop_set)) {
 			$r1=$result[$value1];
 			$r2=$result[$value2];
@@ -957,7 +958,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	        $menu .= '
 	      <option value="' . $r1 . '^' .  $r2 .'">' . $result[$name] . '</option>';
 	    }
-	    $menu .= '</select>';
+	    //$menu .= '</select>';
 	    return $menu;
 	}
 	

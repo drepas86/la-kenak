@@ -119,11 +119,12 @@ for ($i = 1; $i <= 10; $i++) {
 		$l=number_format(${"strwsi".$i},3,".",",");
 		$p=number_format(${"paxos".$i},3,".",",");
 		$sp+=$p;
-		$t1=explode("|",${"strwsi".$i});
+//		$t1=explode("|",${"strwsi".$i});
+		$t1=${"strwsin".$i};
 		$dl=number_format($p/$l,3,".",",");
 		$sdl+=$dl;
 $pdf->MultiCell(10, 7, $i,$border = 'LTRB',$align = 'C',$fill = false,$ln = 0,$x = '',$y = '',$reseth = true,$stretch = 0,$ishtml = false,$autopadding = true,$maxh = 7,$valign = 'M',$fitcell = false);
-$pdf->MultiCell(80, 7, $t1[1],$border = 'LTRB',$align = 'L',$fill = false,$ln = 0,$x = '',$y = '',$reseth = true,$stretch = 0,$ishtml = false,$autopadding = true,$maxh = 7,$valign = 'M',$fitcell = false);
+$pdf->MultiCell(80, 7, $t1,$border = 'LTRB',$align = 'L',$fill = false,$ln = 0,$x = '',$y = '',$reseth = true,$stretch = 0,$ishtml = false,$autopadding = true,$maxh = 7,$valign = 'M',$fitcell = false);
 $pdf->MultiCell(30, 7, $p,$border = 'LTRB',$align = 'C',$fill = false,$ln = 0,$x = '',$y = '',$reseth = true,$stretch = 0,$ishtml = false,$autopadding = true,$maxh = 7,$valign = 'M',$fitcell = false);
 $pdf->MultiCell(30, 7, $l,$border = 'LTRB',$align = 'C',$fill = false,$ln = 0,$x = '',$y = '',$reseth = true,$stretch = 0,$ishtml = false,$autopadding = true,$maxh = 7,$valign = 'M',$fitcell = false);
 $pdf->MultiCell(30, 7, $dl,$border = 'LTRB',$align = 'C',$fill = false,$ln = 0,$x = '',$y = '',$reseth = true,$stretch = 0,$ishtml = false,$autopadding = true,$maxh = 7,$valign = 'M',$fitcell = false);
@@ -215,7 +216,10 @@ ob_end_clean();
 // ---------------------------------------------------------
 //Close and output PDF document
 $pdf->Output('printout.pdf', 'F');
-?><script type="text/javascript">window.location = "printout.pdf"</script><?php
-
-
 ?>
+
+<script type="text/javascript">
+window.open("printout.pdf","La-kenak");
+window.close();
+</script>
+

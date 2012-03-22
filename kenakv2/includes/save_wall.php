@@ -40,16 +40,40 @@ tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
 	$u=$_GET["u"];
 	$d=$_GET["d"];
 	$str=$_GET["strwseis"];
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET paxh = '$paxh' WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET paxh = '$paxh' WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET strwseis = '$str' WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET strwseis = '$str' WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0) $sql = "UPDATE domika_toixoi SET u = $u WHERE id = $wid ";
-	if ($fid>0) $sql = "UPDATE domika_floors SET u = $u WHERE id = $fid ";
-	mysql_query($sql, $connection);
-	if ($wid>0){ $sql = "UPDATE domika_toixoi SET paxos = $d WHERE id = $wid ";
-				 mysql_query($sql, $connection);}
+	$name=$_GET["name"];
+	$kind=$_GET["kind"];
+
+	$tb=0;
+	$total = mysql_fetch_row(mysql_query("SELECT COUNT(*) FROM domika_toixoi WHERE name='$name'"));
+	$tb+=$total[0];
+	$total = mysql_fetch_row(mysql_query("SELECT COUNT(*) FROM domika_orofes WHERE name='$name'"));
+	$tb+=$total[0]*2;
+	$total = mysql_fetch_row(mysql_query("SELECT COUNT(*) FROM domika_pilotis WHERE name='$name'"));
+	$tb+=$total[0]*3;
+	$total = mysql_fetch_row(mysql_query("SELECT COUNT(*) FROM domika_dapedo_edafous WHERE name='$name'"));
+	$tb+=$total[0]*4;
+	$tbl=array();
+	$tbl[1]="domika_toixoi";
+	$tbl[2]="domika_orofes";
+	$tbl[3]="domika_pilotis";
+	$tbl[4]="domika_dapedo_edafous";
+
+	if ($tb>0){
+		mysql_query("UPDATE $tbl[$tb] SET paxh = '$paxh' WHERE name = '$name' ");
+		mysql_query("UPDATE $tbl[$tb] SET strwseis = '$str' WHERE name = '$name' ");
+		mysql_query("UPDATE $tbl[$tb] SET u = $u WHERE name = '$name' ");
+		mysql_query("UPDATE $tbl[$tb] SET paxos = $d WHERE name = '$name' ");
+	}else{
+		if ($kind<4)$tbl[0]="domika_toixoi";
+		if ($kind==4 || $kind==5 || $kind==7)$tbl[0]="domika_orofes";
+		if ($kind==6)$tbl[0]="domika_pilotis";
+		if ($kind==8)$tbl[0]="domika_dapedo_edafous";
+		mysql_query("INSERT INTO $tbl[$tb] (name,u,paxos,paxh,strwseis) VALUES ('$name',$u,$d,'$paxh','$str') ");
+	}
+	
+
 	
 ?>
+
+
+

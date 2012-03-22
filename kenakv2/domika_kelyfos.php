@@ -64,22 +64,15 @@ if (isset($_POST['min'])) $min=$_POST['min'];
 	$toyvla1 = dropdown1("SELECT name, agwg_l FROM domika_ylika_toyvla", "agwg_l", "name");
 	$ygro1 = dropdown1("SELECT name, agwg_l FROM domika_ylika_ygromonwseis", "agwg_l", "name");
 	$diaf1 = dropdown1("SELECT name, agwg_l FROM domika_ylika_diafora", "agwg_l", "name");
-//πρόσθεση νέων πεδίων που πιθανόν λείπουν από τον πίνακα
+//πρόσθεση νέων πεδίων που πιθανόν λείπουν από τους πίνακες
 	add_column_if_not_exist("domika_toixoi", "paxh");
 	add_column_if_not_exist("domika_toixoi", "strwseis");
-//πρόσθεση του πίνακα domika_floors που πιθανόν λείπει, για αποθήκευση δομικών στοιχείων δαπέδων και οροφών.
-	if(add_new_table("domika_floors")){
-	add_column_if_not_exist("domika_floors", "name");
-	add_column_if_not_exist("domika_floors", "u", "DECIMAL(34,14)");
-	add_column_if_not_exist("domika_floors", "cm", "VARCHAR(10) NOT NULL");
-	add_column_if_not_exist("domika_floors", "paxos", "DECIMAL(34,14)");
-	add_column_if_not_exist("domika_floors", "baros", "DECIMAL(34,14)");
-	add_column_if_not_exist("domika_floors", "paxh");
-	add_column_if_not_exist("domika_floors", "strwseis");
-	copy_from_table_to_table("domika_floors","domika_orofes");
-	copy_from_table_to_table("domika_floors","domika_pilotis");
-	copy_from_table_to_table("domika_floors","domika_dapedo_edafous");
-	}
+	add_column_if_not_exist("domika_orofes", "paxh");
+	add_column_if_not_exist("domika_orofes", "strwseis");
+	add_column_if_not_exist("domika_pilotis", "paxh");
+	add_column_if_not_exist("domika_pilotis", "strwseis");
+	add_column_if_not_exist("domika_dapedo_edafous", "paxh");
+	add_column_if_not_exist("domika_dapedo_edafous", "strwseis");
 ?>
 <?php include("includes/header_kelyfos.php"); ?>
 

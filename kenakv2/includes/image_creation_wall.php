@@ -39,6 +39,7 @@ tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 		//πάρε τις τιμές
 
 include ('database.php');
+require_once("connection.php");
 
 	for ($i = 1; $i <= 10; $i++) {
 		${"paxos".$i}=$_GET["pax".$i];
@@ -77,6 +78,26 @@ ob_flush();
 flush();
 
 }	
+
+$ylika=array();
+$ylika[1]='epifstraera';
+$ylika[2]='beton';
+$ylika[3]='epixrismata';
+$ylika[4]='gypsosanides';
+$ylika[5]='keramidia';
+$ylika[6]='ksyleia';
+$ylika[7]='monwtika';
+$ylika[8]='monwtikadow';
+$ylika[9]='plakes';
+$ylika[10]='skyrodemata';
+$ylika[11]='toyvla';
+$ylika[12]='ygromonwseis';
+$ylika[13]='diafora';
+
+
+include ('hatch.php');
+$values = array();
+
 // Θέσε το πλάτος και μήκος της εικόνας σε pixels
 $width = 770;
 if ($pout==1){$width = 640;}
@@ -110,26 +131,22 @@ for ($i = 1; $i <= 10; $i++) {
 for ($i = 1; $i <= 10; $i++) {
 	if (${"paxos".$i}>0){
 		$l += ${"paxos".$i}*500;
-		if (${"eidos".$i}=="11"){
-			$src = @imagecreatefromjpeg('../images/domika/brick.jpg');
-			imagecopyresized($im, $src, $l-${"paxos".$i}*500, 50, 0, 0, ${"paxos".$i}*500, 200,44,200);
-			ImageDestroy($src);
-		}
-		if (${"eidos".$i}=="7" || ${"eidos".$i}=="8"){
-			$src = @imagecreatefromjpeg('../images/domika/insul.jpg');
-			imagecopyresized($im, $src, $l-${"paxos".$i}*500, 50, 0, 0, ${"paxos".$i}*500, 200,34,200);
-			ImageDestroy($src);
-		}
-		if (${"eidos".$i}=="2" || ${"eidos".$i}=="10"){
-			$src = @imagecreatefromjpeg('../images/domika/concr.jpg');
-			imagecopyresized($im, $src, $l-${"paxos".$i}*500, 50, 0, 0, ${"paxos".$i}*500, 200,99,200);
-			ImageDestroy($src);
-		}
-		if (${"eidos".$i}=="3"){
-			$src = @imagecreatefromjpeg('../images/domika/plaster.jpg');
-			imagecopyresized($im, $src, $l-${"paxos".$i}*500, 50, 0, 0, ${"paxos".$i}*500, 200,10,200);
-			ImageDestroy($src);
-		}
+		$strSQL = "SELECT * FROM domika_ylika_" . $ylika[${"eidos".$i}]." WHERE name='".${"strwsin".$i}."'";
+		$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+		while($objResult = mysql_fetch_array($objQuery)){$hatch=$ha[$objResult["hatch"]];}
+		$imagebg = imageCreateFromPNG ($hatch);
+		imageSetTile ($im, $imagebg);
+		$values[0]=$l-${"paxos".$i}*500;
+		$values[1]=250;
+		$values[2]=$l;
+		$values[3]=250;
+		$values[4]=$l;
+		$values[5]=50;
+		$values[6]=$l-${"paxos".$i}*500;
+		$values[7]=50;
+		imagefilledpolygon($im, $values, 4, IMG_COLOR_TILED);
+		imagepolygon($im, $values, 4, $black);
+		imagedestroy ($imagebg);
 	}
 }
 $l=50;

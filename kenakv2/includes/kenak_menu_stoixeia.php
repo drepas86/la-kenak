@@ -386,11 +386,13 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 						document.getElementById("<?=$vasi."_velt_klisi"?>").selectedIndex=<?=$kataskeyi_stoixeia_array[0]["velt_klisi"]-1;?>;
 					</script>
 					</tr>
+					<!--
 					<tr>
 					<th> <div align="center">Επιφάνεια Ηλιακού (ΖΝΧ) </div></th>
-<!--					<td><?=$kataskeyi_stoixeia_iliakos;?></td>-->
 					<td><input type="text" name="<?=$vasi."_iliakos"?>" value="<?=$kataskeyi_stoixeia_iliakos;?>" maxlength="200" size="10" /></td>
-					</tr><tr><td colspan=2>
+					</tr>
+					-->
+					<tr><td colspan=2>
 					<div style="float:right;"><input type="submit" name="<?=$vasi."_stoixeia"?>" value="Τροποποίηση στοιχείων ζώνης" /></div>
 					</td></tr>
 					</table>

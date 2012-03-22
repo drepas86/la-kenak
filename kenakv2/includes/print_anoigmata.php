@@ -267,7 +267,13 @@ ob_end_clean();
 // ---------------------------------------------------------
 //Close and output PDF document
 $pdf->Output('printout.pdf', 'F');
-?><script type="text/javascript">window.location = "printout.pdf"</script><?php
-
 
 ?>
+
+<script type="text/javascript">
+window.open("printout.pdf","La-kenak");
+window.close();
+</script>
+
+
+

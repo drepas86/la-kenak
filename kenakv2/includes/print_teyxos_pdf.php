@@ -157,6 +157,10 @@ $pdf->Output('PDF/printout'.$j.'.pdf', 'F');
 if ($kef=="ALL"){
 ?><script type="text/javascript">window.close();</script><?php
 }else{
-?><script type="text/javascript">window.location = "PDF/printout<?=$j;?>.pdf"</script><?php
+?><script type="text/javascript">
+window.open("PDF/printout<?=$j;?>.pdf");
+window.close();
+</script>
+<?php
 }
 ?>

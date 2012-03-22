@@ -85,7 +85,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 			
 			<div id="tabvanilla" class="widget">
 					<ul class="tabnav">  
-					<li><a href="#tab-meletes">Μελέτες Η/Μ</a></li>
+					<!--<li><a href="#tab-meletes">Μελέτες Η/Μ</a></li>-->
 					<li><a href="#tab-thermansi">Θέρμανση</a></li>
 					<li><a href="#tab-psyksi">Ψύξη</a></li>
 					<li><a href="#tab-znx">ΖΝΧ</a></li>
@@ -95,7 +95,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					
 					
 					
-			<div id="tab-meletes" class="tabdiv">
+			<!--<div id="tab-meletes" class="tabdiv">
 					
 					<?php
 					$kataskeyi_hm_array = get_times_all("*", "kataskeyi_hm");
@@ -118,11 +118,11 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					</table>
 					<input type="submit" name="<?=$vasi."_hm"?>" value="Τροποποίηση στοιχείων μελέτης Η/Μ" />
 					</form>
-			</div><!--/meletes-->
+			</div> 
+			meletes-->
 
-					
 
-					
+	
 			<div id="tab-thermansi" class="tabdiv"> 
 					
 					<img src="images/style/heat.png"></img>
@@ -166,12 +166,34 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$thermzwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
 					if (isset($thermzwni_array[0]["name"])){$thermzwni = $thermzwni_array[0]["name"];}
 					else {$thermzwni="Η ζώνη έχει διαγραφεί!!!";}
+					
+					if ($objResult["type"] == 0){$thermp_type="Λέβητας";}
+					if ($objResult["type"] == 1){$thermp_type="Κεντρική υδρόψυκτη Α.Θ.";}
+					if ($objResult["type"] == 2){$thermp_type="Κεντρική αερόψυκτη Α.Θ.";}
+					if ($objResult["type"] == 3){$thermp_type="Τοπική αερόψυκτη Α.Θ.";}
+					if ($objResult["type"] == 4){$thermp_type="Γεωθερμική Α.Θ. με οριζόντιο εναλλάκτη";}
+					if ($objResult["type"] == 5){$thermp_type="Γεωθερμική Α.Θ. με κατακόρυφο εναλλάκτη";}
+					if ($objResult["type"] == 6){$thermp_type="Κεντρική άλλου τύπου Α.Θ.";}
+					if ($objResult["type"] == 7){$thermp_type="Τοπικές ηλεκτρικές μονάδες";}
+					if ($objResult["type"] == 8){$thermp_type="Τοπικές μονάδες αερίου";}
+					if ($objResult["type"] == 9){$thermp_type="Ανοικτές εστίες καύσης";}
+					if ($objResult["type"] == 10){$thermp_type="Τηλεθέρμανση";}
+					if ($objResult["type"] == 11){$thermp_type="ΣΗΘ";}
+					if ($objResult["type"] == 12){$thermp_type="Μονάδα παραγωγής άλλου τύπου";}
+					
+					if ($objResult["pigienergy"] == 0){$thermp_pigi="Υγραέριο (LPG)";}
+					if ($objResult["pigienergy"] == 1){$thermp_pigi="Φυσικό αέριο";}
+					if ($objResult["pigienergy"] == 2){$thermp_pigi="Ηλεκτρισμός";}
+					if ($objResult["pigienergy"] == 3){$thermp_pigi="Πετρέλαιο θέρμανσης";}
+					if ($objResult["pigienergy"] == 4){$thermp_pigi="Πετρέλαιο κίνησης";}
+					if ($objResult["pigienergy"] == 5){$thermp_pigi="Τηλεθέρμανση";}
+					if ($objResult["pigienergy"] == 6){$thermp_pigi="Βιομάζα";}
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
 					<td><div align="center"><?=$thermzwni;?></div></td>
-					<td><?=$objResult["type"];?></td>
-					<td><?=$objResult["pigienergy"];?></td>
+					<td><?=$thermp_type;?></td>
+					<td><?=$thermp_pigi;?></td>
 					<td><?=$objResult["isxys"];?></td>
 					<td><?=$objResult["bathm"];?></td>
 					<td><?=$objResult["cop"];?></td>
@@ -465,11 +487,16 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$thermzwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
 					if (isset($thermzwni_array[0]["name"])){$thermzwni = $thermzwni_array[0]["name"];}
 					else {$thermzwni="Η ζώνη έχει διαγραφεί!!!";}
+					
+					if ($objResult["type"] == 0){$thermb_type="Αντλίες";}
+					if ($objResult["type"] == 1){$thermb_type="Κυκλοφορητές";}
+					if ($objResult["type"] == 2){$thermb_type="Ηλεκτροβάνες";}
+					if ($objResult["type"] == 3){$thermb_type="Ανεμιστήρες";}
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
 					<td><div align="center"><?=$thermzwni;?></div></td>
-					<td><?=$objResult["type"];?></td>
+					<td><?=$thermb_type;?></td>
 					<td><?=$objResult["number"];?></td>
 					<td><?=$objResult["isxys"];?></td>
 					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
@@ -562,12 +589,30 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$thermzwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
 					if (isset($thermzwni_array[0]["name"])){$thermzwni = $thermzwni_array[0]["name"];}
 					else {$thermzwni="Η ζώνη έχει διαγραφεί!!!";}
+					
+					if ($objResult["type"] == 0){$coldp_type="Αερόψυκτος ψύκτης";}
+					if ($objResult["type"] == 1){$coldp_type="Υδρόψυκτος ψύκτης";}
+					if ($objResult["type"] == 2){$coldp_type="Υδρόψυκτη Α.Θ.";}
+					if ($objResult["type"] == 3){$coldp_type="Αερόψυκτη Α.Θ.";}
+					if ($objResult["type"] == 4){$coldp_type="Γεωθερμική Α.Θ. με οριζόντιο εναλλάκτη";}
+					if ($objResult["type"] == 5){$coldp_type="Γεωθερμική Α.Θ. με κατακόρυφο εναλλάκτη";}
+					if ($objResult["type"] == 6){$coldp_type="Προσρόφησης απορρόφησης Α.Θ.";}
+					if ($objResult["type"] == 7){$coldp_type="Κεντρική άλλου τύπου Α.Θ.";}
+					if ($objResult["type"] == 8){$coldp_type="Μονάδα παραγωγής άλλου τύπου";}
+					
+					if ($objResult["pigienergy"] == 0){$coldp_pigi="Υγραέριο (LPG)";}
+					if ($objResult["pigienergy"] == 1){$coldp_pigi="Φυσικό αέριο";}
+					if ($objResult["pigienergy"] == 2){$coldp_pigi="Ηλεκτρισμός";}
+					if ($objResult["pigienergy"] == 3){$coldp_pigi="Πετρέλαιο θέρμανσης";}
+					if ($objResult["pigienergy"] == 4){$coldp_pigi="Πετρέλαιο κίνησης";}
+					if ($objResult["pigienergy"] == 5){$coldp_pigi="Τηλεθέρμανση";}
+					if ($objResult["pigienergy"] == 6){$coldp_pigi="Βιομάζα";}
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
 					<td><div align="center"><?=$thermzwni;?></div></td>
-					<td><?=$objResult["type"];?></td>
-					<td><?=$objResult["pigienergy"];?></td>
+					<td><?=$coldp_type;?></td>
+					<td><?=$coldp_pigi;?></td>
 					<td><?=$objResult["isxys"];?></td>
 					<td><?=$objResult["bathm"];?></td>
 					<td><?=$objResult["eer"];?></td>
@@ -851,11 +896,17 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$thermzwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
 					if (isset($thermzwni_array[0]["name"])){$thermzwni = $thermzwni_array[0]["name"];}
 					else {$thermzwni="Η ζώνη έχει διαγραφεί!!!";}
+					
+					if ($objResult["type"] == 0){$coldb_type="Αντλίες";}
+					if ($objResult["type"] == 1){$coldb_type="Κυκλοφορητές";}
+					if ($objResult["type"] == 2){$coldb_type="Ηλεκτροβάνες";}
+					if ($objResult["type"] == 3){$coldb_type="Ανεμιστήρες";}
+					if ($objResult["type"] == 4){$coldb_type="Πύργος ψύξης";}
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
 					<td><div align="center"><?=$thermzwni;?></div></td>
-					<td><?=$objResult["type"];?></td>
+					<td><?=$coldb_type;?></td>
 					<td><?=$objResult["number"];?></td>
 					<td><?=$objResult["isxys"];?></td>
 					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
@@ -946,12 +997,28 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$thermzwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
 					if (isset($thermzwni_array[0]["name"])){$thermzwni = $thermzwni_array[0]["name"];}
 					else {$thermzwni="Η ζώνη έχει διαγραφεί!!!";}
+					
+					if ($objResult["type"] == 0){$znxp_type="Λέβητας";}
+					if ($objResult["type"] == 1){$znxp_type="Τηλεθέρμανση";}
+					if ($objResult["type"] == 2){$znxp_type="ΣΗΘ";}
+					if ($objResult["type"] == 3){$znxp_type="Αντλία θερμότητας (Α.Θ.)";}
+					if ($objResult["type"] == 4){$znxp_type="Τοπικός ηλεκτρικός θερμαντήρας";}
+					if ($objResult["type"] == 5){$znxp_type="Τοπική μονάδα φυσικού αερίου";}
+					if ($objResult["type"] == 6){$znxp_type="Μονάδα παραγωγής (κεντρική) άλλου τύπου";}
+					
+					if ($objResult["pigienergy"] == 0){$znxp_pigi="Υγραέριο (LPG)";}
+					if ($objResult["pigienergy"] == 1){$znxp_pigi="Φυσικό αέριο";}
+					if ($objResult["pigienergy"] == 2){$znxp_pigi="Ηλεκτρισμός";}
+					if ($objResult["pigienergy"] == 3){$znxp_pigi="Πετρέλαιο θέρμανσης";}
+					if ($objResult["pigienergy"] == 4){$znxp_pigi="Πετρέλαιο κίνησης";}
+					if ($objResult["pigienergy"] == 5){$znxp_pigi="Τηλεθέρμανση";}
+					if ($objResult["pigienergy"] == 6){$znxp_pigi="Βιομάζα";}
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
 					<td><div align="center"><?=$thermzwni;?></div></td>
-					<td><?=$objResult["type"];?></td>
-					<td><?=$objResult["pigienergy"];?></td>
+					<td><?=$znxp_type;?></td>
+					<td><?=$znxp_pigi;?></td>
 					<td><?=$objResult["isxys"];?></td>
 					<td><?=$objResult["bathm"];?></td>
 					<td><?=$objResult["jan"];?></td>
@@ -1074,13 +1141,19 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$thermzwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
 					if (isset($thermzwni_array[0]["name"])){$thermzwni = $thermzwni_array[0]["name"];}
 					else {$thermzwni="Η ζώνη έχει διαγραφεί!!!";}
+					
+					if ($objResult["anakykloforia"] == 0){$znxd_anakykloforia="OXI";}
+					if ($objResult["anakykloforia"] == 1){$znxd_anakykloforia="ΝΑΙ";}
+					
+					if ($objResult["xwros"] == 0){$znxd_xwros="Εσωτερικοί ή έως 20% σε εξωτερικούς";}
+					if ($objResult["xwros"] == 0){$znxd_xwros="Πάνω από 20% σε εξωτερικούς";}
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
 					<td><div align="center"><?=$thermzwni;?></div></td>
 					<td><div align="center"><?=$objResult["type"];?></div></td>
-					<td><div align="center"><?=$objResult["anakykloforia"];?></div></td>
-					<td><div align="center"><?=$objResult["xwros"];?></div></td>
+					<td><div align="center"><?=$znxd_anakykloforia;?></div></td>
+					<td><div align="center"><?=$znxd_xwros;?></div></td>
 					<td><div align="center"><?=$objResult["bathm"];?></div></td>
 					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
 					</tr>
@@ -1229,13 +1302,26 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					$thermzwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
 					if (isset($thermzwni_array[0]["name"])){$thermzwni = $thermzwni_array[0]["name"];}
 					else {$thermzwni="Η ζώνη έχει διαγραφεί!!!";}
+					
+					if ($objResult["type"] == 0){$iliakosp_type="Χωρίς κάλυμα";}
+					if ($objResult["type"] == 1){$iliakosp_type="Απλός επίπεδος";}
+					if ($objResult["type"] == 2){$iliakosp_type="Επιλεκτικός επίπεδος";}
+					if ($objResult["type"] == 3){$iliakosp_type="Κενού";}
+					if ($objResult["type"] == 4){$iliakosp_type="Συγκεντρωτικός";}
+					
+					if ($objResult["thermansi"] == 1){$iliakosp_thermansi="NAI";}
+					if ($objResult["thermansi"] == 0){$iliakosp_thermansi="OXI";}
+					
+					if ($objResult["znx"] == 1){$iliakosp_znx="NAI";}
+					if ($objResult["znx"] == 0){$iliakosp_znx="OXI";}
+					
 					?>
 					<tr>
 					<td><div align="center"><?=$objResult["id"];?></div></td>
 					<td><div align="center"><?=$thermzwni;?></div></td>
-					<td><div align="center"><?=$objResult["type"];?></div></td>
-					<td><div align="center"><?=$objResult["thermansi"];?></div></td>
-					<td><div align="center"><?=$objResult["znx"];?></div></td>
+					<td><div align="center"><?=$iliakosp_type;?></div></td>
+					<td><div align="center"><?=$iliakosp_thermansi;?></div></td>
+					<td><div align="center"><?=$iliakosp_znx;?></div></td>
 					<td><div align="center"><?=$objResult["syna"];?></div></td>
 					<td><div align="center"><?=$objResult["synb"];?></div></td>
 					<td><div align="center"><?=$objResult["epifaneia"];?></div></td>
@@ -1276,9 +1362,9 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 						<select name="<?=$vasi."_type";?>">
 						<option value="0">Χωρίς κάλυμα</option>
 						<option value="1">Απλός επίπεδος</option>
-						<option value="1">Επιλεκτικός επίπεδος</option>
-						<option value="1">Κενού</option>
-						<option value="1">Συγκεντρωτικός</option>
+						<option value="2">Επιλεκτικός επίπεδος</option>
+						<option value="3">Κενού</option>
+						<option value="4">Συγκεντρωτικός</option>
 						</select>
 						</td>
 						<td><div align="center"><input type="checkbox" value="1" name="<?=$vasi."_thermansi"?>"/></div></td>

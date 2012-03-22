@@ -32,7 +32,7 @@ $namefile = $_GET['name'];
 
 
 //Το αρχείο των υπολογισμών
-include("../includes/core-calc/core_calculate_anazwni.php");
+include("../includes/core-calc/core_calculate.php");
 
 
 $strSQL = "SELECT * FROM kataskeyi_zwnes";
@@ -922,6 +922,7 @@ $xml .= '</ENR_IN>'.$br;
 $handle = fopen('tee-kenak-'.$namefile.'.xml','w+');
 fwrite($handle,$xml);
 echo "Το αρχείο " . 'tee' . "-kenak-" . $namefile . ".xml" . " εγγράφηκε επιτυχώς";
+echo "<br/>" . "<a href=\"tee-kenak-$namefile.xml\" >Κατεβάστε το αρχείο xml-tee</a>";
 fclose($handle);
 
 ?>

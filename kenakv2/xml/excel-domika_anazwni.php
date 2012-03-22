@@ -34,7 +34,7 @@ $namefile = $_GET['name'];
 //Το αρχείο των υπολογισμών
 include("../includes/core-calc/core_calculate_anazwni.php");
 
-
+//Αν δεν έχω βρει στο παραπάνω include ποσες είναι οι θερμικές ζώνες τις μετράω εδώ.
 $strSQL = "SELECT * FROM kataskeyi_zwnes";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 $arithmos_thermzwnes = mysql_num_rows($objQuery);
@@ -242,22 +242,9 @@ array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias, $ffinc_epifaneias);
 
 }//τελειώνει η επανάληψη των προσανατολισμών
 
-/*
-$array_diafani_type = array();
-$array_diafani_name = array();
-$array_diafani_g = array();
-$array_diafani_b = array();
-$array_diafani_edrom = array();
-$array_diafani_typos = array();
-$array_diafani_u = array();
-$array_diafani_gw = array();
-$array_diafani_fhorh = array();
-$array_diafani_fhorc = array();
-$array_diafani_fovh = array();
-$array_diafani_fovc = array();
-$array_diafani_ffinh = array();
-$array_diafani_ffinc = array();
-*/
+
+
+
 //Για τους 4 προσανατολισμούς tων ανοιγμάτων
 for ($p=4;$p<=7;$p++){
 
@@ -581,6 +568,6 @@ echo "<br/>" . date('H:i:s') . " Χρήση μέγιστης μνήμης: " . (
 
 // Echo done
 echo "<br/>" . date('H:i:s') . " Εγγράφηκε το αρχείο.\r\n";
-echo "<br/>" . "<a href=\"excel-domika.xlsx\" >Κατεβάστε το αρχείο XLSX</a>";
+echo "<br/>" . "<a href=\"excel-domika_anazwni.xlsx\" >Κατεβάστε το αρχείο XLSX</a>";
 
 ?>

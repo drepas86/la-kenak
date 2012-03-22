@@ -41,7 +41,10 @@ $sp=$_GET['sp'];
 			<script type="text/javascript">
 				document.getElementById('imgs').innerHTML="<img src=\"images/style/window2.png\"></img>";
 			</script>
-			<table width=100%><tr><td style="width:40%;vertical-align:middle;"><h2 onclick=read_an1();>Υπολογισμός U Ανοιγμάτων</h2></td>
+			<table width=100%><tr><td style="width:35%;vertical-align:middle;cursor:pointer;"><h2 onclick=read_an1();>Υπολογισμός U Ανοιγμάτων</h2></td>
+			<td style="width:2%;vertical-align:middle;"><img src="./images/domika/save1.png" width="32px" height="32px" title="αποθήκευση" style="cursor:pointer;" onclick=save_an(); /></td>
+			<td style="width:2%;vertical-align:middle;"><img src="./images/domika/load.png" width="32px" height="32px" title="ανάκτηση" style="cursor:pointer;" onclick=read_an(); /></td>
+			<td style="width:5%;vertical-align:middle;"><img src="./images/domika/print.png" width="32px" height="32px" title="εκτύπωση" style="cursor:pointer;" onclick=printop(); /></td>
 			<td style="width:5%;vertical-align:middle;"><img src="./images/domika/qm.png" title="οδηγίες" style="cursor:pointer;" onclick=help_an(); /></td>
 			<td style="width:5%;vertical-align:middle;" ><img src="./images/domika/Pin_Green.png" width="30px" height="30px" title="επιλογή για την παρούσα μελέτη" style="cursor:pointer;" onclick=set_default(); /></td>
 			<td style="width:10%;vertical-align:middle;text-align:right;">
@@ -51,7 +54,7 @@ $sp=$_GET['sp'];
 			<option value="2.8">&nbsp; Γ </option>
 			<option value="2.6">&nbsp; Δ </option>
 			</select>
-			</td><td style="width:40%;vertical-align:middle;"><class id="an_umax"><b>&nbsp;Umax ανοιγμάτων=3.2</b></class></td></tr></table>
+			</td><td style="width:41%;vertical-align:middle;"><class id="an_umax"><b>&nbsp;Umax ανοιγμάτων=3.2</b></class></td></tr></table>
 
 <!--
 			<div id="tabvanila" class="widget">
@@ -178,11 +181,13 @@ $sp=$_GET['sp'];
 						?>
 						
 					</table>
+<!--
 		<table width="100%"><tr><td><button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=save_an(); >Αποθήκευση</button>
 		&nbsp;&nbsp;<button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=read_an(); >Ανάκτηση</button>
 		&nbsp;&nbsp;<button type="button" style="background-color:#fee3ad;cursor:pointer;" onclick=printop(); >Εκτύπωση</button>
 		</td><td>
 		</td></tr></table>
+-->
 <!------------------------------------------------------------------------------------------->						
 <!--              κρυφό div για την αποθήκευση της ομάδας των ανοιγμάτων                   -->
 <!------------------------------------------------------------------------------------------->						
@@ -204,14 +209,20 @@ $sp=$_GET['sp'];
 			<h2>Ανάκτηση πίνακα ανοιγμάτων</h2>
 			<?php 
 			if ($call==""){
-			$an = dropdown1("SELECT * FROM domika_anoigmata", "rec", "name"); 
+//			$an = dropdown1("SELECT * FROM domika_anoigmata", "rec", "name"); 
+			$an = dropdown1("SELECT * FROM anoigmata_alouminio", "rec", "name"); 
+			$an .= dropdown1("SELECT * FROM anoigmata_alouminio_thermo", "rec", "name"); 
+			$an .= dropdown1("SELECT * FROM anoigmata_doors", "rec", "name"); 
+			$an .= dropdown1("SELECT * FROM anoigmata_plastic", "rec", "name"); 
+			$an .= dropdown1("SELECT * FROM anoigmata_wood", "rec", "name"); 
 			}else{
 			if ($sp==1)$an = dropdown1("SELECT * FROM anoigmata_alouminio", "rec", "name"); 
 			if ($sp==2)$an = dropdown1("SELECT * FROM anoigmata_alouminio_thermo", "rec", "name"); 
+			if ($sp==3)$an = dropdown1("SELECT * FROM anoigmata_doors", "rec", "name"); 
 			if ($sp==4)$an = dropdown1("SELECT * FROM anoigmata_plastic", "rec", "name"); 
 			if ($sp==5)$an = dropdown1("SELECT * FROM anoigmata_wood", "rec", "name"); 
 			}
-			echo "<select id=\"an_rec\" >" . $an . "</select>";		
+			echo "<select id=\"an_rec\" style=\"width:400px;\">" . $an . "</select>";		
 			?>
 			&nbsp;&nbsp;<button type="button" onclick=read_an1(); >OK</button>
 			</form>
