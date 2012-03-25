@@ -34,6 +34,17 @@ $namefile = $_GET['name'];
 //Το αρχείο των υπολογισμών
 include("../includes/core-calc/core_calculate_anazwni.php");
 
+$prosanatolismos_b="354";
+if ($prosanatolismos_b > 0){
+$prosanatolismos_a = $prosanatolismos_b-360 + 90;
+$prosanatolismos_n = $prosanatolismos_b-360 + 180;
+$prosanatolismos_d = $prosanatolismos_b-360 + 270;
+}
+else{
+$prosanatolismos_a = $prosanatolismos_b + 90;
+$prosanatolismos_n = $prosanatolismos_b + 180;
+$prosanatolismos_d = $prosanatolismos_b + 270;
+}
 
 $strSQL = "SELECT * FROM kataskeyi_zwnes";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -96,7 +107,7 @@ if ($p==4){
 $t = "b";
 $an = "an_b_";
 $sk = "sk_t_b_";
-$prosanatolismos = "0";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_t_b WHERE id_toixoy = ".${"id_".$t.$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -144,7 +155,7 @@ if ($p==5){
 $t = "a";
 $an = "an_a_";
 $sk = "sk_t_a_";
-$prosanatolismos = "90";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_t_a WHERE id_toixoy = ".${"id_".$t.$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -192,7 +203,7 @@ if ($p==6){
 $t = "n";
 $an = "an_n_";
 $sk = "sk_t_n_";
-$prosanatolismos = "180";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_t_n WHERE id_toixoy = ".${"id_".$t.$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -241,7 +252,7 @@ $t = "d";
 $onoma = ${"name_d".$i};
 $an = "an_d_";
 $sk = "sk_t_d_";
-$prosanatolismos = "270";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_t_d WHERE id_toixoy = ".${"id_".$t.$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -358,11 +369,11 @@ $klisi_an = "90";
 
 for ($i = 1; $i <= $st; $i++) {
 if ($p==4){
-$prosanatolismos = "0";
 $st=$anoig_t_boreia;
 $an = "an_b_";
 $sk = "sk_an_b_";
 $t = "b";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_an_b WHERE id_an = ".${$an."id".$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -408,11 +419,11 @@ $ffinc_an = 1;
 }
 
 if ($p==5){
-$prosanatolismos = "90";
 $st=$anoig_t_anatolika;
 $an = "an_a_";
 $sk = "sk_an_a_";
 $t = "a";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_an_a WHERE id_an = ".${$an."id".$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -458,11 +469,11 @@ $ffinc_an = 1;
 }
 
 if ($p==6){
-$prosanatolismos = "180";
 $st=$anoig_t_notia;
 $an = "an_n_";
 $sk = "sk_an_n_";
 $t = "n";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_an_n WHERE id_an = ".${$an."id".$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -508,11 +519,11 @@ $ffinc_an = 1;
 }
 
 if ($p==7){
-$prosanatolismos = "270";
 $st=$anoig_t_dytika;
 $an = "an_d_";
 $sk = "sk_an_d_";
 $t = "d";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_an_d WHERE id_an = ".${$an."id".$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -699,6 +710,84 @@ ${"array_diafani_ffinh".$z} = implode(",", ${"array_diafani_ffinh".$z});
 ${"array_diafani_ffinc".$z} = implode(",", ${"array_diafani_ffinc".$z});
 }
 
+//--------- ΣΥΣΤΗΜΑΤΑ ----------
+//Στα συστήματα στάνταρ γραμμές έχουν το δίκτυο διανομής (2) και οι τερματικές μονάδες (1).
+//Οι μονάδες παραγωγής και οι βοηθητικές μονάδες μπορούν να έχουν μεταβαλλόμενο πλήθος γραμμών από το χρήστη
+//Άρα μονάδες παραγωγής και βοηθητικές μονάδες τις βάζω σε array.
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i=1;$i<=17;$i++){
+${"heat_production_column".$i.$z} = array();
+${"cold_production_column".$i.$z} = array();
+${"znx_production_column".$i.$z} = array();
+}
+}
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i=1;$i<=3;$i++){
+${"heat_auxiliary_column".$i.$z} = array();
+}
+}
+
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i = 1; $i <= ${"thermp_rows".$z}; $i++) {
+array_push(${"heat_production_column3".$z}, ${"thermp_isxys".$z.$i});
+array_push(${"heat_production_column4".$z}, ${"thermp_bathm".$z.$i});
+array_push(${"heat_production_column5".$z}, ${"thermp_cop".$z.$i});
+array_push(${"heat_production_column6".$z}, ${"thermp_jan".$z.$i});
+array_push(${"heat_production_column7".$z}, ${"thermp_feb".$z.$i});
+array_push(${"heat_production_column8".$z}, ${"thermp_mar".$z.$i});
+array_push(${"heat_production_column9".$z}, ${"thermp_apr".$z.$i});
+array_push(${"heat_production_column10".$z}, ${"thermp_may".$z.$i});
+array_push(${"heat_production_column11".$z}, ${"thermp_jun".$z.$i});
+array_push(${"heat_production_column12".$z}, ${"thermp_jul".$z.$i});
+array_push(${"heat_production_column13".$z}, ${"thermp_aug".$z.$i});
+array_push(${"heat_production_column14".$z}, ${"thermp_sep".$z.$i});
+array_push(${"heat_production_column15".$z}, ${"thermp_okt".$z.$i});
+array_push(${"heat_production_column16".$z}, ${"thermp_nov".$z.$i});
+array_push(${"heat_production_column17".$z}, ${"thermp_decem".$z.$i});
+}
+for ($i = 1; $i <= ${"coldp_rows".$z}; $i++) {
+array_push(${"cold_production_column3".$z}, ${"coldp_isxys".$z.$i});
+array_push(${"cold_production_column4".$z}, ${"coldp_bathm".$z.$i});
+array_push(${"cold_production_column5".$z}, ${"coldp_eer".$z.$i});
+array_push(${"cold_production_column6".$z}, ${"coldp_jan".$z.$i});
+array_push(${"cold_production_column7".$z}, ${"coldp_feb".$z.$i});
+array_push(${"cold_production_column8".$z}, ${"coldp_mar".$z.$i});
+array_push(${"cold_production_column9".$z}, ${"coldp_apr".$z.$i});
+array_push(${"cold_production_column10".$z}, ${"coldp_may".$z.$i});
+array_push(${"cold_production_column11".$z}, ${"coldp_jun".$z.$i});
+array_push(${"cold_production_column12".$z}, ${"coldp_jul".$z.$i});
+array_push(${"cold_production_column13".$z}, ${"coldp_aug".$z.$i});
+array_push(${"cold_production_column14".$z}, ${"coldp_sep".$z.$i});
+array_push(${"cold_production_column15".$z}, ${"coldp_okt".$z.$i});
+array_push(${"cold_production_column16".$z}, ${"coldp_nov".$z.$i});
+array_push(${"cold_production_column17".$z}, ${"coldp_decem".$z.$i});
+}
+for ($i = 1; $i <= ${"znxp_rows".$z}; $i++) {
+array_push(${"znx_production_column3".$z}, ${"znxp_isxys".$z.$i});
+array_push(${"znx_production_column4".$z}, ${"znxp_bathm".$z.$i});
+array_push(${"znx_production_column5".$z}, ${"znxp_jan".$z.$i});
+array_push(${"znx_production_column6".$z}, ${"znxp_feb".$z.$i});
+array_push(${"znx_production_column7".$z}, ${"znxp_mar".$z.$i});
+array_push(${"znx_production_column8".$z}, ${"znxp_apr".$z.$i});
+array_push(${"znx_production_column9".$z}, ${"znxp_may".$z.$i});
+array_push(${"znx_production_column10".$z}, ${"znxp_jun".$z.$i});
+array_push(${"znx_production_column11".$z}, ${"znxp_jul".$z.$i});
+array_push(${"znx_production_column12".$z}, ${"znxp_aug".$z.$i});
+array_push(${"znx_production_column13".$z}, ${"znxp_sep".$z.$i});
+array_push(${"znx_production_column14".$z}, ${"znxp_okt".$z.$i});
+array_push(${"znx_production_column15".$z}, ${"znxp_nov".$z.$i});
+array_push(${"znx_production_column16".$z}, ${"znxp_decem".$z.$i});
+}
+}
+
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i=1;$i<=17;$i++){
+${"heat_production_column".$i.$z} = implode(",", ${"heat_production_column".$i.$z});
+${"cold_production_column".$i.$z} = implode(",", ${"cold_production_column".$i.$z});
+${"znx_production_column".$i.$z} = implode(",", ${"znx_production_column".$i.$z});
+}
+}
+
 
 
 
@@ -711,7 +800,7 @@ $xml = '<?xml version="1.0" encoding="UTF-8"?>'.$br;
 $xml .= '<ENR_IN>'.$br;
 	$xml .= '<EPA_NR_PROJECT rid="#1">'.$br;
 		$xml .= '<id/>'.$br;
-			$xml .= '<blg_use>'.$xrisi_id.'</blg_use>'.$br;
+			$xml .= '<blg_use>'.$xrisi_id_ktirio.'</blg_use>'.$br;
 			$xml .= '<blg_part>0</blg_part>'.$br;
 			$xml .= '<building_num/>'.$br;
 			$xml .= '<blg_kaek/>'.$br;
@@ -737,11 +826,11 @@ $xml .= '<ENR_IN>'.$br;
 		$xml .= '<lib_fuel>C:\Program Files\TEE\TEE KENAK\EnrFuelGr.xml</lib_fuel>'.$br;
 	$xml .= '</LIBRARIES>'.$br;
 	$xml .= '<BUILDING rid="1">'.$br;
-		$xml .= '<blg_parameter1>'.$synoliko_embadon.'</blg_parameter1>'.$br;
+		$xml .= '<blg_parameter1>'.$synoliko_embadon.'</blg_parameter1>'.$br; //συνολική επιφάνεια
 		$xml .= '<blg_parameter2>0</blg_parameter2>'.$br;
 		$xml .= '<blg_parameter3>0</blg_parameter3>'.$br;
 		$xml .= '<blg_parameter4>0</blg_parameter4>'.$br;
-		$xml .= '<blg_parameter5>'.$synolikos_ogkos.'</blg_parameter5>'.$br;
+		$xml .= '<blg_parameter5>'.$thermainomenos_ogkos.'</blg_parameter5>'.$br; //θερμαινόμενος όγκος
 		$xml .= '<blg_parameter6>0</blg_parameter6>'.$br;
 		$xml .= '<blg_parameter7>0</blg_parameter7>'.$br;
 		$xml .= '<blg_parameter8>0</blg_parameter8>'.$br;
@@ -750,7 +839,7 @@ $xml .= '<ENR_IN>'.$br;
 		$xml .= '<blg_parameter11>'.$arithmos_thermzwnes.'</blg_parameter11>'.$br; //θερμικές ζώνες
 		$xml .= '<blg_parameter12>1</blg_parameter12>'.$br;
 		$xml .= '<blg_parameter13>0</blg_parameter13>'.$br;
-		$xml .= '<blg_parameter14>'.$xrisi_znx_iliakos.'</blg_parameter14>'.$br;
+		$xml .= '<blg_parameter14>'.$xrisi_znx_iliakos.'</blg_parameter14>'.$br; // χρήση κτιρίου
 		$xml .= '<blg_parameter15>0000</blg_parameter15>'.$br;
 		$xml .= '<blg_parameter16>1</blg_parameter16>'.$br;
 		$xml .= '<blg_parameter17>0</blg_parameter17>'.$br;
@@ -769,7 +858,7 @@ $xml .= '<ENR_IN>'.$br;
 		$xml .= '<blg_parameter30>0</blg_parameter30>'.$br;
 		$xml .= '<blg_parameter31/>'.$br;
 		$xml .= '<blg_parameter32>0</blg_parameter32>'.$br;
-		$xml .= '<blg_parameter33>'.$xrisi_znx_iliakos.'</blg_parameter33>'.$br;
+		$xml .= '<blg_parameter33>'.$xrisi_ktirio.'</blg_parameter33>'.$br;
 		$xml .= '<blg_parameter34>'.$pol_type.'</blg_parameter34>'.$br;
 		$xml .= ''.$br;
 		$xml .= ''.$br;
@@ -777,18 +866,18 @@ $xml .= '<ENR_IN>'.$br;
 	
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 			$xml .= "<ZONE".$z." rid=\"1\">".$br;
-				$xml .= '<zn_parameter1>'.$xrisi_text.'</zn_parameter1>'.$br;
+				$xml .= '<zn_parameter1>'.${"xrisi_eid".$z}.'</zn_parameter1>'.$br;
 				$xml .= '<zn_parameter2/>'.$br;
-				$xml .= '<zn_parameter3>'.$synoliko_embadon.'</zn_parameter3>'.$br;
-				$xml .= '<zn_parameter4>'.$kataskeyi_stoixeia_anigmeni_thermo.'</zn_parameter4>'.$br;
-				$xml .= '<zn_parameter5>'.$kataskeyi_stoixeia_aytomatismoi.'</zn_parameter5>'.$br;
-				$xml .= '<zn_parameter6>'.$dieisdysi_aera.'</zn_parameter6>'.$br;
-				$xml .= '<zn_parameter7>'.$kataskeyi_stoixeia_kaminades.'</zn_parameter7>'.$br;
-				$xml .= '<zn_parameter8>'.$kataskeyi_stoixeia_eksaerismos.'</zn_parameter8>'.$br;
-				$xml .= '<zn_parameter9>'.$kataskeyi_stoixeia_anem_orofis.'</zn_parameter9>'.$br;
+				$xml .= '<zn_parameter3>'.${"synoliko_embadon".$z}.'</zn_parameter3>'.$br;
+				$xml .= '<zn_parameter4>'.${"anigmeni_thermo".$z}.'</zn_parameter4>'.$br;
+				$xml .= '<zn_parameter5>'.${"aytomatismoi".$z}.'</zn_parameter5>'.$br;
+				$xml .= '<zn_parameter6>'.${"dieisdysi_aera".$z}.'</zn_parameter6>'.$br;
+				$xml .= '<zn_parameter7>'.${"kaminades".$z}.'</zn_parameter7>'.$br;
+				$xml .= '<zn_parameter8>'.${"eksaerismos".$z}.'</zn_parameter8>'.$br;
+				$xml .= '<zn_parameter9>'.${"anem_orofis".$z}.'</zn_parameter9>'.$br;
 				$xml .= '<zn_parameter10>0</zn_parameter10>'.$br;
 				$xml .= '<zn_parameter11>1</zn_parameter11>'.$br;
-				$xml .= '<zn_parameter12>'.$mesi_katanalwsi_znx.'</zn_parameter12>'.$br;
+				$xml .= '<zn_parameter12>'.${"mesi_katanalwsi_znx".$z}.'</zn_parameter12>'.$br;
 					$xml .= "<ENVELOPE rid=\"1\">".$br;
 						$xml .= '<opaque_rows>'.${"count_adiafani".$z}.'</opaque_rows>'.$br;
 						$xml .= '<opaque_column1>'.${"$array_adiafani_type".$z}.',</opaque_column1>'.$br;
@@ -901,24 +990,24 @@ for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 
 $xml .= '<heating rid="1">'.$br.
 '<heating_exists>1</heating_exists>'.$br.
-'<production_rows>1</production_rows>'.$br.
+'<production_rows>'.${"thermp_rows".$z}.'</production_rows>'.$br.
 '<production_column1>Λέβητας,</production_column1>'.$br.
 '<production_column2>Fuel oil,</production_column2>'.$br.
-'<production_column3>110,</production_column3>'.$br.
-'<production_column4>0.66,</production_column4>'.$br.
-'<production_column5>1.0,</production_column5>'.$br.
-'<production_column6>1,</production_column6>'.$br.
-'<production_column7>1,</production_column7>'.$br.
-'<production_column8>1,</production_column8>'.$br.
-'<production_column9>1,</production_column9>'.$br.
-'<production_column10>0,</production_column10>'.$br.
-'<production_column11>0,</production_column11>'.$br.
-'<production_column12>0,</production_column12>'.$br.
-'<production_column13>0,</production_column13>'.$br.
-'<production_column14>0,</production_column14>'.$br.
-'<production_column15>1,</production_column15>'.$br.
-'<production_column16>1,</production_column16>'.$br.
-'<production_column17>1,</production_column17>'.$br.
+'<production_column3>'.${"heat_production_column3".$z}.',</production_column3>'.$br.
+'<production_column4>'.${"heat_production_column4".$z}.',</production_column4>'.$br.
+'<production_column5>'.${"heat_production_column5".$z}.',</production_column5>'.$br.
+'<production_column6>'.${"heat_production_column6".$z}.',</production_column6>'.$br.
+'<production_column7>'.${"heat_production_column7".$z}.',</production_column7>'.$br.
+'<production_column8>'.${"heat_production_column8".$z}.',</production_column8>'.$br.
+'<production_column9>'.${"heat_production_column9".$z}.',</production_column9>'.$br.
+'<production_column10>'.${"heat_production_column10".$z}.',</production_column10>'.$br.
+'<production_column11>'.${"heat_production_column11".$z}.',</production_column11>'.$br.
+'<production_column12>'.${"heat_production_column12".$z}.',</production_column12>'.$br.
+'<production_column13>'.${"heat_production_column13".$z}.',</production_column13>'.$br.
+'<production_column14>'.${"heat_production_column14".$z}.',</production_column14>'.$br.
+'<production_column15>'.${"heat_production_column15".$z}.',</production_column15>'.$br.
+'<production_column16>'.${"heat_production_column16".$z}.',</production_column16>'.$br.
+'<production_column17>'.${"heat_production_column17".$z}.',</production_column17>'.$br.
 '<production_column18>,</production_column18>'.$br.
 '<distribution_rows>2</distribution_rows>'.$br.
 '<distribution_column1>Δίκτυο διανομής θερμού μέσου,Αεραγωγοί,</distribution_column1>'.$br.
@@ -930,8 +1019,8 @@ $xml .= '<heating rid="1">'.$br.
 '<distribution_column7>False,False,</distribution_column7>'.$br.
 '<distribution_column8>,,</distribution_column8>'.$br.
 '<termatic_rows>1</termatic_rows>'.$br.
-'<termatic_column1>σωματα καλοριφερ,</termatic_column1>'.$br.
-'<termatic_column2>0.89,</termatic_column2>'.$br.
+'<termatic_column1>'.${"thermt_type".$z."1"}.',</termatic_column1>'.$br.
+'<termatic_column2>'.${"thermt_bathm".$z."1"}.',</termatic_column2>'.$br.
 '<termatic_column3>,</termatic_column3>'.$br.
 '<auxiliary_rows>1</auxiliary_rows>'.$br.
 '<auxiliary_column1>Κυκλοφορητές,</auxiliary_column1>'.$br.
@@ -943,24 +1032,24 @@ $xml .= '<heating rid="1">'.$br.
 
 $xml .= '<cooling rid="1">'.$br.
 '<cooling_exists>1</cooling_exists>'.$br.
-'<production_rows>1</production_rows>'.$br.
+'<production_rows>'.${"coldp_rows".$z}.'</production_rows>'.$br.
 '<production_column1>Αερόψυκτος ψύκτης,</production_column1>'.$br.
 '<production_column2>Electricity,</production_column2>'.$br.
-'<production_column3>70.4,</production_column3>'.$br.
-'<production_column4>1.0,</production_column4>'.$br.
-'<production_column5>1.5,</production_column5>'.$br.
-'<production_column6>0,</production_column6>'.$br.
-'<production_column7>0,</production_column7>'.$br.
-'<production_column8>0,</production_column8>'.$br.
-'<production_column9>0,</production_column9>'.$br.
-'<production_column10>0,</production_column10>'.$br.
-'<production_column11>0.5,</production_column11>'.$br.
-'<production_column12>0.5,</production_column12>'.$br.
-'<production_column13>0.5,</production_column13>'.$br.
-'<production_column14>0.5,</production_column14>'.$br.
-'<production_column15>0,</production_column15>'.$br.
-'<production_column16>0,</production_column16>'.$br.
-'<production_column17>0,</production_column17>'.$br.
+'<production_column3>'.${"cold_production_column3".$z}.',</production_column3>'.$br.
+'<production_column4>'.${"cold_production_column4".$z}.',</production_column4>'.$br.
+'<production_column5>'.${"cold_production_column5".$z}.',</production_column5>'.$br.
+'<production_column6>'.${"cold_production_column6".$z}.',</production_column6>'.$br.
+'<production_column7>'.${"cold_production_column7".$z}.',</production_column7>'.$br.
+'<production_column8>'.${"cold_production_column8".$z}.',</production_column8>'.$br.
+'<production_column9>'.${"cold_production_column9".$z}.',</production_column9>'.$br.
+'<production_column10>'.${"cold_production_column10".$z}.',</production_column10>'.$br.
+'<production_column11>'.${"cold_production_column11".$z}.',</production_column11>'.$br.
+'<production_column12>'.${"cold_production_column12".$z}.',</production_column12>'.$br.
+'<production_column13>'.${"cold_production_column13".$z}.',</production_column13>'.$br.
+'<production_column14>'.${"cold_production_column14".$z}.',</production_column14>'.$br.
+'<production_column15>'.${"cold_production_column15".$z}.',</production_column15>'.$br.
+'<production_column16>'.${"cold_production_column16".$z}.',</production_column16>'.$br.
+'<production_column17>'.${"cold_production_column17".$z}.',</production_column17>'.$br.
 '<production_column18>,</production_column18>'.$br.
 '<distribution_rows>2</distribution_rows>'.$br.
 '<distribution_column1>Δίκτυο διανομής ψυχρού μέσου,Αεραγωγοί,</distribution_column1>'.$br.
@@ -970,8 +1059,8 @@ $xml .= '<cooling rid="1">'.$br.
 '<distribution_column5>False,False,</distribution_column5>'.$br.
 '<distribution_column6>,,</distribution_column6>'.$br.
 '<termatic_rows>1</termatic_rows>'.$br.
-'<termatic_column1>τοπικές αντλίες θερμότητας,</termatic_column1>'.$br.
-'<termatic_column2>0.93,</termatic_column2>'.$br.
+'<termatic_column1>'.${"coldt_type".$z."1"}.',</termatic_column1>'.$br.
+'<termatic_column2>'.${"coldt_bathm".$z."1"}.',</termatic_column2>'.$br.
 '<termatic_column3>,</termatic_column3>'.$br.
 '<auxiliary_rows>1</auxiliary_rows>'.$br.
 '<auxiliary_column1>,</auxiliary_column1>'.$br.
@@ -1038,20 +1127,20 @@ $xml .= '<dhw rid="1">'.$br.
 '<production_rows>1</production_rows>'.$br.
 '<production_column1>Λέβητας,</production_column1>'.$br.
 '<production_column2>Fuel oil,</production_column2>'.$br.
-'<production_column3>40,</production_column3>'.$br.
-'<production_column4>1.0,</production_column4>'.$br.
-'<production_column5>1,</production_column5>'.$br.
-'<production_column6>1,</production_column6>'.$br.
-'<production_column7>1,</production_column7>'.$br.
-'<production_column8>1,</production_column8>'.$br.
-'<production_column9>1,</production_column9>'.$br.
-'<production_column10>1,</production_column10>'.$br.
-'<production_column11>1,</production_column11>'.$br.
-'<production_column12>1,</production_column12>'.$br.
-'<production_column13>1,</production_column13>'.$br.
-'<production_column14>1,</production_column14>'.$br.
-'<production_column15>1,</production_column15>'.$br.
-'<production_column16>1,</production_column16>'.$br.
+'<production_column3>'.${"znx_production_column3".$z}.',</production_column3>'.$br.
+'<production_column4>'.${"znx_production_column4".$z}.',</production_column4>'.$br.
+'<production_column5>'.${"znx_production_column5".$z}.',</production_column5>'.$br.
+'<production_column6>'.${"znx_production_column6".$z}.',</production_column6>'.$br.
+'<production_column7>'.${"znx_production_column7".$z}.',</production_column7>'.$br.
+'<production_column8>'.${"znx_production_column8".$z}.',</production_column8>'.$br.
+'<production_column9>'.${"znx_production_column9".$z}.',</production_column9>'.$br.
+'<production_column10>'.${"znx_production_column10".$z}.',</production_column10>'.$br.
+'<production_column11>'.${"znx_production_column11".$z}.',</production_column11>'.$br.
+'<production_column12>'.${"znx_production_column12".$z}.',</production_column12>'.$br.
+'<production_column13>'.${"znx_production_column13".$z}.',</production_column13>'.$br.
+'<production_column14>'.${"znx_production_column14".$z}.',</production_column14>'.$br.
+'<production_column15>'.${"znx_production_column15".$z}.',</production_column15>'.$br.
+'<production_column16>'.${"znx_production_column16".$z}.',</production_column16>'.$br.
 '<production_column17>,</production_column17>'.$br.
 '<distribution_rows>1</distribution_rows>'.$br.
 '<distribution_column1>,</distribution_column1>'.$br.
@@ -1060,24 +1149,24 @@ $xml .= '<dhw rid="1">'.$br.
 '<distribution_column4>1,</distribution_column4>'.$br.
 '<distribution_column5>,</distribution_column5>'.$br.
 '<termatic_rows>1</termatic_rows>'.$br.
-'<termatic_column1>θερμαντήρες σε εσ.χωρ.,</termatic_column1>'.$br.
-'<termatic_column2>0.98,</termatic_column2>'.$br.
+'<termatic_column1>'.${"znxa_type".$z."1"}.',</termatic_column1>'.$br.
+'<termatic_column2>'.${"znxa_bathm".$z."1"}.',</termatic_column2>'.$br.
 '<termatic_column3>,</termatic_column3>'.$br.
 '</dhw>'.$br;
 
 
 $xml .= '<solar_collector rid="1">'.$br.
-'<solar_collector_exists>0</solar_collector_exists>'.$br.
+'<solar_collector_exists>1</solar_collector_exists>'.$br.
 '<solar_collector_rows>1</solar_collector_rows>'.$br.
-'<solar_collector_column1>Απλός επίπεδος,</solar_collector_column1>'.$br.
-'<solar_collector_column2>False,</solar_collector_column2>'.$br.
-'<solar_collector_column3>True,</solar_collector_column3>'.$br.
-'<solar_collector_column4>0.30,</solar_collector_column4>'.$br.
-'<solar_collector_column5>,</solar_collector_column5>'.$br.
-'<solar_collector_column6>25,</solar_collector_column6>'.$br.
-'<solar_collector_column7>180,</solar_collector_column7>'.$br.
-'<solar_collector_column8>40.5,</solar_collector_column8>'.$br.
-'<solar_collector_column9>1,</solar_collector_column9>'.$br.
+'<solar_collector_column1>'.${"solar_collector_column1".$z}.',</solar_collector_column1>'.$br.
+'<solar_collector_column2>'.${"solar_collector_column2".$z}.',</solar_collector_column2>'.$br.
+'<solar_collector_column3>'.${"solar_collector_column3".$z}.',</solar_collector_column3>'.$br.
+'<solar_collector_column4>'.${"iliakos_syna".$z}.',</solar_collector_column4>'.$br.
+'<solar_collector_column5>'.${"iliakos_synb".$z}.',</solar_collector_column5>'.$br.
+'<solar_collector_column6>'.${"iliakos_epifaneia".$z}.',</solar_collector_column6>'.$br.
+'<solar_collector_column7>'.${"iliakos_gdeg".$z}.',</solar_collector_column7>'.$br.
+'<solar_collector_column8>'.${"iliakos_bdeg".$z}.',</solar_collector_column8>'.$br.
+'<solar_collector_column9>'.${"iliakos_fs".$z}.',</solar_collector_column9>'.$br.
 '<solar_collector_column10>,</solar_collector_column10>'.$br.
 '</solar_collector>'.$br;
 

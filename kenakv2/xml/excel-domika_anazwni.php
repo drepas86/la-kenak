@@ -34,6 +34,18 @@ $namefile = $_GET['name'];
 //Το αρχείο των υπολογισμών
 include("../includes/core-calc/core_calculate_anazwni.php");
 
+$prosanatolismos_b="354";
+if ($prosanatolismos_b > 0){
+$prosanatolismos_a = $prosanatolismos_b-360 + 90;
+$prosanatolismos_n = $prosanatolismos_b-360 + 180;
+$prosanatolismos_d = $prosanatolismos_b-360 + 270;
+}
+else{
+$prosanatolismos_a = $prosanatolismos_b + 90;
+$prosanatolismos_n = $prosanatolismos_b + 180;
+$prosanatolismos_d = $prosanatolismos_b + 270;
+}
+
 //Αν δεν έχω βρει στο παραπάνω include ποσες είναι οι θερμικές ζώνες τις μετράω εδώ.
 $strSQL = "SELECT * FROM kataskeyi_zwnes";
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -96,7 +108,7 @@ if ($p==4){
 $t = "b";
 $an = "an_b_";
 $sk = "sk_t_b_";
-$prosanatolismos = "0";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_t_b WHERE id_toixoy = ".${"id_".$t.$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -145,7 +157,7 @@ if ($p==5){
 $t = "a";
 $an = "an_a_";
 $sk = "sk_t_a_";
-$prosanatolismos = "90";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_t_a WHERE id_toixoy = ".${"id_".$t.$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -193,7 +205,7 @@ if ($p==6){
 $t = "n";
 $an = "an_n_";
 $sk = "sk_t_n_";
-$prosanatolismos = "180";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_t_n WHERE id_toixoy = ".${"id_".$t.$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -243,7 +255,8 @@ $t = "d";
 $onoma = ${"name_d".$i};
 $an = "an_d_";
 $sk = "sk_t_d_";
-$prosanatolismos = "270";
+$prosanatolismos = ${"prosanatolismos_".$t};
+
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_t_d WHERE id_toixoy = ".${"id_".$t.$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 $num_results = mysql_num_rows($objQuery);
@@ -347,11 +360,12 @@ $klisi_an = "90";
 
 for ($i = 1; $i <= $st; $i++) {
 if ($p==4){
-$prosanatolismos = "0";
+
 $st=$anoig_t_boreia;
 $an = "an_b_";
 $sk = "sk_an_b_";
 $t = "b";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_an_b WHERE id_an = ".${$an."id".$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -397,11 +411,12 @@ $ffinc_an = 1;
 }
 
 if ($p==5){
-$prosanatolismos = "90";
+
 $st=$anoig_t_anatolika;
 $an = "an_a_";
 $sk = "sk_an_a_";
 $t = "a";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_an_a WHERE id_an = ".${$an."id".$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -446,11 +461,12 @@ $ffinc_an = 1;
 }
 
 if ($p==6){
-$prosanatolismos = "180";
+
 $st=$anoig_t_notia;
 $an = "an_n_";
 $sk = "sk_an_n_";
 $t = "n";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_an_n WHERE id_an = ".${$an."id".$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -495,11 +511,12 @@ $ffinc_an = 1;
 }
 
 if ($p==7){
-$prosanatolismos = "270";
+
 $st=$anoig_t_dytika;
 $an = "an_d_";
 $sk = "sk_an_d_";
 $t = "d";
+$prosanatolismos = ${"prosanatolismos_".$t};
 
 $strSQL = "SELECT * FROM kataskeyi_skiaseis_an_d WHERE id_an = ".${$an."id".$i};
 $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");

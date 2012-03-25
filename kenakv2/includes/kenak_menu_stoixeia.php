@@ -292,10 +292,10 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					if ($kataskeyi_stoixeia_zwni=="g"){$kataskeyi_stoixeia_zwni="Ζώνη Γ";}
 					if ($kataskeyi_stoixeia_zwni=="d"){$kataskeyi_stoixeia_zwni="Ζώνη Δ";}
 					*/
-					if ($kataskeyi_stoixeia_zwni=="a"){$kataskeyi_stoixeia_zwni=0;}
-					if ($kataskeyi_stoixeia_zwni=="b"){$kataskeyi_stoixeia_zwni=1;}
-					if ($kataskeyi_stoixeia_zwni=="g"){$kataskeyi_stoixeia_zwni=2;}
-					if ($kataskeyi_stoixeia_zwni=="d"){$kataskeyi_stoixeia_zwni=3;}
+					if ($kataskeyi_stoixeia_zwni=="a"){$kataskeyi_stoixeia_zwni=1;}
+					if ($kataskeyi_stoixeia_zwni=="b"){$kataskeyi_stoixeia_zwni=2;}
+					if ($kataskeyi_stoixeia_zwni=="g"){$kataskeyi_stoixeia_zwni=3;}
+					if ($kataskeyi_stoixeia_zwni=="d"){$kataskeyi_stoixeia_zwni=4;}
 
 					$kataskeyi_stoixeia_climate_data = $kataskeyi_stoixeia_array[0]["climate_data"];
 					$climate_data_array = get_times("place", "climate41", $kataskeyi_stoixeia_climate_data);

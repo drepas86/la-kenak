@@ -274,7 +274,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 						<option value="3">Πετρέλαιο θέρμανσης</option>
 						<option value="4">Πετρέλαιο κίνησης</option>
 						<option value="5">Τηλεθέρμανση</option>
-						<option value="5">Βιομάζα</option>
+						<option value="6">Βιομάζα</option>
 						</select>
 						</td>
 						<td><input type="text" name="<?=$vasi."_isxys";?>" maxlength="10" size="5" /></td>
@@ -690,7 +690,7 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 						<option value="3">Πετρέλαιο θέρμανσης</option>
 						<option value="4">Πετρέλαιο κίνησης</option>
 						<option value="5">Τηλεθέρμανση</option>
-						<option value="5">Βιομάζα</option>
+						<option value="6">Βιομάζα</option>
 						</select>
 						</td>
 						<td><input type="text" name="<?=$vasi."_isxys";?>" maxlength="10" size="5" /></td>

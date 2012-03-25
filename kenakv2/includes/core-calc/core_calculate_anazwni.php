@@ -128,8 +128,13 @@
 					if (${"xwroi_id_zwnis".$i} == $id_thermzwnes[$z]){
 					${"synoliko_embadon".$z} += ${"xwroi_emvadon".$i}; //Εμβαδόν χώρων θερμικής ζώνης
 					${"synolikos_ogkos".$z} += ${"xwroi_ogkos".$i};	 //Όγκος θερμικής ζώνης
+						if ($check_thermzwnes[$z] == 1) {
+						$thermainomenos_ogkos += ${"xwroi_ogkos".$i};
+						}
 					}
 				}
+			$synoliko_embadon += ${"xwroi_emvadon".$i};
+			$synolikos_ogkos += ${"xwroi_ogkos".$i};
 			}
 			
 			
@@ -495,6 +500,7 @@
 			}
 			
 			
+			
 			for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 			//Η επιφάνεια του ηλιακού από τα συστήματα
 			$strSQL = "SELECT * FROM kataskeyi_xsystems_znxiliakos WHERE id_zwnis=$id_thermzwnes[$z]";
@@ -514,6 +520,17 @@
 			${"iliakos_bdeg".$z} = $objResult["bdeg"];
 			${"iliakos_fs".$z} = $objResult["fs"];
 			
+			if (${"iliakos_type".$z} == 0){${"solar_collector_column1".$z} = "Χωρίς κάλυμμα";}
+			if (${"iliakos_type".$z} == 1){${"solar_collector_column1".$z} = "Απλός επίπεδος";}
+			if (${"iliakos_type".$z} == 2){${"solar_collector_column1".$z} = "Επιλεκτικός επίπεδος";}
+			if (${"iliakos_type".$z} == 3){${"solar_collector_column1".$z} = "Κενού";}
+			if (${"iliakos_type".$z} == 4){${"solar_collector_column1".$z} = "Συγκεντρωτικός";}
+			
+			if (${"iliakos_thermansi".$z} == 0){${"solar_collector_column2".$z} = "False";}
+			if (${"iliakos_thermansi".$z} == 1){${"solar_collector_column2".$z} = "True";}
+			
+			if (${"iliakos_znx".$z} == 0){${"solar_collector_column3".$z} = "False";}
+			if (${"iliakos_znx".$z} == 1){${"solar_collector_column3".$z} = "True";}
 			}
 			}
 			
@@ -703,7 +720,6 @@ $domika419 = $array_domika41[8][0];
 
 
 //------------------------------------ΣΥΣΤΗΜΑΤΑ-------------------------------------------
-
 //Μονάδες παραγωγής θέρμανσης
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 $strSQL = "SELECT * FROM kataskeyi_xsystems_thermp WHERE id_zwnis=$id_thermzwnes[$z]";

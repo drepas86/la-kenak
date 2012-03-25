@@ -628,7 +628,7 @@ $f1 .= "<tr><td style=\"text-align:left;\"><b>Ζώνη $z</b></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"><b>${"synoliko_embadon".$z}</b></td>".
-"<td style=\"text-align:center;\"><b>${"synolikos_ogkos".$z}</b></td>";
+"<td style=\"text-align:center;\"><b>${"synolikos_ogkos".$z}</b></td>".
 "<td style=\"text-align:center;\"><b></b></td></tr>";
 }
 $f1 .= "</table>";
