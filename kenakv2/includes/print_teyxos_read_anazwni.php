@@ -61,23 +61,22 @@ $pin43 .= "<tr><td style=\"text-align:left;\">Οροφή χωρίς θερμομ
 $pin43 .= "</table>";
 		
 		
-$pin44 = "<table><tr>".
-		 "<td style=\"text-align:left;width:40%;\">Δομικό στοιχείο</td>".
+$pin44 = "<table>";
+$pin44 .= "<tr><td style=\"text-align:left;width:40%;\">Δομικό στοιχείο</td>".
 		 "<td style=\"text-align:center;width:15%;\">Φύλλο ελέγχου</td>".
 		 "<td style=\"text-align:center;width:15%;\">U [W/(m²K)]</td>".
 		 "<td style=\"text-align:center;width:15%;\">Μέσο βάθος z (m)</td>".
-		 "<td style=\"text-align:center;width:15%;\">U' [W/(m²K)]</td></tr>";		
-$pin44 .= "<tr><td style=\"text-align:left;\">Δάπεδο ισογείου σε επαφή με το έδαφος</td>".
+		 "<td style=\"text-align:center;width:15%;\">U' [W/(m²K)]</td></tr>";
+for ($i=1;$i<=$rows_dapedo;$i++){	
+if (${"dapedo_type".$i} == 0){	
+$pin44 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
 		  "<td style=\"text-align:center;\">&nbsp;</td>".
-		  "<td style=\"text-align:center;\">" . $dapedo_u1 . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"dapedo_u".$i} . "</td>".
 		  "<td style=\"text-align:center;\">&nbsp;</td>".
-		  "<td style=\"text-align:center;\">0</td>";
-$pin44 .= "</tr><tr><td style=\"text-align:left;\">Δάπεδο ισογείου σε επαφή με μη θερμαινόμενο χώρο</td>".
-		  "<td style=\"text-align:center;\">&nbsp;</td>".
-		  "<td style=\"text-align:center;\">" . $dapedo_u2 . "</td>".
-		  "<td style=\"text-align:center;\">&nbsp;</td>".
-		  "<td style=\"text-align:center;\">0</td>";
-$pin44 .= "</tr></table>";
+		  "<td style=\"text-align:center;\">0</td></tr>";
+}
+}
+$pin44 .= "</table>";
 
 //*********************************************************************************************
 
@@ -606,7 +605,8 @@ $pinepar1 .="<br />Όπως προέκυψε A/V = " . number_format(${"aprosv".
 //                      ΦΥΛΛΑ ΥΠΟΛΟΓΙΣΜΩΝ                                                     *
 //*********************************************************************************************
 $f1 = "<table>".
-"<tr><td style=\"text-align:left;width:25%;\"><b>Χώροι</b></td>".
+"<tr><td style=\"text-align:left;width:15%;\"><b>Χώροι</b></td>".
+"<td style=\"text-align:center;width:10%;\"><b>Ζώνη</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>Μήκος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>Πλάτος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>Ύψος</b></td>".
@@ -614,18 +614,23 @@ $f1 = "<table>".
 "<td style=\"text-align:center;width:15%;\"><b>Όγκος</b></td></tr>";
 for($i = 1; $i <= $rows_xwroi; $i++) {
 $f1 .= "<tr><td style=\"text-align:left;\">Χώρος $i</td>".
+"<td style=\"text-align:center;\">${"xwroi_id_zwnis".$i}</td>".
 "<td style=\"text-align:center;\">${"xwroi_mikos".$i}</td>".
 "<td style=\"text-align:center;\">${"xwroi_platos".$i}</td>".
 "<td style=\"text-align:center;\">${"xwroi_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"xwroi_emvadon".$i}</td>".
 "<td style=\"text-align:center;\">${"xwroi_ogkos".$i}</td></tr>";
 }
-$f1 .= "<tr><td style=\"text-align:left;\"><b>Σύνολα</b></td>".
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+$f1 .= "<tr><td style=\"text-align:left;\"><b>Ζώνη $z</b></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
-"<td style=\"text-align:center;\"><b>$synoliko_embadon</b></td>".
-"<td style=\"text-align:center;\"><b>$synolikos_ogkos</b></td></tr>";
+"<td style=\"text-align:center;\"></td>".
+"<td style=\"text-align:center;\"><b>${"synoliko_embadon".$z}</b></td>".
+"<td style=\"text-align:center;\"><b>${"synolikos_ogkos".$z}</b></td>";
+"<td style=\"text-align:center;\"><b></b></td></tr>";
+}
 $f1 .= "</table>";
 //*********************************************************************************************
 $f2 = "<table>".
@@ -643,22 +648,26 @@ $f2 .= "</table>";
 //*********************************************************************************************
 $f3 = "<table>".
 "<tr><td style=\"text-align:left;width:25%;\"><b>Είδος</b></td>".
+"<td style=\"text-align:center;width:15%;\"><b>Ζώνη</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>Πλήθος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>Ύψος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>UxΑ</b></td></tr>";
 for ($i = 1; $i <= $rows_es_g; $i++) {
 $f3 .= "<tr><td style=\"text-align:left;\">${"thermo_esw_drop".$i}</td>".
+"<td style=\"text-align:center;\">${"thermo_esw_id_zwnis".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_gwnia_p".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_gwnia_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_gwnia_ua".$i}</td></tr>";
 }
 for ($i = 1; $i <= $rows_eks_g; $i++) {
 $f3 .= "<tr><td style=\"text-align:left;\">${"thermo_eksw_drop".$i}</td>".
+"<td style=\"text-align:center;\">${"thermo_eksw_id_zwnis".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_p".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_ua".$i}</td></tr>";
 }
 $f3 .= "<tr><td style=\"text-align:left;\">Δαπέδου (υπολογισμός με βάση την περίμετρο)</td>".
+"<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\">$thermo_dapedo_drop</td></tr>";
