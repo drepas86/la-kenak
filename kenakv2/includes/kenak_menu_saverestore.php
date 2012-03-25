@@ -67,7 +67,7 @@ tee-kenak-onoma.xml για είσοδο στο πρόγραμμα του ΤΕΕ-
     input.onchange=input.onkeyup= function() {
         linkxml.href= './save-scripts/save-script-xml.php?name='+encodeURIComponent(input.value);
 		linksql.href= './save-scripts/save-script-sql.php?name='+encodeURIComponent(input.value);
-		linktee.href= './xml/xml-tee.php?name='+encodeURIComponent(input.value);
+		linktee.href= './xml/xml-tee_anazwni.php?name='+encodeURIComponent(input.value);
 
     };
 	document.getElementById('xmlname').focus();

@@ -97,6 +97,28 @@ $t = "b";
 $an = "an_b_";
 $sk = "sk_t_b_";
 $prosanatolismos = "0";
+
+$strSQL = "SELECT * FROM kataskeyi_skiaseis_t_b WHERE id_toixoy = ".${"id_".$t.$i};
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$num_results = mysql_num_rows($objQuery);
+$objResult = mysql_fetch_array($objQuery);
+if ($num_results > 0){ 
+$fhorh_epifaneias = $objResult["f_hor_h"];
+$fhorc_epifaneias = $objResult["f_hor_c"];
+$fovh_epifaneias = $objResult["f_ov_h"];
+$fovc_epifaneias = $objResult["f_ov_c"];
+$ffinh_epifaneias = $objResult["f_fin_h"];
+$ffinc_epifaneias = $objResult["f_fin_c"];
+}
+if ($num_results == 0){ 
+$fhorh_epifaneias = 1;
+$fhorc_epifaneias = 1;
+$fovh_epifaneias = 1;
+$fovc_epifaneias = 1;
+$ffinh_epifaneias = 1;
+$ffinc_epifaneias = 1;
+}
+/*
 for ($z = 1; $z <= $skiaseis_t_b; $z++){
 			if (${"id_".$t.$i} == ${$sk."id_toixoy".$z}){
 			$fhorh_epifaneias = ${$sk."f_hor_h".$z};
@@ -114,7 +136,9 @@ for ($z = 1; $z <= $skiaseis_t_b; $z++){
 			$ffinh_epifaneias = "1";
 			$ffinc_epifaneias = "1";
 			}
+
 		}
+*/
 }
 
 if ($p==5){
@@ -122,6 +146,28 @@ $t = "a";
 $an = "an_a_";
 $sk = "sk_t_a_";
 $prosanatolismos = "90";
+
+$strSQL = "SELECT * FROM kataskeyi_skiaseis_t_a WHERE id_toixoy = ".${"id_".$t.$i};
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$num_results = mysql_num_rows($objQuery);
+$objResult = mysql_fetch_array($objQuery);
+if ($num_results > 0){ 
+$fhorh_epifaneias = $objResult["f_hor_h"];
+$fhorc_epifaneias = $objResult["f_hor_c"];
+$fovh_epifaneias = $objResult["f_ov_h"];
+$fovc_epifaneias = $objResult["f_ov_c"];
+$ffinh_epifaneias = $objResult["f_fin_h"];
+$ffinc_epifaneias = $objResult["f_fin_c"];
+}
+if ($num_results == 0){ 
+$fhorh_epifaneias = 1;
+$fhorc_epifaneias = 1;
+$fovh_epifaneias = 1;
+$fovc_epifaneias = 1;
+$ffinh_epifaneias = 1;
+$ffinc_epifaneias = 1;
+}
+/*
 for ($z = 1; $z <= $skiaseis_t_a; $z++){
 			if (${"id_".$t.$i} == ${$sk."id_toixoy".$z}){
 			$fhorh_epifaneias = ${$sk."f_hor_h".$z};
@@ -140,6 +186,7 @@ for ($z = 1; $z <= $skiaseis_t_a; $z++){
 			$ffinc_epifaneias = "1";
 			}
 		}
+*/
 }
 
 if ($p==6){
@@ -147,6 +194,29 @@ $t = "n";
 $an = "an_n_";
 $sk = "sk_t_n_";
 $prosanatolismos = "180";
+
+$strSQL = "SELECT * FROM kataskeyi_skiaseis_t_n WHERE id_toixoy = ".${"id_".$t.$i};
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$num_results = mysql_num_rows($objQuery);
+$objResult = mysql_fetch_array($objQuery);
+if ($num_results > 0){ 
+$fhorh_epifaneias = $objResult["f_hor_h"];
+$fhorc_epifaneias = $objResult["f_hor_c"];
+$fovh_epifaneias = $objResult["f_ov_h"];
+$fovc_epifaneias = $objResult["f_ov_c"];
+$ffinh_epifaneias = $objResult["f_fin_h"];
+$ffinc_epifaneias = $objResult["f_fin_c"];
+}
+if ($num_results == 0){ 
+$fhorh_epifaneias = 1;
+$fhorc_epifaneias = 1;
+$fovh_epifaneias = 1;
+$fovc_epifaneias = 1;
+$ffinh_epifaneias = 1;
+$ffinc_epifaneias = 1;
+}
+
+/*
 for ($z = 1; $z <= $skiaseis_t_n; $z++){
 			if (${"id_".$t.$i} == ${$sk."id_toixoy".$z}){
 			$fhorh_epifaneias = ${$sk."f_hor_h".$z};
@@ -165,6 +235,7 @@ for ($z = 1; $z <= $skiaseis_t_n; $z++){
 			$ffinc_epifaneias = "1";
 			}
 		}
+*/
 }
 
 if ($p==7){
@@ -173,6 +244,28 @@ $onoma = ${"name_d".$i};
 $an = "an_d_";
 $sk = "sk_t_d_";
 $prosanatolismos = "270";
+$strSQL = "SELECT * FROM kataskeyi_skiaseis_t_d WHERE id_toixoy = ".${"id_".$t.$i};
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$num_results = mysql_num_rows($objQuery);
+$objResult = mysql_fetch_array($objQuery);
+if ($num_results > 0){ 
+$fhorh_epifaneias = $objResult["f_hor_h"];
+$fhorc_epifaneias = $objResult["f_hor_c"];
+$fovh_epifaneias = $objResult["f_ov_h"];
+$fovc_epifaneias = $objResult["f_ov_c"];
+$ffinh_epifaneias = $objResult["f_fin_h"];
+$ffinc_epifaneias = $objResult["f_fin_c"];
+}
+if ($num_results == 0){ 
+$fhorh_epifaneias = 1;
+$fhorc_epifaneias = 1;
+$fovh_epifaneias = 1;
+$fovc_epifaneias = 1;
+$ffinh_epifaneias = 1;
+$ffinc_epifaneias = 1;
+}
+
+/*
 for ($z = 1; $z <= $skiaseis_t_d; $z++){
 			if (${"id_".$t.$i} == ${$sk."id_toixoy".$z}){
 			$fhorh_epifaneias = ${$sk."f_hor_h".$z};
@@ -191,6 +284,7 @@ for ($z = 1; $z <= $skiaseis_t_d; $z++){
 			$ffinc_epifaneias = "1";
 			}
 		}
+*/		
 }
 
 
@@ -258,6 +352,28 @@ $st=$anoig_t_boreia;
 $an = "an_b_";
 $sk = "sk_an_b_";
 $t = "b";
+
+$strSQL = "SELECT * FROM kataskeyi_skiaseis_an_b WHERE id_an = ".${$an."id".$i};
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$num_results = mysql_num_rows($objQuery);
+$objResult = mysql_fetch_array($objQuery);
+if ($num_results > 0){ 
+$fhorh_an = $objResult["f_hor_h"];
+$fhorc_an = $objResult["f_hor_c"];
+$fovh_an = $objResult["f_ov_h"];
+$fovc_an = $objResult["f_ov_c"];
+$ffinh_an = $objResult["f_fin_h"];
+$ffinc_an = $objResult["f_fin_c"];
+}
+if ($num_results == 0){ 
+$fhorh_an = 1;
+$fhorc_an = 1;
+$fovh_an = 1;
+$fovc_an = 1;
+$ffinh_an = 1;
+$ffinc_an = 1;
+}
+/*
 	for ($z = 1; $z <= $skiaseis_anoig_b; $z++){
 			if (${$an."id".$i} == ${$sk."id_an".$z}){
 			$fhorh_an = ${$sk."f_hor_h".$z};
@@ -276,6 +392,8 @@ $t = "b";
 			$ffinc_an = "1";
 			}
 	}
+*/	
+	
 }
 
 if ($p==5){
@@ -284,6 +402,28 @@ $st=$anoig_t_anatolika;
 $an = "an_a_";
 $sk = "sk_an_a_";
 $t = "a";
+
+$strSQL = "SELECT * FROM kataskeyi_skiaseis_an_a WHERE id_an = ".${$an."id".$i};
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$num_results = mysql_num_rows($objQuery);
+$objResult = mysql_fetch_array($objQuery);
+if ($num_results > 0){ 
+$fhorh_an = $objResult["f_hor_h"];
+$fhorc_an = $objResult["f_hor_c"];
+$fovh_an = $objResult["f_ov_h"];
+$fovc_an = $objResult["f_ov_c"];
+$ffinh_an = $objResult["f_fin_h"];
+$ffinc_an = $objResult["f_fin_c"];
+}
+if ($num_results == 0){ 
+$fhorh_an = 1;
+$fhorc_an = 1;
+$fovh_an = 1;
+$fovc_an = 1;
+$ffinh_an = 1;
+$ffinc_an = 1;
+}
+/*
 	for ($z = 1; $z <= $skiaseis_anoig_a; $z++){
 			if (${$an."id".$i} == ${$sk."id_an".$z}){
 			$fhorh_an = ${$sk."f_hor_h".$z};
@@ -302,6 +442,7 @@ $t = "a";
 			$ffinc_an = "1";
 			}
 	}
+*/	
 }
 
 if ($p==6){
@@ -310,6 +451,28 @@ $st=$anoig_t_notia;
 $an = "an_n_";
 $sk = "sk_an_n_";
 $t = "n";
+
+$strSQL = "SELECT * FROM kataskeyi_skiaseis_an_n WHERE id_an = ".${$an."id".$i};
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$num_results = mysql_num_rows($objQuery);
+$objResult = mysql_fetch_array($objQuery);
+if ($num_results > 0){ 
+$fhorh_an = $objResult["f_hor_h"];
+$fhorc_an = $objResult["f_hor_c"];
+$fovh_an = $objResult["f_ov_h"];
+$fovc_an = $objResult["f_ov_c"];
+$ffinh_an = $objResult["f_fin_h"];
+$ffinc_an = $objResult["f_fin_c"];
+}
+if ($num_results == 0){ 
+$fhorh_an = 1;
+$fhorc_an = 1;
+$fovh_an = 1;
+$fovc_an = 1;
+$ffinh_an = 1;
+$ffinc_an = 1;
+}
+/*
 	for ($z = 1; $z <= $skiaseis_anoig_n; $z++){
 			if (${$an."id".$i} == ${$sk."id_an".$z}){
 			$fhorh_an = ${$sk."f_hor_h".$z};
@@ -328,6 +491,7 @@ $t = "n";
 			$ffinc_an = "1";
 			}
 	}
+*/	
 }
 
 if ($p==7){
@@ -336,6 +500,28 @@ $st=$anoig_t_dytika;
 $an = "an_d_";
 $sk = "sk_an_d_";
 $t = "d";
+
+$strSQL = "SELECT * FROM kataskeyi_skiaseis_an_d WHERE id_an = ".${$an."id".$i};
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$num_results = mysql_num_rows($objQuery);
+$objResult = mysql_fetch_array($objQuery);
+if ($num_results > 0){ 
+$fhorh_an = $objResult["f_hor_h"];
+$fhorc_an = $objResult["f_hor_c"];
+$fovh_an = $objResult["f_ov_h"];
+$fovc_an = $objResult["f_ov_c"];
+$ffinh_an = $objResult["f_fin_h"];
+$ffinc_an = $objResult["f_fin_c"];
+}
+if ($num_results == 0){ 
+$fhorh_an = 1;
+$fhorc_an = 1;
+$fovh_an = 1;
+$fovc_an = 1;
+$ffinh_an = 1;
+$ffinc_an = 1;
+}
+/*
 	for ($z = 1; $z <= $skiaseis_anoig_d; $z++){
 			if (${$an."id".$i} == ${$sk."id_an".$z}){
 			$fhorh_an = ${$sk."f_hor_h".$z};
@@ -354,6 +540,7 @@ $t = "d";
 			$ffinc_an = "1";
 			}
 	}
+*/	
 }
 
 if (${$an."anoig_eidos".$i} == 1) {
