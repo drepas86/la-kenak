@@ -32,7 +32,7 @@ $namefile = $_GET['name'];
 
 
 //Το αρχείο των υπολογισμών
-include("../includes/core-calc/core_calculate.php");
+include("../includes/core-calc/core_calculate_anazwni.php");
 
 
 $strSQL = "SELECT * FROM kataskeyi_zwnes";
@@ -823,8 +823,8 @@ for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 						$xml .= '<transparent_column4>'.${"array_diafani_b".$z}.',</transparent_column4>'.$br;
 						$xml .= '<transparent_column5>'.${"array_diafani_edrom".$z}.',</transparent_column5>'.$br;
 						$xml .= '<transparent_column6>'.${"array_diafani_typos".$z}.',</transparent_column6>'.$br;
-						$xml .= '<transparent_column7>'.${"array_adiafani_u".$z}.',</transparent_column7>'.$br;
-						$xml .= '<transparent_column8>'.${"array_adiafani_gw".$z}.',</transparent_column8>'.$br;
+						$xml .= '<transparent_column7>'.${"array_diafani_u".$z}.',</transparent_column7>'.$br;
+						$xml .= '<transparent_column8>'.${"array_diafani_gw".$z}.',</transparent_column8>'.$br;
 						$xml .= '<transparent_column9>'.${"array_diafani_fhorh".$z}.',</transparent_column9>'.$br;
 						$xml .= '<transparent_column10>'.${"array_diafani_fhorc".$z}.',</transparent_column10>'.$br;
 						$xml .= '<transparent_column11>'.${"array_diafani_fovh".$z}.',</transparent_column11>'.$br;
@@ -832,10 +832,10 @@ for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 						$xml .= '<transparent_column13>'.${"array_diafani_ffinh".$z}.',</transparent_column13>'.$br;
 						$xml .= '<transparent_column14>'.${"array_diafani_ffinc".$z}.',</transparent_column14>'.$br;
 						$xml .= '<transparent_column15>,,,,,,,,,,,,,,,,,,,,,,</transparent_column15>'.$br;
-						$xml .= '<opaque_tb_rows>0</opaque_tb_rows>'.$br;
-						$xml .= '<opaque_tb_column1/>'.$br;
-						$xml .= '<opaque_tb_column2/>'.$br;
-						$xml .= '<opaque_tb_column3/>'.$br;
+						$xml .= '<opaque_tb_rows>1</opaque_tb_rows>'.$br;
+						$xml .= '<opaque_tb_column1>ΣΥΝΟΛΙΚΕΣ,</opaque_tb_column1>'.$br;
+						$xml .= '<opaque_tb_column2>1,</opaque_tb_column2>'.$br;
+						$xml .= '<opaque_tb_column3>'.${"thermogefyres".$z}.',</opaque_tb_column3>'.$br; //θερμογέφυρες κελύφους
 						$xml .= '<internal_nodes>0</internal_nodes>'.$br;
 						$xml .= '<direct_benefit_exist>0</direct_benefit_exist>'.$br;
 						$xml .= '<direct_benefit_rows>40</direct_benefit_rows>'.$br;
