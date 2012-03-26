@@ -496,7 +496,7 @@
 			${"syntelestis_znx_iliakos2".$z} = ${"array_xrisis_znx2".$z}[0][0];
 			${"mesi_katanalwsi_znx".$z} = ${"syntelestis_znx_iliakos2".$z} * ${"synoliko_embadon".$z};
 			${"vd_iliakoy".$z} = ${"syntelestis_znx_iliakos".$z} * ${"synoliko_embadon".$z};
-			
+			$syntelestis_znx_iliakos_text .= " " . ${"syntelestis_znx_iliakos".$z} . " (ζώνη " . $z . ")";
 			}
 			
 			
@@ -689,6 +689,7 @@
 			//Έλεγχος διείσδυσης αέρα από κουφώματα
 			${"array_dieisdysi_aera".$z} = get_times("xrisi,nwpos_aeras_m2", "energy_conditions", ${"drop_xrisi".$z});
 			${"syntelestis_dieisdysi_aera".$z} = ${"array_dieisdysi_aera".$z}[0][1];
+			$syntelestis_dieisdysi_aera_text .= " " . ${"syntelestis_dieisdysi_aera".$z} . " (ζώνη " . $z . ")";
 			if ($check_thermzwnes[$z] == 1){
 			${"apaitoymeni_dieisdysi_aera".$z} = ${"syntelestis_dieisdysi_aera".$z} * ${"synoliko_embadon".$z};
 			}

@@ -283,6 +283,20 @@ $pin9 .= "<tr><td style=\"text-align:left;\">Τύπος βοηθητικών σ�
 }
 $pin9 .= "<tr><td style=\"text-align:left;\">Χρόνος λειτουργίας βοηθητικών συστημάτων</td>".
 "<td style=\"text-align:center;\">75% του χρόνου λειτουργίας του κτιρίου</td></tr></table>";
+
+$pin9 .= "<table>".
+"<tr><td>ΙΑΝ</td><td>ΦΕΒ</td><td>ΜΑΡ</td><td>ΑΠΡ</td><td>MAI</td><td>IOYN</td>".
+"<td>IOYΛ</td><td>ΑΥΓ</td><td>ΣΕΠ</td><td>ΟΚΤ</td><td>ΝΟΕ</td><td>ΔΕΚ</td></tr>";
+for ($i=1;$i<=${"thermp_rows".$z};$i++){
+$pin9 .= "<tr><td>${"thermp_jan".$z.$i}</td><td>${"thermp_feb".$z.$i}</td>".
+"<td>${"thermp_mar".$z.$i}</td><td>${"thermp_apr".$z.$i}</td>".
+"<td>${"thermp_may".$z.$i}</td><td>${"thermp_jun".$z.$i}</td>".
+"<td>${"thermp_jul".$z.$i}</td><td>${"thermp_aug".$z.$i}</td>".
+"<td>${"thermp_sep".$z.$i}</td><td>${"thermp_okt".$z.$i}</td>".
+"<td>${"thermp_nov".$z.$i}</td><td>${"thermp_decem".$z.$i}</td></tr>";
+}
+$pin9 .= "</table>";
+
 }
 }
 
@@ -377,6 +391,18 @@ $pin10 .= "<tr><td style=\"text-align:left;\">Χρόνος λειτουργία�
 "<td style=\"text-align:center;\">15% του χρόνου λειτουργίας του κτιρίου</td></tr>";
 $pin10 .= "</table>";
 
+$pin10 .= "<table>".
+"<tr><td>ΙΑΝ</td><td>ΦΕΒ</td><td>ΜΑΡ</td><td>ΑΠΡ</td><td>MAI</td><td>IOYN</td>".
+"<td>IOYΛ</td><td>ΑΥΓ</td><td>ΣΕΠ</td><td>ΟΚΤ</td><td>ΝΟΕ</td><td>ΔΕΚ</td></tr>";
+for ($i=1;$i<=${"coldp_rows".$z};$i++){
+$pin10 .= "<tr><td>${"coldp_jan".$z.$i}</td><td>${"coldp_feb".$z.$i}</td>".
+"<td>${"coldp_mar".$z.$i}</td><td>${"coldp_apr".$z.$i}</td>".
+"<td>${"coldp_may".$z.$i}</td><td>${"coldp_jun".$z.$i}</td>".
+"<td>${"coldp_jul".$z.$i}</td><td>${"coldp_aug".$z.$i}</td>".
+"<td>${"coldp_sep".$z.$i}</td><td>${"coldp_okt".$z.$i}</td>".
+"<td>${"coldp_nov".$z.$i}</td><td>${"coldp_decem".$z.$i}</td></tr>";
+}
+$pin10 .= "</table>";
 }
 }
 //*********************************************************************************************
@@ -435,6 +461,15 @@ $pin68 .= "<tr><td style=\"text-align:left;\">Είδος αποθήκευσης 
 "<td style=\"text-align:center;\">${"znxa_bathm".$z.$i}</td></tr>";
 }
 $pin68 .= "</table>";
+$pin68 .= "<table>".
+"<tr><td>ΙΑΝ</td><td>ΦΕΒ</td><td>ΜΑΡ</td><td>ΑΠΡ</td><td>MAI</td><td>IOYN</td>".
+"<td>IOYΛ</td><td>ΑΥΓ</td><td>ΣΕΠ</td><td>ΟΚΤ</td><td>ΝΟΕ</td><td>ΔΕΚ</td></tr>";
+$pin68 .= "<tr><td>${"pososto_iliaka_jan".$z}</td><td>${"pososto_iliaka_feb".$z}</td>".
+"<td>${"pososto_iliaka_mar".$z}</td><td>${"pososto_iliaka_apr".$z}</td>".
+"<td>${"pososto_iliaka_may".$z}</td><td>${"pososto_iliaka_jun".$z}</td>".
+"<td>${"pososto_iliaka_jul".$z}</td><td>${"pososto_iliaka_aug".$z}</td>".
+"<td>${"pososto_iliaka_sep".$z}</td><td>${"pososto_iliaka_okt".$z}</td>".
+"<td>${"pososto_iliaka_nov".$z}</td><td>${"pososto_iliaka_dec".$z}</td></tr></table>";
 }
 }
 //*********************************************************************************************
@@ -1294,6 +1329,12 @@ $z1[93]=$znxa_type_text;
 
 $z[93]="{COLDPEER1}";
 $z1[93]=$coldp_eer_text;
+
+$z[94]="{SYNTDIEISD1}";
+$z1[94]=$syntelestis_dieisdysi_aera_text;
+
+$z[95]="{SYNTZNX1}";
+$z1[95]=$syntelestis_znx_iliakos_text;
 
 
 $z[99]="<table>";

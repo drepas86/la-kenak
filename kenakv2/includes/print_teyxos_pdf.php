@@ -72,7 +72,7 @@ class MYPDF extends TCPDF {
 		// Set font
 		$this->SetFont('dejavusans', 'B', 10);
 		// Title
-		$this->Cell(0, 15, 'La-Kenak v'.VERSION, 'B', false, 'C', 0, '', 0, false, 'M', 'B');
+		$this->Cell(0, 15, 'Μελέτη ενεργειακής απόδοσης κτιρίου', 'B', false, 'C', 0, '', 0, false, 'M', 'B');
 	}
 	// Page footer
 	public function Footer() {
