@@ -31,6 +31,12 @@ include στο kenak_formteyxos.php                                      *
                                                                       *
 ***********************************************************************
 */
+
+/* pChart library inclusions */
+ include("includes/pchart/class/pData.class.php");
+ include("includes/pchart/class/pDraw.class.php");
+ include("includes/pchart/class/pImage.class.php");
+
 $save="*";
 if (isset($_GET['save'])) $save=$_GET['save'];
 //echo $save;
@@ -85,7 +91,7 @@ for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 if ($check_thermzwnes[$z] == 1){
 
 $pin5 .= "<table>";
-$pin5 .= "<tr><td style=\"text-align:left;width:40%;\">Ζώνη $z</td></tr>";
+$pin5 .= "<tr><td colspan=\"5\">Ζώνη $z</td></tr>";
 $pin5 .= "<tr><td style=\"text-align:left;width:40%;\">Ειδική χρήση χώρων</td>".
 		 "<td style=\"text-align:center;width:15%;\">Θερμαινόμενη επιφάνεια [m²]</td>".
 		 "<td style=\"text-align:center;width:15%;\">Ψυχόμενη επιφάνεια  [m²]</td>".
@@ -112,7 +118,7 @@ if (${"aytomatismoi".$z} == 1){${"aytomatismoi".$z}="Β";}
 if (${"aytomatismoi".$z} == 2){${"aytomatismoi".$z}="Γ";}
 if (${"aytomatismoi".$z} == 3){${"aytomatismoi".$z}="Δ";}
 $pin6 .= "<table>";
-$pin6 .= "<tr><td style=\"text-align:left;width:40%;\">Ζώνη $z</td></tr>";
+$pin6 .= "<tr><td colspan=\"3\">Ζώνη $z</td></tr>";
 $pin6 .= "<tr><td style=\"text-align:left;width:50%;\">Χρήση θερμικής ζώνης</td>".
 		 "<td style=\"text-align:center;width:25%;\">${"xrisi_znx_iliakos".$z}</td>".
 		 "<td style=\"text-align:center;width:25%;\">&nbsp;</td></tr>";
@@ -128,7 +134,7 @@ $pin6 .= "</tr></table><br/>";
 $pin7 = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 $pin7 .= "<table>";
-$pin7 .= "<tr><td style=\"text-align:left;width:40%;\">Ζώνη $z</td></tr>";
+$pin7 .= "<tr><td colspan=\"3\">Ζώνη $z</td></tr>";
 $pin7 .= "<tr><td style=\"text-align:left;width:40%;\">Διείσδυση αέρα (m³/h)</td>".
 		 "<td style=\"text-align:center;width:15%;\">${"dieisdysi_aera".$z}</td>".
 		 "<td style=\"text-align:center;width:15%;\">Τεύχος Υπολογισμών</td>";
@@ -157,7 +163,7 @@ $pin7 .= "</tr></table>";
 $pin8 = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 $pin8 .= "<table>";
-$pin8 .= "<tr><td style=\"text-align:left;width:40%;\">Ζώνη $z</td></tr>";
+$pin8 .= "<tr><td colspan=\"2\">Ζώνη $z</td></tr>";
 $pin8 .= "<tr><td style=\"text-align:left;width:40%;\">Παράμετρος</td>".
 		 "<td style=\"text-align:center;width:15%;\">Τιμή</td></tr><tr>".
          "<td style=\"text-align:left;\">Κατηγορία</td>".
@@ -210,7 +216,7 @@ $pin9 = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 if (isset(${"thermp_type".$z."1"})){
 $pin9 .=  "<table>";
-$pin9 .= "<tr><td style=\"text-align:left;width:50%;\">Ζώνη $z</td></tr>";
+$pin9 .= "<tr><td colspan=\"2\">Ζώνη $z</td></tr>";
 $pin9 .= "<tr><td style=\"text-align:left;width:50%;\">ΜΟΝΑΔΕΣ ΠΑΡΑΓΩΓΗΣ</td><td></td></tr>";
 for ($i=1;$i<=${"thermp_rows".$z};$i++){
 		if (${"thermp_type".$z.$i} == 0){$thermp_type="Λέβητας";}
@@ -295,7 +301,12 @@ $pin9 .= "<tr><td>${"thermp_jan".$z.$i}</td><td>${"thermp_feb".$z.$i}</td>".
 "<td>${"thermp_sep".$z.$i}</td><td>${"thermp_okt".$z.$i}</td>".
 "<td>${"thermp_nov".$z.$i}</td><td>${"thermp_decem".$z.$i}</td></tr>";
 }
-$pin9 .= "</table>";
+$pin9 .= "</table><br/>";
+
+for ($i=1;$i<=${"thermp_rows".$z};$i++){
+include("includes/pchart/thermp_draw_chart.php");
+$pin9 .= "<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/PDF/thermpchart".$z.$i.".png\" style=\"width:700px;height:230px; border:1px solid black; vertical-align:middle;\" ></img>";
+}
 
 }
 }
@@ -305,7 +316,7 @@ $pin10 = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 if (isset(${"coldp_type".$z."1"})){
 $pin10 .=  "<table>";
-$pin10 .= "<tr><td style=\"text-align:left;width:50%;\">Ζώνη $z</td></tr>";
+$pin10 .= "<tr><td colspan=\"2\">Ζώνη $z</td></tr>";
 $pin10 .= "<tr><td style=\"text-align:left;width:50%;\">ΜΟΝΑΔΕΣ ΠΑΡΑΓΩΓΗΣ</td><td></td></tr>";
 for ($i=1;$i<=${"coldp_rows".$z};$i++){
 		if (${"coldp_type".$z.$i} == 0){$coldp_type="Αερόψυκτος ψύκτης";}
@@ -402,7 +413,13 @@ $pin10 .= "<tr><td>${"coldp_jan".$z.$i}</td><td>${"coldp_feb".$z.$i}</td>".
 "<td>${"coldp_sep".$z.$i}</td><td>${"coldp_okt".$z.$i}</td>".
 "<td>${"coldp_nov".$z.$i}</td><td>${"coldp_decem".$z.$i}</td></tr>";
 }
-$pin10 .= "</table>";
+$pin10 .= "</table><br/>";
+
+for ($i=1;$i<=${"coldp_rows".$z};$i++){
+include("includes/pchart/coldp_draw_chart.php");
+$pin10 .= "<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/PDF/coldpchart".$z.$i.".png\" style=\"width:700px;height:230px; border:1px solid black; vertical-align:middle;\" ></img>";
+}
+
 }
 }
 //*********************************************************************************************
@@ -436,7 +453,7 @@ $pin68 .= "<tr><td style=\"text-align:left;width:50%;\">Είδος μονάδα�
 "<td style=\"text-align:left;\">Είδος καυσίμου</td>".
 "<td style=\"text-align:center;\">$znxp_pigi</td></tr><tr>".
 "<td style=\"text-align:left;\">Μηνιαίο ποσοστό κάλυψης θερμικού φορτίου για ΖΝΧ από το σύστημα (%)</td>".
-"<td style=\"text-align:center;\">38%</td></tr>";
+"<td style=\"text-align:center;\">τουλάχιστον 30%</td></tr>";
 }
 
 $pin68 .= "<tr><td style=\"text-align:left;width:50%;\">ΔΙΚΤΥΟ ΔΙΑΝΟΜΗΣ</td><td></td></tr>";
@@ -470,6 +487,8 @@ $pin68 .= "<tr><td>${"pososto_iliaka_jan".$z}</td><td>${"pososto_iliaka_feb".$z}
 "<td>${"pososto_iliaka_jul".$z}</td><td>${"pososto_iliaka_aug".$z}</td>".
 "<td>${"pososto_iliaka_sep".$z}</td><td>${"pososto_iliaka_okt".$z}</td>".
 "<td>${"pososto_iliaka_nov".$z}</td><td>${"pososto_iliaka_dec".$z}</td></tr></table>";
+
+$pin68 .= "<br/><img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/PDF/znxchart".$z.".png\" style=\"width:700px;height:230px; border:1px solid black; vertical-align:middle;\" ></img>";
 }
 }
 //*********************************************************************************************
@@ -479,7 +498,7 @@ $pososto_iliaka_100 = ${"pososto_iliaka".$z}*100;
 if (isset(${"znxiliakos_type".$z."1"})){
 
 $pin69 .= "<table>";
-$pin69 .= "<tr><td style=\"text-align:left;width:40%;\">Ζώνη $z</td></tr>";
+$pin69 .= "<tr><td colspan=\"2\">Ζώνη $z</td></tr>";
 
 for ($i=1;$i<=${"znxiliakos_rows".$z};$i++){
 		if (${"znxiliakos_type".$z.$i} == 0){$znxiliakos_type="Χωρίς κάλυμα";}
@@ -756,7 +775,6 @@ ${'f'.$p} .= "<tr><td style=\"text-align:left;\">Δοκός</td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
-"<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td></tr>";
 ${'f'.$p} .= "<tr><td style=\"text-align:left;\">Υποστύλωμα</td>".
 "<td style=\"text-align:center;\">".number_format(${"ypostil_".$t.$i},2,".",",")."</td>".
@@ -1015,7 +1033,9 @@ $f13 .= "<tr><td style=\"text-align:left;\"><h5>Ποσοστό κάλυψης α
 "<td style=\"text-align:center;\"><h5>".number_format(${"pososto_petr_nov".$z}*100,2,".",",")."</h5></td>".
 "<td style=\"text-align:center;\"><h5>".number_format(${"pososto_petr_dec".$z}*100,2,".",",")."</h5></td>".
 "<td style=\"text-align:center;\"><h5>".number_format(${"pososto_petr".$z}*100,2,".",",")."</h5></td></tr>";
-$f13 .= "</table><br/>";
+$f13 .= "</table><br/><br/>";
+include("includes/pchart/znx_draw_chart.php");
+$f13 .= "<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/PDF/znxchart".$z.".png\" style=\"width:700px;height:230px; border:1px solid black; vertical-align:middle;\" ></img>";
 }
 }
 //*********************************************************************************************
@@ -1327,14 +1347,14 @@ $z1[92]=$coldt_type_text;
 $z[93]="{ZNXATYPE1}";
 $z1[93]=$znxa_type_text;
 
-$z[93]="{COLDPEER1}";
-$z1[93]=$coldp_eer_text;
+$z[94]="{COLDPEER1}";
+$z1[94]=$coldp_eer_text;
 
-$z[94]="{SYNTDIEISD1}";
-$z1[94]=$syntelestis_dieisdysi_aera_text;
+$z[95]="{SYNTDIEISD1}";
+$z1[95]=$syntelestis_dieisdysi_aera_text;
 
-$z[95]="{SYNTZNX1}";
-$z1[95]=$syntelestis_znx_iliakos_text;
+$z[96]="{SYNTZNX1}";
+$z1[96]=$syntelestis_znx_iliakos_text;
 
 
 $z[99]="<table>";

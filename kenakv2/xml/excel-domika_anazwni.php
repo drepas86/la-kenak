@@ -34,17 +34,13 @@ $namefile = $_GET['name'];
 //Το αρχείο των υπολογισμών
 include("../includes/core-calc/core_calculate_anazwni.php");
 
-$prosanatolismos_b="354";
-if ($prosanatolismos_b > 0){
-$prosanatolismos_a = $prosanatolismos_b-360 + 90;
-$prosanatolismos_n = $prosanatolismos_b-360 + 180;
-$prosanatolismos_d = $prosanatolismos_b-360 + 270;
-}
-else{
+$prosanatolismos_b="4";
 $prosanatolismos_a = $prosanatolismos_b + 90;
+if ($prosanatolismos_a>=360){$prosanatolismos_a=$prosanatolismos_a-360;}
 $prosanatolismos_n = $prosanatolismos_b + 180;
+if ($prosanatolismos_n>=360){$prosanatolismos_n=$prosanatolismos_n-360;}
 $prosanatolismos_d = $prosanatolismos_b + 270;
-}
+if ($prosanatolismos_d>=360){$prosanatolismos_d=$prosanatolismos_d-360;}
 
 //Αν δεν έχω βρει στο παραπάνω include ποσες είναι οι θερμικές ζώνες τις μετράω εδώ.
 $strSQL = "SELECT * FROM kataskeyi_zwnes";

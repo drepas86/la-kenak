@@ -451,7 +451,7 @@ function drawit(){
 	var yn=document.getElementById("yn"+active_tab+t).innerHTML;
 	var id=document.getElementById("id"+active_tab+t).value;
 	var yprec=document.getElementById("yprec"+active_tab+t).value;
-	if (yprec==""){yprec="0";}
+	if (isNaN(parseFloat(yprec))){yprec="0";}
 	var ans=document.getElementById("ans"+active_tab+t).value;
 	var anrec="";
 	var anw;
@@ -538,25 +538,32 @@ function set_ypost(yn,yl,gl,tl,th,dh,gh,id,ans){
 
 function savewall(yn,id,ans,anid){
 
+	var t=document.getElementById("toixos").selectedIndex+1;
 	var yd=" ";
 	for (i=1;i<=yn;i++){
 		yd+=document.getElementById("yd"+i).value;
 		if (i<yn){yd+="|";}
 	}
+	document.getElementById("yprec"+active_tab+t).value=yd;
 	var anrec=" ";
 	for (var i=1;i<=ans;i++){
 		var anw=document.getElementById("anw"+i).value;
+		document.getElementById("anw"+active_tab+t+i).value=anw;
 		var anh=document.getElementById("anh"+i).value;
+		document.getElementById("anh"+active_tab+t+i).value=anh;
 		var anx=document.getElementById("anx"+i).value;
+		document.getElementById("anx"+active_tab+t+i).value=anx;
 		var any=document.getElementById("any"+i).value;
+		document.getElementById("any"+active_tab+t+i).value=any;
 		anrec=anrec+anw+"|"+anh+"|"+anx+"|"+any;
 		if (i<ans){anrec+="^";}
 	}
 	
 	var x="./includes/save_toixoi.php?yd="+yd+"&id="+id+"&anrec="+anrec+"&tab="+active_tab+"&anid="+anid;
 	document.getElementById('graph').innerHTML="<img src=\""+x+"\" />";
-	$.fn.colorbox.close();
-	window.location=("kenak.php?page=3");
+//	$.fn.colorbox.close();
+//	window.location=("kenak.php?page=3");
+	drawit();
 }
 
 

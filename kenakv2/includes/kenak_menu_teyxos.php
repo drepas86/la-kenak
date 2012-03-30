@@ -50,6 +50,8 @@ target="_blank"><img src="./images/domika/pdf1.png" width="40px" height="40px" t
 &nbsp;&nbsp;&nbsp;
 <a href="./includes/print_teyxos.php" target="_blank"><img src="./images/domika/printer.png" title="εκτύπωση συνολικού τεύχους" style="cursor:pointer;" /></a>
 &nbsp;&nbsp;
+<a href="./includes/print_teyxos_docx.php" target="_blank"><img src="./images/style/word.png" width="40px" height="40px" title="Κατέβασμα τεύχους σε docx" style="cursor:pointer;" /></a>
+&nbsp;&nbsp;
 <img src="./images/domika/save.png"  width="35px" height="35px"  title="αποθήκευση κεφαλαίου" style="cursor:pointer;" onclick="document.forms['f'+active_tab].submit();"/>
 &nbsp;&nbsp;
 <a class='edit_t' href="./includes/kenak_editteyxos.php" onclick=edit_frame();><img src="./images/domika/edit.png"  width="40px" height="40px"  title="επεξεργασία πρότυπου" style="cursor:pointer;"/></a>

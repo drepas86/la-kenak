@@ -1008,7 +1008,7 @@ ${"znxa_rows".$z} = mysql_num_rows($objQuery);
 	${"znxa_type".$z.$i} = $objResult["type"];
 	${"znxa_bathm".$z.$i} = $objResult["bathm"];
 
-	$znxa_type_text .= " " . ${"coldt_type".$z.$i} . " (ζώνη " . $z . ")";	
+	$znxa_type_text .= " " . ${"znxa_type".$z.$i} . " (ζώνη " . $z . ")";	
 	}
 }
 
@@ -1124,6 +1124,10 @@ for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 ${"pososto_iliaka_100".$z} = ${"pososto_iliaka".$z}*100;
 ${"Vstore".$z} = ${"vd_iliakoy".$z}/5;
 ${"eklogi_thermantira".$z} = round((${"Vstore".$z} + 50),-1);
+if (${"eklogi_thermantira".$z}<150){
+${"eklogi_thermantira".$z} =150;
+}
+
 ${"Pn_levita".$z} = ${"fortio_znx_day_feb".$z}/5;
 ${"Pn_levita1".$z} = ${"Pn_levita".$z}*1.3;
 ${"Pn_levita2".$z} = ${"Pn_levita".$z}*1.3*860.1179;

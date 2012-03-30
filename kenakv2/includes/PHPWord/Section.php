@@ -1,4 +1,4 @@
-<?php
+ο»Ώ<?php
 /**
  * PHPWord
  *
@@ -42,10 +42,10 @@
  //This is to check that a user having this distributed software can use another library other than PHPWord.
  //This file is included in apotelesmata_kenak.php and in this file only. 
  //This file was modified in 15-January 2012 to get variables from a calculation and use PHPWord to store them in an word file 
- //Το αρχείο αυτό τροποποιήθηκε στις 15-Ιανουαρίου-2012 για να δέχεται τιμές από υπολογισμό και να αποθηκεύει ένα αρχείο word σε OPENXML format
- //Εαν αλλάξετε την κατάληξη του αρχείου docx μετά από ένα υπολογισμό ΚΕΝΑΚ σε zip θα παρατηρήσετε και την μορφή του φακέλου.
+ //Ξ¤ΞΏ Ξ±ΟΟ‡ΞµΞ―ΞΏ Ξ±Ο…Ο„Ο Ο„ΟΞΏΟ€ΞΏΟ€ΞΏΞΉΞ®ΞΈΞ·ΞΊΞµ ΟƒΟ„ΞΉΟ‚ 15-Ξ™Ξ±Ξ½ΞΏΟ…Ξ±ΟΞ―ΞΏΟ…-2012 Ξ³ΞΉΞ± Ξ½Ξ± Ξ΄Ξ­Ο‡ΞµΟ„Ξ±ΞΉ Ο„ΞΉΞΌΞ­Ο‚ Ξ±Ο€Ο Ο…Ο€ΞΏΞ»ΞΏΞ³ΞΉΟƒΞΌΟ ΞΊΞ±ΞΉ Ξ½Ξ± Ξ±Ο€ΞΏΞΈΞ·ΞΊΞµΟΞµΞΉ Ξ­Ξ½Ξ± Ξ±ΟΟ‡ΞµΞ―ΞΏ word ΟƒΞµ OPENXML format
+ //Ξ•Ξ±Ξ½ Ξ±Ξ»Ξ»Ξ¬ΞΎΞµΟ„Ξµ Ο„Ξ·Ξ½ ΞΊΞ±Ο„Ξ¬Ξ»Ξ·ΞΎΞ· Ο„ΞΏΟ… Ξ±ΟΟ‡ΞµΞ―ΞΏΟ… docx ΞΌΞµΟ„Ξ¬ Ξ±Ο€Ο Ξ­Ξ½Ξ± Ο…Ο€ΞΏΞ»ΞΏΞ³ΞΉΟƒΞΌΟ ΞΞ•ΞΞ‘Ξ ΟƒΞµ zip ΞΈΞ± Ο€Ξ±ΟΞ±Ο„Ξ·ΟΞ®ΟƒΞµΟ„Ξµ ΞΊΞ±ΞΉ Ο„Ξ·Ξ½ ΞΌΞΏΟΟ†Ξ® Ο„ΞΏΟ… Ο†Ξ±ΞΊΞ­Ξ»ΞΏΟ….
 //This file was modified in utf8_encode() function to properly handle utf-8 strings
-//Το αρχείο αυτό τροποποιήθηκε στην ρουτίνα utf8_encode() για να χειρίζεται τις τιμές με κωδικοποίηση utf-8 σωστά κατά την εγγραφή 
+//Ξ¤ΞΏ Ξ±ΟΟ‡ΞµΞ―ΞΏ Ξ±Ο…Ο„Ο Ο„ΟΞΏΟ€ΞΏΟ€ΞΏΞΉΞ®ΞΈΞ·ΞΊΞµ ΟƒΟ„Ξ·Ξ½ ΟΞΏΟ…Ο„Ξ―Ξ½Ξ± utf8_encode() Ξ³ΞΉΞ± Ξ½Ξ± Ο‡ΞµΞΉΟΞ―Ξ¶ΞµΟ„Ξ±ΞΉ Ο„ΞΉΟ‚ Ο„ΞΉΞΌΞ­Ο‚ ΞΌΞµ ΞΊΟ‰Ξ΄ΞΉΞΊΞΏΟ€ΞΏΞ―Ξ·ΟƒΞ· utf-8 ΟƒΟ‰ΟƒΟ„Ξ¬ ΞΊΞ±Ο„Ξ¬ Ο„Ξ·Ξ½ ΞµΞ³Ξ³ΟΞ±Ο†Ξ® 
  
  
 class PHPWord_Section {

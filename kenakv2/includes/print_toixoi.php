@@ -45,9 +45,9 @@ class MYPDF extends TCPDF {
 		$image_file = '../images/home-s.png';
 		$this->Image($image_file, 10, 5, 8, 8, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		// Set font
-		$this->SetFont('helvetica', 'B', 10);
+		$this->SetFont('dejavusans', 'B', 10);
 		// Title
-		$this->Cell(0, 15, 'La-Kenak v'. VERSION, 'B', false, 'C', 0, '', 0, false, 'M', 'B');
+		$this->Cell(0, 15, 'Μελέτη ενεργειακής απόδοσης', 'B', false, 'C', 0, '', 0, false, 'M', 'B');
 	}
 	// Page footer
 	public function Footer() {
