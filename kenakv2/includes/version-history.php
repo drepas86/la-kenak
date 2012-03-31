@@ -4,6 +4,7 @@
 		<h2>Welcome to La-Kenak v.<?=VERSION?> </h2>
 		<div id="timeline" >
 		<ul id="dates">
+			<li><a href="#010412">1/4</a></li>
 			<li><a href="#220312">22/3</a></li>
 			<li><a href="#120312">12/3</a></li>
 			<li><a href="#050312">5/3</a></li>
@@ -14,6 +15,21 @@
 	
 		</ul>
 		<ul id="issues">
+		<li id="010412">
+				<img src="version-history/images/version-changes.png" width="256" height="256" />
+				<h1>1/4/2012</h1>
+				<p>La-kenak v2.6<br/><br/>
+				1. Προσθήκη jtable στις βιβλιοθήκες υλικών/δομικών (tsak1) <br/>
+				2. Προσθήκη pchart στο τεύχος για δημιουργία διαγραμμάτων (ks1f14s)<br/>
+				3. Προσθήκη επέκτασης της phpword (htmltodocx) για παραγωγή του τεύχους σε docx (ks1f14s)<br/>
+				4. Προσθήκη ζώνης σε φόρμα εισόδου θερμογεφυρών (ks1f14s)<br/>
+				5. Διορθώσεις πρότυπου τεύχους. Εισαγωγή check-list.<br/><br/><br/>
+				<b>Το πρότυπο τεύχος βρίσκεται ως αρχείο sql (teyxos_template.sql) στο μενού <br/><font color="red">ΜΕΛΕΤΗ  ->  Αποθήκευση/Ανάκτηση  ->  Ανάκτηση/Διαγραφή 
+				μελέτης από αρχείο sql  ->  φόρτωση μελέτης</font></b><br/>
+				ΠΡΟΣΟΧΗ: Η αλλαγή αντικαθιστά όποιες τροποποιήσεις έχετε πραγματοποιήσει στο παρελθόν στο πρότυπο τεύχος.
+				
+				</p>
+			</li>
 		<li id="220312">
 				<img src="version-history/images/version-changes.png" width="256" height="256" />
 				<h1>22/3/2012</h1>

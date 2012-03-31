@@ -30,13 +30,25 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		<link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
 		<link href="stylesheets/by_tsak1.css" media="all" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="stylesheets/colorbox.css" />
+		<link rel="stylesheet" href="stylesheets/style-timeline.css" type="text/css" media="screen" />
+		<link href="stylesheets/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/jtable_green.css" rel="stylesheet" type="text/css" />
+		
 		<script src="javascripts/sorttable.js"></script>
 		<script src="javascripts/jquery.min.js" type="text/javascript"></script>
 		<script src="javascripts/jquery-ui-personalized-1.5.2.packed.js"></script>
+		
 		<script src="javascripts/jquery.colorbox.js" type="text/javascript"></script>
 		<script src="javascripts/encoder.js" type="text/javascript"></script>
 		<script type="text/javascript" src="includes/ckeditor/ckeditor.js"></script>
+		<script src="javascripts/jquery.jtable.js" type="text/javascript"></script>
 		<script src="javascripts/cssfix.js"></script>
+		<script src="version-history/js/jquery.timelinr-0.9.5.js" type="text/javascript"></script>
+		<script type="text/javascript"> 
+		$(function(){
+			$().timelinr()
+		});
+		</script>
 		<script>
 		$(document).ready(function() {  
 		$('#tabvanilla > ul').tabs();  

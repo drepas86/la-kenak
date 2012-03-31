@@ -36,7 +36,7 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 }
 </script>
 
-Όνομα μελέτης : <input type="text" id="xmlname" /> <br/>
+Όνομα μελέτης : <input type="text" id="xmlname" /> (Σημ:χρησιμοποιήστε αγγλικούς χαρακτήρες)<br/>
 <img src="./images/style/xml.png"></img>
 <br/>
 <a class="iframe" href="./save-scripts/save-script-xml.php" id="xmlsavelink" title="" onclick=get_iframe();>Αποθήκευση τρέχουσας μελέτης σε αρχείο XML</a><br/>
@@ -54,11 +54,18 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 <a class="iframe" href="./save-scripts/save-script-sql.php" id="sqlsavelink" title="" onclick=get_iframe();>Αποθήκευση τρέχουσας μελέτης σε αρχείο SQL</a><br/>
 <a class="iframe" href="./save-scripts/sql-import2.php" title="" onclick=get_iframe();>Ανάκτηση/Διαγραφή μελέτης από αρχείο SQL</a><br/>
 <br/>
-Προσοχή: Τα αρχεία XML τα οποία δημιουργούνται έχουν την εξής μορφή: <br/>
-lakenak-xml-onoma.xml για αποθήκευση-ανάκτηση μελέτης από το παρόν λογισμικό και βρίσκονται στο φάκελο /save-scripts.<br/>
-tee-kenak-onoma.xml για είσοδο στο πρόγραμμα του ΤΕΕ-ΚΕΝΑΚ και βρίσκονται στο φάκελο /xml της διανομής.<br/><br/>
+<b>Προσοχή: Τα αρχεία XML τα οποία δημιουργούνται έχουν την εξής μορφή:</b> <br/>
+<ul>
+  <li>lakenak-xml-onoma.xml για αποθήκευση-ανάκτηση μελέτης από το παρόν λογισμικό και βρίσκονται στο φάκελο /save-scripts. <br/>
+Το παρόν λογισμικό γνωρίζει την θέση τους και δεν χρειάζεται να τα αποθηκεύσετε σε άλλη διαδρομή εκτός της περίπτωσης<br/>
+αναβάθμισης σε νεότερη έκδοση. Το ίδιο ισχύει και για τα αρχεία sql. Ο τύπος του αρχείου (xml,sql) που θα επιλέξετε να αποθηκεύσετε<br/>
+τη μελέτη σας είναι καθαρά στην κρίση σας. Παρέχονται και οι 2 λύσεις αποθήκευσης.</li>
+  <li>tee-kenak-onoma.xml για είσοδο στο πρόγραμμα του ΤΕΕ-ΚΕΝΑΚ και βρίσκονται στο φάκελο /xml της διανομής.</li>
+</ul> 
+<br/>
 
-<b>Τα αρχεία με πρόθεμα tee-kenak-onoma.xml είναι τα μόνα που μπορείτε να προσθέσετε στο TEE-KENAK</b>
+<b>Τα αρχεία με πρόθεμα tee-kenak-onoma.xml είναι τα μόνα που μπορείτε να προσθέσετε στο TEE-KENAK<br/>
+και σε αυτά σας δίνεται η δυνατότητα να τα κατεβάσετε/αποθηκεύσετε σε οποιαδήποτε θέση.</b>
 <script type="text/javascript">
     var linkxml= document.getElementById('xmlsavelink');
 	var linksql= document.getElementById('sqlsavelink');
