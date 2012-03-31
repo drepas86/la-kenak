@@ -50,10 +50,12 @@ if (isset($_POST['prosthiki_therm_es'])) {
 		$prosthiki_thermo_drop = trim(mysql_prep($_POST['prosthiki_thermo_drop']));
 		$prosthiki_plithos = trim(mysql_prep($_POST['prosthiki_plithos']));
 		$prosthiki_ypsos = trim(mysql_prep($_POST['prosthiki_ypsos']));
+		$prosthiki_zwni = trim(mysql_prep($_POST['prosthiki_zwni']));
 
 			$query = "INSERT INTO kataskeyi_therm_es ";
-			$query .= "(thermo_u, plithos, ypsos)";
+			$query .= "(id_zwnis, thermo_u, plithos, ypsos)";
 			$query .= "VALUES ('";
+			$query .= $prosthiki_zwni . "', '";
 			$query .= $prosthiki_thermo_drop . "', '";
 			$query .= $prosthiki_plithos . "', '";
 			$query .= $prosthiki_ypsos . "')";

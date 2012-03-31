@@ -210,7 +210,7 @@ $.colorbox({inline:true,  href:"#guide", width:"600px", height:"410px"});
 		</div><!--/zwnes-->
 
 		<div id="tab-xwroi" class="tabdiv"> 
-					<h3>Χώροι κτιρίου</h3>
+					<h3>Χώροι κτιρίου</h3>					
 					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
 					<?php
 					$strSQL = "SELECT * FROM kataskeyi_xwroi";
@@ -274,7 +274,8 @@ $.colorbox({inline:true,  href:"#guide", width:"600px", height:"410px"});
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_ypsos\" required=\"required\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
 						echo "<input type=\"submit\" name=\"" . $vasi . "_xwrwn\" value=\"Προσθήκη χώρου\" />";
 					?>
-					</form>
+					</form>	
+					
 			</div><!--/xwroi-->
 					
 					
@@ -412,11 +413,16 @@ $.colorbox({inline:true,  href:"#guide", width:"600px", height:"410px"});
 					//προσθήκη στη βάση δεδομένων των εξ. γωνίας
 					$vasi = "prosthiki";
 						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
-						echo "<tr><th>Id</th>";
+						echo "<tr><th>Ζώνη</th>";
 						?>
 						<th>Θερμογέφυρα εξωτερικής γωνίας <a class="eksg" href="./images/thermo/eksg/eksg1.jpg" title="" onclick=get_thermo_eksg();><img src="./images/style/help.png"/></a></th>
+						<th>Πλήθος</th>
+						<th>Ύψος</th>
+						</tr>
 						<?php
-						echo "<tr><td></td>";
+						echo "<tr>";
+						$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_zwni");
+						echo "<td>".$id_zwnis."</td>";
 						$thermo_eksw_drop = dropdown("SELECT name, y FROM thermo_eksg", "y", "name", $vasi."_thermo_drop");
 						echo "<td>" . $thermo_eksw_drop . "</td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_plithos\" maxlength=\"10\" size=\"5\" /></td>";
@@ -476,8 +482,13 @@ $.colorbox({inline:true,  href:"#guide", width:"600px", height:"410px"});
 						echo "<tr><th>Id</th>";
 						?>
 						<th>Θερμογέφυρα εσωτερικής γωνίας <a class="esg" href="./images/thermo/esg/esg1.jpg" title="" onclick=get_thermo_esg();><img src="./images/style/help.png"/></a></th>
+						<th>Πλήθος</th>
+						<th>Ύψος</th>
+						</tr>
 						<?php
-						echo "<tr><td></td>";
+						echo "<tr>";
+						$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_zwni");
+						echo "<td>".$id_zwnis."</td>";
 						$thermo_esw_drop = dropdown("SELECT name, y FROM thermo_esg", "y", "name", $vasi."_thermo_drop");
 						echo "<td>" . $thermo_esw_drop . "</td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_plithos\" maxlength=\"10\" size=\"5\" /></td>";
