@@ -28,26 +28,26 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>La-Kenak - v<?php echo VERSION; ?> - Δομικά στοιχεία κελύφους</title>
 		<link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="stylesheets/colorbox.css" />
+		<link href="stylesheets/jquery-ui-1.8.18.custom.css" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/jtable_green.css" rel="stylesheet" type="text/css" />
 		<link href="stylesheets/by_tsak1.css" media="all" rel="stylesheet" type="text/css" />
 
-		<link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="stylesheets/by_tsak1.css" media="all" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="stylesheets/colorbox.css" />
-		<script src="javascripts/sorttable.js"></script>
-		<script src="javascripts/jquery.min.js" type="text/javascript"></script>
-		<script src="javascripts/jquery-ui-personalized-1.5.2.packed.js"></script>
+		<script src="javascripts/jquery-1.7.2.js" type="text/javascript"></script>
+		<script src="javascripts/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
 		<script src="javascripts/jquery.colorbox.js" type="text/javascript"></script>
+		<script src="javascripts/jquery.jtable.js" type="text/javascript"></script>
+
 		<script src="javascripts/encoder.js" type="text/javascript"></script>
 		<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 		<script src="javascripts/cssfix.js"></script>
 		
-		<?php include("includes/kelyfos_scripts.php"); ?>
 		<script  type="text/javascript">
 		$(document).ready(function() {  
-		$('#tabvanilla > ul').tabs();  
+		$('#tabvanilla').tabs();  
 		}); 
 		</script>
-	</head>
+		<?php include("includes/kelyfos_scripts.php"); ?>
 <?php
 $anrec="*";
 if (isset($_GET['read'])) $anrec=$_GET['read'];
@@ -59,11 +59,12 @@ document.getElementById("an_rec").selectedIndex=x;
 read_an1();
 }</script>';
 ?>
+	</head>
 
 	<body onload=checkread();>
 <?php if ($min!=1){?>	
-		<div id="header">
-		</div>
+		<div id="header"></div>
 <?php include ('menu.php'); ?>
 <?php }?>
+		
 		

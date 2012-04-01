@@ -156,16 +156,20 @@ for (i=1;i<=4;i++){
 		active_tab=i;
 	}
 }
+for (i=1;i<=4;i++){
+	document.getElementById("toixoi"+t[i]).style.display="inherit";
+}
+document.getElementById("tabvanilla").style.display="block";
 }
 </script>
 		
-			<div id="tabvanilla" class="widget">
-					<ul class="tabnav">  
+			<div id="tabvanilla" class="widget" style="display:none;">
+				<ul class="tabnav">  
 					<li><a onclick="active_tab=1;" href="#toixoib">Βόρεια</a></li>
 					<li><a onclick="active_tab=2;" href="#toixoia">Ανατολικά</a></li>
 					<li><a onclick="active_tab=3;" href="#toixoin">Νότια</a></li>
 					<li><a onclick="active_tab=4;" href="#toixoid">Δυτικά</a></li>
-					</ul> 
+				</ul> 
 					
 <?php
 $it[1]="b";
@@ -182,7 +186,7 @@ $dt[4]="Διαγραφή Δυτικού τοίχου";
 $pt[4]="Προσθήκη Δυτικού τοίχου";
 
 for ($j=1;$j<=4;$j++){
-	if ($j>1)echo "<div id=\"toixoi".$it[$j]."\" class=\"tabdiv\" style=\"display:none;\" >";
+	if ($j>1)echo "<div id=\"toixoi".$it[$j]."\" class=\"tabdiv\"  style=\"display:none;\" >";
 	if ($j==1)echo "<div id=\"toixoi".$it[$j]."\" class=\"tabdiv\">";
 ?>
 					<form name="frmMain<?=$j;?>" id="frmMain<?=$j;?>" action="kenak.php" method="post" OnSubmit="return onDelete();">

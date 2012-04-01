@@ -38,22 +38,32 @@ require_once("functions.php");
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>La-Kenak - v<?php echo VERSION; ?> - Μελέτη ΚΕΝΑΚ</title>
 		<link href="../stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="../stylesheet" href="stylesheets/colorbox.css" />
+		<link href="../stylesheets/jquery-ui-1.8.18.custom.css" rel="stylesheet" type="text/css" />
+		<link href="../stylesheets/jtable_green.css" rel="stylesheet" type="text/css" />
 		<link href="../stylesheets/by_tsak1.css" media="all" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="../stylesheets/colorbox.css" />
-		<script src="../javascripts/sorttable.js"></script>
-		<script src="../javascripts/jquery.min.js" type="text/javascript"></script>
-		<script src="../javascripts/jquery-ui-personalized-1.5.2.packed.js"></script>
+
+		<script src="../javascripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+		<script src="../javascripts/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
 		<script src="../javascripts/jquery.colorbox.js" type="text/javascript"></script>
+		<script src="../javascripts/jquery.jtable.js" type="text/javascript"></script>
+
 		<script src="../javascripts/encoder.js" type="text/javascript"></script>
 		<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 		<script src="../javascripts/cssfix.js"></script>
 		<script>
 		$(document).ready(function() {  
-		$('#tabvanilla > ul').tabs();  
+		$('#tabvanilla').tabs();  
 		}); 
+		
+function showtabs(){
+document.getElementById("tabvanilla").style.display="block";
+}
+		
 		</script>
+		
 	</head>
-	<body>
+	<body onload="showtabs();">
 <script type="text/javascript">
 	document.write("<style>ul.tabnav {margin-bottom:6px;}</style>");
 </script>
@@ -75,7 +85,7 @@ $kef8=$objResult[7]["text"];
 
 ?>	
 
-<div id="tabvanilla" class="widget">
+<div id="tabvanilla" class="widget" style="display:none;">
 <ul class="tabnav">
 <?php
 for ($i=1;$i<=8;$i++){
@@ -91,7 +101,7 @@ echo "<li><a  onclick=\"active_tab=".$j.";\" href=\"#kef".$j."\">".$p."</a></li>
 for ($i=1;$i<=8;$i++){
 $j=$i;
 if ($i==1)echo"<div id=\"kef".$j."\" class=\"tabdiv\">";
-if ($i>1)echo"<div id=\"kef".$j."\" class=\"tabdiv\" style=\"display:none;\">";
+if ($i>1)echo"<div id=\"kef".$j."\" class=\"tabdiv\" >";
 echo"<form id=\"f".$j."\" action=\"./save_teyxos.php\" method=\"post\">";
 echo"<div id=\"container\" style=\"background:#eee;border:1px solid #000000;padding:3px;width:99%;height:580px;\">";
 echo"<textarea name=\"kef".$j."a\" id=\"kef".$j."a\" >".${'kef'.$j}."</textarea>";

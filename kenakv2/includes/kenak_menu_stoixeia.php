@@ -28,7 +28,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		<?php	if ($sel_page["id"] == 2)	{ ?>
 			<h2>ΚΕΝΑΚ - Γενικά στοιχεία</h2>
 	  <script type="text/javascript">
-		document.getElementById('imgs').innerHTML="<img src=\"images/style/home.png\"></img>";
+<!--		document.getElementById('imgs').innerHTML="<img src=\"images/style/home.png\"></img>"; -->
 	  </script>
 <script language="JavaScript">
 	function ClickCheckAll(vol)
@@ -64,12 +64,6 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 function get_thermo_dap(){
 $(".dap").colorbox({rel:'dap'});
 }
-function get_thermo_esg(){
-$(".esg").colorbox({rel:'esg'});
-}
-function get_thermo_eksg(){
-$(".eksg").colorbox({rel:'eksg'});
-}
 function iframe_oriz_u(){
 $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 }
@@ -77,20 +71,18 @@ function get_inlinetext(v){
 $.colorbox({inline:true,  href:"#inline_text"+v});
 }
 
-
-
+function get_active(){
+document.getElementById("tabvanilla").style.display="block";
+}
 
 
 </script>
 			
-			<div id="tabvanilla" class="widget">
+			<div id="tabvanilla" class="widget" style="display:none;">
 					<ul class="tabnav">  
 					<li><a href="#tab-meletis">Στοιχεία Μελέτης</a></li>
 					<li><a href="#tab-zwni">Κλιματολογικά</a></li>
 					</ul>  
-					
-					
-					
 					
 					<div id="tab-meletis" class="tabdiv"> 
 
@@ -455,51 +447,6 @@ $.colorbox({inline:true,  href:"#inline_text"+v});
 					
 				
 
-					</div>
-					
-<!------------------------------------------------------------------------------------>	
-<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών δαπέδου  -->
-		<div style='display:none'>
-		<?php 
-		for ($i = 2; $i <= 65; $i++) {
-		echo "<p><a class=\"dap\" href=\"./images/thermo/d/d" . $i . ".jpg\" title=\"\"></a></p>";
-		}
-		for ($i = 1; $i <= 26; $i++) {
-		echo "<p><a class=\"dap\" href=\"./images/thermo/oe/oe" . $i . ".jpg\" title=\"\"></a></p>";
-		}
-		for ($i = 1; $i <= 16; $i++) {
-		echo "<p><a class=\"dap\" href=\"./images/thermo/ed/ed" . $i . ".jpg\" title=\"\"></a></p>";
-		}
-		for ($i = 1; $i <= 25; $i++) {
-		echo "<p><a class=\"dap\" href=\"./images/thermo/edp/edp" . $i . ".jpg\" title=\"\"></a></p>";
-		}
-		for ($i = 1; $i <= 13; $i++) {
-		echo "<p><a class=\"dap\" href=\"./images/thermo/de/de" . $i . ".jpg\" title=\"\"></a></p>";
-		}
-		for ($i = 1; $i <= 28; $i++) {
-		echo "<p><a class=\"dap\" href=\"./images/thermo/dp/dp" . $i . ".jpg\" title=\"\"></a></p>";
-		}
-		?>
-		</div>
-<!------------------------------------------------------------------------------------>
-<!------------------------------------------------------------------------------------>	
-<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών εσωτερικών γωνιών  -->
-		<div style='display:none'>
-		<?php 
-		for ($i = 2; $i <= 20; $i++) {
-		echo "<p><a class=\"esg\" href=\"./images/thermo/esg/esg" . $i . ".jpg\" title=\"\"></a></p>";
-		}
-		?>
-		</div>
-<!------------------------------------------------------------------------------------>
-<!------------------------------------------------------------------------------------>	
-<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών εξωτερικών γωνιών  -->
-		<div style='display:none'>
-		<?php 
-		for ($i = 2; $i <= 26; $i++) {
-		echo "<p><a class=\"eksg\" href=\"./images/thermo/eksg/eksg" . $i . ".jpg\" title=\"\"></a></p>";
-		}
-		?>
-		</div>
-<!------------------------------------------------------------------------------------>
+</div>
+
 		<?php } ?>

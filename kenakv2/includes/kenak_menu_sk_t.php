@@ -79,10 +79,15 @@ Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 function iframe_sk(){
 $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 }
+
+function get_active(){
+document.getElementById("tabvanilla").style.display="block";
+}
+
 </script>
 
 			
-			<div id="tabvanilla" class="widget">
+			<div id="tabvanilla" class="widget" style="display:none;">
 					<ul class="tabnav">  
 					<li><a href="#sk_toix_b">Σκιάσεις Βόρεια</a></li>
 					<li><a href="#sk_toix_a">Σκιάσεις Ανατολικά</a></li>

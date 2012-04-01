@@ -77,13 +77,13 @@ function get_inlinetext(v){
 $.colorbox({inline:true,  href:"#inline_text"+v});
 }
 
-
-
-
+function get_active(){
+document.getElementById("tabvanilla").style.display="block";
+}
 
 </script>
 			
-			<div id="tabvanilla" class="widget">
+			<div id="tabvanilla" class="widget" style="display:none;">
 					<ul class="tabnav">  
 					<!--<li><a href="#tab-meletes">Μελέτες Η/Μ</a></li>-->
 					<li><a href="#tab-thermansi">Θέρμανση</a></li>

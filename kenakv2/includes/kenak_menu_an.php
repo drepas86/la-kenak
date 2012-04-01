@@ -120,10 +120,15 @@ n+="- ";
 n+=document.getElementById("e"+x).options[document.getElementById("e"+x).selectedIndex].text;
 document.getElementById("n"+x).value=n;
 }
+
+function get_active(){
+document.getElementById("tabvanilla").style.display="block";
+}
+
 </script>
 
 			<div class="tab">
-			<div id="tabvanilla" class="widget" >
+			<div id="tabvanilla" class="widget" style="display:none;">
 					<ul class="tabnav">  
 					<li><a href="#anb">Βόρεια</a></li>
 					<li><a href="#ana">Ανατολικά</a></li>

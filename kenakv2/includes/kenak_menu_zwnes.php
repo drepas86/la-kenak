@@ -35,7 +35,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 </td></tr></table>
 
 <script type="text/javascript">
-document.getElementById('imgs').innerHTML="<img src=\"images/style/wall.png\"></img>";
+<!-- document.getElementById('imgs').innerHTML="<img src=\"images/style/wall.png\"></img>"; -->
 </script>
 
 <script language="JavaScript">
@@ -81,11 +81,20 @@ function help_t(){
 $.colorbox({inline:true,  href:"#guide", width:"600px", height:"410px"});
 }
 
+function get_active(){
+document.getElementById("tabvanilla").style.display="block";
+}
+function get_thermo_esg(){
+$(".esg").colorbox({rel:'esg'});
+}
+function get_thermo_eksg(){
+$(".eksg").colorbox({rel:'eksg'});
+}
 
 
 </script>
 		
-			<div id="tabvanilla" class="widget">
+			<div id="tabvanilla" class="widget" style="display:none;">
 					<ul class="tabnav">  
 					<li><a href="#zwnes">Θερμικές ζώνες</a></li>
 					<li><a href="#tab-xwroi">Ε/V κτηρίου</a></li>
@@ -97,405 +106,211 @@ $.colorbox({inline:true,  href:"#guide", width:"600px", height:"410px"});
 
 <div id="zwnes" class="tabdiv">
 <h3>Θερμικές ζώνες κτηρίου</h3>
-					<form name="frmMain1" action="kenak.php" method="post" OnSubmit="return onDelete();">
-					<?php
-					$strSQL = "SELECT * FROM kataskeyi_zwnes";
-					$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-					?>
-					<table border="1">
-					<tr>
-					<th> <div align="center">Id</div></th>
-					<th> <div align="center">Όνομα<br/>ζώνης</div></th>
-					<th> <div align="center">Χρήση στη ζώνη</div></th>
-					<th> <div align="center">Έλεγχος<br/>θερμ. επαρκ. </div></th>
-					<th> <div align="center">Ανηγμένη<br/>θερμοχωρητικότητα<br/>(KJ/m2.K)</div></th>
-					<th> <div align="center">Αυτοματισμοί</div></th>
-					<th> <div align="center">Καμινάδες</div></th>
-					<th> <div align="center">Εξαερισμός</div></th>
-					<th> <div align="center">Ανεμιστήρες<br/>οροφής</div></th>
-					<th> <div align="center">
-					<input name="CheckAll" type="checkbox" id="CheckAll" value="Y" onClick="ClickCheckAll(this);">
-					</div></th>
-					</tr>
-					<?
-					$i = 0;
-					while($objResult = mysql_fetch_array($objQuery))
-					{
-					$i++;
-					$xrisi_array = get_times("gen_xrisi", "energy_conditions", $objResult["xrisi"]);
-					$xrisi_array1 = get_times("xrisi", "energy_conditions", $objResult["xrisi"]);
-					$xrisi = $xrisi_array[0]["gen_xrisi"] . ', ' . $xrisi_array1[0]["xrisi"];
-					if ($objResult["thermoeparkeia"] == 1){$thermoeparkeia="ΝΑΙ";}else{$thermoeparkeia="ΟΧΙ";}
-					
-					if ($objResult["aytomatismoi"] == 0){$aytomatismoi="Τύπος Α";}
-					if ($objResult["aytomatismoi"] == 1){$aytomatismoi="Τύπος Β";}
-					if ($objResult["aytomatismoi"] == 2){$aytomatismoi="Τύπος Γ";}
-					if ($objResult["aytomatismoi"] == 3){$aytomatismoi="Τύπος Δ";}
-					?>
-					<tr>
-					<td><div align="center"><?=$objResult["id"];?></div></td>
-					<td><?=$objResult["name"];?></td>
-					<td><?=$xrisi;?></td>
-					<td><div align="center"><?=$thermoeparkeia;?></div></td>
-					<td><div align="center"><?=$objResult["anigmeni_thermo"];?></div></td>
-					<td><div align="center"><?=$aytomatismoi;?></div></td>
-					<td><div align="center"><?=$objResult["kaminades"];?></div></td>
-					<td><div align="center"><?=$objResult["eksaerismos"];?></div></td>
-					<td><div align="center"><?=$objResult["anem_orofis"];?></div></td>
-					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
-					</tr>
-					<?
-					}
-					?>
-					</table>
-					<input type="submit" name="delete_zwnis" value="Διαγραφή ζώνης">
-					<input type="hidden" name="hdnCount" value="<?=$i;?>">
-					</form>
-					
-					
-					<?php
-					//προσθήκη στη βάση δεδομένων της ζώνης
-					$vasi = "prosthiki_";
-					$listxrisi = dropdown("SELECT xrisi, id FROM energy_conditions", "id", "xrisi", $vasi."xrisi");
-					?>
-					<table border="1"><br/>
-					<form action="kenak.php" method="post">
-					<tr><th>Id</th><td></td></tr>
-					<tr>
-					<th> <div align="center">Όνομα<br/>ζώνης</div></th>
-					<td><input type="text" name="<?=$vasi."name"?>" maxlength="50" size="15" /></td>
-					</tr><tr>
-					<th>Χρήση στη ζώνη</th>
-					<td><?=$listxrisi?></td>
-					</tr><tr>
-					<th> <div align="center">Έλεγχος<br/>θερμ. επαρκ. </div></th>
-					<td><div align="center"><input type="checkbox" value="1" name="<?=$vasi."thermoeparkeia"?>" /></div></td>
-					</tr><tr>
-					<th> <div align="center">Ανηγμένη<br/>θερμοχωρητικότητα<br/>(KJ/m2.K)</div></th>
-					<td>
-					<select name="<?=$vasi."anigmeni_thermo"?>" id="<?=$vasi."anigmeni_thermo"?>">
-					<option value="80">Πολύ ελαφριά κατασκευή (80 KJ/m2.K)</option>
-					<option value="110">Ελαφριά κατασκευή (110 KJ/m2.K)</option>
-					<option value="165">Μέτρια κατασκευή (165 KJ/m2.K)</option>
-					<option value="260">Βαριά κατασκευή (260 KJ/m2.K)</option>
-					<option value="370">Πολύ βαριά κατασκευή (370 KJ/m2.K)</option>
-					</select>
-					</td>
-					</tr><tr>
-					<th> <div align="center">Αυτοματισμοί</div></th>
-					<td>
-					<select name="<?=$vasi."aytomatismoi"?>" id="<?=$vasi."aytomatismoi"?>">
-					<option value="0">Τύπος Α</option>
-					<option value="1">Τύπος Β</option>
-					<option value="2">Τύπος Γ</option>
-					<option value="3">Τύπος Δ</option>
-					</select>
-					</td>
-					</tr><tr>
-					<th> <div align="center">Καμινάδες</div></th>
-					<td><input type="text" name="<?=$vasi."kaminades"?>" maxlength="7" size="7" /></td>
-					</tr><tr>
-					<th> <div align="center">Εξαερισμός</div></th>
-					<td><input type="text" name="<?=$vasi."eksaerismos"?>" maxlength="7" size="7" /></td>
-					</tr><tr>
-					<th> <div align="center">Ανεμιστήρες<br/>οροφής</div></th>
-					<td><input type="text" name="<?=$vasi."anem_orofis"?>" maxlength="7" size="7" /></td>
-					</tr>
+<?php
+$ped_zwnes="kataskeyi_zwnes";
+$dig_zwnes="0|0|0|0|0|0|0|0|0|0|0";
+						$fields_zwnes="fields: {
+							id: {key: true,create: false,edit: false,list: false},
+							name: {title: 'Όνομα ζώνης',width: '10%',listClass: 'center'},
+							xrisi: {title: 'Χρήση',width: '20%',listClass: 'center',options: ".jtable_getxrisi()."},
+							thermoeparkeia: {title: 'Έλεγχος θερμ. επάρκ.',width: '10%',listClass: 'center', options: {'0':'OXI','1':'NAI'}},
+							anigmeni_thermo: {title: 'Ανηγμένη θερμ.',width: '20%',listClass: 'center', options: {'80':'Πολύ Ελαφριά κατασκευή (80 KJ/m2.K)','110':'Ελαφριά κατασκευή (110 KJ/m2.K)','165':'Μέτρια κατασκευή (165 KJ/m2.K)','260':'Βαριά κατασκευή (260 KJ/m2.K)','370':'Πολύ βαριά κατασκευή (370 KJ/m2.K)'}},
+							aytomatismoi: {title: 'Αυτοματισμοί',width: '10%',listClass: 'center', options: {'0':'Τύπος Α','1':'Τύπος Β','2':'Τύπος Γ','3':'Τύπος Δ'}},
+							kaminades: {title: 'Καμινάδες',width: '10%',listClass: 'center'},
+							eksaerismos: {title: 'Εξαερισμός',width: '10%',listClass: 'center'},
+							anem_orofis: {title: 'Ανεμιστήρες οροφής',width: '10%',listClass: 'center'}
+						}";
+?>
+	<table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
+	<div id="TableContainer_zwnes" style="width: 100%;"></div>
+	</td></tr></table>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    //Prepare jTable
+			$('#TableContainer_zwnes').jtable({
+				paging: true,
+				pageSize: 20,
+				sorting: false, 
+				defaultSorting: 'Name ASC',
+				selecting: false, //Enable selecting
+				multiselect: false, //Allow multiple selecting
+				selectingCheckboxes: false,
+				actions: {
+					listAction: 'includes/jtable_actions.php?action=list&table=<?=$ped_zwnes;?>&dig=<?=$dig_zwnes;?>',
+					createAction: 'includes/jtable_actions.php?action=create&table=<?=$ped_zwnes;?>&dig=<?=$dig_zwnes;?>',
+					updateAction: 'includes/jtable_actions.php?action=update&table=<?=$ped_zwnes;?>&dig=<?=$dig_zwnes;?>',
+					deleteAction: 'includes/jtable_actions.php?action=delete&table=<?=$ped_zwnes;?>&dig=<?=$dig_zwnes;?>'
+				},
+				<?=$fields_zwnes;?>
+				});
 
-					</table>
-					<input type="submit" name="<?=$vasi."zwnis"?>" value="Προσθήκη ζώνης" />
-					</form>
+			$('#TableContainer_zwnes').jtable('load');
+
+		});
+	</script>
 
 
 		</div><!--/zwnes-->
 
 		<div id="tab-xwroi" class="tabdiv"> 
-					<h3>Χώροι κτιρίου</h3>					
-					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
-					<?php
-					$strSQL = "SELECT * FROM kataskeyi_xwroi";
-					$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-					?>
-					<table border="1">
-					<tr>
-					<th> <div align="center">Id</div></th>
-					<th> <div align="center">Id ζώνης</div></th>
-					<th> <div align="center">Όνομα χώρου </div></th>
-					<th> <div align="center">Μήκος </div></th>
-					<th> <div align="center">Πλάτος </div></th>
-					<th> <div align="center">Ύψος </div></th>
-					<th> <div align="center">
-					<input name="CheckAll" type="checkbox" id="CheckAll" value="Y" onClick="ClickCheckAll(this);">
-					</div></th>
-					</tr>
-					<?
-					$i = 0;
-					while($objResult = mysql_fetch_array($objQuery))
-					{
-					$i++;
-					$xwroi_zwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
-					if (isset($xwroi_zwni_array[0]["name"])){$xwroi_zwni = $xwroi_zwni_array[0]["name"];}
-					else {$xwroi_zwni="Η ζώνη έχει διαγραφεί!!!";}
-					?>
-					<tr>
-					<td><div align="center"><?=$objResult["id"];?></div></td>
-					<td><div align="center"><?=$xwroi_zwni;?></div></td>
-					<td><?=$objResult["name"];?></td>
-					<td><?=$objResult["mikos"];?></td>
-					<td><div align="center"><?=$objResult["platos"];?></div></td>
-					<td align="right"><?=$objResult["ypsos"];?></td>
-					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
-					</tr>
-					<?
-					}
-					?>
-					</table>
-					<input type="submit" name="delete_xwrwn" value="Διαγραφή χώρου">
-					<input type="hidden" name="hdnCount" value="<?=$i;?>">
-					</form>
+					<h3>Χώροι κτιρίου</h3>
+<?php 
+						$ped="kataskeyi_xwroi";
+						$dig="0|0|0|2|2|2|0|0|0|0|0";
+						$fields="fields: {
+							id: {key: true,create: false,edit: false,list: false},
+							id_zwnis: {title: 'ΖΩΝΗ',width: '15%',listClass: 'center',options: ".getzwnes()."},
+							name: {title: 'Χώρος',width: '40%'},
+							mikos: {title: 'Μήκος',width: '15%',listClass: 'center'},
+							platos: {title: 'Πλάτος',width: '15%',listClass: 'center'},
+							ypsos: {title: 'Υψος',width: '15%',listClass: 'center'}
+						}";
+						include('includes/jtable.php');
+
+?>					
+</div><!--/xwroi-->
+
+
+
+
+
+<div id="tab-katakoryfa" class="tabdiv">
+<h3>Οριζόντια στοιχεία</h3>	
+	
+<?php
+$ped_daporo="kataskeyi_daporo";
+$dig_daporo="0|0|0|2|2|2|0|0|0|0|0";
+						$fields_daporo="fields: {
+							id: {key: true,create: false,edit: false,list: false},
+							id_zwnis: {title: 'ΖΩΝΗ',width: '15%',listClass: 'center',options: ".getzwnes()."},
+							type: {title: 'Τύπος',width: '40%',listClass: 'center', options: {'0':'Δάπεδο','1':'Οροφή'}},
+							name: {title: 'Όνομα',width: '15%',listClass: 'center'},
+							emvadon: {title: 'Εμβαδόν',width: '15%',listClass: 'center'},
+							u: {title: 'U',width: '15%',listClass: 'center'}
+						}";
+?>
+	<table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
+	<div id="TableContainer_daporo" style="width: 100%;"></div>
+	</td></tr></table>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    //Prepare jTable
+			$('#TableContainer_daporo').jtable({
+				paging: true,
+				pageSize: 20,
+				sorting: false, 
+				defaultSorting: 'Name ASC',
+				selecting: false, //Enable selecting
+				multiselect: false, //Allow multiple selecting
+				selectingCheckboxes: false,
+				actions: {
+					listAction: 'includes/jtable_actions.php?action=list&table=<?=$ped_daporo;?>&dig=<?=$dig_daporo;?>',
+					createAction: 'includes/jtable_actions.php?action=create&table=<?=$ped_daporo;?>&dig=<?=$dig_daporo;?>',
+					updateAction: 'includes/jtable_actions.php?action=update&table=<?=$ped_daporo;?>&dig=<?=$dig_daporo;?>',
+					deleteAction: 'includes/jtable_actions.php?action=delete&table=<?=$ped_daporo;?>&dig=<?=$dig_daporo;?>'
+				},
+				<?=$fields_daporo;?>
+				});
+
+			$('#TableContainer_daporo').jtable('load');
+
+		});
+	</script>
+
+</div><!--/tab-katakoryfa-->
+
+
+
+
+<div id="tab-thermo" class="tabdiv"> 
 					
+<h3>Θερμογέφυρες εξωτερικών γωνιών
+<a class="eksg" href="./images/thermo/eksg/eksg1.jpg" title="" onclick=get_thermo_eksg();><img src="./images/style/help.png"/></a></h3>
+
+
+<?php
+$ped_therm_eks="kataskeyi_therm_eks";
+$dig_therm_eks="0|0|0|2|2|2|0|0|0|0|0";
+						$fields_therm_eks="fields: {
+							id: {key: true,create: false,edit: false,list: false},
+							id_zwnis: {title: 'ΖΩΝΗ',width: '15%',listClass: 'center',options: ".getzwnes()."},
+							thermo_u: {title: 'U',width: '40%',listClass: 'center', options: ".jtable_getthermo_eksg()."},
+							plithos: {title: 'Πλήθος',width: '15%',listClass: 'center'},
+							ypsos: {title: 'Ύψος',width: '15%',listClass: 'center'}
+						}";
+?>
+	<table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
+	<div id="TableContainer_therm_eks" style="width: 100%;"></div>
+	</td></tr></table>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    //Prepare jTable
+			$('#TableContainer_therm_eks').jtable({
+				paging: true,
+				pageSize: 20,
+				sorting: false, 
+				defaultSorting: 'Name ASC',
+				selecting: false, //Enable selecting
+				multiselect: false, //Allow multiple selecting
+				selectingCheckboxes: false,
+				actions: {
+					listAction: 'includes/jtable_actions.php?action=list&table=<?=$ped_therm_eks;?>&dig=<?=$dig_therm_eks;?>',
+					createAction: 'includes/jtable_actions.php?action=create&table=<?=$ped_therm_eks;?>&dig=<?=$dig_therm_eks;?>',
+					updateAction: 'includes/jtable_actions.php?action=update&table=<?=$ped_therm_eks;?>&dig=<?=$dig_therm_eks;?>',
+					deleteAction: 'includes/jtable_actions.php?action=delete&table=<?=$ped_therm_eks;?>&dig=<?=$dig_therm_eks;?>'
+				},
+				<?=$fields_therm_eks;?>
+				});
+
+			$('#TableContainer_therm_eks').jtable('load');
+
+		});
+	</script>
+	
+<h3>Θερμογέφυρες εσωτερικών γωνιών
+<a class="esg" href="./images/thermo/esg/esg1.jpg" title="" onclick=get_thermo_esg();><img src="./images/style/help.png"/></a></h3>
+
+<?php
+$ped_therm_es="kataskeyi_therm_es";
+$dig_therm_es="0|0|0|2|2|2|0|0|0|0|0";
+						$fields_therm_eks="fields: {
+							id: {key: true,create: false,edit: false,list: false},
+							id_zwnis: {title: 'ΖΩΝΗ',width: '15%',listClass: 'center',options: ".getzwnes()."},
+							thermo_u: {title: 'U',width: '40%',listClass: 'center', options: ".jtable_getthermo_esg()."},
+							plithos: {title: 'Πλήθος',width: '15%',listClass: 'center'},
+							ypsos: {title: 'Ύψος',width: '15%',listClass: 'center'}
+						}";
+?>
+	<table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
+	<div id="TableContainer_therm_es" style="width: 100%;"></div>
+	</td></tr></table>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    //Prepare jTable
+			$('#TableContainer_therm_es').jtable({
+				paging: true,
+				pageSize: 20,
+				sorting: false, 
+				defaultSorting: 'Name ASC',
+				selecting: false, //Enable selecting
+				multiselect: false, //Allow multiple selecting
+				selectingCheckboxes: false,
+				actions: {
+					listAction: 'includes/jtable_actions.php?action=list&table=<?=$ped_therm_es;?>&dig=<?=$dig_therm_es;?>',
+					createAction: 'includes/jtable_actions.php?action=create&table=<?=$ped_therm_es;?>&dig=<?=$dig_therm_es;?>',
+					updateAction: 'includes/jtable_actions.php?action=update&table=<?=$ped_therm_es;?>&dig=<?=$dig_therm_es;?>',
+					deleteAction: 'includes/jtable_actions.php?action=delete&table=<?=$ped_therm_es;?>&dig=<?=$dig_therm_es;?>'
+				},
+				<?=$fields_therm_eks;?>
+				});
+
+			$('#TableContainer_therm_es').jtable('load');
+
+		});
+	</script>
+
+
 					
-					<?php
-					//προσθήκη στη βάση δεδομένων των χώρων
-					$vasi = "prosthiki";
-						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
-						echo "<tr><th>Id</th>";
-						echo "<th>Id Ζώνης</th>";
-						echo "<th>Όνομα χώρου</th>";
-						echo "<th>Μήκος</th>";
-						echo "<th>Πλάτος</th>";
-						echo "<th>Ύψος</th></tr>";
-						echo "<tr><td></td>";
-						$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_zwni");
-						echo "<td>".$id_zwnis."</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_name\" required=\"required\" maxlength=\"200\" size=\"30\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_mikos\" required=\"required\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_platos\" required=\"required\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_ypsos\" required=\"required\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
-						echo "<input type=\"submit\" name=\"" . $vasi . "_xwrwn\" value=\"Προσθήκη χώρου\" />";
-					?>
-					</form>	
-					
-			</div><!--/xwroi-->
-					
-					
-					
-					
-					
-			<div id="tab-katakoryfa" class="tabdiv">
-					<h3>Οριζόντια στοιχεία</h3>					
-					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
-					<?php
-					$strSQL = "SELECT * FROM kataskeyi_daporo";
-					$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-					?>
-					<table border="1">
-					<tr>
-					<th> <div align="center">Id</div></th>
-					<th> <div align="center">Id ζώνης</div></th>
-					<th> <div align="center">Τύπος</div></th>
-					<th> <div align="center">Όνομα </div></th>
-					<th> <div align="center">Εμβαδόν </div></th>
-					<th> <div align="center">U </div></th>
-					<th> <div align="center">
-					<input name="CheckAll" type="checkbox" id="CheckAll" value="Y" onClick="ClickCheckAll(this);">
-					</div></th>
-					</tr>
-					<?
-					$i = 0;
-					while($objResult = mysql_fetch_array($objQuery))
-					{
-					$i++;
-					if ( $objResult["type"] == "0"){$typos="Δάπεδο";}
-					if ( $objResult["type"] == "1"){$typos="Οροφή";}
-					
-					$dapedo_zwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
-					if (isset($dapedo_zwni_array[0]["name"])){$dapedo_zwni = $dapedo_zwni_array[0]["name"];}
-					else {$dapedo_zwni="Η ζώνη έχει διαγραφεί!!!";}
-					?>
-					<tr>
-					<td><div align="center"><?=$objResult["id"];?></div></td>
-					<td><div align="center"><?=$dapedo_zwni;?></div></td>
-					<td><div align="center"><?=$typos;?></div></td>
-					<td><?=$objResult["name"];?></td>
-					<td><div align="center"><?=$objResult["emvadon"];?></div></td>
-					<td align="right"><?=$objResult["u"];?></td>
-					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
-					</tr>
-					<?
-					}
-					?>
-					</table>
-					<input type="submit" name="delete_daporo" value="Διαγραφή δαπέδων/οροφών">
-					<input type="hidden" name="hdnCount" value="<?=$i;?>">
-					</form>
-					
-					
-					<?php
-					//προσθήκη στη βάση δεδομένων των δαπέδων/οροφών
-					$vasi = "prosthiki";
-					$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_zwni");
-					?>
-					
-						<table border="1"><br/><form action="kenak.php" method="post">
-						<tr>
-						<th>Id</th>
-						<th>Id ζώνης</th>
-						<th>Τύπος</th>
-						<th>Όνομα</th>
-						<th>Εμβαδόν</th>
-						<th>U<a class='iframe' href="./domika_kelyfos.php?page=1&min=1" onclick=iframe_oriz_u();><img src="./images/style/help.png" /></a></th></tr>
-						<tr>
-						<td></td>
-						<td><?=$id_zwnis ?></td>
-						<td>
-						<select name="<?=$vasi."_type";?>"/>
-						<option value="0">Δάπεδο</option> 
-						<option value="0">Οροφή</option> 
-						</select>
-						</td>
-						<td><input type="text" name="<?=$vasi."_name";?>" required="required" maxlength="10" size="30" /></td>
-						<td><input type="text" name="<?=$vasi."_emvadon";?>" required="required" maxlength="10" size="7" /></td>
-						<td><input type="text" name="<?=$vasi."_u";?>" required="required" maxlength="10" size="5" /></td>
-						</tr></table>
-						<input type="submit" name="<?=$vasi."_daporo";?>" value="Προσθήκη δαπέδων/οροφών" />
-						</form>
-			</div><!--/tab-katakoryfa-->
-					
-					
-					
-					
-			<div id="tab-thermo" class="tabdiv"> 
-					
-					<h3>Θερμογέφυρες εξωτερικών γωνιών</h3>
-					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
-					<?php
-					$strSQL = "SELECT * FROM kataskeyi_therm_eks";
-					$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-					?>
-					<table border="1">
-					<tr>
-					<th> <div align="center">Id</div></th>
-					<th> <div align="center">Id ζώνης</div></th>
-					<th> <div align="center">Θερμογέφυρα Εξωτερικής γωνίας </div></th>
-					<th> <div align="center">Πλήθος </div></th>
-					<th> <div align="center">Ύψος </div></th>
-					<th> <div align="center">
-					<input name="CheckAll" type="checkbox" id="CheckAll" value="Y" onClick="ClickCheckAll(this);">
-					</div></th>
-					</tr>
-					<?
-					$i = 0;
-					while($objResult = mysql_fetch_array($objQuery))
-					{
-					$i++;
-					$eks_zwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
-					if (isset($eks_zwni_array[0]["name"])){$eks_zwni = $eks_zwni_array[0]["name"];}
-					else {$eks_zwni="Η ζώνη έχει διαγραφεί!!!";}
-					?>
-					<tr>
-					<td><div align="center"><?=$objResult["id"];?></div></td>
-					<td><div align="center"><?=$eks_zwni;?></div></td>
-					<td><?=$objResult["thermo_u"];?></td>
-					<td><?=$objResult["plithos"];?></td>
-					<td><?=$objResult["ypsos"];?></td>
-					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
-					</tr>
-					<?
-					}
-					?>
-					</table>
-					<input type="submit" name="delete_therm_eks" value="Διαγραφή Θερμογέφυρας εξ. γωνίας">
-					<input type="hidden" name="hdnCount" value="<?=$i;?>">
-					</form>
-					
-					<?php
-					//προσθήκη στη βάση δεδομένων των εξ. γωνίας
-					$vasi = "prosthiki";
-						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
-						echo "<tr><th>Ζώνη</th>";
-						?>
-						<th>Θερμογέφυρα εξωτερικής γωνίας <a class="eksg" href="./images/thermo/eksg/eksg1.jpg" title="" onclick=get_thermo_eksg();><img src="./images/style/help.png"/></a></th>
-						<th>Πλήθος</th>
-						<th>Ύψος</th>
-						</tr>
-						<?php
-						echo "<tr>";
-						$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_zwni");
-						echo "<td>".$id_zwnis."</td>";
-						$thermo_eksw_drop = dropdown("SELECT name, y FROM thermo_eksg", "y", "name", $vasi."_thermo_drop");
-						echo "<td>" . $thermo_eksw_drop . "</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_plithos\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_ypsos\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
-						echo "<input type=\"submit\" name=\"" . $vasi . "_therm_eks\" value=\"Προσθήκη θερμογέφυρας εξ. γωνίας\" />";
-					?>
-					</form>
-					
-					
-					<br/><br/>
-					<h3>Θερμογέφυρες εσωτερικών γωνιών</h3>
-					<form name="frmMain" action="kenak.php" method="post" OnSubmit="return onDelete();">
-					<?php
-					$strSQL = "SELECT * FROM kataskeyi_therm_es";
-					$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
-					?>
-					<table border="1">
-					<tr>
-					<th> <div align="center">Id</div></th>
-					<th> <div align="center">Id ζώνης</div></th>
-					<th> <div align="center">Θερμογέφυρα Εσωτερικής γωνίας </div></th>
-					<th> <div align="center">Πλήθος </div></th>
-					<th> <div align="center">Ύψος </div></th>
-					<th> <div align="center">
-					<input name="CheckAll" type="checkbox" id="CheckAll" value="Y" onClick="ClickCheckAll(this);">
-					</div></th>
-					</tr>
-					<?
-					$i = 0;
-					while($objResult = mysql_fetch_array($objQuery))
-					{
-					$i++;
-					$es_zwni_array = get_times("name", "kataskeyi_zwnes", $objResult["id_zwnis"]);
-					if (isset($es_zwni_array[0]["name"])){$es_zwni = $es_zwni_array[0]["name"];}
-					else {$es_zwni="Η ζώνη έχει διαγραφεί!!!";}
-					?>
-					<tr>
-					<td><div align="center"><?=$objResult["id"];?></div></td>
-					<td><div align="center"><?=$es_zwni;?></div></td>
-					<td><?=$objResult["thermo_u"];?></td>
-					<td><?=$objResult["plithos"];?></td>
-					<td><?=$objResult["ypsos"];?></td>
-					<td align="center"><input type="checkbox" name="delcheck[]" id="delcheck<?=$i;?>" value="<?=$objResult["id"];?>"></td>
-					</tr>
-					<?
-					}
-					?>
-					</table>
-					<input type="submit" name="delete_therm_es" value="Διαγραφή Θερμογέφυρας εσ. γωνίας">
-					<input type="hidden" name="hdnCount" value="<?=$i;?>">
-					</form>
-					
-					<?php
-					//προσθήκη στη βάση δεδομένων θερμογέφυρας εξ. γωνίας
-					$vasi = "prosthiki";
-						echo "<table border=\"1\"><br/><form action=\"kenak.php\" method=\"post\">";
-						echo "<tr><th>Id</th>";
-						?>
-						<th>Θερμογέφυρα εσωτερικής γωνίας <a class="esg" href="./images/thermo/esg/esg1.jpg" title="" onclick=get_thermo_esg();><img src="./images/style/help.png"/></a></th>
-						<th>Πλήθος</th>
-						<th>Ύψος</th>
-						</tr>
-						<?php
-						echo "<tr>";
-						$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes", "id", "name", $vasi."_zwni");
-						echo "<td>".$id_zwnis."</td>";
-						$thermo_esw_drop = dropdown("SELECT name, y FROM thermo_esg", "y", "name", $vasi."_thermo_drop");
-						echo "<td>" . $thermo_esw_drop . "</td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_plithos\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_ypsos\" maxlength=\"10\" size=\"5\" /></td></tr></table>";
-						echo "<input type=\"submit\" name=\"" . $vasi . "_therm_es\" value=\"Προσθήκη θερμογέφυρας εσ. γωνίας\" />";
-					?>
-					</form>
 			</div><!--/tab-thermo-->
 
 </div>
@@ -524,10 +339,100 @@ $.colorbox({inline:true,  href:"#guide", width:"600px", height:"410px"});
 		</td></tr></table>
 		</div></div>
 <!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>	
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών δαπέδου  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 65; $i++) {
+		echo "<p><a class=\"dap\" href=\"./images/thermo/d/d" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		for ($i = 1; $i <= 26; $i++) {
+		echo "<p><a class=\"dap\" href=\"./images/thermo/oe/oe" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		for ($i = 1; $i <= 16; $i++) {
+		echo "<p><a class=\"dap\" href=\"./images/thermo/ed/ed" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		for ($i = 1; $i <= 25; $i++) {
+		echo "<p><a class=\"dap\" href=\"./images/thermo/edp/edp" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		for ($i = 1; $i <= 13; $i++) {
+		echo "<p><a class=\"dap\" href=\"./images/thermo/de/de" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		for ($i = 1; $i <= 28; $i++) {
+		echo "<p><a class=\"dap\" href=\"./images/thermo/dp/dp" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>	
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών εσωτερικών γωνιών  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 20; $i++) {
+		echo "<p><a class=\"esg\" href=\"./images/thermo/esg/esg" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>	
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών εξωτερικών γωνιών  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 26; $i++) {
+		echo "<p><a class=\"eksg\" href=\"./images/thermo/eksg/eksg" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<?php } 
 
 
+function jtable_getxrisi(){
+$strSQL = "SELECT * FROM energy_conditions";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$ret=array();
+while($objResult = mysql_fetch_array($objQuery))
+{
+	$ret[$objResult["id"]] =  $objResult["xrisi"];
+}					
+return json_encode($ret);
+}
 
 
+function getzwnes(){
+$strSQL = "SELECT * FROM kataskeyi_zwnes";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$ret=array();
+while($objResult = mysql_fetch_array($objQuery))
+{
+	$ret[$objResult["id"]] =  $objResult["name"];
+}					
+return json_encode($ret);
+}
 
-<?php } ?>
+
+function jtable_getthermo_eksg(){
+$strSQL = "SELECT * FROM thermo_eksg";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$ret=array();
+while($objResult = mysql_fetch_array($objQuery))
+{
+	$ret[$objResult["y"]] =  $objResult["name"];
+}					
+return json_encode($ret);
+}
+
+
+function jtable_getthermo_esg(){
+$strSQL = "SELECT * FROM thermo_esg";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+$ret=array();
+while($objResult = mysql_fetch_array($objQuery))
+{
+	$ret[$objResult["y"]] =  $objResult["name"];
+}					
+return json_encode($ret);
+}
+
+?>
 	

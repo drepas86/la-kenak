@@ -255,7 +255,7 @@ border: 1px solid #781351
 /******* /Δυτικά *******/ 
 
 
-/******* tabs - τοίχων ME τη χρήση jquery UI και slidedown*******/  
+/******* tabs - τοίχων ME τη χρήση jquery UI και slidedown******  
 .widget {  
 width: 98%;  
 margin: 0px;  
@@ -311,3 +311,4 @@ margin-left: 20px;
 .ui-tabs-hide {  
 display: none;  
 }  
+*/

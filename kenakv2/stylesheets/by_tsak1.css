@@ -284,11 +284,19 @@ height:35px;
 }  
 /******* /Δυτικά *******/ 
 
+.widget {  
+	width: 98%;  
+	padding: 5px 5px 0px 5px;
+}
+.widget .tabnav {  
+	padding: 5px 0px 0px 20px;
+}
+.widget .tabdiv {  
+	min-height:500px;
+}  
 
 /******* tabs - τοίχων ME τη χρήση jquery UI και slidedown*******/  
-
-
-
+/*
 .widget {  
 	width: 98%;  
 	background: -moz-linear-gradient(top, #c8ee60, #e1f6a8 15%);
@@ -372,7 +380,7 @@ ul.tabnav {
 	margin-left:30px;
 }  
 
-
+*/
 
 #domika{
 width:98%;

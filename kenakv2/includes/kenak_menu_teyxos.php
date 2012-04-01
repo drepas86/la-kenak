@@ -57,21 +57,10 @@ target="_blank"><img src="./images/domika/pdf1.png" width="40px" height="40px" t
 <a class='edit_t' href="./includes/kenak_editteyxos.php" onclick=edit_frame();><img src="./images/domika/edit.png"  width="40px" height="40px"  title="επεξεργασία πρότυπου" style="cursor:pointer;"/></a>
 &nbsp;&nbsp;
 <img src="./images/domika/help.png"  width="40px" height="40px"  title="οδηγίες" style="cursor:pointer;" onclick=help_t(); />
-</td>
 </td></tr></table>
 <script type="text/javascript">
-	document.getElementById('imgs').innerHTML="<img src=\"images/style/word.png\"></img>";
+<!--	document.getElementById('imgs').innerHTML="<img src=\"images/style/word.png\"></img>";-->
 </script>
-
-	
-
-
-<div id="tabvanilla" class="widget" style="height:100%;">
-
-<div id="wait">
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<center><img src="images/domika/loading.gif" /></center>
-</div>
 
 <?php
 include_once("print_teyxos_read_anazwni.php");
@@ -88,10 +77,7 @@ $kef7=$objResult[6]["text"];
 $kef8=$objResult[7]["text"];
 ?>	
 
-<script type="text/javascript">
-	document.getElementById('wait').innerHTML="";
-</script>
-
+<div id="tabvanilla" class="widget" style="display:none;">
 <ul class="tabnav">
 <?php
 for ($i=1;$i<=8;$i++){
@@ -107,7 +93,7 @@ echo "<li><a  onclick=\"active_tab=".$j.";\" href=\"#kef".$j."\">".$p."</a></li>
 for ($i=1;$i<=8;$i++){
 $j=$i;
 if ($i==1)echo"<div id=\"kef".$j."\" class=\"tabdiv\">";
-if ($i>1)echo"<div id=\"kef".$j."\" class=\"tabdiv\" style=\"display:none;\">";
+if ($i>1) echo"<div id=\"kef".$j."\" class=\"tabdiv\" style=\"display:none;\">";
 echo"<form id=\"f".$j."\" action=\"./includes/save_teyxos.php\" method=\"post\">";
 echo"<div id=\"container\" style=\"background:#eee;border:1px solid #000000;padding:3px;width:99%;height:580px;\">";
 echo"<textarea name=\"kef".$j."a\" id=\"kef".$j."a\" >".${'kef'.$j}."</textarea>";
@@ -123,13 +109,13 @@ echo "</div>";
 <!--              κρυφό div για HELP                                                       -->
 <!------------------------------------------------------------------------------------------->						
 <div id ="helpbox" style='display:none'>
-<div id="helpme" class="widget" style="height:570px;">
+<div id="helpme" class="widget" style="height:600px;">
 <ul class="tabnav" style="margin-bottom:6px;">
 <li><a href="#help_t" >ΚΕΝΑΚ - Τεύχος</a></li>
 <li><a href="#help_e" >File Manager</a></li>
 </ul>
 
-<div id='help_t' class="tabdiv" style='width:600px;padding:10px;'>
+<div id='help_t' class="tabdiv" style='width:630px;padding:10px;'>
 <br /><br />Το τεύχος εκτυπώνεται με βάση ένα πρότυπο τεύχος που είναι αποθηκευμένο στη βάση και περιέχει τα σταθερά κείμενα και ορισμένες ετικέτες(tags) που αντικαθίστανται από τα δεδομένα της τρέχουσας μελέτης.<br />
 Η επεξεργασία του πρότυπου τεύχους είναι δυνατή με κλικ στο εικονίδιο <img src="./images/domika/edit.png" style="vertical-align:middle;width:30px;height:30px;" /><br />
 Με την επιλογή 'Τεύχος' στο αριστερό μενού, δημιουργείται το τεύχος και εμφανίζεται στην οθόνη. 
@@ -144,7 +130,7 @@ echo "</div>";
 όπως επίσης και η μορφοποίηση των πινάκων. <br /><br /><br /><br /><br /><br />
 
 </div>
-<div id='help_e' class="tabdiv" style='display:none;width:600px;padding:10px;'>
+<div id='help_e' class="tabdiv" style='width:630px;padding:10px;'>
 Μία χρήσιμη λειτουργία του επεξεργαστή κειμένου της εφαρμογής είναι η εισαγωγή αρχείου εικόνας στο κείμενο.<br />
 <table border="0" align="center" width="140" height="80px"><tr><td><img src="./images/domika/h1.png"  style="vertical-align:middle;width:140px;height:80px;" /></td></tr></table>
 Με την επιλογή του σχετικού εικονιδίου ανοίγει ένα παράθυρο στο οποίο μπορούν να ρυθμιστούν οι ιδιότητες της εικόνας<br /><br />
@@ -169,6 +155,10 @@ for (i=1;i<=8;i++){
 		active_tab=i;
 	}
 }
+for (i=1;i<=8;i++){
+	document.getElementById("kef"+i).style.display="inherit";
+}
+document.getElementById("tabvanilla").style.display="block";
 }
 </script>
 <?php

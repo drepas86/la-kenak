@@ -61,10 +61,10 @@ THE SOFTWARE.
             //Localization
             messages: {
                 serverCommunicationError: 'Συνέβη κάποιο λάθος κατά την επικοινωνία με το αρχείο.',
-                loadingMessage: 'Ανάγνωση στοιχείων...',
+                loadingMessage: 'Ανάγνωση δεδομένων...',
                 noDataAvailable: 'Δεν υπάρχουν δεδομένα!',
-                areYouSure: 'Διαγραφή Υλικού',
-				deleteConfirmation: 'Το υλικό θα διαγραφεί. Είστε σίγουρος;',
+                areYouSure: 'Διαγραφή Στοιχείου',
+				deleteConfirmation: 'Το στοιχείο θα διαγραφεί. Είστε σίγουρος;',
 				deleteText: 'Διαγραφή',
                 save: 'Αποθήκευση',
                 saving: 'Αποθηκεύω',
@@ -1184,7 +1184,7 @@ THE SOFTWARE.
 
             //Localization
             messages: {
-                addNewRecord: '+ Προσθήκη νέου υλικού'
+                addNewRecord: '+ Προσθήκη νέου στοιχείου'
             }
         },
 
@@ -1797,9 +1797,9 @@ THE SOFTWARE.
 
             //Localization
             messages: {
-                deleteConfirmation: 'Το υλικό θα διαγραφεί. Είστε σίγουρος;',
+                deleteConfirmation: 'Το στοιχείο θα διαγραφεί. Είστε σίγουρος;',
                 deleteText: 'Διαγραφή',
-                deleting: 'Deleting',
+                deleting: 'Διαγράφω',
                 canNotDeletedRecords: 'Can not deleted {0} of {1} records!',
                 deleteProggress: 'Deleted {0} of {1} records, processing...'
             }
