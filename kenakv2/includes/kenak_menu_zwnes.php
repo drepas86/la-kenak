@@ -27,6 +27,12 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 ?>
 
 <?php	if ($sel_page["id"] == 11)	{ 
+
+$sql1 = "ALTER TABLE `kataskeyi_therm_eks` CHANGE `thermo_u` `thermo_u` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
+$sql2 = "ALTER TABLE `kataskeyi_therm_es` CHANGE `thermo_u` `thermo_u` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
+$Query1 = mysql_query($sql1) or die ("Error Query [".$strSQL."]");
+$Query2 = mysql_query($sql2) or die ("Error Query [".$strSQL."]");
+
 ?>		
 <table width=100% id="maintable"><tr><td style="width:50%;vertical-align:middle;"><h2>ΚΕΝΑΚ - Κτίριο</h2></td>
 <td style="vertical-align:middle;">
@@ -91,231 +97,108 @@ function get_thermo_eksg(){
 $(".eksg").colorbox({rel:'eksg'});
 }
 
-
 </script>
 		
-			<div id="tabvanilla" class="widget" style="display:none;">
-					<ul class="tabnav">  
-					<li><a href="#zwnes">Θερμικές ζώνες</a></li>
-					<li><a href="#tab-xwroi">Ε/V κτηρίου</a></li>
-					<li><a href="#tab-katakoryfa">Οριζόντια στοιχεία</a></li>
-					<li><a href="#tab-thermo">Θερμογέφυρες</a></li>
-					</ul> 
-					
-
+<div id="tabvanilla" class="widget" style="display:none;">
+	<ul class="tabnav">  
+		<li><a href="#zwnes">Θερμικές ζώνες</a></li>
+		<li><a href="#tab-xwroi">Ε/V κτηρίου</a></li>
+		<li><a href="#tab-katakoryfa">Οριζόντια στοιχεία</a></li>
+		<li><a href="#tab-thermo">Θερμογέφυρες</a></li>
+	</ul> 
 
 <div id="zwnes" class="tabdiv">
 <h3>Θερμικές ζώνες κτηρίου</h3>
 <?php
-$ped_zwnes="kataskeyi_zwnes";
-$dig_zwnes="0|0|0|0|0|0|0|0|0|0|0";
-						$fields_zwnes="fields: {
-							id: {key: true,create: false,edit: false,list: false},
-							name: {title: 'Όνομα ζώνης',width: '10%',listClass: 'center'},
-							xrisi: {title: 'Χρήση',width: '20%',listClass: 'center',options: ".jtable_getxrisi()."},
-							thermoeparkeia: {title: 'Έλεγχος θερμ. επάρκ.',width: '10%',listClass: 'center', options: {'0':'OXI','1':'NAI'}},
-							anigmeni_thermo: {title: 'Ανηγμένη θερμ.',width: '20%',listClass: 'center', options: {'80':'Πολύ Ελαφριά κατασκευή (80 KJ/m2.K)','110':'Ελαφριά κατασκευή (110 KJ/m2.K)','165':'Μέτρια κατασκευή (165 KJ/m2.K)','260':'Βαριά κατασκευή (260 KJ/m2.K)','370':'Πολύ βαριά κατασκευή (370 KJ/m2.K)'}},
-							aytomatismoi: {title: 'Αυτοματισμοί',width: '10%',listClass: 'center', options: {'0':'Τύπος Α','1':'Τύπος Β','2':'Τύπος Γ','3':'Τύπος Δ'}},
-							kaminades: {title: 'Καμινάδες',width: '10%',listClass: 'center'},
-							eksaerismos: {title: 'Εξαερισμός',width: '10%',listClass: 'center'},
-							anem_orofis: {title: 'Ανεμιστήρες οροφής',width: '10%',listClass: 'center'}
-						}";
+	$ped="kataskeyi_zwnes";
+	$dig="0|0|0|0|0|0|0|0|0|0|0";
+	$tb_name="TableContainer_zvnes";
+	$fields="fields: {
+		id: {key: true,create: false,edit: false,list: false},
+		name: {title: 'Όνομα ζώνης',width: '10%',listClass: 'center'},
+		xrisi: {title: 'Χρήση',width: '15%',listClass: 'center',options: ".jtable_getxrisi()."},
+		thermoeparkeia: {title: 'Έλεγχος θερμ. επάρκ.',width: '15%',listClass: 'center', options: {'0':'OXI','1':'NAI'}},
+		anigmeni_thermo: {title: 'Ανηγμένη θερμ.',width: '20%',listClass: 'center', 
+			options: {'80':'Πολύ Ελαφριά κατασκευή (80 KJ/m2.K)','110':'Ελαφριά κατασκευή (110 KJ/m2.K)','165':'Μέτρια κατασκευή (165 KJ/m2.K)','260':'Βαριά κατασκευή (260 KJ/m2.K)','370':'Πολύ βαριά κατασκευή (370 KJ/m2.K)'}},
+		aytomatismoi: {title: 'Αυτοματισμοί',width: '10%',listClass: 'center', options: {'0':'Τύπος Α','1':'Τύπος Β','2':'Τύπος Γ','3':'Τύπος Δ'}},
+		kaminades: {title: 'Καμινάδες',width: '10%',listClass: 'center'},
+		eksaerismos: {title: 'Εξαερισμός',width: '10%',listClass: 'center'},
+		anem_orofis: {title: 'Ανεμιστήρες οροφής',width: '10%',listClass: 'center'}
+	}";
+	include('includes/jtable.php');
 ?>
-	<table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
-	<div id="TableContainer_zwnes" style="width: 100%;"></div>
-	</td></tr></table>
-	<script type="text/javascript">
-		$(document).ready(function () {
-		    //Prepare jTable
-			$('#TableContainer_zwnes').jtable({
-				paging: true,
-				pageSize: 20,
-				sorting: false, 
-				defaultSorting: 'Name ASC',
-				selecting: false, //Enable selecting
-				multiselect: false, //Allow multiple selecting
-				selectingCheckboxes: false,
-				actions: {
-					listAction: 'includes/jtable_actions.php?action=list&table=<?=$ped_zwnes;?>&dig=<?=$dig_zwnes;?>',
-					createAction: 'includes/jtable_actions.php?action=create&table=<?=$ped_zwnes;?>&dig=<?=$dig_zwnes;?>',
-					updateAction: 'includes/jtable_actions.php?action=update&table=<?=$ped_zwnes;?>&dig=<?=$dig_zwnes;?>',
-					deleteAction: 'includes/jtable_actions.php?action=delete&table=<?=$ped_zwnes;?>&dig=<?=$dig_zwnes;?>'
-				},
-				<?=$fields_zwnes;?>
-				});
+</div><!--/zwnes-->
 
-			$('#TableContainer_zwnes').jtable('load');
-
-		});
-	</script>
-
-
-		</div><!--/zwnes-->
-
-		<div id="tab-xwroi" class="tabdiv"> 
-					<h3>Χώροι κτιρίου</h3>
+<div id="tab-xwroi" class="tabdiv"> 
+<h3>Χώροι κτιρίου</h3>
 <?php 
-						$ped="kataskeyi_xwroi";
-						$dig="0|0|0|2|2|2|0|0|0|0|0";
-						$fields="fields: {
-							id: {key: true,create: false,edit: false,list: false},
-							id_zwnis: {title: 'ΖΩΝΗ',width: '15%',listClass: 'center',options: ".getzwnes()."},
-							name: {title: 'Χώρος',width: '40%'},
-							mikos: {title: 'Μήκος',width: '15%',listClass: 'center'},
-							platos: {title: 'Πλάτος',width: '15%',listClass: 'center'},
-							ypsos: {title: 'Υψος',width: '15%',listClass: 'center'}
-						}";
-						include('includes/jtable.php');
-
-?>					
+	$ped="kataskeyi_xwroi";
+	$dig="0|0|0|2|2|2|0|0|0|0|0";
+	$tb_name="TableContainer";
+	$fields="fields: {
+		id: {key: true,create: false,edit: false,list: false},
+		id_zwnis: {title: 'ΖΩΝΗ',width: '20%',listClass: 'center',options: ".getzwnes()."},
+		name: {title: 'Χώρος',width: '20%',listClass: 'center'},
+		mikos: {title: 'Μήκος',width: '20%',listClass: 'center'},
+		platos: {title: 'Πλάτος',width: '20%',listClass: 'center'},
+		ypsos: {title: 'Υψος',width: '20%',listClass: 'center'}
+	}";
+	include('includes/jtable.php');
+?>
 </div><!--/xwroi-->
-
-
-
-
 
 <div id="tab-katakoryfa" class="tabdiv">
 <h3>Οριζόντια στοιχεία</h3>	
-	
 <?php
-$ped_daporo="kataskeyi_daporo";
-$dig_daporo="0|0|0|2|2|2|0|0|0|0|0";
-						$fields_daporo="fields: {
-							id: {key: true,create: false,edit: false,list: false},
-							id_zwnis: {title: 'ΖΩΝΗ',width: '15%',listClass: 'center',options: ".getzwnes()."},
-							type: {title: 'Τύπος',width: '40%',listClass: 'center', options: {'0':'Δάπεδο','1':'Οροφή'}},
-							name: {title: 'Όνομα',width: '15%',listClass: 'center'},
-							emvadon: {title: 'Εμβαδόν',width: '15%',listClass: 'center'},
-							u: {title: 'U',width: '15%',listClass: 'center'}
-						}";
+	$ped="kataskeyi_daporo";
+	$dig="0|0|0|2|2|2|0|0|0|0|0";
+	$tb_name="TableContainer_daporo";
+	$fields="fields: {
+		id: {key: true,create: false,edit: false,list: false},
+		id_zwnis: {title: 'ΖΩΝΗ',width: '20%',listClass: 'center',options: ".getzwnes()."},
+		type: {title: 'Τύπος',width: '20%',listClass: 'center', options: {'0':'Δάπεδο','1':'Οροφή'}},
+		name: {title: 'Όνομα',width: '20%',listClass: 'center'},
+		emvadon: {title: 'Εμβαδόν',width: '20%',listClass: 'center'},
+		u: {title: 'U',width: '20%',listClass: 'center'}
+	}";
+	include('includes/jtable.php');
 ?>
-	<table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
-	<div id="TableContainer_daporo" style="width: 100%;"></div>
-	</td></tr></table>
-	<script type="text/javascript">
-		$(document).ready(function () {
-		    //Prepare jTable
-			$('#TableContainer_daporo').jtable({
-				paging: true,
-				pageSize: 20,
-				sorting: false, 
-				defaultSorting: 'Name ASC',
-				selecting: false, //Enable selecting
-				multiselect: false, //Allow multiple selecting
-				selectingCheckboxes: false,
-				actions: {
-					listAction: 'includes/jtable_actions.php?action=list&table=<?=$ped_daporo;?>&dig=<?=$dig_daporo;?>',
-					createAction: 'includes/jtable_actions.php?action=create&table=<?=$ped_daporo;?>&dig=<?=$dig_daporo;?>',
-					updateAction: 'includes/jtable_actions.php?action=update&table=<?=$ped_daporo;?>&dig=<?=$dig_daporo;?>',
-					deleteAction: 'includes/jtable_actions.php?action=delete&table=<?=$ped_daporo;?>&dig=<?=$dig_daporo;?>'
-				},
-				<?=$fields_daporo;?>
-				});
-
-			$('#TableContainer_daporo').jtable('load');
-
-		});
-	</script>
-
 </div><!--/tab-katakoryfa-->
 
-
-
-
 <div id="tab-thermo" class="tabdiv"> 
-					
 <h3>Θερμογέφυρες εξωτερικών γωνιών
 <a class="eksg" href="./images/thermo/eksg/eksg1.jpg" title="" onclick=get_thermo_eksg();><img src="./images/style/help.png"/></a></h3>
-
-
 <?php
-$ped_therm_eks="kataskeyi_therm_eks";
-$dig_therm_eks="0|0|0|2|2|2|0|0|0|0|0";
-						$fields_therm_eks="fields: {
-							id: {key: true,create: false,edit: false,list: false},
-							id_zwnis: {title: 'ΖΩΝΗ',width: '15%',listClass: 'center',options: ".getzwnes()."},
-							thermo_u: {title: 'U',width: '40%',listClass: 'center', options: ".jtable_getthermo_eksg()."},
-							plithos: {title: 'Πλήθος',width: '15%',listClass: 'center'},
-							ypsos: {title: 'Ύψος',width: '15%',listClass: 'center'}
-						}";
+	$ped="kataskeyi_therm_eks";
+	$dig="0|0|0|0|2|0|0|0|0|0|0";
+	$tb_name="TableContainer_therm_eks";
+	$fields="fields: {
+		id: {key: true,create: false,edit: false,list: false},
+		id_zwnis: {title: 'ΖΩΝΗ',width: '25%',listClass: 'center',options: ".getzwnes()."},
+		thermo_u: {title: 'Θερμογέφυρα',width: '25%',listClass: 'center', options: ".jtable_getthermo_eksg()."},
+		plithos: {title: 'Πλήθος',width: '25%',listClass: 'center'},
+		ypsos: {title: 'Ύψος',width: '25%',listClass: 'center'}
+	}";
+	include('includes/jtable.php');
 ?>
-	<table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
-	<div id="TableContainer_therm_eks" style="width: 100%;"></div>
-	</td></tr></table>
-	<script type="text/javascript">
-		$(document).ready(function () {
-		    //Prepare jTable
-			$('#TableContainer_therm_eks').jtable({
-				paging: true,
-				pageSize: 20,
-				sorting: false, 
-				defaultSorting: 'Name ASC',
-				selecting: false, //Enable selecting
-				multiselect: false, //Allow multiple selecting
-				selectingCheckboxes: false,
-				actions: {
-					listAction: 'includes/jtable_actions.php?action=list&table=<?=$ped_therm_eks;?>&dig=<?=$dig_therm_eks;?>',
-					createAction: 'includes/jtable_actions.php?action=create&table=<?=$ped_therm_eks;?>&dig=<?=$dig_therm_eks;?>',
-					updateAction: 'includes/jtable_actions.php?action=update&table=<?=$ped_therm_eks;?>&dig=<?=$dig_therm_eks;?>',
-					deleteAction: 'includes/jtable_actions.php?action=delete&table=<?=$ped_therm_eks;?>&dig=<?=$dig_therm_eks;?>'
-				},
-				<?=$fields_therm_eks;?>
-				});
-
-			$('#TableContainer_therm_eks').jtable('load');
-
-		});
-	</script>
-	
 <h3>Θερμογέφυρες εσωτερικών γωνιών
 <a class="esg" href="./images/thermo/esg/esg1.jpg" title="" onclick=get_thermo_esg();><img src="./images/style/help.png"/></a></h3>
-
 <?php
-$ped_therm_es="kataskeyi_therm_es";
-$dig_therm_es="0|0|0|2|2|2|0|0|0|0|0";
-						$fields_therm_eks="fields: {
-							id: {key: true,create: false,edit: false,list: false},
-							id_zwnis: {title: 'ΖΩΝΗ',width: '15%',listClass: 'center',options: ".getzwnes()."},
-							thermo_u: {title: 'U',width: '40%',listClass: 'center', options: ".jtable_getthermo_esg()."},
-							plithos: {title: 'Πλήθος',width: '15%',listClass: 'center'},
-							ypsos: {title: 'Ύψος',width: '15%',listClass: 'center'}
-						}";
+	$ped="kataskeyi_therm_es";
+	$dig="0|0|0|0|2|0|0|0|0|0|0";
+	$tb_name="TableContainer_therm_es";
+	$fields="fields: {
+		id: {key: true,create: false,edit: false,list: false},
+		id_zwnis: {title: 'ΖΩΝΗ',width: '25%',listClass: 'center',options: ".getzwnes()."},
+		thermo_u: {title: 'Θερμογέφυρα',width: '25%',listClass: 'center', options: ".jtable_getthermo_esg()."},
+		plithos: {title: 'Πλήθος',width: '25%',listClass: 'center'},
+		ypsos: {title: 'Ύψος',width: '25%',listClass: 'center'}
+	}";
+	include('includes/jtable.php');
 ?>
-	<table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
-	<div id="TableContainer_therm_es" style="width: 100%;"></div>
-	</td></tr></table>
-	<script type="text/javascript">
-		$(document).ready(function () {
-		    //Prepare jTable
-			$('#TableContainer_therm_es').jtable({
-				paging: true,
-				pageSize: 20,
-				sorting: false, 
-				defaultSorting: 'Name ASC',
-				selecting: false, //Enable selecting
-				multiselect: false, //Allow multiple selecting
-				selectingCheckboxes: false,
-				actions: {
-					listAction: 'includes/jtable_actions.php?action=list&table=<?=$ped_therm_es;?>&dig=<?=$dig_therm_es;?>',
-					createAction: 'includes/jtable_actions.php?action=create&table=<?=$ped_therm_es;?>&dig=<?=$dig_therm_es;?>',
-					updateAction: 'includes/jtable_actions.php?action=update&table=<?=$ped_therm_es;?>&dig=<?=$dig_therm_es;?>',
-					deleteAction: 'includes/jtable_actions.php?action=delete&table=<?=$ped_therm_es;?>&dig=<?=$dig_therm_es;?>'
-				},
-				<?=$fields_therm_eks;?>
-				});
-
-			$('#TableContainer_therm_es').jtable('load');
-
-		});
-	</script>
-
-
-					
-			</div><!--/tab-thermo-->
+</div><!--/tab-thermo-->
 
 </div>
-
-
 
 
 <!--        Κρυφό div για γενική βοήθεια                                            -->
@@ -417,7 +300,8 @@ $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 $ret=array();
 while($objResult = mysql_fetch_array($objQuery))
 {
-	$ret[$objResult["y"]] =  $objResult["name"];
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["id"]] =  $objResult["name"];
 }					
 return json_encode($ret);
 }
@@ -429,7 +313,8 @@ $objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 $ret=array();
 while($objResult = mysql_fetch_array($objQuery))
 {
-	$ret[$objResult["y"]] =  $objResult["name"];
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["id"]] =  $objResult["name"];
 }					
 return json_encode($ret);
 }

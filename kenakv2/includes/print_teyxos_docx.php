@@ -5,9 +5,9 @@
 
 // Load the files we need:
 require_once 'PHPWord.php';
-require_once '/htmltodocx/simplehtmldom/simple_html_dom.php';
-require_once '/htmltodocx/htmlconverter/h2d_htmlconverter.php';
-require_once '/htmltodocx/example_files/styles.inc';
+require_once 'htmltodocx/simplehtmldom/simple_html_dom.php';
+require_once 'htmltodocx/htmlconverter/h2d_htmlconverter.php';
+require_once 'htmltodocx/example_files/styles.inc';
 
 require_once("connection.php");
 

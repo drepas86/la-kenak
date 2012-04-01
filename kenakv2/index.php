@@ -71,7 +71,7 @@ $pin[19]="domika_dapedo_edafous";
 $pin[20]="domika_orofes";
 $pin[21]="domika_pilotis";
 $pin[22]="domika_toixoi";
-
+$tb_name="jtable_container";
 ?>
 			<?php if ($sel_page) { ?>
 				<h2><?php echo $sel_page['menu_name']; ?></h2>

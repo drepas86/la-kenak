@@ -23,12 +23,13 @@ THE SOFTWARE.
 ?>
 
   <table style="width:99%;margin-right:auto;margin-left:auto;"><tr><td>
-	<div id="TableContainer" style="width: 100%;"></div>
+	<div id="<?=$tb_name;?>" style="width: 100%;"></div>
 	</td></tr></table>
 	<script type="text/javascript">
 		$(document).ready(function () {
 		    //Prepare jTable
-			$('#TableContainer').jtable({
+			$('#<?=$tb_name;?>').jtable({
+				animationsEnabled: false,
 				paging: true,
 				pageSize: 20,
 				sorting: false, 
@@ -45,7 +46,7 @@ THE SOFTWARE.
 				<?=$fields;?>
 				});
 
-			$('#TableContainer').jtable('load');
+			$('#<?=$tb_name;?>').jtable('load');
 
 		});
 	</script>
