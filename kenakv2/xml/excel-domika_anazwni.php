@@ -34,7 +34,10 @@ $namefile = $_GET['name'];
 //Το αρχείο των υπολογισμών
 include("../includes/core-calc/core_calculate_anazwni.php");
 
-$prosanatolismos_b="4";
+$kataskeyi_meletistopo_array = get_times_all("*", "kataskeyi_meletis_topo");
+$prosanatolismos_b = $kataskeyi_meletistopo_array[0]["prosb"];
+
+//$prosanatolismos_b="0";
 $prosanatolismos_a = $prosanatolismos_b + 90;
 if ($prosanatolismos_a>=360){$prosanatolismos_a=$prosanatolismos_a-360;}
 $prosanatolismos_n = $prosanatolismos_b + 180;

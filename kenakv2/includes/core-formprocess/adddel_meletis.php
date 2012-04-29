@@ -139,6 +139,7 @@ if (isset($_POST['prosthiki_meletis_topo'])) {
 		$prosthiki_odos = trim(mysql_prep($_POST['prosthiki_odos']));
 		$prosthiki_apostaseis = trim(mysql_prep($_POST['prosthiki_apostaseis']));
 		$prosthiki_klisi = trim(mysql_prep($_POST['prosthiki_klisi']));
+		$prosthiki_prosb = trim(mysql_prep($_POST['prosthiki_prosb']));
 
 			$query = "UPDATE kataskeyi_meletis_topo ";
 			$query .= "SET sxedio=";
@@ -148,7 +149,9 @@ if (isset($_POST['prosthiki_meletis_topo'])) {
 			$query .= " apostaseis=";
 			$query .= "'" . $prosthiki_apostaseis . "',";
 			$query .= " klisi=";
-			$query .= "'" . $prosthiki_klisi . "'";
+			$query .= "'" . $prosthiki_klisi . "',";
+			$query .= " prosb=";
+			$query .= "'" . $prosthiki_prosb . "'";
 			$query .= " WHERE id=1";
 			$result = mysql_query($query);
 			if ($result) {

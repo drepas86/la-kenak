@@ -138,7 +138,7 @@ padding-right: 0px; }
 	background: #558806;  color: #D4E6F4; }
 
 /* Navigation */
-#navigation { width: 200px; height: 100% padding: 1em 2em;  background: #233a00; }
+#navigation { width: 200px; height: 100%; padding: 1em 2em;  background: #233a00; }
 #navigation a { text-decoration: none; }
 
 #menutitle  a{color:#bbbb00;}

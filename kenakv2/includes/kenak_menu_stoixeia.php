@@ -77,7 +77,11 @@ document.getElementById("tabvanilla").style.display="block";
 
 
 </script>
-			
+<?php
+//Προσθέτει τον προσανατολισμό της βόρειας πλευράς ως στήλη prosb στον πίνακα kataskeyi_meletis_topo εαν δεν υπάρχει (εκδόσεις 2.6 και πίσω)
+add_column_if_not_exist('kataskeyi_meletis_topo', 'prosb', 'INT(11) NOT NULL AFTER `klisi`');
+?>
+	
 			<div id="tabvanilla" class="widget" style="display:none;">
 					<ul class="tabnav">  
 					<li><a href="#tab-meletis">Στοιχεία Μελέτης</a></li>
@@ -211,6 +215,7 @@ document.getElementById("tabvanilla").style.display="block";
 					$kataskeyi_meletistopo_odos = $kataskeyi_meletistopo_array[0]["odos"];
 					$kataskeyi_meletistopo_apostaseis = $kataskeyi_meletistopo_array[0]["apostaseis"];
 					$kataskeyi_meletistopo_klisi = $kataskeyi_meletistopo_array[0]["klisi"];
+					$kataskeyi_meletistopo_prosb = $kataskeyi_meletistopo_array[0]["prosb"];
 					$kataskeyi_meletistopo_pol_grafeio = $kataskeyi_meletistopo_array[0]["pol_grafeio"];
 					$kataskeyi_meletistopo_pol_year = $kataskeyi_meletistopo_array[0]["pol_year"];
 					$kataskeyi_meletistopo_pol_number = $kataskeyi_meletistopo_array[0]["pol_number"];
@@ -435,12 +440,15 @@ document.getElementById("tabvanilla").style.display="block";
 					<th> <div align="center">Βέλτιστη κλίση (º) Φ/Β (τεύχος)</div></th>
 <!--					<td><?=$kataskeyi_meletistopo_klisi;?> deg</td>-->
 					<td><input type="text" name="<?=$vasi."_klisi"?>" value="<?=$kataskeyi_meletistopo_klisi;?>" maxlength="200" size="20" /></td>
+					<tr>
+					<th> <div align="center">Προσανατολισμός Βόρειας Πλευράς</div></th>
+					<td><input type="text" name="<?=$vasi."_prosb"?>" value="<?=$kataskeyi_meletistopo_prosb;?>" maxlength="200" size="20" /></td>
 					</tr><tr><td colspan=2>
 					<div style="float:right;"><input type="submit" name="<?=$vasi."_meletis_topo"?>" value="Τροποποίηση στοιχείων τοπογραφίας" /></div>
 					</td></tr>
 					</table>
 					</form>
-					
+					<img src="includes/image_creation_housepros.php"></img>
 					
 					</div><!--/zwni-->
 					

@@ -74,7 +74,7 @@ table.jtable th.jtable-column-header div.jtable-column-header-container
     border: 1px solid #c6e1ce;
     padding: 2px;
 	vertical-align:middle;
-	
+	text-align:center;
 }
 
 /* Header text in column header cell */
@@ -182,8 +182,8 @@ table.jtable tr
     padding: 2px;
 }
 
-td.center{
-text-align:center;
+.center{
+	text-align:center;
 }
 
 /* Command column in all rows */

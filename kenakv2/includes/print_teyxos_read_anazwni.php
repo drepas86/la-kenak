@@ -33,9 +33,9 @@ include στο kenak_formteyxos.php                                      *
 */
 
 /* pChart library inclusions */
- include("includes/pchart/class/pData.class.php");
- include("includes/pchart/class/pDraw.class.php");
- include("includes/pchart/class/pImage.class.php");
+ include("pchart/class/pData.class.php");
+ include("pchart/class/pDraw.class.php");
+ include("pchart/class/pImage.class.php");
 
 $save="*";
 if (isset($_GET['save'])) $save=$_GET['save'];
@@ -892,7 +892,7 @@ $f13 .= "<tr><td>".
 και με ποσοστό απωλειών 7,5% (πίνακας 4.16).Οι πλευρικές απώλειες των θερμαντήρων λαμβάνονται 2% σύμφωνα με την Τ.Ο.Τ.Ε.Ε. 
 20701-1/2010 (παράγραφο 4.8.4) για τοποθέτηση σε εσωτερικό χώρο και οι απώλειες λόγω εναλλάκτη θερμότητας λαμβάνονται 5%. ".
 "</td></tr></table>";
-$f13 .= "<br><br><table>".
+$f13 .= "<br><br><table border=\"1\" cellpadding=\"2\" cellspacing=\"0\">".
 "<tr><td style=\"text-align:left;width:22%;\"></td>".
 "<td style=\"text-align:center;width:6%;\"><h5>ΙΑΝ</h5></td>".
 "<td style=\"text-align:center;width:6%;\"><h5>ΦΕΒ</h5></td>".
@@ -1151,6 +1151,8 @@ $objQuery1 = mysql_query("SELECT * FROM teyxos_template") or die ("Error Query [
 while($objResult1[] = mysql_fetch_array($objQuery1));
 
 for ($i=1;$i<=8;$i++){
+
+mysql_query("UPDATE teyxos_f SET text = ' ' WHERE id = ".$i); 
 
 $teyxos=$objResult1[$i-1]["text"];
 

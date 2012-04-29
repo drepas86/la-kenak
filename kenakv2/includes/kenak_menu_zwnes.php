@@ -105,6 +105,7 @@ $(".eksg").colorbox({rel:'eksg'});
 		<li><a href="#tab-xwroi">Ε/V κτηρίου</a></li>
 		<li><a href="#tab-katakoryfa">Οριζόντια στοιχεία</a></li>
 		<li><a href="#tab-thermo">Θερμογέφυρες</a></li>
+		<li><a href="#tab-draw">Σχεδιάσεις</a></li>
 	</ul> 
 
 <div id="zwnes" class="tabdiv">
@@ -198,6 +199,8 @@ $(".eksg").colorbox({rel:'eksg'});
 ?>
 </div><!--/tab-thermo-->
 
+<div id="tab-draw" class="tabdiv"> 
+<iframe src='includes/drawing.php' width=900px  height=660px marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0  scrolling='no'></iframe></div>
 </div>
 
 

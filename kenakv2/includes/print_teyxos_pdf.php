@@ -67,8 +67,8 @@ class MYPDF extends TCPDF {
 	//Page header
 	public function Header() {
 		// Logo
-		$image_file = '../images/home-s.png';
-		$this->Image($image_file, 10, 5, 8, 8, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+		//$image_file = '../images/home-s.png';
+		//$this->Image($image_file, 10, 5, 8, 8, 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		// Set font
 		$this->SetFont('dejavusans', 'B', 10);
 		// Title
@@ -144,8 +144,6 @@ $pdf->AddPage();
 $pdf->writeHTML($teyxos, $ln = true, $fill = false, $reseth = true, $cell = false, $align = '' ) ;
 //}
 
-
-
 ob_end_clean();
 // ---------------------------------------------------------
 //Close and output PDF document
@@ -155,12 +153,19 @@ $pdf->Output('PDF/printout'.$j.'.pdf', 'F');
 }}
 
 if ($kef=="ALL"){
+
 ?><script type="text/javascript">window.close();</script><?php
+
 }else{
-?><script type="text/javascript">
-window.open("PDF/printout<?=$j;?>.pdf");
+
+?>
+<script type="text/javascript">
+window.open('PDF/printout<?=$j?>.pdf');
 window.close();
 </script>
+
 <?php
+
+
 }
 ?>

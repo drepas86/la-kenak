@@ -102,7 +102,7 @@ $string_quotes = '\'';                  // Change to '"' if your dump file uses 
 if ($ajax)
   ob_start();
 
-define ('VERSION','0.34b');
+define ('VERSION1','0.34b');
 define ('DATA_CHUNK_LENGTH',16384);  // How many chars are read per time
 define ('MAX_QUERY_LINES',300);      // How many lines may be considered to be one query (except text lines)
 define ('TESTMODE',false);           // Set to true to process the file without actually accessing the database
@@ -131,7 +131,7 @@ foreach ($_REQUEST as $key => $val)
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>BigDump ver. <?php echo (VERSION); ?></title>
+<title>BigDump ver. <?php echo (VERSION1); ?></title>
 <meta http-equiv="CONTENT-TYPE" content="text/html; charset=iso-8859-1"/>
 <meta http-equiv="CONTENT-LANGUAGE" content="EN"/>
 
@@ -771,7 +771,7 @@ else if ($file && $gzipmode) gzclose($file);
 
 
 skin_open();
-echo ('BigDump: Staggered MySQL Dump Importer v'.VERSION.'');
+echo ('BigDump: Staggered MySQL Dump Importer v'.VERSION1.'');
 skin_close();
 ?>
 

@@ -15,6 +15,9 @@ $xpmenu->addMenu("1");
 $xpmenu->addCategory("m1", "Βιβλιοθήκες", "", "1");
 	$xpmenu->addOption("m11", " βιβλιοθήκες υλικών", "", "index.php?page=3", "m1", "1");
 	$xpmenu->addOption("m12", " κλιματικά δεδομένα", "", "index_climate.php?page=41", "m1", "1");
+	$xpmenu->addOption("m13", " Διευθύνσεις", "", "addresses.php", "m1", "1");
+	$xpmenu->addOption("m14", " Νομική βιβλιοθήκη", "", "laws.php", "m1", "1");
+	$xpmenu->addOption("m15", " Βοήθεια", "", "tekmiriwsi.php", "m1", "1");
 
 $xpmenu->addMenu("2");
 $xpmenu->addCategory("m2", "Σκιάσεις", "", "2");
@@ -23,6 +26,7 @@ $xpmenu->addCategory("m2", "Σκιάσεις", "", "2");
 	$xpmenu->addOption("m23", "από ορίζοντα", "", "index_skiaseis.php?page=25", "m2", "2");
 	$xpmenu->addOption("m24", "από πρόβολο", "", "index_skiaseis.php?page=26", "m2", "2");
 	$xpmenu->addOption("m25", "από δεξιά και αριστερά", "", "index_skiaseis.php?page=40", "m2", "2");
+	$xpmenu->addOption("m26", "Ηλιακή τροχιά", "", "astronomical.php", "m2", "2");
 
 $xpmenu->addMenu("3");
 $xpmenu->addCategory("m3", "Στοιχεία Ζώνης", "", "3");
@@ -45,7 +49,8 @@ $xpmenu->addCategory("m5", "Μ Ε Λ Ε Τ Η", "", "5");
 	$xpmenu->addOption("m55", "Ανοίγματα", "", "kenak.php?page=4", "m5", "5");	
 	$xpmenu->addOption("m56", "Σκιάσεις Τοίχων", "", "kenak.php?page=7", "m5", "5");	
 	$xpmenu->addOption("m57", "Σκιάσεις Ανοιγμάτων", "", "kenak.php?page=8", "m5", "5");	
-	$xpmenu->addOption("m58", "Τ Ε Υ Χ Ο Σ", "", "kenak.php?page=5", "m5", "5");	
+	$xpmenu->addOption("m58", "Τ Ε Υ Χ Ο Σ", "", "kenak.php?page=5", "m5", "5");
+	$xpmenu->addOption("m510", "Αμοιβές", "", "amoivi.php", "m5", "5");
 
 //javascript for the menu
 echo $xpmenu->javaScript();
