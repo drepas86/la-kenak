@@ -707,6 +707,45 @@ for (i=1;i<=10;i++){
 
 }
 
+//Υπολογίζει τον ισοδύναμο συντελεστή από τη δεύτερη φόρμα στο αρχείο kelyfos_dapeda.php#tab-u2
+function calcufbz1z2(){
+var calcutb;
+var utb1 = document.getElementById("katakoryfo_utb1").value;
+var z1 = document.getElementById("vathos1").options[document.getElementById('vathos1').selectedIndex].value;
+var utb2 = document.getElementById("katakoryfo_utb2").value;
+var z2 = document.getElementById("vathos2").options[document.getElementById('vathos2').selectedIndex].value;
+if (z1<z2){
+calcutb = ((z2*utb2)-(z1*utb1))/(z2-z1);
+}
+if (z1>z2){
+calcutb = ((z1*utb1)-(z2*utb2))/(z1-z2);
+}
+
+if (z1 == z2){
+document.getElementById("ufbz1z2").value = "";
+document.getElementById("ufb_info").innerHTML = "Χρησιμοποιήστε την φόρμα παραπάνω για ένα βάθος z1";
+}
+
+if (z1 != z2){
+document.getElementById("ufbz1z2").value = number_format(calcutb,3,".",",");
+document.getElementById("ufb_info").innerHTML = "";
+}
+
+}
+
+
+//Υπολογίζει τον ισοδύναμο συντελεστή από τη πρώτη φόρμα στο αρχείο kelyfos_dapeda.php#tab-u2
+function calcufbz1(){
+var link;
+var calcutb1;
+var utb = document.getElementById("katakoryfo_utb").value;
+var z = document.getElementById("vathos").options[document.getElementById('vathos').selectedIndex].value;
+
+link = $.get("./includes/kelyfos_test.php?vathos="+z+"&katakoryfo_utb="+utb);
+
+document.getElementById("ufb1_info").innerHTML = "";
+
+}
 
 
 

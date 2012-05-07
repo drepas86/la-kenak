@@ -269,7 +269,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			
 			//Προβολή των υπολογισμών
 			echo "<table border=\"1\"><tr><td>Όνομα στοιχείου</td><td>Γωνία σκίασης τοίχου</td><td>Γωνία σκίασης πόρτας</td><td>Γωνία σκίασης ανοίγματος</td><td>Πίνακας σκιάσεων</td>" . 
-			"<td>Προσανατολισμός επιφάνειας</td><td>f_fin_h Τοίχου</td><td>f_fin_c Τοίχου</td><td>f_fin_h Πόρτας</td><td>f_fin_c Πόρτας</td><td>f_fin_h Ανοίγματος</td><td>f_fin_c Ανοίγματος</td></tr><tr><td>" . 
+			"<td>Προσανατολισμός επιφάνειας</td><td>f_ov_h Τοίχου</td><td>f_ov_c Τοίχου</td><td>f_ov_h Πόρτας</td><td>f_ov_c Πόρτας</td><td>f_ov_h Ανοίγματος</td><td>f_ov_c Ανοίγματος</td></tr><tr><td>" . 
 			$name . "</td><td>" . $degtoixoy . " μοίρες</td><td>" . $degport . " μοίρες</td><td>" . $deganoigmatos . " μοίρες</td><td>Πίνακας: " . $pinakasthesis . "</td><td>" . 
 			$prosanatolismos_epif . "</td><td>" . $f_h . "</td><td>" . $f_c . "</td><td>" . $f_h_port . "</td><td>" . $f_c_port . "</td><td>" . $f_h_an . "</td><td>" . $f_c_an . "</td></tr></table>";
 			

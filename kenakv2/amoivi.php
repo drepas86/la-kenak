@@ -43,7 +43,8 @@ include("includes/header_amoivi.php");
 <table id="structure">
 	<tr>
 		<td id="page">
-<h2>Υπολογισμός Κόστους Ενεργειακής Επιθεώρησης (Π.Δ. 100/2010 ΦΕΚ177Α)</h2>
+		
+<h3>Υπολογισμός Κόστους Ενεργειακής Επιθεώρησης (Π.Δ. 100/2010 ΦΕΚ177Α)</h3>
 <table align='center' class="tabdiv1">
 
 	<tr><td>Τύπος επιθεώρησης</td><td>

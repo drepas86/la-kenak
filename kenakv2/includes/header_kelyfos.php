@@ -59,6 +59,7 @@ document.getElementById("an_rec").selectedIndex=x;
 read_an1();
 }</script>';
 ?>
+
 	</head>
 
 	<body onload=checkread();>

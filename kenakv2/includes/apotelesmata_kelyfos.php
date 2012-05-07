@@ -234,4 +234,52 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		}//εδώ τελειώνει ο υπολογισμός αν υποβλήθηκε η σελίδα για το δάπεδο επί εδάφους
 		
 	}
+	
+	
+// Έλεγχος αν υποβλήθηκε η φόρμα 4 για κατακόρυφο στοιχείο
+	if (isset($_POST['submit4'])) { // Υποβλήθηκε
+		$errors = array();
+		// έλεγχος δεδομένων
+		$required_fields = array('katakoryfo_utb', 'vathos');
+		$errors = array_merge($errors, check_required_fields($required_fields, $_POST));
+		$fields_with_lengths = array('katakoryfo_utb' => 30);
+		$errors = array_merge($errors, check_max_field_lengths($fields_with_lengths, $_POST));
+		//πάρε τις τιμές
+		$katakoryfo_utb = $_POST["katakoryfo_utb"];
+		$vathos = $_POST["vathos"];
+
+		if ( empty($errors) ) {
+		//Υπολογισμοί και εμφάνιση
+		echo "</br>Utb:" . $katakoryfo_utb . " [W/(m2K)]";
+		echo "</br>Βάθος Ζ:" . $vathos . " m";
+		
+		$stiles = get_utb($katakoryfo_utb);
+		$stiles1 = $stiles[0];
+		$stiles2 = $stiles[1];		
+		
+			if (!isset($stiles2)){
+			$timiu = get_katakoryfo_utb($vathos, $stiles1);
+			}
+		
+			else{
+				$timiu1 = get_katakoryfo_utb($vathos, $stiles1);
+				$timiu2 = get_katakoryfo_utb($vathos, $stiles2);
+				$timiu = palindromisi($stiles1, $stiles2, $timiu1, $timiu2, $katakoryfo_utb);
+				echo "<br/>Χρησιμοποιήθηκαν Utb " . $stiles1 . " και " . $stiles2;
+				echo "<br/>Χρησιμοποιήθηκαν Τιμές " . $timiu1 . " και " . $timiu2;
+			}
+			echo "<br/><br/> Η τιμή του U' για το κατακόρυφο στοιχείο επί εδάφους είναι: " . $timiu . " [W/(m2K)]";
+		
+		
+		
+		} 
+		else {//αν υπάρχουν λάθη δείξε τα λάθη
+			if (count($errors) == 1) {
+				$message = "There was 1 error in the form.";
+			} else {
+				$message = "There were " . count($errors) . " errors in the form.";
+			}
+		}//εδώ τελειώνει ο υπολογισμός αν υποβλήθηκε η σελίδα για το δάπεδο επί εδάφους
+		
+	}
 ?>

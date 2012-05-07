@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 29 Απρ 2012 στις 23:51:43
+-- Χρόνος δημιουργίας: 06 Μάη 2012 στις 22:31:24
 -- Έκδοση Διακομιστή: 5.5.16
 -- Έκδοση PHP: 5.3.8
 
@@ -1724,16 +1724,16 @@ CREATE TABLE IF NOT EXISTS `domika9a` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `ufb` decimal(2,1) DEFAULT NULL,
   `z` decimal(2,1) DEFAULT NULL,
-  `2` decimal(3,2) DEFAULT NULL,
-  `4` decimal(3,2) DEFAULT NULL,
-  `6` decimal(3,2) DEFAULT NULL,
-  `8` decimal(3,2) DEFAULT NULL,
-  `10` decimal(3,2) DEFAULT NULL,
-  `14` decimal(3,2) DEFAULT NULL,
-  `18` decimal(3,2) DEFAULT NULL,
-  `22` decimal(3,2) DEFAULT NULL,
-  `26` decimal(3,2) DEFAULT NULL,
-  `30` decimal(3,2) DEFAULT NULL,
+  `b2` decimal(3,2) DEFAULT NULL,
+  `b4` decimal(3,2) DEFAULT NULL,
+  `b6` decimal(3,2) DEFAULT NULL,
+  `b8` decimal(3,2) DEFAULT NULL,
+  `b10` decimal(3,2) DEFAULT NULL,
+  `b14` decimal(3,2) DEFAULT NULL,
+  `b18` decimal(3,2) DEFAULT NULL,
+  `b22` decimal(3,2) DEFAULT NULL,
+  `b26` decimal(3,2) DEFAULT NULL,
+  `b30` decimal(3,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=101 ;
 
@@ -1741,7 +1741,7 @@ CREATE TABLE IF NOT EXISTS `domika9a` (
 -- Άδειασμα δεδομένων του πίνακα `domika9a`
 --
 
-INSERT INTO `domika9a` (`id`, `ufb`, `z`, `2`, `4`, `6`, `8`, `10`, `14`, `18`, `22`, `26`, `30`) VALUES
+INSERT INTO `domika9a` (`id`, `ufb`, `z`, `b2`, `b4`, `b6`, `b8`, `b10`, `b14`, `b18`, `b22`, `b26`, `b30`) VALUES
 (1, 4.5, 0.0, 1.21, 0.83, 0.64, 0.53, 0.45, 0.36, 0.30, 0.25, 0.22, 0.20),
 (2, 4.5, 0.5, 1.05, 0.75, 0.59, 0.49, 0.42, 0.33, 0.28, 0.24, 0.21, 0.19),
 (3, 4.5, 1.0, 0.92, 0.68, 0.54, 0.45, 0.39, 0.31, 0.26, 0.23, 0.20, 0.18),
@@ -1842,6 +1842,46 @@ INSERT INTO `domika9a` (`id`, `ufb`, `z`, `2`, `4`, `6`, `8`, `10`, `14`, `18`, 
 (98, 0.5, 4.5, 0.27, 0.24, 0.21, 0.20, 0.18, 0.16, 0.14, 0.13, 0.12, 0.11),
 (99, 0.5, 6.0, 0.24, 0.22, 0.20, 0.18, 0.17, 0.15, 0.14, 0.12, 0.11, 0.10),
 (100, 0.5, 9.0, 0.20, 0.19, 0.17, 0.16, 0.15, 0.13, 0.12, 0.11, 0.10, 0.10);
+
+-- --------------------------------------------------------
+
+--
+-- Δομή Πίνακα για τον Πίνακα `domika9b`
+--
+
+DROP TABLE IF EXISTS `domika9b`;
+CREATE TABLE IF NOT EXISTS `domika9b` (
+  `id` int(1) DEFAULT NULL,
+  `z` decimal(3,2) DEFAULT NULL,
+  `4.50` decimal(3,2) DEFAULT NULL,
+  `3.00` decimal(3,2) DEFAULT NULL,
+  `2.00` decimal(3,2) DEFAULT NULL,
+  `1.50` decimal(3,2) DEFAULT NULL,
+  `1.00` decimal(3,2) DEFAULT NULL,
+  `0.90` decimal(3,2) DEFAULT NULL,
+  `0.80` decimal(3,2) DEFAULT NULL,
+  `0.70` decimal(3,2) DEFAULT NULL,
+  `0.60` decimal(3,2) DEFAULT NULL,
+  `0.50` decimal(3,2) DEFAULT NULL,
+  `0.40` decimal(3,2) DEFAULT NULL,
+  `0.30` decimal(3,2) DEFAULT NULL,
+  KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `domika9b`
+--
+
+INSERT INTO `domika9b` (`id`, `z`, `4.50`, `3.00`, `2.00`, `1.50`, `1.00`, `0.90`, `0.80`, `0.70`, `0.60`, `0.50`, `0.40`, `0.30`) VALUES
+(1, 0.50, 2.14, 1.70, 1.30, 1.06, 0.77, 0.71, 0.64, 0.57, 0.50, 0.43, 0.35, 0.27),
+(2, 1.00, 1.59, 1.31, 1.05, 0.88, 0.67, 0.62, 0.57, 0.51, 0.45, 0.39, 0.32, 0.25),
+(3, 1.50, 1.30, 1.09, 0.89, 0.76, 0.59, 0.55, 0.51, 0.47, 0.42, 0.36, 0.30, 0.24),
+(4, 2.00, 1.10, 0.94, 0.78, 0.68, 0.54, 0.50, 0.47, 0.43, 0.39, 0.34, 0.29, 0.23),
+(5, 2.50, 0.97, 0.83, 0.70, 0.61, 0.49, 0.46, 0.43, 0.40, 0.36, 0.32, 0.27, 0.22),
+(6, 3.00, 0.87, 0.75, 0.64, 0.56, 0.46, 0.43, 0.40, 0.37, 0.34, 0.30, 0.26, 0.21),
+(7, 4.50, 0.67, 0.59, 0.51, 0.45, 0.38, 0.36, 0.34, 0.31, 0.29, 0.26, 0.23, 0.19),
+(8, 6.00, 0.56, 0.49, 0.43, 0.39, 0.33, 0.31, 0.29, 0.27, 0.25, 0.23, 0.20, 0.17),
+(9, 9.00, 0.42, 0.38, 0.33, 0.30, 0.26, 0.25, 0.24, 0.22, 0.21, 0.19, 0.17, 0.15);
 
 -- --------------------------------------------------------
 

@@ -682,6 +682,19 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			return $zitoymeno;
 	}
 	
+	//Εύρεση τιμών στον πίνακα domika9b για το κατακόρυφο επί εδάφους
+	function get_katakoryfo_utb($vathos, $utb){
+		global $connection;
+			$query = "SELECT * ";
+			$query .= "FROM domika9b ";
+			$query .= "WHERE z=" . $vathos . " ";
+			$array_set = mysql_query($query, $connection);
+			confirm_query($array_set);
+			while($timesb[] = mysql_fetch_array($array_set));
+			$zitoymeno = $timesb[0][$utb];
+			return $zitoymeno;
+	}
+	
 	// Γραμμές πριν και μετά το U/A.
 	function get_ua($ua){
 			if ($ua <= 0.2) {
@@ -819,74 +832,160 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			return array ($grammi1,$grammi2);
 	}
 	
+	//αφορά ονόματα στηλών και οι τιμές βρίσκονται σε ""
+	function get_utb($utb){
+			if ($utb >= 4.5) {
+			$grammi1 = "4.50";
+			}
+			if ($utb == 3) {
+			$grammi1 = "3.00";
+			}
+			if ($utb == 2) {
+			$grammi1 = "2.00";
+			}
+			if ($utb == 1.5) {
+			$grammi1 = "1.5";
+			}
+			if ($utb == 1) {
+			$grammi1 = "1.00";
+			}
+			if ($utb == 0.9) {
+			$grammi1 = "0.90";
+			}
+			if ($utb == 0.8) {
+			$grammi1 = "0.80";
+			}
+			if ($utb == 0.7) {
+			$grammi1 = "0.70";
+			}
+			if ($utb == 0.6) {
+			$grammi1 = "0.60";
+			}
+			if ($utb == 0.5) {
+			$grammi1 = "0.50";
+			}
+			if ($utb == 0.4) {
+			$grammi1 = "0.40";
+			}
+			if ($utb <= 0.3) {
+			$grammi1 = "0.30";
+			}
+			if ($utb > 0.3 && $utb < 0.4) {
+			$grammi1 = "0.30";
+			$grammi2 = "0.40";
+			}
+			if ($utb > 0.4 && $utb < 0.5) {
+			$grammi1 = "0.40";
+			$grammi2 = "0.50";
+			}
+			if ($utb > 0.5 && $utb < 0.6) {
+			$grammi1 = "0.50";
+			$grammi2 = "0.60";
+			}
+			if ($utb > 0.6 && $utb < 0.7) {
+			$grammi1 = "0.60";
+			$grammi2 = "0.70";
+			}
+			if ($utb > 0.7 && $utb < 0.8) {
+			$grammi1 = "0.70";
+			$grammi2 = "0.80";
+			}
+			if ($utb > 0.8 && $utb < 0.9) {
+			$grammi1 = "0.80";
+			$grammi2 = "0.90";
+			}
+			if ($utb > 0.9 && $utb < 1) {
+			$grammi1 = "0.90";
+			$grammi2 = "1.00";
+			}
+			if ($utb > 1 && $utb < 1.5) {
+			$grammi1 = "1.00";
+			$grammi2 = "1.50";
+			}
+			if ($utb > 1.5 && $utb < 2) {
+			$grammi1 = "1.50";
+			$grammi2 = "2.00";
+			}
+			if ($utb > 2 && $utb < 3) {
+			$grammi1 = "2.00";
+			$grammi2 = "3.00";
+			}
+			if ($utb > 3 && $utb < 4.5) {
+			$grammi1 = "3.00";
+			$grammi2 = "4.50";
+			}
+			
+			return array ($grammi1,$grammi2);
+	}
+	
 	
 	// Στήλες πριν και μετά τον πίνακα 9α για το δάπεδο επί εδάφους.
 	function get_xaraktiristiki($xaraktiristiki){
 			if ($xaraktiristiki <= 2) {
-			$grammi1 = 2;
+			$grammi1 = "b2";
 			}
 			if ($xaraktiristiki == 4) {
-			$grammi1 = 4;
+			$grammi1 = "b4";
 			}
 			if ($xaraktiristiki == 6) {
-			$grammi1 = 6;
+			$grammi1 = "b6";
 			}
 			if ($xaraktiristiki == 8) {
-			$grammi1 = 8;
+			$grammi1 = "b8";
 			}
 			if ($xaraktiristiki == 10) {
-			$grammi1 = 10;
+			$grammi1 = "b10";
 			}
 			if ($xaraktiristiki == 14) {
-			$grammi1 = 14;
+			$grammi1 = "b14";
 			}
 			if ($xaraktiristiki == 18) {
-			$grammi1 = 18;
+			$grammi1 = "b18";
 			}
 			if ($xaraktiristiki == 22) {
-			$grammi1 = 22;
+			$grammi1 = "b22";
 			}
 			if ($xaraktiristiki == 26) {
-			$grammi1 = 26;
+			$grammi1 = "b26";
 			}
 			if ($xaraktiristiki >= 30) {
-			$grammi1 = 30;
+			$grammi1 = "b30";
 			}
 			if ($xaraktiristiki > 2 && $xaraktiristiki < 4) {
-			$grammi1 = 2;
-			$grammi2 = 4;
+			$grammi1 = "b2";
+			$grammi2 = "b4";
 			}
 			if ($xaraktiristiki > 4 && $xaraktiristiki < 6) {
-			$grammi1 = 4;
-			$grammi2 = 6;
+			$grammi1 = "b4";
+			$grammi2 = "b6";
 			}
 			if ($xaraktiristiki > 6 && $xaraktiristiki < 8) {
-			$grammi1 = 6;
-			$grammi2 = 8;
+			$grammi1 = "b6";
+			$grammi2 = "b8";
 			}
 			if ($xaraktiristiki > 8 && $xaraktiristiki < 10) {
-			$grammi1 = 8;
-			$grammi2 = 10;
+			$grammi1 = "b8";
+			$grammi2 = "b10";
 			}
 			if ($xaraktiristiki > 10 && $xaraktiristiki < 14) {
-			$grammi1 = 10;
-			$grammi2 = 14;
+			$grammi1 = "b10";
+			$grammi2 = "b14";
 			}
 			if ($xaraktiristiki > 14 && $xaraktiristiki < 18) {
-			$grammi1 = 14;
-			$grammi2 = 18;
+			$grammi1 = "b14";
+			$grammi2 = "b18";
 			}
 			if ($xaraktiristiki > 18 && $xaraktiristiki < 22) {
-			$grammi1 = 18;
-			$grammi2 = 22;
+			$grammi1 = "b18";
+			$grammi2 = "b22";
 			}
 			if ($xaraktiristiki > 22 && $xaraktiristiki < 26) {
-			$grammi1 = 22;
-			$grammi2 = 26;
+			$grammi1 = "b22";
+			$grammi2 = "b26";
 			}
 			if ($xaraktiristiki > 26 && $xaraktiristiki < 30) {
-			$grammi1 = 26;
-			$grammi2 = 30;
+			$grammi1 = "b26";
+			$grammi2 = "b30";
 			}
 			
 			return array ($grammi1,$grammi2);
