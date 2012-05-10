@@ -481,12 +481,12 @@ $pin68 .= "</table>";
 $pin68 .= "<table>".
 "<tr><td>ΙΑΝ</td><td>ΦΕΒ</td><td>ΜΑΡ</td><td>ΑΠΡ</td><td>MAI</td><td>IOYN</td>".
 "<td>IOYΛ</td><td>ΑΥΓ</td><td>ΣΕΠ</td><td>ΟΚΤ</td><td>ΝΟΕ</td><td>ΔΕΚ</td></tr>";
-$pin68 .= "<tr><td>${"pososto_iliaka_jan".$z}</td><td>${"pososto_iliaka_feb".$z}</td>".
-"<td>${"pososto_iliaka_mar".$z}</td><td>${"pososto_iliaka_apr".$z}</td>".
-"<td>${"pososto_iliaka_may".$z}</td><td>${"pososto_iliaka_jun".$z}</td>".
-"<td>${"pososto_iliaka_jul".$z}</td><td>${"pososto_iliaka_aug".$z}</td>".
-"<td>${"pososto_iliaka_sep".$z}</td><td>${"pososto_iliaka_okt".$z}</td>".
-"<td>${"pososto_iliaka_nov".$z}</td><td>${"pososto_iliaka_dec".$z}</td></tr></table>";
+$pin68 .= "<tr><td>${"pososto_petr_jan".$z}</td><td>${"pososto_petr_feb".$z}</td>".
+"<td>${"pososto_petr_mar".$z}</td><td>${"pososto_petr_apr".$z}</td>".
+"<td>${"pososto_petr_may".$z}</td><td>${"pososto_petr_jun".$z}</td>".
+"<td>${"pososto_petr_jul".$z}</td><td>${"pososto_petr_aug".$z}</td>".
+"<td>${"pososto_petr_sep".$z}</td><td>${"pososto_petr_okt".$z}</td>".
+"<td>${"pososto_petr_nov".$z}</td><td>${"pososto_petr_dec".$z}</td></tr></table>";
 
 $pin68 .= "<br/><img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/PDF/znxchart".$z.".png\" style=\"width:700px;height:230px; border:1px solid black; vertical-align:middle;\" ></img>";
 }
