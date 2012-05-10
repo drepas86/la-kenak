@@ -79,7 +79,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 					<table border="1">
 						<tr><th>Ονομαστικός συντελεστής U<sub>tb</sub> <br/>[W/(m<sup>2</sup>K)]</th><th>Βάθος z <br/>(m)</th>
 						<th>Πίνακας 3.7<br/>ΤΟΤΕΕ-20701-1</th></tr>
-						<tr><td><input type="text" name="katakoryfo_utb" id="katakoryfo_utb" maxlength="10" size="10" value="<?php htmlentities($dapedo_utb)?>" onkeyup=calcufbz1(); /></td>
+						<tr><td><input type="text" name="katakoryfo_utb" id="katakoryfo_utb" maxlength="10" size="10" value="<?php htmlentities($katakoryfo_utb)?>" onkeyup=calcufbz1(); /></td>
 						<td><select name="vathos" id="vathos" size="1" onchange=calcufbz1(); >
 							<option value="0.5">0.5</option>
 							<option value="1">1.0</option>
@@ -108,7 +108,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 						<tr><th>Ισοδύναμος συντελεστής U'<sub>tb</sub>1 <br/>[W/(m<sup>2</sup>K)]</th><th>Βάθος z<sub>1</sub> <br/>(m)</th>
 						<th>Ισοδύναμος συντελεστής U'<sub>tb</sub>2 <br/>[W/(m<sup>2</sup>K)]</th><th>Βάθος z<sub>2</sub> <br/>(m)</th>
 						</tr>
-						<tr><td><input type="text" name="katakoryfo_utb1" id="katakoryfo_utb1" maxlength="10" size="10" value="<?php htmlentities($dapedo_utb)?>" onkeyup=calcufbz1z2(); /></td>
+						<tr><td><input type="text" name="katakoryfo_utb1" id="katakoryfo_utb1" maxlength="10" size="10" value="<?php htmlentities($katakoryfo_utb1)?>" onkeyup=calcufbz1z2(); /></td>
 						<td><select name="vathos1" id="vathos1" size="1" onchange=calcufbz1z2(); >
 							<option value="0.5">0.5</option>
 							<option value="1">1.0</option>
@@ -120,7 +120,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 							<option value="6">6.0</option>
 							<option value="9">9.0</option>
 							</select></td>
-						<td><input type="text" name="katakoryfo_utb2" id="katakoryfo_utb2" maxlength="10" size="10" value="<?php htmlentities($dapedo_utb)?>" onkeyup=calcufbz1z2(); /></td>
+						<td><input type="text" name="katakoryfo_utb2" id="katakoryfo_utb2" maxlength="10" size="10" value="<?php htmlentities($katakoryfo_utb2)?>" onkeyup=calcufbz1z2(); /></td>
 						<td><select name="vathos2" id="vathos2" size="1" onchange=calcufbz1z2(); >
 							<option value="0.5">0.5</option>
 							<option value="1">1.0</option>

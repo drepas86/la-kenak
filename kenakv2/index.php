@@ -216,8 +216,8 @@ $tb_name="jtable_container";
 					
 					?>
 				</div>
-			<?php } else { 
-				
+			<?php } else { 				 
+				 
 				 include("includes/version-history.php"); 
 				
 			 } ?>

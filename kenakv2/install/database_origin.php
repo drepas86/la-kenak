@@ -24,10 +24,10 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
 */
 // Για τη βάση δεδομένων
-define("DB_SERVER", "localhost"); //το όνομα του διακομιστή.Για xampp,mamp κλπ χρησιμοποιείστε localhost
-define("DB_USER", "root"); //το όνομα του χρήστη.
-define("DB_PASS", "12345"); //το συνθηματικό για τον παραπάνω χρήστη. Το έχετε δηλώσει στο http://localhost/security/index.php για xampp
-define("DB_NAME", "labros_kenakv2"); //το όνομα της βάσης δεδομένων
+define("DB_SERVER", "database_server"); //το όνομα του διακομιστή.Για xampp,mamp κλπ χρησιμοποιείστε localhost
+define("DB_USER", "database_user"); //το όνομα του χρήστη.
+define("DB_PASS", "database_password"); //το συνθηματικό για τον παραπάνω χρήστη. Το έχετε δηλώσει στο http://localhost/security/index.php για xampp
+define("DB_NAME", "database_name"); //το όνομα της βάσης δεδομένων
 define("VERSION", "2.7"); //Η τρέχουσα έκδοση της διανομής
 
 ?>
