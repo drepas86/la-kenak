@@ -210,7 +210,7 @@ if (!$error && isset($_REQUEST["uploadbutton"]))
     $uploaded_filepath=str_replace("\\","/",$upload_dir."/".$uploaded_filename);
 
     if (file_exists($uploaded_filename))
-    { echo ("<p class=\"error\">Η μελέτη $uploaded_filename υπάρχει ήδη! Μπορείτε να τη διαγράψετε από το φάκελο save-scripts και να ξαναπροσπαθήσετε!</p>\n");
+    { echo ("<p class=\"error\">Το αρχείο $uploaded_filename υπάρχει ήδη! Μπορείτε να ξαναπροσπαθήσετε εαν κάτι πάει στραβά!</p>\n");
     }
     else if (!preg_match("/(\.(sql|gz|csv))$/i",$uploaded_filename))
     { echo ("<p class=\"error\">Μπορείτε να ανεβάσετε μόνο .sql .gz ή .csv αρχεία.</p>\n");
@@ -306,7 +306,7 @@ if (!$error && !isset($_REQUEST["fn"]) && $filename=="")
             echo ("<td>Misc</td>");
 
           if ((preg_match("/\.gz$/i",$dirfile) && function_exists("gzopen")) || preg_match("/\.sql$/i",$dirfile) || preg_match("/\.csv$/i",$dirfile))
-            echo ("<td><a href=\"".$_SERVER["PHP_SELF"]."?start=1&amp;fn=".urlencode($dirfile)."&amp;foffset=0&amp;totalqueries=0&amp;delimiter=".urlencode($delimiter)."\">Φόρτωση μελέτης</a> στον πίνακα $db_name at $db_server</td>\n <td><a href=\"".$_SERVER["PHP_SELF"]."?delete=".urlencode($dirfile)."\">Διαγραφή μελέτης</a></td></tr>\n");
+            echo ("<td><a href=\"".$_SERVER["PHP_SELF"]."?start=1&amp;fn=".urlencode($dirfile)."&amp;foffset=0&amp;totalqueries=0&amp;delimiter=".urlencode($delimiter)."\">Φόρτωση αρχείου</a> στον πίνακα $db_name at $db_server</td>\n <td><a href=\"".$_SERVER["PHP_SELF"]."?delete=".urlencode($dirfile)."\">Διαγραφή μελέτης</a></td></tr>\n");
           else
             echo ("<td>&nbsp;</td>\n <td>&nbsp;</td></tr>\n");
         }
@@ -368,8 +368,8 @@ if (!$error && !TESTMODE && !isset($_REQUEST["fn"]))
   $row = mysql_fetch_assoc($result);
   if ($row) 
   { $charset = $row['Value'];
-    echo ("<p>Σημείωση: Η σύνδεση με τη βάση ακολουθεί κωδικοποίηση <i>$charset</i>. Το αρχείο πρέπει να έχει κωδικοποίηση <i>$charset</i> για να μην υπάρχουν προβλήματα με τους Ελληνικούς
-	χαρακτήρες. Μπορείτε να αλλάξετε την κωδικοποίηση στην μεταβλητή \$db_connection_charset στο αρχείο /save-scripts/sql-import2.php αν και κάτι τέτοιο δεν συστήνεται</p>\n");
+    echo ("<p>Σημείωση: Η σύνδεση με τη βάση ακολουθεί κωδικοποίηση <i>$charset</i>. Το αρχείο έχει κωδικοποίηση <i>$charset</i> για να μην υπάρχουν προβλήματα με τους Ελληνικούς
+	χαρακτήρες.</p>\n");
   }
 }
 
@@ -464,7 +464,7 @@ if (!$error && isset($_REQUEST["start"]) && isset($_REQUEST["foffset"]) && preg_
   { skin_open();
     if (TESTMODE) 
       echo ("<p class=\"centr\">TEST MODE ENABLED</p>\n");
-    echo ("<p class=\"centr\">Προσθήκη μελέτης: <b>".$curfilename."</b></p>\n");
+    echo ("<p class=\"centr\">Προσθήκη αρχείου: <b>".$curfilename."</b></p>\n");
     echo ("<p class=\"smlcentr\">Έναρξη εισόδου από γραμμή: ".$_REQUEST["start"]."</p>\n");	
     skin_close();
   }
@@ -592,7 +592,7 @@ if (!$error && isset($_REQUEST["start"]) && isset($_REQUEST["foffset"]) && preg_
         echo ("<p class=\"error\">Stopped at the line $linenumber. </p>");
         echo ("<p>At this place the current query includes more than ".MAX_QUERY_LINES." dump lines. That can happen if your dump file was ");
         echo ("created by some tool which doesn't place a semicolon followed by a linebreak at the end of each query, or if your dump contains ");
-        echo ("extended inserts or very long procedure definitions. Please read the <a href=\"http://www.ozerov.de/bigdump/usage/\">BigDump usage notes</a> ");
+        echo ("extended inserts or very long procedure definitions.");
         echo ("for more infos. Ask for our support services ");
         echo ("in order to handle dump files containing extended inserts.</p>\n");
         $error=true;
@@ -748,7 +748,7 @@ skin_open();
       echo ("<p class=\"centr\"><a href=\"".$_SERVER["PHP_SELF"]."?start=$linenumber&amp;fn=".urlencode($curfilename)."&amp;foffset=$foffset&amp;totalqueries=$totalqueries&amp;delimiter=".urlencode($delimiter)."\">Continue from the line $linenumber</a> (Enable JavaScript to do it automatically)</p>\n");
       echo ("</noscript>\n");
    
-      echo ("<p class=\"centr\">Press <b><a href=\"".$_SERVER["PHP_SELF"]."\">STOP</a></b> to abort the import <b>OR WAIT!</b></p>\n");
+      echo ("<p class=\"centr\">Πατήστε <b><a href=\"".$_SERVER["PHP_SELF"]."\">STOP</a></b> για να ακυρώσετε την είσοδο <b>Ή ΠΕΡΙΜΕΝΕΤΕ!</b></p>\n");
     }
   }
   else 
@@ -771,7 +771,7 @@ echo ('BigDump: Staggered MySQL Dump Importer v'.VERSION1.'');
 skin_close();
 ?>
 
-<p class="centr">&copy; 2003-2011 <a href="mailto:alexey@ozerov.de">Alexey Ozerov</a></p>
+
 
 </td></tr></table>
 
