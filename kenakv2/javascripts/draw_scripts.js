@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright (C) 2012 - Labros KENAK v.1.0 
 Author: Labros Karoyntzos 
 
@@ -43,19 +43,22 @@ function loadImageFile() {
   oFReader.readAsDataURL(oFile);
 }
 
-
 function init(){
 document.onselectstart = function () { return false; };
 //adding the event listerner for Mozilla
 if(window.addEventListener) document.addEventListener('DOMMouseScroll', zoomInOut, false);
 //for IE/OPERA etc
 document.onmousewheel = zoomInOut;
+canvas_width=window.parent.innerWidth-180;
+document.getElementById("canvas_container").style.width=window.parent.innerWidth-170;
+document.getElementById("grid").style.width=window.parent.innerWidth-180;
+document.getElementById("infobox").style.width=window.parent.innerWidth-180;
 xs=0;ys=0;xe=0;ye=0;dxs=0;dys=0;dxe=0;dye=0;ymax=10;xmax=ymax;ws=-1;
-xt1=0;yt1=0;xt2=0;yt2=0;selected_rect=-1;x0=0;y0=0;ipsos=3;
-imx=0;imy=0;imw=800;imh=600;imcal1=0;imcal2=0;imcal3=0;imgw=800;imgh=600;
+xt1=0;yt1=0;xt2=0;yt2=0;selected_rect=-1;x0=30;y0=-30;
+ipsos=2.8;ip_dok=0.3; //default τιμές για ύψος ορόφου και ύψος δοκού
+imx=0;imy=0;imw=canvas_width;imh=600;imcal1=0;imcal2=0;imcal3=0;imgw=canvas_width;imgh=600;
 cleft=61;ctop=51;save=1;
-dtype=1;zooming=0;
-grid = new Image();grid.src="draw_grid.php?ymax=10";
+dtype=1;zooming=0;drag="";
 fn=new Array();
 fn1=new Array();
 fn[1]="ΥΠ";
@@ -70,25 +73,23 @@ on[3]="Δ";
 for (i=3;i<10;i++){var j=i-2;fn[i]=j+"ος";fn1[i]=j+"ος όροφος";}
 floor=document.getElementById("floor").value;
 document.getElementById("ymax").value=ymax;
-action="edit";
-//draw_grid();
+// το ύψος της περιοχής σχεδίασης σταθερό στα 600px και το πλάτος προσαρμοσμένο στο πλάτος της οθόνης.
+// το ύψος σταθερό για να είναι εύκολος ο υπολογισμός της κλίμακας κατά το ζουμ.
+var x="<canvas id=\"canvas\" width=\""+canvas_width+"\" height=\"600\" ";
+x+="style=\"border:1px solid black;cursor:crosshair;position:absolute;top:0px;left:0px;\" ";
+x+="onmousemove=\"mousemove(event);\" onclick=\"mouseclick(event);\" onmousedown=\"mousedown(event);\" onmouseup=\"mouseup(event);\" >";
+x+="your browser does not support the canvas tag </canvas>";
+document.getElementById("canvas_container").innerHTML=x;
+set_action('edit');
+setmax();
 redraw_all();
 }
 
 function set_type(){
+// είδος στοιχείου: 1-δάπεδο, 2-τοίχος, 3-άνοιγμα, 4-υποστύλωμα, 5-εξώστης, 6-θερμογέφυρα γωνίας.
 for (i=1;i<=6;i++){
 	if (document.getElementById("d"+i).checked){dtype=i;}
 }
-}
-
-function draw_grid(){
-var b=navigator.userAgent;
-var n=b.indexOf("Chrome");
-if (n > -1){return;}
-grid.src="draw_grid.php?ymax="+xmax+"\"";
-var ctx=document.getElementById("canvas").getContext("2d");
-ctx.fillStyle=ctx.createPattern(grid,"repeat");
-ctx.fillRect(0,0,800,600);
 }
 
 //*********************  ΔΑΠΕΔΑ ************************************************
@@ -145,6 +146,10 @@ save=0;
 }
 //*********************  ΤΟΙΧΟΣ ************************************************
 function set_names(){
+// Περιγραφή χώρων, τοίχων και ανοιγμάτων. 
+// Υπολογίζεται το όνομα ανάλογα με τον όροφο και τον προσανατολισμό του τοίχου
+// Αλλάζει κάθε φορά που τροποποιούνται τα δεδομένα.
+// Κατά την αποθήκευση, στο όνομα του ανοίγματος προστίθεται και το είδος του ανοίγματος (οχι υλοποιημένο)
 	var n=new Array();
 	var n1=0;
 	for (i=0;i<rect.length;i++){
@@ -172,47 +177,54 @@ function set_names(){
 
 function info1(){
 $.colorbox({inline:true,  href:"#info1", width:"460px;" , height:"380px;" });
-set_names();
+
 var r=rect[selected_rect];
-var nn=r.name;
-if (nn==undefined){nn="";}
-document.getElementById('tn').value=nn;
+
+set_names();
+document.getElementById('tn').value=r.name;
+
 var xx=Math.round((r.x)/600*xmax*20)*5/100;
 xx=number_format(xx,2,".",",");
+
 var yy=Math.round((600-r.y)/600*ymax*20)*5/100;
 yy=number_format(yy,2,".",",");
+
 document.getElementById('tx_info').value=xx;
 document.getElementById('ty_info').value=yy;
+
 var lx=document.getElementById('lx').value;
 var ly=document.getElementById('ly').value;
-if (lx>ly){
+if (lx>ly){ //Τοίχος Βόρειος ή Νότιος
 	document.getElementById('orientation').innerHTML="<input type=\"radio\" id=\"o1\" checked=\"checked\" name=\"t_or\" value=\"1\" />Βόρειος<input type=\"radio\" id=\"o2\" name=\"t_or\" value=\"2\" />Νότιος	";
 	to=0;
 	if (r.or==0){document.getElementById('o1').checked=true;}
 	if (r.or==2){document.getElementById('o2').checked=true;}
 }
-if (ly>lx){
+if (ly>lx){ //Τοίχος Δυτικός ή Ανατολικός
 	document.getElementById('orientation').innerHTML="<input type=\"radio\" id=\"o1\" checked=\"checked\" name=\"t_or\" value=\"1\" />Δυτικός<input type=\"radio\" id=\"o2\" name=\"t_or\" value=\"2\" />Ανατολικός";
 	var tl=lx;lx=ly;ly=tl;to=1;
 	if (r.or==3){document.getElementById('o1').checked=true;}
 	if (r.or==1){document.getElementById('o2').checked=true;}
 }
-document.getElementById('tn').value=nn;
 
 document.getElementById('tlx_info').value=lx;
 document.getElementById('tly_info').value=ly;
+
 document.getElementById('th').value=number_format(r.height,2,".",",");
+document.getElementById('hd').value=number_format(r.hd,2,".",",");
+// Αν δεν έχουν καθοριστεί τιμές για ύψος τοίχου ή και δοκού δώσε τις default τιμές.
 if (r.height==0){document.getElementById('th').value=number_format(ipsos,2,".",",");}
+if (r.hd==0){document.getElementById('hd').value=number_format(ip_dok,2,".",",");}
+
 var zz=r.zone;
 if (isNaN(zz)){zz="";}
-document.getElementById('tz').value=zz;
-document.getElementById('tu').value=number_format(r.u,2,".",",");
-document.getElementById('hd').value=number_format(r.hd,2,".",",");
-document.getElementById('dap1').selectedIndex=r.ep;
-document.getElementById('th_dap').value=number_format(r.th_dap,2,".",",");
-document.getElementById('th_or').value=number_format(r.th_or,2,".",",");
-document.getElementById('th_dok').value=number_format(r.th_dok,2,".",",");
-document.getElementById('u_dok').value=number_format(r.u_dok,2,".",",");
+document.getElementById('tz').value=zz; //ΖΩΝΗ
+document.getElementById('tu').value=number_format(r.u,2,".",","); // ΣΥΝΤΕΛΕΣΤΗΣ U
+document.getElementById('dap1').selectedIndex=r.ep;	// ΧΩΡΟΣ ΜΕ ΤΟΝ ΟΠΟΙΟ ΣΥΝΟΡΕΥΕΙ Ο ΤΟΙΧΟΣ
+document.getElementById('th_dap').value=number_format(r.th_dap,2,".",","); // Ψ ΔΑΠΕΔΟΥ
+document.getElementById('th_or').value=number_format(r.th_or,2,".",","); // Ψ ΟΡΟΦΗΣ
+document.getElementById('th_dok').value=number_format(r.th_dok,2,".",","); // U ΔΟΚΟΥ
+document.getElementById('u_dok').value=number_format(r.u_dok,2,".",","); // Ψ ΔΟΚΟΥ
 sr=selected_rect;
 selected_rect=-1;
 }
@@ -600,19 +612,26 @@ if (document.getElementById("uploadImage").value !== "" ){
 
 function calibrate(){
 $.fn.colorbox.close();
-var x=imcal1;
-var y=imcal2;
-var d=document.getElementById("cal1").value;
+var x=document.getElementById("cal1").value;
+x=x/ymax*600;
+var y=document.getElementById("cal2").value;
+y=600-y/ymax*600;
+var d=document.getElementById("cal3").value;
 d=d/ymax*600;
+if (d==0){
+	alert("Δεν ορίσατε την απόσταση των δύο σημείων");
+	imcal1=0;imcal2=0;imcal3=0;
+	redraw_all();
+}else{
 var sc=d/Math.abs(imcal3-imcal2);
-imx=imx+x0+x-imcal1*sc;
-imy=imy+y0+y-imcal2*sc;
+imx=imx+x+(x0-imcal1)*sc;
+imy=imy+y+(y0-imcal2)*sc;
 imw=imw*sc;
 imh=imh*sc;
 redraw_all();
 imcal1=0;imcal2=0;imcal3=0;
 set_action('edit');
-}
+}}
 
 function set_action(n){
 	if (document.getElementById("floor").value==0 && n!=='help' && n!=='edit'){alert("Επιλέξτε πρώτα μία στάθμη");return;}
@@ -633,6 +652,32 @@ function set_action(n){
 	action=n;
 	if (n=='insert'){$.colorbox({inline:true,  href:"#image_insert" , onClosed:function(){if (document.getElementById("uploadImage").value == "" ){ set_action('edit');} } });}
 	if (n=='help'){$.colorbox({inline:true,  href:"#draw_help", width:"82%", onClosed:function(){ set_action('edit'); }  });}
+	if (n=='save'){
+		save=ymax;
+		document.getElementById("ymax").value=10;
+		setmax();
+		var s="";
+		for (i=0;i<rect.length;i++){
+			var r=rect[i];
+			s=r.x+"|"+r.y+"|"+r.w+"|"+r.h+"|"+r.name+"|"+r.zone+"|"+r.height+"|"+r.type+"|"+r.c+"|"+r.or+"|"+r.ep+"|"+r.u+"|"+r.hd+"|"+r.th1+"|"+r.th2+"|"+r.ae+"|"+r.aa+"|"+r.ah+"|"+r.th_or+"|"+r.th_dap+"|"+r.u_dok+"|"+r.th_dok+"|"+r.a;
+//			     0       1       2      3         4          5           6           7         8       9        10       11      12      13         14        15      16        17        18         19             20          21        22 
+			var j=i+1;
+			var x="drawing_save.php?rec="+s+"&floor="+floor+"&item="+j;
+			document.getElementById('save_drawing').innerHTML="<img src=\""+x+"\"></img>";
+		}
+		var x="drawing_save.php?rec="+rect.length+"&floor="+floor+"&item=0";
+		document.getElementById('save_drawing').innerHTML="<img src=\""+x+"\"></img>";
+		document.getElementById('save_drawing').innerHTML="<center>Τα στοιχεία αποθηκεύθηκαν</center>";
+		$.colorbox({inline:true, width:"30%", href:"#save_drawing" , onClosed:function(){ set_action('edit'); } });
+		setTimeout( "closebox();", 1000);
+	}
+}
+
+function closebox(){
+$.fn.colorbox.close();
+document.getElementById("ymax").value=save;
+save=1;
+setmax();
 }
 
 function setmax(){
@@ -642,7 +687,8 @@ xmax=ymax;
 sc=sc/ymax
 for (i=0;i<rect.length;i++){
 	var r=rect[i];
-//	r.x=r.x*sc;r.y=r.y*sc+600*(1-sc);r.w=r.w*sc;r.h=r.h*sc;
+	r.x=r.x*sc;r.y=r.y*sc+600*(1-sc);r.w=r.w*sc;r.h=r.h*sc;
+/*
 	var x=Math.round(r.x/600*ymax1*20)*5/100;
 	r.x=x/ymax*600;
 	var x=Math.round((600-r.y)/600*ymax1*20)*5/100;
@@ -651,6 +697,7 @@ for (i=0;i<rect.length;i++){
 	r.w=x/ymax*600;
 	var x=Math.round(r.h/600*ymax1*20)*5/100;
 	r.h=x/ymax*600;
+/**/
 }
 x0=400-cleft-(400-cleft-x0)*sc;
 y0=(300+ctop+y0)*sc-300-ctop;
@@ -674,8 +721,8 @@ function zoomInOut(event){
 	}
 	if(zooming==1){return;}
 	var newzoom=parseFloat(xmax)-delta;
-	if (newzoom<1){newzoom=1;}
-	if (newzoom>50){newzoom=50;}
+	if (newzoom<3){newzoom=3;}
+	if (newzoom>30){newzoom=30;}
 	document.getElementById("ymax").value=newzoom;
 	zooming=1;
 	setmax();
@@ -683,12 +730,43 @@ function zoomInOut(event){
 
 function redraw_all(){
 	var ctx=document.getElementById("canvas").getContext("2d");
-	ctx.clearRect(0,0,800,600);
+	ctx.clearRect(0,0,canvas_width,600);
 	draw_grid();
 	insert_image();
 	for (i=0;i<rect.length;i++){
 		draw_rect(i);
 	}
+}
+
+function draw_grid(){
+//Σχεδίαση κανάβου ανά 1 μέτρο.
+// p1 και p2: ρύθμιση συντεταγμένων για εμφάνιση του κανάβου με λεπτή γραμμή. 
+var p1=0.7;
+var p2=0.3;
+var b=navigator.userAgent;
+var n=b.indexOf("Chrome");
+if (n > -1){p1=0.5;p2=0.5}
+var n=b.indexOf("Safari");
+if (n > -1){p1=0.5;p2=0.5;}
+var x="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\""+canvas_width+"\" height=\"600px\" version=\"1.1\">";
+x+="<g stroke-width=\"1\" stroke-dasharray=\"1,2\">";
+var k=x0;var c="black";
+while (k>0){k-=600/ymax;}
+for (i=k;i<2000;i=i+600/ymax){
+	var j=Math.round(i+0.5)+p1;
+	c="black";if (Math.abs(i-x0)<0.1){c="red";}
+	x+="<line x1="+j+" y1=0 x2="+j+" y2=600 stroke=\""+c+"\" />";
+}
+var k=y0;
+while (k>0){k-=600/ymax;}
+for (i=k;i<600;i=i+600/ymax){
+	var j=Math.round(i+0.5)+p2;
+	c="black";if (Math.abs(i-600-y0)<0.1){c="red";}
+	x+="<line x1=0 y1="+j+" x2=2000 y2="+j+" stroke=\""+c+"\" />";
+}
+x+="</g>";
+x+="</svg>";
+document.getElementById("grid").innerHTML=x;
 }
 
 function erase_rect(r){
@@ -699,18 +777,30 @@ function erase_rect(r){
 	document.getElementById("ly").value="";
 }
 
-function draw_rect(r){
+function rescale_tile(){
+	var w=10/ymax*128;
+	var h=w;
+	var x="<canvas id=\"hatch_canvas\" width=\""+w+"px\" height=\""+h+"\" >";
+	x+="your browser does not support the canvas tag </canvas>";
+	document.getElementById("hatch").innerHTML=x;
+	var ctx=document.getElementById("hatch_canvas").getContext("2d");
+	ctx.drawImage(document.getElementById("tile"),0,0,128,128,0,0,w,h);
+}
+
+function draw_rect(n){
+	rescale_tile();
 	var ctx=document.getElementById("canvas").getContext("2d");
+	var tile=ctx.createPattern(document.getElementById("hatch_canvas"),"repeat");
 	ctx.globalAlpha = 1;
 	ctx.strokeStyle="#000000";
-	var r=rect[r];
+	var r=rect[n];
 	ctx.strokeRect(r.x+x0,r.y+y0,r.w,r.h);
-	if (r.type==1){ctx.fillStyle="#FF0000";}
+	ctx.globalAlpha = 0.5;
+	if (r.type==1){ctx.fillStyle=tile;}
 	if (r.type==2){ctx.fillStyle="#f89b08";}
 	if (r.type==3){ctx.fillStyle="#00FF00";}
 	if (r.type==4){ctx.fillStyle="#045a59";}
 	if (r.type==5){ctx.fillStyle="#aaaaaa";}
-	ctx.globalAlpha = 0.5;
 	ctx.fillRect(r.x+1+x0,r.y+1+y0,r.w-2,r.h-2);
 	document.getElementById('draw').innerHTML="";
 }
@@ -766,8 +856,8 @@ function move(x,dx,dy){
 
 function check_dims(x,dx,dy){
 var r0=rect[x];
-if (r0.w<10){r0.w=10;if (action=="stretch_left"){r0.x=r0.x-dx+xt1;}}
-if (r0.h<10){r0.h=10;if (action=="stretch_up"){r0.y=r0.y-dy+yt1;}}
+if (r0.w<100/xmax){r0.w=100/xmax;if (action=="stretch_left"){r0.x=r0.x-dx+xt1;}}
+if (r0.h<100/xmax){r0.h=100/xmax;if (action=="stretch_up"){r0.y=r0.y-dy+yt1;}}
 if (r0.type==2){
 	for (i=0;i<rect.length;i++){
 		if ((rect[i].type==3 || rect[i].type==4) && rect[i].c==x){
@@ -792,15 +882,17 @@ if (r0.type==3 || r0.type==4){
 function mousemove(event){
 	var dx=event.clientX-cleft;
 	var dy=event.clientY-ctop;
-	var x=Math.round((event.clientX-cleft-x0)/600*xmax*20)*5/100;
+	//var x=Math.round((event.clientX-cleft-x0)/600*xmax*20)*5/100;
+	var x=(event.clientX-cleft-x0)/600*xmax;
 	x=number_format(x,2,".",",");
-	var y=Math.round((600+ctop-event.clientY+y0)/600*ymax*20)*5/100;
+	//var y=Math.round((600+ctop-event.clientY+y0)/600*ymax*20)*5/100;
+	var y=(600+ctop-event.clientY+y0)/600*ymax;
 	y=number_format(y,2,".",",");
 	document.getElementById("x").value=x;
 	document.getElementById("y").value=y;
-	if (xe!=0){xs=0;ys=0;xe=0;ye=0;}
-	if (dxe!=0){dxs=0;dys=0;dxe=0;dye=0;}
-	if (dxs!=0 && action=='edit'){
+	if (xe!==0){xs=0;ys=0;xe=0;ye=0;}
+	if (dxe!==0){dxs=0;dys=0;dxe=0;dye=0;}
+	if (dxs!==0 && action=='edit'){
 		var jg = new jsGraphics("draw"); 
 		document.getElementById('draw').innerHTML="";
 		jg.setColor("red");
@@ -873,12 +965,19 @@ function mousemove(event){
 
 function mousedown(event){
 if (document.getElementById("floor").value==0){alert("Επιλέξτε πρώτα μία στάθμη");return;}
+
 xt1=event.clientX-cleft;
 yt1=event.clientY-ctop;
+
+if (event.which==3){event.returnValue = false; return;}
+
 if (event.which==2){
-	document.getElementById('draw').innerHTML="";
-	dxs=0;
+	drag=action;
+	action="drag";document.getElementById('canvas').style.cursor="move";
+	//event.returnValue = false;
+	return;
 }
+
 if (action=="edit" && (dtype==3 || dtype==4)){
 	for (i=0;i<rect.length;i++){
 		if (is_inside(xt1-x0,yt1-y0,i)){
@@ -913,6 +1012,14 @@ if (action=="move" || action=="erase"  || action=="props" ){
 function mouseup(event){
 xt2=event.clientX-cleft;
 yt2=event.clientY-ctop;
+if (action=='drag' && drag!==""){
+	document.getElementById('draw').innerHTML="";
+	dxs=0;
+	set_action(drag);
+	drag="";
+	//event.returnValue = false;
+	return;
+}
 if (action=="stretch_up" || action=="stretch_down" || action=="stretch_left" || action=="stretch_right" || action=="drag"){action="move";document.getElementById('canvas').style.cursor="move";}
 if (action=="move"){selected_rect=-1;}
 }
@@ -924,9 +1031,9 @@ function mouseclick(event){
 	x=number_format(x,2,".",",");
 	var y=Math.round((600+ctop-event.clientY)/600*ymax*20)*5/100;
 	y=number_format(y,2,".",",");
-	if (xs!=0){xe=x;ye=y;}
+	if (xs!==0){xe=x;ye=y;}
 	if (xs==0){xs=x;ys=y;xe=0;ye=0;}
-	if (dxs!=0 && action=='edit'){
+	if (dxs!==0 && action=='edit'){
 		dxe=dx;dye=dy;
 		var r=new rectangle(Math.min(dxs,dxe)-x0,Math.min(dys,dye)-y0,Math.abs(dxe-dxs),Math.abs(dye-dys),dtype);
 		rect.push(r);
@@ -954,6 +1061,7 @@ function mouseclick(event){
 		erase_rect(x);
 		if (xrt==2){
 			var ch=0;
+			//Διαγραφή ανοιγμάτων και στύλων που ανήκουν στον τοίχο.
 			while (ch!==1){
 				var j=rect.length;
 				for (i=0;i<j;i++){
@@ -963,6 +1071,13 @@ function mouseclick(event){
 					}
 				}
 				if (i==j){ch=1;}
+			}
+			// Ενημέρωση α/α τοίχων στα ανοίγματα και στύλους. 
+			// Με την διαγραφή μειώνεται ο α/α κατά 1 όλων των στοιχείων με α/α μεγαλύτερο από αυτό που διαγράφεται.
+			for (i=x+1;i<rect.length;i++){
+				if (rect[i].type==3 || rect[i].type==4){
+					rect[i].c-=1;
+				}
 			}
 		}
 		save=0;

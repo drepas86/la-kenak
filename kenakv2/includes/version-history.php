@@ -4,7 +4,7 @@
 		<h2>Welcome to La-Kenak v.<?=VERSION?> </h2>
 		<div id="timeline" >
 		<ul id="dates">
-			<li><a href="#150512">1/4</a></li>
+			<li><a href="#110512">11/5</a></li>
 			<li><a href="#010412">1/4</a></li>
 			<li><a href="#220312">22/3</a></li>
 			<li><a href="#120312">12/3</a></li>
@@ -16,9 +16,9 @@
 	
 		</ul>
 		<ul id="issues">
-		<li id="150512">
+		<li id="110512">
 				<img src="version-history/images/version-changes.png" width="256" height="256" />
-				<h1>15/5/2012</h1>
+				<h1>11/5/2012</h1>
 				<p>La-kenak v2.7<br/><br/>
 				1. Προσθήκη πυρήνα σχεδιαστικού στο μενού κτίριο. (tsak1) <br/>
 				2. Προσθήκη προσανατολισμού Βόρειας πλευράς στα γενικά στοιχεία. (ks1f14s)<br/>

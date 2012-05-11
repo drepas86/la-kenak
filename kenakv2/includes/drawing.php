@@ -35,6 +35,13 @@ include("connection.php");
 include("functions.php");
 $floor=0;
 if (isset($_GET['floor']))$floor=$_GET["floor"];
+//πρόσθεση του πίνακα kataskeyi_drawing που πιθανόν λείπει, για αποθήκευση των στοιχείων του σχεδίου.
+if(add_new_table("kataskeyi_drawing")){
+	add_column_if_not_exist("kataskeyi_drawing", "floor", "INT(2)");
+	add_column_if_not_exist("kataskeyi_drawing", "item", "INT(2)");
+	add_column_if_not_exist("kataskeyi_drawing", "rec", "VARCHAR(300)");
+}
+
 ?>
 
 <html>
@@ -54,13 +61,11 @@ if (isset($_GET['floor']))$floor=$_GET["floor"];
 		<script src="../javascripts/draw_scripts.js" type="text/javascript"></script>
 
 	</head>
-	<body style="background:#ffffff;" onload="init();">
+	<body style="background:#ffffff;">
 
-<div style="position:absolute;top:50px;left:60px;width:800px;height:600px;">
-<canvas id="canvas" width="800" height="600" style="border:1px solid #d3d3d3;cursor:crosshair;position:absolute;top:0px;left:0px;"  
-		onmousemove="mousemove(event);" onclick="mouseclick(event);" 
-		onmousedown="mousedown(event);" onmouseup="mouseup(event);"
->your browser does not support the canvas tag </canvas>
+<div style="position:absolute;top:50px;left:60px;width:100%;height:600px;" id="grid">
+</div>
+<div style="position:absolute;top:50px;left:60px;width:100%;height:600px;" id="canvas_container">
 </div>
 
 <div style="position:absolute;top:50px;left:5px;width:55px;height:600px;"  id="toolbox" >
@@ -74,10 +79,10 @@ if (isset($_GET['floor']))$floor=$_GET["floor"];
 <img src="../images/domika/help1.png" width="50px" height="50px" style="cursor:pointer;" title="οδηγίες"  id="help" onclick="set_action('help');" /><br /><br />
 </div>
 
-<div style="position:absolute;top:10px;left:60px;width:850px;height:30px;" id="infobox" >
-<div style="display:none;">
+<div style="position:absolute;top:10px;left:60px;width:100%;height:30px;" id="infobox" >
 X: <input type="text" id="x" style="width:50px;"> 
 Y: <input type="text" id="y" style="width:50px;"> 
+<div style="display:none;">
 Lx: <input type="text" id="lx" style="width:50px;"> 
 Ly: <input type="text" id="ly" style="width:50px;"> 
 Ymax= <input type="text" id="ymax" style="width:50px;" onchange="setmax();"> 
@@ -106,7 +111,7 @@ Ymax= <input type="text" id="ymax" style="width:50px;" onchange="setmax();">
 <div style="position:absolute;top:49px;left:60px;width:800px;height:1px;" id="drawbox" >
 <div id="draw" style="position:relative;height:1px;width:1px;"></div>
 </div>
-
+<div id="hatch" style="display:none;"></div>
 <!------------------------------------------------------------------------------------>
 <!--        Κρυφό div για εισαγωγή κάτοψης                                          -->
 <div style='display:none'><div id='image_insert' style='padding:10px; background:#ebf9c9;'>
@@ -117,19 +122,25 @@ Ymax= <input type="text" id="ymax" style="width:50px;" onchange="setmax();">
 <tr>
 <td><img id="uploadPreview" style="border:1px solid black; width: 400px; height: 300px;" src="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%3F%3E%0A%3Csvg%20width%3D%22153%22%20height%3D%22153%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%3Cg%3E%0A%20%20%3Ctitle%3ENo%20image%3C/title%3E%0A%20%20%3Crect%20id%3D%22externRect%22%20height%3D%22150%22%20width%3D%22150%22%20y%3D%221.5%22%20x%3D%221.500024%22%20stroke-width%3D%223%22%20stroke%3D%22%23666666%22%20fill%3D%22%23e1e1e1%22/%3E%0A%20%20%3Ctext%20transform%3D%22matrix%286.66667%2C%200%2C%200%2C%206.66667%2C%20-960.5%2C%20-1099.33%29%22%20xml%3Aspace%3D%22preserve%22%20text-anchor%3D%22middle%22%20font-family%3D%22Fantasy%22%20font-size%3D%2214%22%20id%3D%22questionMark%22%20y%3D%22181.249569%22%20x%3D%22155.549819%22%20stroke-width%3D%220%22%20stroke%3D%22%23666666%22%20fill%3D%22%23000000%22%3E%3F%3C/text%3E%0A%20%3C/g%3E%0A%3C/svg%3E" alt="Image preview" /></td>
 </tr><tr><td><input id="uploadImage" type="file" size="30" onchange="loadImageFile();" />&nbsp;&nbsp;
-<button type="button" onclick="redraw_all();set_action('calibr');" >Εισαγωγή</button></td>
+<button type="button" onclick="imx=0;imy=0;redraw_all();set_action('calibr');" >Εισαγωγή</button></td>
 </tr>
 </tbody>
 </table>
 </form>
+
 </div></div>
 <!------------------------------------------------------------------------------------>
 <!--        Κρυφό div για βαθμονόμηση κάτοψης                                       -->
 <div style='display:none'><div id='image_calibr' style='padding:10px; background:#ebf9c9;'>
 <h3>Βαθμονόμηση εικόνας</h3><hr>
-Συμπληρώστε την απόσταση κατά Y των δύο σημείων (σε μέτρα).<br /><br /> 
-<table style="width:100%"><tr>
-<td style="text-align:right;">απόσταση: </td><td style="text-align:center;"><input type="text" id="cal1" size="5" value="" onchange="calibrate();" /></td></tr>
+Συμπληρώστε τις συντεταγμένες του πρώτου σημείου και την απόσταση κατά Y των δύο σημείων (σε μέτρα).<br /><br /> 
+<table style="width:100%">
+<tr><td style="text-align:right;">x: </td>
+<td style="text-align:center;"><input type="text" id="cal1" size="5" value="" /></td></tr>
+<tr><td style="text-align:right;">y: </td>
+<td style="text-align:center;"><input type="text" id="cal2" size="5" value="" /></td></tr>
+<tr><td style="text-align:right;">απόσταση κατά y: </td>
+<td style="text-align:center;"><input type="text" id="cal3" size="5" value="" /></td></tr>
 </table><hr>
 <table style="width:100%"><tr><td style="text-align:right;"><button type="button" onclick="calibrate();">OK</button></td></tr></table>
 </div></div>
@@ -243,9 +254,11 @@ echo "<select id=\"d_thermo\" >" . $thermo_edp . $thermo_pr . "</select>";
 >your browser does not support the canvas tag </canvas>
 </div>
 <div style="display:none;">
-<img src="../images/hatch/brick1.png" id="brick" width="50" height="51" />
-<img src="../images/hatch/concrete.png" id="concr" width="65" height="65" />
-<img src="../images/hatch/glass.png" id="glass" width="71" height="72" />
+<img src="draw_grid.php" id="grid_img" />
+<img src="../images/hatch/brick1.png" id="brick" />
+<img src="../images/hatch/concrete.png" id="concr" />
+<img src="../images/hatch/glass.png" id="glass" />
+<img src="../images/hatch/floor.png" id="tile" />
 </div>
 </div></div>
 <!------------------------------------------------------------------------------------>
@@ -286,7 +299,7 @@ echo "<select id=\"d_thermo\" >" . $thermo_edp . $thermo_pr . "</select>";
 <td style="text-align:center;border-top:1px solid black;" colspan="2">Αερισμός<br /></td></tr><tr>
 <td style="text-align:center;" colspan="2">
 <select id="aa">
-	<option value=""></option>
+	<option value="0"></option>
 	<option value="15.1">Παράθυρο με ξύλινο πλαίσιο: 15.1</option>
 	<option value="12.5">Παράθυρο με ξύλινο πλαίσιο: 12.5</option>
 	<option value="10">Παράθυρο με ξύλινο πλαίσιο: 10.0</option>
@@ -325,7 +338,7 @@ echo "<select id=\"a_thermo\" >" . $thermo_ak . "</select>";
 </div>
 </div></div>
 <!------------------------------------------------------------------------------------>
-<!--        Κρυφό div για επεξεργασία υποστυλωμάτων                                        -->
+<!--        Κρυφό div για επεξεργασία υποστυλωμάτων                                 -->
 <div style='display:none'><div id='info3' style='padding:10px; background:#ebf9c9;'>
 <b>Ιδιότητες υποστυλώματος</b><hr>
 <table style="width:100%"><tr><td style="width:30%">
@@ -381,36 +394,40 @@ echo "<select id=\"a_thermo\" >" . $thermo_ak . "</select>";
 Εισαγωγή κάτοψης. Εισάγεται ένα αρχείο εικόνας (jpg, png κλπ) με την κάτοψη του ορόφου. Εχοντας την κάτοψη ως υπόβαθρο είναι ευκολότερη η σχεδίαση των στοιχείων του ορόφου.</td></tr><tr style="border-top:1px solid black;"><td>
 <img src="../images/domika/tape.png" width="32px" height="32px" style="vertical-align:middle;" /> </td><td>
 Βαθμονόμηση κάτοψης. Για την εισαγωγή της κάτοψης με σωστές διαστάσεις θα πρέπει να γίνει πρώτα βαθμονόμηση. 
-Επιλέγονται δύο σημεία με διαφορετικό Y και ορίζεται η απόστασή τους κατά Y.</td></tr><tr style="border-top:1px solid black;"><td>
+Επιλέγονται δύο σημεία με διαφορετικό Y, ορίζεται η απόστασή τους κατά Y και οι συντεταγμένες (σε μέτρα) του πρώτου σημείου.</td></tr><tr style="border-top:1px solid black;"><td>
 &nbsp;</td><td>&nbsp;
 </td></tr></table>
 </div></div>
 <!------------------------------------------------------------------------------------>
-
+<!--        Κρυφό div για αποθήκευση στοιχείων                                      -->
+<div style='display:none'><div id='save_drawing' style='padding:10px; background:#ebf9c9;'>
+</div></div>
+<!------------------------------------------------------------------------------------>
 <script type="text/javascript">
 	function rectangle(x,y,w,h,type){
-		this.x=x;
-		this.y=y;
-		this.w=w;
-		this.h=h;
-		this.name="";
-		this.zone=1;
-		this.height=0;
-		this.type=type;
-		this.c=-1;
-		this.or=0;
-		this.ep=0;
-		this.u=0;
-		this.hd=0;
-		this.th1=0;
-		this.th2=0;
-		this.ae=0;
-		this.aa=0;
-		this.ah=0;
-		this.th_or=0;
-		this.th_dap=0;
-		this.u_dok=0;
-		this.th_dok=0;
+		this.x=x;	// συντεταγμένες άνω αριστερής γωνίας σε pixel
+		this.y=y;	//					''
+		this.w=w;	// πλάτος σε pixel
+		this.h=h;	// ύψος σε pixel
+		this.name="";	// περιγραφή
+		this.zone=1;	// θεμική ζώνη
+		this.height=0;	// ύψος σε μέτρα. Για ανοίγματα το ύψος του πρεκιού
+		this.type=type;	// είδος: 1-δάπεδο, 2-τοίχος, 3-άνοιγμα, 4-υποστύλωμα, 5-εξώστης, 6-θερμογέφυρα γωνίας.
+		this.c=-1;	// α/α τοίχου στον οποίο ανήκει άνοιγμα ή υποστύλωμα.
+		this.or=0;	// προσανατολισμός τοίχου: 0-βόρειος, 1-ανατολικός, 2-νότιος, 3-δυτικός
+		this.ep=0;	// για δάπεδα και τοίχους, χώρος με τον οποίο συνορεύει
+		this.u=0;	// συντελεστής U
+		this.hd=0;	// ύψος δοκού σε μέτρα
+		this.th1=0;	// Ψ λαμπά ή Ψ δοκού
+		this.th2=0;	// Ψ ποδιάς/πρεκιού
+		this.ae=0;	// είδος ανοίγματος
+		this.aa=0;	// αερισμός ανοίγματος
+		this.ah=0;	// ποδιά ανοίγματος (μέτρα)
+		this.th_or=0;	// τοίχος: Ψ οροφής
+		this.th_dap=0;	// τοίχος: Ψ δαπέδου
+		this.u_dok=0;	// συντελεστής U δοκού
+		this.th_dok=0;	// τοίχος: Ψ δοκού
+		this.a=0;	// γωνία στροφής (μελλοντική υλοποίηση)
 	}
 	rect=[];
 	document.getElementById("floor").selectedIndex=<?=$floor?>;
@@ -431,6 +448,37 @@ echo "<select id=\"a_thermo\" >" . $thermo_ak . "</select>";
 		$i+=1;
 	}
 */
+$rec_count=0;
+$drop_set = mysql_query("SELECT * FROM kataskeyi_drawing WHERE floor=$floor AND item=0");
+while ($result = mysql_fetch_array($drop_set)) {$rec_count=$result['rec'];}
+for ($i=1;$i<=$rec_count;$i++){
+	$drop_set = mysql_query("SELECT * FROM kataskeyi_drawing WHERE floor=$floor AND item=$i");
+	while ($result = mysql_fetch_array($drop_set)) {
+		$rec=$result['rec'];
+		$j=$result['item']-1;
+		$x=explode("|",$rec);
+		echo "\r\nvar r=new rectangle(".$x[0].",".$x[1].",".$x[2].",".$x[3].",".$x[7].");";
+		echo "rect[".$j."]=r;\r\n";
+		echo "rect[".$j."].name='".$x[4]."';" ;
+		echo "rect[".$j."].zone=".$x[5].";" ;
+		echo "rect[".$j."].height=".$x[6].";" ;
+		echo "rect[".$j."].c=".$x[8].";\r\n" ;
+		echo "rect[".$j."].or=".$x[9].";" ;
+		echo "rect[".$j."].ep=".$x[10].";" ;
+		echo "rect[".$j."].u=".$x[11].";" ;
+		echo "rect[".$j."].hd=".$x[12].";" ;
+		echo "\r\nrect[".$j."].th1=".$x[13].";" ;
+		echo "rect[".$j."].th2=".$x[14].";" ;
+		echo "rect[".$j."].ae=".$x[15].";" ;
+		echo "rect[".$j."].aa=".$x[16].";\r\n" ;
+		echo "rect[".$j."].ah=".$x[17].";" ;
+		echo "rect[".$j."].th_or=".$x[18].";" ;
+		echo "rect[".$j."].th_dap=".$x[19].";" ;
+		echo "rect[".$j."].u_dok=".$x[20].";\r\n" ;
+		echo "rect[".$j."].th_dok=".$x[21].";" ;
+		echo "rect[".$j."].a=".$x[22].";" ;
+	}
+}
 ?>
 	function change_floor(){
 		if (save==0){
@@ -442,6 +490,8 @@ echo "<select id=\"a_thermo\" >" . $thermo_ak . "</select>";
 			window.location=("drawing.php");
 		}
 	}
+
+init();	
 </script>
 
 </body>

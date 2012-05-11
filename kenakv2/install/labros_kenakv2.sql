@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 06 Μάη 2012 στις 22:31:24
+-- Χρόνος δημιουργίας: 11 Μάη 2012 στις 12:33:14
 -- Έκδοση Διακομιστή: 5.5.16
 -- Έκδοση PHP: 5.3.8
 
@@ -3027,6 +3027,21 @@ INSERT INTO `kataskeyi_daporo` (`id`, `id_zwnis`, `type`, `name`, `emvadon`, `u`
 (2, 1, 0, 'Δάπεδο σε μη θερμ. χώρο', 67.4750, 0.5960),
 (3, 1, 1, 'Οροφή με κεραμίδι', 63.4550, 0.5499),
 (4, 1, 1, 'Οροφή πλάκα', 2.1000, 0.5384);
+
+-- --------------------------------------------------------
+
+--
+-- Δομή Πίνακα για τον Πίνακα `kataskeyi_drawing`
+--
+
+DROP TABLE IF EXISTS `kataskeyi_drawing`;
+CREATE TABLE IF NOT EXISTS `kataskeyi_drawing` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `floor` int(2) DEFAULT NULL,
+  `item` int(2) DEFAULT NULL,
+  `rec` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

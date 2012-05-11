@@ -200,7 +200,7 @@ $(".eksg").colorbox({rel:'eksg'});
 </div><!--/tab-thermo-->
 
 <div id="tab-draw" class="tabdiv"> 
-<iframe src='includes/drawing.php' width=900px  height=660px marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0  scrolling='no'></iframe></div>
+<iframe src='includes/drawing.php' width=100%  height=660px marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0  scrolling='no'></iframe></div>
 </div>
 
 
