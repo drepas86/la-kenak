@@ -65,6 +65,7 @@
 			${"drop_xrisi".$i} = $objResult["xrisi"];
 			${"anigmeni_thermo".$i} = $objResult["anigmeni_thermo"];
 			${"thermoeparkeia".$i} = $objResult["thermoeparkeia"];
+			${"klines".$i} = $objResult["klines"];
 			${"aytomatismoi".$i} = $objResult["aytomatismoi"];
 			${"kaminades".$i} = $objResult["kaminades"];
 			${"eksaerismos".$i} = $objResult["eksaerismos"];
@@ -475,8 +476,12 @@
 	
 			//Τα id για νερό δικτύου και βέλτιστη κλίση
 			$drop_nero_diktyoy = $nero_dikt_id;
+			if ($zwni=="a"){$drop_nero_diktyoy = 1;}
+			if ($zwni=="b"){$drop_nero_diktyoy = 2;}
+			if ($zwni=="g"){$drop_nero_diktyoy = 3;}
+			if ($zwni=="d"){$drop_nero_diktyoy = 4;}
 			$drop_velt_klisi = $velt_klisi_id;
-			$t_znx = 50; //Θερμοκρασία ΖΝΧ
+			$t_znx = 45; //Θερμοκρασία ΖΝΧ
 			
 			//Βρίσκω για τις ζώνες τις μεταβλητές της χρήσης
 			for ($z=1;$z<=$arithmos_thermzwnes;$z++){
@@ -537,7 +542,7 @@
 			
 			//Νερό δικτύου
 			//πρώτη γραμμή πίνακα
-			$array_thermokrasiwn = get_times("*", "climate61", $drop_nero_diktyoy);
+			$array_thermokrasiwn = get_times("*", "nero_diktyoy", $drop_nero_diktyoy);
 			$nero_jan = $array_thermokrasiwn[0]["jan"];
 			$nero_feb = $array_thermokrasiwn[0]["feb"];
 			$nero_mar = $array_thermokrasiwn[0]["mar"];

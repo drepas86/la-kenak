@@ -75,7 +75,6 @@ function get_active(){
 document.getElementById("tabvanilla").style.display="block";
 }
 
-
 </script>
 <?php
 //Προσθέτει τον προσανατολισμό της βόρειας πλευράς ως στήλη prosb στον πίνακα kataskeyi_meletis_topo εαν δεν υπάρχει (εκδόσεις 2.6 και πίσω)
@@ -332,6 +331,7 @@ add_column_if_not_exist('kataskeyi_meletis_topo', 'prosb', 'INT(11) NOT NULL AFT
 					$list2 = dropdown("SELECT xrisi, id FROM energy_conditions", "id", "xrisi", $vasi."_xrisi");
 					$list3 = dropdown("SELECT place, id FROM climate61", "id", "place", $vasi."_nero_dikt");
 					$list4 = dropdown("SELECT place, id FROM climate44", "id", "place", $vasi."_velt_klisi");
+					
 					?>
 					
 					<form name="frmMain" action="kenak.php" method="post">
@@ -367,14 +367,15 @@ add_column_if_not_exist('kataskeyi_meletis_topo', 'prosb', 'INT(11) NOT NULL AFT
 						document.getElementById("<?=$vasi."_xrisi"?>").selectedIndex=<?=$kataskeyi_stoixeia_array[0]["xrisi"]-1;?>;
 					</script>
 					</tr>
+<!-- Με βάση τις διορθώσεις στην ΤΟΤΕΕ-1 2nd το νερό δικτύου επιλέγεται με βάση τη ζώνη από τον πίνακα 2.6 
 					<tr>
 					<th> <div align="center">Νερό δικτύου </div></th>
-<!--					<td><?=$kataskeyi_stoixeia_nero_dikt;?></td>-->
 					<td><?=$list3?></td>
 					<script language="JavaScript">
 						document.getElementById("<?=$vasi."_nero_dikt"?>").selectedIndex=<?=$kataskeyi_stoixeia_array[0]["nero_dikt"]-1;?>;
 					</script>
 					</tr>
+-->
 					<tr>
 					<th> <div align="center">Βέλτιστη κλίση (βιβλιοθήκη) </div></th>
 <!--					<td><?=$kataskeyi_stoixeia_velt_klisi;?></td>-->
@@ -452,9 +453,7 @@ add_column_if_not_exist('kataskeyi_meletis_topo', 'prosb', 'INT(11) NOT NULL AFT
 					
 					</div><!--/zwni-->
 					
-					
 				
-
 </div>
 
 		<?php } ?>

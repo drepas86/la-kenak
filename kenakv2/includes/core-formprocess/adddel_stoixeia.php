@@ -61,8 +61,6 @@ if (isset($_POST['prosthiki_stoixeia'])) {
 			$query .= "'" . $prosthiki_climate_data . "',";
 			$query .= " xrisi=";
 			$query .= "'" . $prosthiki_xrisi . "',";
-			$query .= " nero_dikt=";
-			$query .= "'" . $prosthiki_nero_dikt . "',";
 			$query .= " velt_klisi=";
 			$query .= "'" . $prosthiki_velt_klisi . "'";
 			$query .= " WHERE id=1";
