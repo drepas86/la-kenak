@@ -176,7 +176,11 @@ $tb_name="jtable_container";
 					
 					if ($sel_page["id"] > 27)	{
 					$vivliothikes = get_synthikes($sel_page);
-						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Κατηγορία</td><td>Χρήση</td><td>Ώρες λειτουρ γίας (h)</td><td>Ημέρες λειτουρ γίας</td><td>Μήνες λειτουρ γίας</td><td>θ,i,h (C)</td><td>θ,i,c (C)</td><td>Χ,i,h (%)</td><td>Χ,i,c (%)</td><td>Άτομα / 100 m2</td><td>Νωπός αέρας (m3 / h / person)</td><td>Νωπός αέρας (m3 / h / m2)</td><td>Στάθμη φωτι σμού (lux)</td><td>Ισχύς κτιρίου αναφο ράς (W/m2)</td><td>Ώρες λειτουρ γίας ημέρας (h)</td><td>Ώρες λειτουρ γίας νύχτας (h)</td><td>ΖΝΧ (lt / άτομο / ημέρα)</td><td>ΖΝΧ (lt / m2 / ημέρα)</td><td>ΖΝΧ (m3 / m2 / year)</td><td>Άνθρω ποι (W / άτομο)</td><td>Άνθρω ποι (W / m2)</td><td>Συντε λεστής παρου σίας f</td></tr>";
+						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Κατηγορία</td><td>Χρήση</td><td>Ώρες λειτουρ γίας (h)</td><td>Ημέρες λειτουρ γίας</td>
+						<td>Μήνες λειτουρ γίας</td><td>θ,i,h (C)</td><td>θ,i,c (C)</td><td>Χ,i,h (%)</td><td>Χ,i,c (%)</td><td>Άτομα / 100 m2</td><td>Νωπός αέρας (m3 / h / person)</td>
+						<td>Νωπός αέρας (m3 / h / m2)</td><td>Στάθμη φωτι σμού (lux)</td><td>Ισχύς κτιρίου αναφο ράς (W/m2)</td><td>Ώρες λειτουρ γίας ημέρας (h)</td><td>Ώρες λειτουρ γίας νύχτας (h)</td>
+						<td>ΖΝΧ (lt / άτομο / ημέρα)</td><td>ΖΝΧ (lt / m2 / ημέρα)</td><td>ΖΝΧ (m3 / m2 (κλίνες) / year)</td><td>Άνθρω ποι (W / άτομο)</td><td>Άνθρω ποι (W / m2)</td>
+						<td>Συντε λεστής παρου σίας f</td><td>Ισχύς εξοπλισμού (W / m2)</td><td>Μέσος συντ. ετεροχρ.</td><td>Ετεροχρ. ισχύς εξοπλ.</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
 						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["id"] . "</td>";
@@ -202,6 +206,9 @@ $tb_name="jtable_container";
 						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["w_persons"] . "</td>";
 						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["w_m2"] . "</td>";
 						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["synt_parousias"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["eks_w"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["eks_synt"] . "</td>";
+						echo "<td class=\"vivliothikic\" width=\"3%\">" . $vivliothikes[$i]["eks_w_eter"] . "</td>";
 						echo "</tr>";
 						}
 						echo "</table>";

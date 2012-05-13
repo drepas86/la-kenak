@@ -470,6 +470,11 @@
 			if (${"sygkrisiua".$z}>1)${"elegxosua".$z}="ΔΕΝ τηρείται U &lt;= Umax";
 			if (${"sygkrisiua".$z}<=1)${"elegxosua".$z}="ΙΣΧΥΕΙ U &lt;= Umax";
 			
+			if ($zwni=="a"){$pgen_dt = 18;}
+			if ($zwni=="b"){$pgen_dt = 20;}
+			if ($zwni=="g"){$pgen_dt = 23;}
+			if ($zwni=="d"){$pgen_dt = 28;}
+			${"pgen".$z} = ${"a_thermoperatotitas".$z} * ${"umax".$z} * $pgen_dt * 2.5 /1000;
 			}
 			
 	
@@ -499,9 +504,60 @@
 			$xrisi_textsyn .= " " . ${"xrisi_gen".$z} . ", " . ${"xrisi_eid".$z} . "(Ζώνη " . $z . ")";
 			${"syntelestis_znx_iliakos".$z} = ${"array_xrisis_znx".$z}[0][1];
 			${"syntelestis_znx_iliakos2".$z} = ${"array_xrisis_znx2".$z}[0][0];
+			
+			//ελέγχω εαν δεν υπάρχει η τιμή ΖΝΧ (lt/m2/ημέρα) στις περιπτώσεις που πάει ανά κλίνη (μετατρέπεται από m3/m2(κλίνες)/year) ή δεν υπάρχει απαίτηση (παίρνει την τιμή 0)
+			if (${"syntelestis_znx_iliakos".$z} == 0){${"syntelestis_znx_iliakos".$z} = ${"syntelestis_znx_iliakos2".$z}*1000/365;}
+			
+			//Περιπτώσεις που απαιτούνται τα διαμερίσματα/κλίνες
+			if (
+			${"drop_xrisi".$z} == 1 OR
+			${"drop_xrisi".$z} == 2 OR
+			${"drop_xrisi".$z} == 3 OR
+			${"drop_xrisi".$z} == 4 OR
+			${"drop_xrisi".$z} == 5 OR
+			${"drop_xrisi".$z} == 6 OR
+			${"drop_xrisi".$z} == 7 OR
+			${"drop_xrisi".$z} == 8 OR
+			${"drop_xrisi".$z} == 9 OR
+			${"drop_xrisi".$z} == 10 OR
+			${"drop_xrisi".$z} == 11 OR
+			${"drop_xrisi".$z} == 12 OR
+			${"drop_xrisi".$z} == 13 OR
+			${"drop_xrisi".$z} == 14 OR
+			${"drop_xrisi".$z} == 15 OR
+			${"drop_xrisi".$z} == 34 OR
+			${"drop_xrisi".$z} == 35 OR
+			${"drop_xrisi".$z} == 36 OR
+			${"drop_xrisi".$z} == 42
+			){
+			${"mesi_katanalwsi_znx".$z} = ${"syntelestis_znx_iliakos2".$z} * ${"klines".$z};
+			${"vd_iliakoy".$z} = ${"syntelestis_znx_iliakos2".$z} *1000* ${"klines".$z} / 365;
+			${"syntelestis_znx_iliakos_text".$z} = " " . ${"syntelestis_znx_iliakos2".$z} . " ανά κλίνη για " . ${"klines".$z} . " κλίνες = " . ${"mesi_katanalwsi_znx".$z} . "[m3/κλιν ή υπν./έτος] (ζώνη " . $z . ")";
+			$syntelestis_znx_iliakos_text .= " " . ${"syntelestis_znx_iliakos2".$z} . " ανά κλίνη για " . ${"klines".$z} . " κλίνες. (ζώνη " . $z . ")";
+			${"vd_text".$z} = "${"syntelestis_znx_iliakos2".$z}*${"klines".$z}*1000/365=" . ${"vd_iliakoy".$z} . " lt/ημέρα"."<br />";
+			}
+			
+			/*Περιπτώσεις που υπάρχει συντελεστής ακόμα και αν είναι 0
+			if (
+			${"drop_xrisi".$z} == 19 OR
+			${"drop_xrisi".$z} == 20 OR
+			${"drop_xrisi".$z} == 21 OR
+			${"drop_xrisi".$z} == 27 OR
+			${"drop_xrisi".$z} == 41 OR
+			${"drop_xrisi".$z} == 43 OR
+			${"drop_xrisi".$z} == 44 OR
+			${"drop_xrisi".$z} == 48 OR
+			${"drop_xrisi".$z} == 49 OR
+			)
+			*/
+			else{
 			${"mesi_katanalwsi_znx".$z} = ${"syntelestis_znx_iliakos2".$z} * ${"synoliko_embadon".$z};
 			${"vd_iliakoy".$z} = ${"syntelestis_znx_iliakos".$z} * ${"synoliko_embadon".$z};
+			${"syntelestis_znx_iliakos_text".$z} =  " " . ${"syntelestis_znx_iliakos".$z} . " (ζώνη " . $z . ")";
 			$syntelestis_znx_iliakos_text .= " " . ${"syntelestis_znx_iliakos".$z} . " (ζώνη " . $z . ")";
+			${"vd_text".$z} = ${"vd_iliakoy".$z} . " lt/ημέρα";
+			}
+			
 			}
 			
 			

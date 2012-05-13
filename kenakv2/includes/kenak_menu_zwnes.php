@@ -119,7 +119,7 @@ $(".eksg").colorbox({rel:'eksg'});
 		name: {title: 'Όνομα ζώνης',width: '10%',listClass: 'center'},
 		xrisi: {title: 'Χρήση',width: '15%',listClass: 'center',options: ".jtable_getxrisi()."},
 		thermoeparkeia: {title: 'Έλεγχος θερμ. επάρκ.',width: '15%',listClass: 'center', options: {'0':'OXI','1':'NAI'}},
-		diamerismata: {title: 'Κλίνες/Διαμερίσματα',width: '10%',listClass: 'center'},
+		klines: {title: 'Κλίνες/Διαμερίσματα',width: '10%',listClass: 'center'},
 		anigmeni_thermo: {title: 'Ανηγμένη θερμ.',width: '20%',listClass: 'center', 
 			options: {'80':'Πολύ Ελαφριά κατασκευή (80 KJ/m2.K)','110':'Ελαφριά κατασκευή (110 KJ/m2.K)','165':'Μέτρια κατασκευή (165 KJ/m2.K)','260':'Βαριά κατασκευή (260 KJ/m2.K)','370':'Πολύ βαριά κατασκευή (370 KJ/m2.K)'}},
 		aytomatismoi: {title: 'Αυτοματισμοί',width: '10%',listClass: 'center', options: {'0':'Τύπος Α','1':'Τύπος Β','2':'Τύπος Γ','3':'Τύπος Δ'}},
@@ -129,6 +129,9 @@ $(".eksg").colorbox({rel:'eksg'});
 	}";
 	include('includes/jtable.php');
 ?>
+<br/>
+Οι χρησεις Μονοκατοικίας/Πολυκατοικίας, Προσωρινής διαμονής, Υγείας και κοινωνικής πρόνοιας (εκτός αγροτικών ιατρείων) απαιτούν υπολογισμό ΖΝΧ με βάση τα διαμερίσματα ή τις κλίνες με βάση τις διορθώσεις στην ΤΟΤΕΕ-20701-1. 
+(2η έκδοση αυτής).
 </div><!--/zwnes-->
 
 <div id="tab-xwroi" class="tabdiv"> 
