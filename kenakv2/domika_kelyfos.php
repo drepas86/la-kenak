@@ -98,6 +98,9 @@ if (isset($_POST['min'])) $min=$_POST['min'];
    if ($sel_page["id"] == 3){ 
 		include_once("includes/kelyfos_dapeda.php"); 
 	} 
+	if ($sel_page["id"] == 4){ 
+		include_once("includes/kelyfos_pistopoiitika.php"); 
+	}
 ?>
 		</td>
 	</tr>

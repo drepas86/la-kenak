@@ -44,9 +44,11 @@ include("includes/apotelesmata_dieisdysi.php");
 			<img src="images/style/znx.png"></img>
 			<form accept-charset="utf-8" action="stoixeia_zwnis.php" method="post">
 					<table border="1">
-						<tr><td>Εμβαδόν ζώνης</td><td>Επιλογή Χρήσης (συντελεστής ΖΝΧ)</td></tr>
-						<tr>
+						<tr><td>Εμβαδόν ζώνης / Κλίνες / Υπνοδωμάτια</td>
 						<td><input type="text" name="embadon" required="required" maxlength="30" value="<?php echo htmlentities($embadon); ?>" /></td>
+						</tr>
+						<tr>
+						<td>Επιλογή Χρήσης (συντελεστής ΖΝΧ)</td>
 						<td><?php $list = dropdown("SELECT xrisi, znx_m3_sq_y FROM energy_conditions", "znx_m3_sq_y", "xrisi", "drop_name"); echo $list; ?></td>
 						</tr>
 						<tr>

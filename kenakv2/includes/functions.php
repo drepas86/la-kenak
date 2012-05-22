@@ -423,53 +423,54 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		}
 		if ($sel_page["id"] == "30"){
 			
-			$query = "SELECT * FROM energy_conditions LIMIT 2,9";
+			$query = "SELECT * FROM energy_conditions LIMIT 2,15";
 			$array_set = mysql_query($query, $connection);
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
 		if ($sel_page["id"] == "31"){
 			
-			$query = "SELECT * FROM energy_conditions LIMIT 11,11";
+			$query = "SELECT * FROM energy_conditions LIMIT 17,12";
 			$array_set = mysql_query($query, $connection);
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
 		if ($sel_page["id"] == "32"){
 			
-			$query = "SELECT * FROM energy_conditions LIMIT 22,4";
+			$query = "SELECT * FROM energy_conditions LIMIT 29,4";
 			$array_set = mysql_query($query, $connection);
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
 		if ($sel_page["id"] == "33"){
 			
-			$query = "SELECT * FROM energy_conditions LIMIT 26,7";
+			$query = "SELECT * FROM energy_conditions LIMIT 34,9";
 			$array_set = mysql_query($query, $connection);
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
 		if ($sel_page["id"] == "34"){
 			
-			$query = "SELECT * FROM energy_conditions LIMIT 33,2";
+			$query = "SELECT * FROM energy_conditions LIMIT 43,2";
 			$array_set = mysql_query($query, $connection);
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
 		if ($sel_page["id"] == "35"){
 			
-			$query = "SELECT * FROM energy_conditions LIMIT 35,3";
+			$query = "SELECT * FROM energy_conditions LIMIT 45,4";
 			$array_set = mysql_query($query, $connection);
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
 		if ($sel_page["id"] == "36"){
 			
-			$query = "SELECT * FROM energy_conditions LIMIT 38,2";
+			$query = "SELECT * FROM energy_conditions LIMIT 49,2";
 			$array_set = mysql_query($query, $connection);
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
+		//Καταργήθηκαν τα παρακάτω και δεν υπάρχουν τα id
 		if ($sel_page["id"] == "37"){
 			
 			$query = "SELECT * FROM energy_conditions LIMIT 40,4";

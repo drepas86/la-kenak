@@ -45,7 +45,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		
 		$katanalwsi = $embadon * $drop_name;
 		
-			echo "<br/>" . "Για εμβαδόν χώρου: <b>" . $embadon . "</b>μ2 ";
+			echo "<br/>" . "Για εμβαδόν χώρου/κλίνες/υπνοδωμάτια: <b>" . $embadon . "</b>μ2 ";
 			echo "και συντελεστή <b>" . $drop_name . "</b>" . " " . "προκύπτει κατανάλωση " . "<b> " .  $katanalwsi . " </b>μ3/έτος";
 			
 			}

@@ -815,7 +815,7 @@ $xml .= '<ENR_IN>'.$br;
 			$xml .= '<blg_climate>'.($climate_data_id-1).'</blg_climate>'.$br;
 			$xml .= '<blg_datasource>0000000000</blg_datasource>'.$br;
 			$xml .= '<blg_licence_data>'.$pol_grafeio.','.$pol_year.','.$pol_number.','.$pol_year_complete.',,,,,,,,,,,,,</blg_licence_data>'.$br;
-			$xml .= '<version_tee_kenak_dll>1.28.1.70</version_tee_kenak_dll>'.$br;
+			$xml .= '<version_tee_kenak_dll>1.28.1.73</version_tee_kenak_dll>'.$br;
 	$xml .= '</EPA_NR_PROJECT>'.$br;	
 	
 	$xml .= '<LIBRARIES rid="#2">'.$br;

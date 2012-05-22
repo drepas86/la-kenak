@@ -37,7 +37,8 @@ $xpmenu->addMenu("4");
 $xpmenu->addCategory("m4", "Κέλυφος", "", "4");
 	$xpmenu->addOption("m41", "Αδιαφανή δομικά στοιχεία", "", "domika_kelyfos.php?page=1", "m4", "4");
 	$xpmenu->addOption("m42", "Διαφανή δομικά στοιχεία", "", "domika_kelyfos.php?page=2", "m4", "4");
-	$xpmenu->addOption("m43", "Ισοδύναμοι συντελεστές", "", "domika_kelyfos.php?page=3", "m4", "4");	
+	$xpmenu->addOption("m43", "Ισοδύναμοι συντελεστές", "", "domika_kelyfos.php?page=3", "m4", "4");
+	$xpmenu->addOption("m44", "ΠΕΑ", "", "domika_kelyfos.php?page=4", "m4", "4");
 
 $xpmenu->addMenu("5");
 $xpmenu->addCategory("m5", "Μ Ε Λ Ε Τ Η", "", "5");
