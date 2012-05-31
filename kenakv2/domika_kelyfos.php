@@ -88,7 +88,8 @@ if (isset($_POST['min'])) $min=$_POST['min'];
 		
 <?php 
 	include_once("includes/apotelesmata_kelyfos.php");
-
+	include_once("includes/core-formprocess/yd_pdf.php");
+	
     if ($sel_page["id"] == 1){ 
 		include_once("includes/kelyfos_toixoi.php"); 
 	} 
