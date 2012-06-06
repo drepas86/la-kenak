@@ -91,7 +91,7 @@ $text2 = "Το μήκος του αρ. εμποδίου είναι: " . $mikos_a
 $text3 = "Το μήκος του δεξ. εμποδίου είναι: " . $mikos_de . " m.";
 $text4 = "Η απόσταση αριστερά είναι: " . $apost_ar . " m.";
 $text5 = "Η απόσταση δεξιά είναι: " . $apost_de . " m.";
-$font = 'arial.ttf';
+$font = 'verdana.ttf';
 imagefttext($im, 11, $angle, 300, 15, $grey, $font, $text0);
 imagefttext($im, $height, $angle, 300, 30, $grey, $font, $text1);
 imagefttext($im, $height, $angle, 300, 50, $grey, $font, $text2);

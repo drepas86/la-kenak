@@ -85,7 +85,7 @@ $text2 = "Το μήκος του εμποδίου είναι: " . $mikos_empod .
 $text3 = "Το μήκος του ανοίγματος είναι: " . $platos_anoig . " m.";
 $text4 = "Η απόσταση του εμποδίου από τον τοίχο είναι: " . $apost_empod . " m.";
 $text5 = "Η απόσταση του εμποδίου από το άνοιγμα είναι: " . $apost_anoig_empod . " m.";
-$font = './arial.ttf';
+$font = './verdana.ttf';
 imagefttext($im, 11, $angle, 150, 15, $blue, $font, $text0);
 imagefttext($im, $height, $angle, 150, 30, $blue, $font, $text1);
 imagefttext($im, $height, $angle, 150, 50, $blue, $font, $text2);

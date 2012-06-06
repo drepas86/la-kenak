@@ -102,7 +102,7 @@ $text2 = "Το μήκος του προβόλου είναι: " . $mikos_prov . 
 $text3 = "Το ύψος της πόρτας είναι: " . $ipsos_portas . " m.";
 $text4 = "Το ύψος του παραθύρου είναι: " . $ipsos_parath . " m.";
 $text5 = "Το ύψος ποδιάς του παραθύρου είναι: " . $ipsos_podias . " m.";
-$font = 'arial.ttf';
+$font = 'verdana.ttf';
 imagefttext($im, 11, $angle, 300, 15, $grey, $font, $text0);
 imagefttext($im, $height, $angle, 300, 30, $grey, $font, $text1);
 imagefttext($im, $height, $angle, 300, 50, $grey, $font, $text2);

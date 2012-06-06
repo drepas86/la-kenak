@@ -26,7 +26,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 */
 ?>
 
-<?php	if ($sel_page["id"] == 11)	{ 
+<?php	if ($sel_page["id"] == 3)	{ 
 
 $sql1 = "ALTER TABLE `kataskeyi_therm_eks` CHANGE `thermo_u` `thermo_u` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
 $sql2 = "ALTER TABLE `kataskeyi_therm_es` CHANGE `thermo_u` `thermo_u` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL";
@@ -165,24 +165,68 @@ $(".eksg").colorbox({rel:'eksg'});
 	}";
 	include('includes/jtable.php');
 ?>
+<br/>
+<h3>Όροφοι</h3>	
+<font color="green">(δηλώνονται εαν χρησιμοποιηθεί η σχεδίαση)</font>
+<?php 
+	$ped="kataskeyi_floors";
+	$dig="0|0|0|2|2|2|0|0|0|0|0";
+	$tb_name="TableContainer_floors";
+	$fields="fields: {
+		id: {key: true,create: false,edit: false,list: false},
+		type: {title: 'Τύπος',width: '40%',listClass: 'center',options: {'1':'Υπόγειο','2':'Πυλωτή','3':'Ισόγειο','4':'Όροφος','5':'Στέγη-Επικλινής','6':'Στέγη-Πλάκα'}},
+		name: {title: 'Όνομα',width: '40%',listClass: 'center'},
+		height: {title: 'Ύψος',width: '20%',listClass: 'center'}
+	}";
+	include('includes/jtable.php');
+?>
+<br/>
+<img src="includes/image_create_floors.php">
 </div><!--/xwroi-->
 
 <div id="tab-katakoryfa" class="tabdiv">
-<h3>Οριζόντια στοιχεία</h3>	
+<h3>Δάπεδα (Κέλυφος - Σε επαφή με το έδαφος)</h3>	
 <?php
-	$ped="kataskeyi_daporo";
-	$dig="0|0|0|2|2|2|0|0|0|0|0";
+	$ped="kataskeyi_dap";
+	$dig="0|0|0|2|2|2|1|0|0|0|0";
 	$tb_name="TableContainer_daporo";
 	$fields="fields: {
 		id: {key: true,create: false,edit: false,list: false},
 		id_zwnis: {title: 'ΖΩΝΗ',width: '20%',listClass: 'center',options: ".getzwnes()."},
-		type: {title: 'Τύπος',width: '20%',listClass: 'center', options: {'0':'Δάπεδο','1':'Οροφή'}},
+		type: {title: 'Τύπος',width: '20%',listClass: 'center', options: {'0':'Δάπεδο επί εδάφους','1':'Δάπεδο σε Μ.Θ.Χ.','2':'Δάπεδο σε πυλωτή'}},
 		name: {title: 'Όνομα',width: '20%',listClass: 'center'},
 		emvadon: {title: 'Εμβαδόν',width: '20%',listClass: 'center'},
-		u: {title: 'U',width: '20%',listClass: 'center'}
+		u: {title: 'U',width: '20%',listClass: 'center'},
+		b: {title: 'Μειωτικός συντελεστής',width: '20%',listClass: 'center', options: {'1.0':'b=1','0.5':'b=0.5'}},
+		bathos: {title: 'Κατώτερο βάθος',width: '20%',listClass: 'center'},
+		perimetros: {title: 'Περίμετρος',width: '20%',listClass: 'center'}
 	}";
 	include('includes/jtable.php');
 ?>
+
+<h3>Οροφές (Κέλυφος - Αδιαφανή)</h3>	
+<?php
+	$ped="kataskeyi_oro";
+	$dig="0|0|0|0|2|2|1|2|2|2|2|2|2";
+	$tb_name="TableContainer_oro";
+	$fields="fields: {
+		id: {key: true,create: false,edit: false,list: false},
+		id_zwnis: {title: 'ΖΩΝΗ',width: '20%',listClass: 'center',options: ".getzwnes()."},
+		type: {title: 'Τύπος',width: '20%',listClass: 'center', options: {'0':'Κεκλιμένη στέγη','1':'Οροφή πλάκα'}},
+		name: {title: 'Όνομα',width: '20%',listClass: 'center'},
+		emvadon: {title: 'Εμβαδόν',width: '20%',listClass: 'center'},
+		u: {title: 'U',width: '20%',listClass: 'center'},
+		b: {title: 'Μειωτικός συντελεστής',width: '20%',listClass: 'center', options: {'1.0':'b=1','0.5':'b=0.5'}},
+		f_hor_h: {title: 'f_hor_h',width: '20%',listClass: 'center'},
+		f_hor_c: {title: 'f_hor_c',width: '20%',listClass: 'center'},
+		f_ov_h: {title: 'f_ov_h',width: '20%',listClass: 'center'},
+		f_ov_c: {title: 'f_ov_c',width: '20%',listClass: 'center'},
+		f_fin_h: {title: 'f_fin_h',width: '20%',listClass: 'center'},
+		f_fin_c: {title: 'f_fin_c',width: '20%',listClass: 'center'}
+	}";
+	include('includes/jtable.php');
+?>
+
 </div><!--/tab-katakoryfa-->
 
 <div id="tab-thermo" class="tabdiv"> 

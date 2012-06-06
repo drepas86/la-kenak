@@ -28,6 +28,6 @@ define("DB_SERVER", "localhost"); //το όνομα του διακομιστή.
 define("DB_USER", "root"); //το όνομα του χρήστη.
 define("DB_PASS", "12345"); //το συνθηματικό για τον παραπάνω χρήστη. Το έχετε δηλώσει στο http://localhost/security/index.php για xampp
 define("DB_NAME", "labros_kenakv2"); //το όνομα της βάσης δεδομένων
-define("VERSION", "2.7"); //Η τρέχουσα έκδοση της διανομής
+define("VERSION", "2.8"); //Η τρέχουσα έκδοση της διανομής
 
 ?>

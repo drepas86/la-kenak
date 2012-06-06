@@ -43,7 +43,19 @@ include("includes/header_amoivi.php");
 <table id="structure">
 	<tr>
 		<td id="page">
-		
+
+<script language="JavaScript">
+function get_active(){
+document.getElementById("tabvanilla").style.display="block";
+}
+</script>
+<h3>Αμοιβές</h3><br/>			
+<div id="tabvanilla" class="widget" style="display:none;">
+		<ul class="tabnav">  
+		<li><a href="#tab-amoives">Υπολογισμός αμοιβών</a></li>
+		</ul>
+
+<div id="tab-amoives" class="tabdiv">		
 <h3>Υπολογισμός Κόστους Ενεργειακής Επιθεώρησης (Π.Δ. 100/2010 ΦΕΚ177Α)</h3>
 <table align='center' class="tabdiv1">
 
@@ -145,6 +157,9 @@ function validate(evt)
 
 	</script>
 
+	</div>
+</div>
+	
 		</td>
 	</tr>
 </table>

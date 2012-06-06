@@ -42,16 +42,17 @@ $xpmenu->addCategory("m4", "Κέλυφος", "", "4");
 
 $xpmenu->addMenu("5");
 $xpmenu->addCategory("m5", "Μ Ε Λ Ε Τ Η", "", "5");
-	$xpmenu->addOption("m51", "Αποθήκευση/Ανάκτηση", "", "kenak.php?page=9", "m5", "5");
+	$xpmenu->addOption("m51", "Αποθήκευση/Ανάκτηση", "", "kenak.php?page=1", "m5", "5");
 	$xpmenu->addOption("m52", "Γενικά Στοιχεία", "", "kenak.php?page=2", "m5", "5");
-	$xpmenu->addOption("m59", "Κτίριο", "", "kenak.php?page=11", "m5", "5");	
-	$xpmenu->addOption("m53", "Συστήματα", "", "kenak.php?page=10", "m5", "5");	
-	$xpmenu->addOption("m54", "Δομικά Στοιχεία", "", "kenak.php?page=3", "m5", "5");	
-	$xpmenu->addOption("m55", "Ανοίγματα", "", "kenak.php?page=4", "m5", "5");	
-	$xpmenu->addOption("m56", "Σκιάσεις Τοίχων", "", "kenak.php?page=7", "m5", "5");	
-	$xpmenu->addOption("m57", "Σκιάσεις Ανοιγμάτων", "", "kenak.php?page=8", "m5", "5");	
-	$xpmenu->addOption("m58", "Τ Ε Υ Χ Ο Σ", "", "kenak.php?page=5", "m5", "5");
-	$xpmenu->addOption("m510", "Αμοιβές", "", "amoivi.php", "m5", "5");
+	$xpmenu->addOption("m53", "Κτίριο", "", "kenak.php?page=3", "m5", "5");	
+	$xpmenu->addOption("m54", "Συστήματα", "", "kenak.php?page=4", "m5", "5");	
+	$xpmenu->addOption("m55", "Επ. με έδαφος", "", "kenak.php?page=5", "m5", "5");
+	$xpmenu->addOption("m56", "Αδιαφανή", "", "kenak.php?page=6", "m5", "5");	
+	$xpmenu->addOption("m57", "Διαφανή", "", "kenak.php?page=7", "m5", "5");	
+	$xpmenu->addOption("m58", "Σκιάσεις αδιαφανών", "", "kenak.php?page=8", "m5", "5");	
+	$xpmenu->addOption("m59", "Σκιάσεις διαφανών", "", "kenak.php?page=9", "m5", "5");	
+	$xpmenu->addOption("m510", "Τ Ε Υ Χ Ο Σ", "", "kenak.php?page=10", "m5", "5");
+	$xpmenu->addOption("m511", "Αμοιβές", "", "amoivi.php", "m5", "5");
 
 //javascript for the menu
 echo $xpmenu->javaScript();

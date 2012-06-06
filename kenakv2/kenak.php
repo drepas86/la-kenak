@@ -68,6 +68,8 @@ include("includes/kenak_menu_stoixeia.php");
 include("includes/kenak_menu_zwnes.php");
 //ΜΕΝΟΥ-ΣΥΣΤΗΜΑΤΑ
 include("includes/kenak_menu_hm.php");
+//ΜΕΝΟΥ-ΕΠΑΦΗ ΜΕ ΕΔΑΦΟΣ
+include("includes/kenak_menu_ground.php");
 //ΜΕΝΟΥ-ΔΟΜΙΚΑ ΣΤΟΙΧΕΙΑ (ΤΟΙΧΟΙ)
 include("includes/kenak_menu_t.php");
 //ΜΕΝΟΥ-ΑΝΟΙΓΜΑΤΑ

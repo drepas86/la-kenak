@@ -34,7 +34,7 @@ Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 *************************************************************************
 */
 ?>
-		<?php	if ($sel_page["id"] == 3)	{ 
+		<?php	if ($sel_page["id"] == 6)	{ 
 	add_column_if_not_exist("kataskeyi_an_b", "x", "DECIMAL(7,5)");
 	add_column_if_not_exist("kataskeyi_an_b", "y", "DECIMAL(7,5)");
 	add_column_if_not_exist("kataskeyi_an_a", "x", "DECIMAL(7,5)");
@@ -48,7 +48,7 @@ Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 	add_column_if_not_exist("kataskeyi_t_n", "yp_len", "VARCHAR(100)");
 	add_column_if_not_exist("kataskeyi_t_d", "yp_len", "VARCHAR(100)");
 ?>		
-<table width=100% id="maintable"><tr><td style="width:50%;vertical-align:middle;"><h2>ΚΕΝΑΚ - Δομικά στοιχεία</h2></td>
+<table width=100% id="maintable"><tr><td style="width:50%;vertical-align:middle;"><h2>ΚΕΝΑΚ - Κατακόρυφα αδιαφανή δομικά στοιχεία σε επαφή με εξ. αέρα</h2></td>
 <td style="vertical-align:middle;">
 <img src="./images/domika/draw.png"  width="40px" height="40px"  title="σχεδίαση τοίχων" style="cursor:pointer;" onclick="draw()" />
 &nbsp;&nbsp;
@@ -162,7 +162,10 @@ for (i=1;i<=4;i++){
 document.getElementById("tabvanilla").style.display="block";
 }
 </script>
-		
+<font color="green">Η βόρεια πλευρά είναι αυτή που δηλώνεται στο μενού <a href="kenak.php?page=2#tab-zwni">Κτίριο-Κλιματολογικά</a> η κλίση της.
+<br/>
+Η ονομασία είναι τυπική ως Βόρεια. Όσο αφορά το λογισμικό η Βόρεια πλευρά μπορεί να έχει οποιαδήποτε κλίση και είναι στην ευχέρεια του χρήστη ποια επιλέγεται.
+</font>		
 			<div id="tabvanilla" class="widget" style="display:none;">
 				<ul class="tabnav">  
 					<li><a onclick="active_tab=1;" href="#toixoib">Βόρεια</a></li>
@@ -401,7 +404,9 @@ for ($j=1;$j<=4;$j++){
 		στο οποίο σχεδιάζονται τα σκαριφήματα των τοίχων και είναι δυνατή η επεξεργασία της θέσης των στύλων και των ανοιγμάτων.
 		 (τα δεδομένα των ανοιγμάτων πρέπει να έχουν δοθεί στη σελίδα 'Ανοίγματα')<hr>
 		Αν κατά την εισαγωγή των στοιχείων ενός τοίχου έγινε κάπου λάθος, μπορεί να διορθωθεί με κλικ στη λάθος τιμή και 
-		συμπλήρωση της σωστής στο παράθυρο που ανοίγει.
+		συμπλήρωση της σωστής στο παράθυρο που ανοίγει.<hr>
+		Θεωρείται πως ο τοίχος έχει την εξής μορφή:<br/>
+		<img src="images/style/help_wall.png">
 		</div></div>
 <!------------------------------------------------------------------------------------>
 <!--        Κρυφό div για σχεδίαση τοίχων                                           -->

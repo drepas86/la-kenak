@@ -33,7 +33,7 @@ Tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικό�
 *************************************************************************
 */
 ?>
-		<?php	if ($sel_page["id"] == 7)	{ ?>
+		<?php	if ($sel_page["id"] == 8)	{ ?>
 <table width=100% id="maintable"><tr><td style="width:50%;vertical-align:middle;"><h2>ΚΕΝΑΚ - Σκιάσεις Τοίχων</h2></td>
 <td style="vertical-align:middle;">
 <img src="./images/domika/help.png"  width="40px" height="40px"  title="οδηγίες" style="cursor:pointer;" onclick=help_sk(); />

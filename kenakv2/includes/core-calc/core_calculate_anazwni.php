@@ -79,8 +79,8 @@
 			//πρέπει να υπολογίσω όπως έκανα και παλαιότερα ανά προσανατολισμό και τις μεταβλητές που δεν έχουν i, j
 			//να τους δώσω τιμές με την αριθμηση των ζωνών για να κάνω ξεχωριστούς υπολογισμούς.
 			
-			//Δάπεδα οροφές
-			$strSQL = "SELECT * FROM kataskeyi_daporo";
+			//Δάπεδα
+			$strSQL = "SELECT * FROM kataskeyi_dap";
 			$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 			$rows_dapedo = mysql_num_rows($objQuery);
 			
@@ -93,9 +93,10 @@
 			${"dapedo_name".$i} = $objResult["name"];
 			${"dapedo_emvadon".$i} = $objResult["emvadon"];
 			${"dapedo_u".$i} = $objResult["u"];
-			if (${"dapedo_type".$i} == "0"){$dapedo_pol = 0.5;}
-			if (${"dapedo_type".$i} == "1"){$dapedo_pol = 1;}
-			${"dapedo_ua".$i} = ${"dapedo_emvadon".$i} * ${"dapedo_u".$i} * $dapedo_pol;
+			${"dapedo_b".$i} = $objResult["b"];
+			${"dapedo_bathos".$i} = $objResult["bathos"];
+			${"dapedo_perimetros".$i} = $objResult["perimetros"];
+			${"dapedo_ua".$i} = ${"dapedo_emvadon".$i} * ${"dapedo_u".$i} * ${"dapedo_b".$i};
 			
 				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 					if (${"dapedo_id_zwnis".$i} == $id_thermzwnes[$z]){
@@ -105,10 +106,39 @@
 				}
 			}
 			
+			//Οροφές
+			$strSQL = "SELECT * FROM kataskeyi_oro";
+			$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+			$rows_orofes = mysql_num_rows($objQuery);
+			
+			$i = 0;
+			while($objResult = mysql_fetch_array($objQuery))
+			{
+			$i++;
+			${"orofes_id_zwnis".$i} = $objResult["id_zwnis"];
+			${"orofes_type".$i} = $objResult["type"];
+			${"orofes_name".$i} = $objResult["name"];
+			${"orofes_emvadon".$i} = $objResult["emvadon"];
+			${"orofes_u".$i} = $objResult["u"];
+			${"orofes_b".$i} = $objResult["b"];
+			${"orofes_f_hor_h".$i} = $objResult["f_hor_h"];
+			${"orofes_f_hor_c".$i} = $objResult["f_hor_c"];
+			${"orofes_f_ov_h".$i} = $objResult["f_ov_h"];
+			${"orofes_f_ov_c".$i} = $objResult["f_ov_c"];
+			${"orofes_f_fin_h".$i} = $objResult["f_fin_h"];
+			${"orofes_f_fin_c".$i} = $objResult["f_fin_c"];
+			${"orofes_ua".$i} = ${"orofes_emvadon".$i} * ${"orofes_u".$i} * ${"orofes_b".$i};
+			
+				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+					if (${"orofes_id_zwnis".$i} == $id_thermzwnes[$z]){
+					${"orofes_emvadonzwnis".$z} += ${"orofes_emvadon".$i}; //Εμβαδόν οροφών θερμικής ζώνης
+					${"orofes_uazwnis".$z} += ${"orofes_ua".$i}; //UA οροφών θερμικής ζώνης
+					}
+				}
+			}
+			
 			
 			//Χώροι κτιρίου
-			
-
 			$strSQL = "SELECT * FROM kataskeyi_xwroi";
 			$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
 			$rows_xwroi = mysql_num_rows($objQuery);
@@ -203,6 +233,32 @@
 			$iansk = array(0, "sk_an_b_", "sk_an_a_", "sk_an_n_", "sk_an_d_");
 			$ianskcount = array(0, "skiaseis_anoig_b", "skiaseis_anoig_a", "skiaseis_anoig_n", "skiaseis_anoig_d");
 			
+			
+			//ΤΟΙΧΟΙ ΣΕ ΕΠΑΦΗ ΜΕ ΕΔΑΦΟΣ
+			$strSQL = "SELECT * FROM kataskeyi_ground";
+			$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+			$rows_groundt = mysql_num_rows($objQuery);
+			
+			$i = 0;
+			while($objResult = mysql_fetch_array($objQuery))
+			{
+			$i++;
+			${"groundt_id_zwnis".$i} = $objResult["id_zwnis"];
+			${"groundt_type".$i} = $objResult["type"];
+			${"groundt_name".$i} = $objResult["name"];
+			${"groundt_emvadon".$i} = $objResult["emvadon"];
+			${"groundt_u".$i} = $objResult["u"];
+			${"groundt_k_bathos".$i} = $objResult["k_bathos"];
+			${"groundt_a_bathos".$i} = $objResult["a_bathos"];
+			${"groundt_ua".$i} = ${"groundt_emvadon".$i} * ${"groundt_u".$i};
+			
+				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+					if (${"groundt_id_zwnis".$i} == $id_thermzwnes[$z]){
+					${"groundt_emvadonzwnis".$z} += ${"groundt_emvadon".$i}; //Εμβαδόν τοίχων σε επαφή με έδαφος θερμικής ζώνης
+					${"groundt_uazwnis".$z} += ${"groundt_ua".$i}; //UA τοίχων σε επαφή με έδαφος θερμικής ζώνης
+					}
+				}
+			}
 			
 			//ΤΟΙΧΟΙ
 			for ($p=1;$p<=4;$p++){
@@ -429,14 +485,14 @@
 			${"thermogefyres".$z} = ${"thermogefyres_orofi".$z} + ${"thermogefyres_gwnia".$z} + ${"thermo_anoig_zwnis".$z} + ${"thermo_enwsi_zwnis".$z};
 			
 			//Υπολογισμός συνόλων ανά κατηγορία Α
-			${"a_oriz_adiafanwn".$z} = ${"dapedo_emvadonzwnis".$z};
-			${"a_kat_adiafanwn".$z} = ${"a_adiafanwn_anoigmatwn_zwnis".$z} + ${"a_dromikoy_zwnis".$z} + ${"a_syr_zwnis".$z} + ${"a_dokoy_zwnis".$z} + ${"a_ypost_zwnis".$z};
+			${"a_oriz_adiafanwn".$z} = ${"dapedo_emvadonzwnis".$z} + ${"orofes_emvadonzwnis".$z};
+			${"a_kat_adiafanwn".$z} = ${"a_adiafanwn_anoigmatwn_zwnis".$z} + ${"a_dromikoy_zwnis".$z} + ${"a_syr_zwnis".$z} + ${"a_dokoy_zwnis".$z} + ${"a_ypost_zwnis".$z} + ${"groundt_emvadonzwnis".$z};
 			${"a_diafanwn".$z} = ${"a_diafanwn_anoigmatwn_zwnis".$z};
 			${"a_thermoperatotitas".$z} = ${"a_oriz_adiafanwn".$z} + ${"a_kat_adiafanwn".$z} + ${"a_diafanwn".$z};
 			
 			//Υπολογισμός συνόλων ανά κατηγορία UA
-			${"ua_oriz_adiafanwn".$z} = ${"dapedo_uazwnis".$z};
-			${"ua_kat_adiafanwn".$z} = ${"ua_masif_zwnis".$z} + ${"ua_dromikoy_zwnis".$z} + ${"ua_syr_zwnis".$z} + ${"ua_dok_zwnis".$z} + ${"ua_ypost_zwnis".$z};
+			${"ua_oriz_adiafanwn".$z} = ${"dapedo_uazwnis".$z} + ${"orofes_uazwnis".$z};
+			${"ua_kat_adiafanwn".$z} = ${"ua_masif_zwnis".$z} + ${"ua_dromikoy_zwnis".$z} + ${"ua_syr_zwnis".$z} + ${"ua_dok_zwnis".$z} + ${"ua_ypost_zwnis".$z} + ${"groundt_uazwnis".$z};
 			${"ua_diafanwn".$z} = ${"ua_anoigmatos_zwnis".$z};
 			${"ua_thermoperatotitas".$z} = ${"ua_oriz_adiafanwn".$z} + ${"ua_kat_adiafanwn".$z} + ${"ua_diafanwn".$z};			
 			
@@ -821,8 +877,8 @@ ${"thermp_rows".$z} = mysql_num_rows($objQuery);
 		if (${"thermp_type".$z.$i} == 4){$thermp_type="Γεωθερμική Α.Θ. με οριζόντιο εναλλάκτη";}
 		if (${"thermp_type".$z.$i} == 5){$thermp_type="Γεωθερμική Α.Θ. με κατακόρυφο εναλλάκτη";}
 		if (${"thermp_type".$z.$i} == 6){$thermp_type="Κεντρική άλλου τύπου Α.Θ.";}
-		if (${"thermp_type".$z.$i} == 7){$thermp_type="Τοπικές ηλεκτρικές μονάδες";}
-		if (${"thermp_type".$z.$i} == 8){$thermp_type="Τοπικές μονάδες αερίου";}
+		if (${"thermp_type".$z.$i} == 7){$thermp_type="Τοπικές ηλεκτρικές μονάδες (καλοριφέρ ή θερμοπομποί ή άλλο)";}
+		if (${"thermp_type".$z.$i} == 8){$thermp_type="Τοπικές μονάδες αερίου ή υγρού καυσίμου";}
 		if (${"thermp_type".$z.$i} == 9){$thermp_type="Ανοικτές εστίες καύσης";}
 		if (${"thermp_type".$z.$i} == 10){$thermp_type="Τηλεθέρμανση";}
 		if (${"thermp_type".$z.$i} == 11){$thermp_type="ΣΗΘ";}
@@ -833,8 +889,20 @@ ${"thermp_rows".$z} = mysql_num_rows($objQuery);
 		if (${"thermp_pigienergy".$z.$i} == 2){$thermp_pigi="Ηλεκτρισμός";}
 		if (${"thermp_pigienergy".$z.$i} == 3){$thermp_pigi="Πετρέλαιο θέρμανσης";}
 		if (${"thermp_pigienergy".$z.$i} == 4){$thermp_pigi="Πετρέλαιο κίνησης";}
-		if (${"thermp_pigienergy".$z.$i} == 5){$thermp_pigi="Τηλεθέρμανση";}
-		if (${"thermp_pigienergy".$z.$i} == 6){$thermp_pigi="Βιομάζα";}
+		if (${"thermp_pigienergy".$z.$i} == 5){$thermp_pigi="Τηλεθέρμανση (ΔΕΗ)";}
+		if (${"thermp_pigienergy".$z.$i} == 6){$thermp_pigi="Τηλεθέρμανση (ΑΠΕ)";}
+		if (${"thermp_pigienergy".$z.$i} == 7){$thermp_pigi="Βιομάζα";}
+		if (${"thermp_pigienergy".$z.$i} == 8){$thermp_pigi="Βιομάζα τυποποιημένη";}
+		if (${"thermp_pigienergy".$z.$i} == 9){$thermp_pigi="ΣΗΘ1";}
+		if (${"thermp_pigienergy".$z.$i} == 10){$thermp_pigi="ΣΗΘ2";}
+		if (${"thermp_pigienergy".$z.$i} == 11){$thermp_pigi="ΣΗΘ3";}
+		if (${"thermp_pigienergy".$z.$i} == 12){$thermp_pigi="ΣΗΘ4";}
+		if (${"thermp_pigienergy".$z.$i} == 13){$thermp_pigi="ΣΗΘ5";}
+		if (${"thermp_pigienergy".$z.$i} == 14){$thermp_pigi="ΣΗΘ6";}
+		if (${"thermp_pigienergy".$z.$i} == 15){$thermp_pigi="ΣΗΘ7";}
+		if (${"thermp_pigienergy".$z.$i} == 16){$thermp_pigi="ΣΗΘ8";}
+		if (${"thermp_pigienergy".$z.$i} == 17){$thermp_pigi="ΣΗΘ9";}
+		if (${"thermp_pigienergy".$z.$i} == 18){$thermp_pigi="ΣΗΘ10";}
 		
 	$thermp_type_text .= " " . $thermp_type . " (ζώνη " . $z . ")";	
 	$thermp_pigienergy_text .= " " . $thermp_pigi . " (ζώνη " . $z . ")";
@@ -889,8 +957,20 @@ ${"coldp_rows".$z} = mysql_num_rows($objQuery);
 		if (${"coldp_pigienergy".$z.$i} == 2){$coldp_pigi="Ηλεκτρισμός";}
 		if (${"coldp_pigienergy".$z.$i} == 3){$coldp_pigi="Πετρέλαιο θέρμανσης";}
 		if (${"coldp_pigienergy".$z.$i} == 4){$coldp_pigi="Πετρέλαιο κίνησης";}
-		if (${"coldp_pigienergy".$z.$i} == 5){$coldp_pigi="Τηλεθέρμανση";}
-		if (${"coldp_pigienergy".$z.$i} == 6){$coldp_pigi="Βιομάζα";}
+		if (${"coldp_pigienergy".$z.$i} == 5){$coldp_pigi="Τηλεθέρμανση (ΔΕΗ)";}
+		if (${"coldp_pigienergy".$z.$i} == 6){$coldp_pigi="Τηλεθέρμανση (ΑΠΕ)";}
+		if (${"coldp_pigienergy".$z.$i} == 7){$coldp_pigi="Βιομάζα";}
+		if (${"coldp_pigienergy".$z.$i} == 8){$coldp_pigi="Βιομάζα τυποποιημένη";}
+		if (${"coldp_pigienergy".$z.$i} == 9){$coldp_pigi="ΣΗΘ1";}
+		if (${"coldp_pigienergy".$z.$i} == 10){$coldp_pigi="ΣΗΘ2";}
+		if (${"coldp_pigienergy".$z.$i} == 11){$coldp_pigi="ΣΗΘ3";}
+		if (${"coldp_pigienergy".$z.$i} == 12){$coldp_pigi="ΣΗΘ4";}
+		if (${"coldp_pigienergy".$z.$i} == 13){$coldp_pigi="ΣΗΘ5";}
+		if (${"coldp_pigienergy".$z.$i} == 14){$coldp_pigi="ΣΗΘ6";}
+		if (${"coldp_pigienergy".$z.$i} == 15){$coldp_pigi="ΣΗΘ7";}
+		if (${"coldp_pigienergy".$z.$i} == 16){$coldp_pigi="ΣΗΘ8";}
+		if (${"coldp_pigienergy".$z.$i} == 17){$coldp_pigi="ΣΗΘ9";}
+		if (${"coldp_pigienergy".$z.$i} == 18){$coldp_pigi="ΣΗΘ10";}
 		
 	$coldp_eer_text .= " " . ${"coldp_eer".$z.$i} . " (ζώνη " . $z . ")";
 	$coldp_type_text .= " " . $coldp_type . " (ζώνη " . $z . ")";	
@@ -944,8 +1024,20 @@ ${"znxp_rows".$z} = mysql_num_rows($objQuery);
 		if (${"znxp_pigienergy".$z.$i} == 2){$znxp_pigi="Ηλεκτρισμός";}
 		if (${"znxp_pigienergy".$z.$i} == 3){$znxp_pigi="Πετρέλαιο θέρμανσης";}
 		if (${"znxp_pigienergy".$z.$i} == 4){$znxp_pigi="Πετρέλαιο κίνησης";}
-		if (${"znxp_pigienergy".$z.$i} == 5){$znxp_pigi="Τηλεθέρμανση";}
-		if (${"znxp_pigienergy".$z.$i} == 6){$znxp_pigi="Βιομάζα";}
+		if (${"znxp_pigienergy".$z.$i} == 5){$znxp_pigi="Τηλεθέρμανση (ΔΕΗ)";}
+		if (${"znxp_pigienergy".$z.$i} == 6){$znxp_pigi="Τηλεθέρμανση (ΑΠΕ)";}
+		if (${"znxp_pigienergy".$z.$i} == 7){$znxp_pigi="Βιομάζα";}
+		if (${"znxp_pigienergy".$z.$i} == 8){$znxp_pigi="Βιομάζα τυποποιημένη";}
+		if (${"znxp_pigienergy".$z.$i} == 9){$znxp_pigi="ΣΗΘ1";}
+		if (${"znxp_pigienergy".$z.$i} == 10){$znxp_pigi="ΣΗΘ2";}
+		if (${"znxp_pigienergy".$z.$i} == 11){$znxp_pigi="ΣΗΘ3";}
+		if (${"znxp_pigienergy".$z.$i} == 12){$znxp_pigi="ΣΗΘ4";}
+		if (${"znxp_pigienergy".$z.$i} == 13){$znxp_pigi="ΣΗΘ5";}
+		if (${"znxp_pigienergy".$z.$i} == 14){$znxp_pigi="ΣΗΘ6";}
+		if (${"znxp_pigienergy".$z.$i} == 15){$znxp_pigi="ΣΗΘ7";}
+		if (${"znxp_pigienergy".$z.$i} == 16){$znxp_pigi="ΣΗΘ8";}
+		if (${"znxp_pigienergy".$z.$i} == 17){$znxp_pigi="ΣΗΘ9";}
+		if (${"znxp_pigienergy".$z.$i} == 18){$znxp_pigi="ΣΗΘ10";}
 		
 	$znxp_type_text .= " " . $znxp_type . " (ζώνη " . $z . ")";	
 	$znxp_pigienergy_text .= " " . $znxp_pigi . " (ζώνη " . $z . ")";
@@ -1135,6 +1227,165 @@ ${"znxiliakos_rows".$z} = mysql_num_rows($objQuery);
 }
 
 
+//Φωτισμός
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+$strSQL = "SELECT * FROM kataskeyi_xsystems_light WHERE id_zwnis=$id_thermzwnes[$z]";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+${"systemlight_rows".$z} = mysql_num_rows($objQuery);
+
+	$i=0;
+	while($objResult = mysql_fetch_array($objQuery))
+	{
+	$i++;
+	${"systemlight_id".$z.$i} = $objResult["id"];
+	${"systemlight_id_zwnis".$z.$i} = $objResult["id_zwnis"];
+	${"systemlight_isxys".$z.$i} = $objResult["isxys"];
+	${"systemlight_perioxi".$z.$i} = $objResult["perioxi"];
+	${"systemlight_ayt_elegxoy".$z.$i} = $objResult["ayt_elegxoy"];
+	${"systemlight_ayt_kinisis".$z.$i} = $objResult["ayt_kinisis"];
+	${"systemlight_thermotita".$z.$i} = $objResult["thermotita"];
+	${"systemlight_asfaleia".$z.$i} = $objResult["asfaleia"];
+	${"systemlight_efedreia".$z.$i} = $objResult["efedreia"];
+}
+}
+
+//KKM
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+$strSQL = "SELECT * FROM kataskeyi_xsystems_kkm WHERE id_zwnis=$id_thermzwnes[$z]";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+${"systemkkm_rows".$z} = mysql_num_rows($objQuery);
+
+	$i=0;
+	while($objResult = mysql_fetch_array($objQuery))
+	{
+	$i++;
+	${"systemkkm_id".$z.$i} = $objResult["id"];
+	${"systemkkm_id_zwnis".$z.$i} = $objResult["id_zwnis"];
+	${"systemkkm_type".$z.$i} = $objResult["type"];
+	${"systemkkm_tm_ther".$z.$i} = $objResult["tm_ther"];
+	${"systemkkm_F_h".$z.$i} = $objResult["F_h"];
+	${"systemkkm_R_h".$z.$i} = $objResult["R_h"];
+	${"systemkkm_Q_r_h".$z.$i} = $objResult["Q_r_h"];
+	${"systemkkm_tm_psyx".$z.$i} = $objResult["tm_psyx"];
+	${"systemkkm_F_c".$z.$i} = $objResult["F_c"];
+	${"systemkkm_R_c".$z.$i} = $objResult["R_c"];
+	${"systemkkm_Q_r_c".$z.$i} = $objResult["Q_r_c"];
+	${"systemkkm_tm_ygr".$z.$i} = $objResult["tm_ygr"];
+	${"systemkkm_H_r".$z.$i} = $objResult["H_r"];
+	${"systemkkm_filters".$z.$i} = $objResult["filters"];
+	${"systemkkm_E_vent".$z.$i} = $objResult["E_vent"];
+	
+		if (${"systemkkm_tm_ther".$z.$i} == 0){${"systemkkm_tm_ther".$z.$i}="False";}else{${"systemkkm_tm_ther".$z.$i}="True";}
+		if (${"systemkkm_tm_psyx".$z.$i} == 0){${"systemkkm_tm_psyx".$z.$i}="False";}else{${"systemkkm_tm_psyx".$z.$i}="True";}
+		if (${"systemkkm_tm_ygr".$z.$i} == 0){${"systemkkm_tm_ygr".$z.$i}="False";}else{${"systemkkm_tm_ygr".$z.$i}="True";}
+		if (${"systemkkm_filters".$z.$i} == 0){${"systemkkm_filters".$z.$i}="False";}else{${"systemkkm_filters".$z.$i}="True";}
+}
+}
+
+
+//Μονάδες παραγωγής ΥΓΡΑΝΣΗΣ
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+$strSQL = "SELECT * FROM kataskeyi_xsystems_ygrp WHERE id_zwnis=$id_thermzwnes[$z]";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+${"ygrp_rows".$z} = mysql_num_rows($objQuery);
+	
+	$i=0;
+	while($objResult = mysql_fetch_array($objQuery))
+	{
+	$i++;
+	${"ygrp_id".$z.$i} = $objResult["id"];
+	${"ygrp_id_zwnis".$z.$i} = $objResult["id_zwnis"];
+	${"ygrp_type".$z.$i} = $objResult["type"];
+	${"ygrp_pigienergy".$z.$i} = $objResult["pigienergy"];
+	${"ygrp_isxys".$z.$i} = $objResult["isxys"];
+	${"ygrp_bathm".$z.$i} = $objResult["bathm"];
+	${"ygrp_jan".$z.$i} = $objResult["jan"];
+	${"ygrp_feb".$z.$i} = $objResult["feb"];
+	${"ygrp_mar".$z.$i} = $objResult["mar"];
+	${"ygrp_apr".$z.$i} = $objResult["apr"];
+	${"ygrp_may".$z.$i} = $objResult["may"];
+	${"ygrp_jun".$z.$i} = $objResult["jun"];
+	${"ygrp_jul".$z.$i} = $objResult["jul"];
+	${"ygrp_aug".$z.$i} = $objResult["aug"];
+	${"ygrp_sep".$z.$i} = $objResult["sep"];
+	${"ygrp_okt".$z.$i} = $objResult["okt"];
+	${"ygrp_nov".$z.$i} = $objResult["nov"];
+	${"ygrp_decem".$z.$i} = $objResult["decem"];
+	
+	${"ygrp_isxys".$z} += ${"ygrp_isxys".$z.$i};
+	
+		if (${"ygrp_type".$z.$i} == 0){$ygrp_type="Ατμολέβητας κεντρικής παροχής";}
+		if (${"ygrp_type".$z.$i} == 1){$ygrp_type="Τοπική μονάδα ψεκασμού";}
+		if (${"ygrp_type".$z.$i} == 2){$ygrp_type="Τοπική μονάδα παραγωγής ατμού";}
+		if (${"ygrp_type".$z.$i} == 3){$ygrp_type="Τοπική μονάδα άλλου τύπου";}
+		if (${"ygrp_pigienergy".$z.$i} == 0){$ygrp_pigi="Υγραέριο (LPG)";}
+		if (${"ygrp_pigienergy".$z.$i} == 1){$ygrp_pigi="Φυσικό αέριο";}
+		if (${"ygrp_pigienergy".$z.$i} == 2){$ygrp_pigi="Ηλεκτρισμός";}
+		if (${"ygrp_pigienergy".$z.$i} == 3){$ygrp_pigi="Πετρέλαιο θέρμανσης";}
+		if (${"ygrp_pigienergy".$z.$i} == 4){$ygrp_pigi="Πετρέλαιο κίνησης";}
+		if (${"ygrp_pigienergy".$z.$i} == 5){$ygrp_pigi="Τηλεθέρμανση (ΔΕΗ)";}
+		if (${"ygrp_pigienergy".$z.$i} == 6){$ygrp_pigi="Τηλεθέρμανση (ΑΠΕ)";}
+		if (${"ygrp_pigienergy".$z.$i} == 7){$ygrp_pigi="Βιομάζα";}
+		if (${"ygrp_pigienergy".$z.$i} == 8){$ygrp_pigi="Βιομάζα τυποποιημένη";}
+		if (${"ygrp_pigienergy".$z.$i} == 9){$ygrp_pigi="ΣΗΘ1";}
+		if (${"ygrp_pigienergy".$z.$i} == 10){$ygrp_pigi="ΣΗΘ2";}
+		if (${"ygrp_pigienergy".$z.$i} == 11){$ygrp_pigi="ΣΗΘ3";}
+		if (${"ygrp_pigienergy".$z.$i} == 12){$ygrp_pigi="ΣΗΘ4";}
+		if (${"ygrp_pigienergy".$z.$i} == 13){$ygrp_pigi="ΣΗΘ5";}
+		if (${"ygrp_pigienergy".$z.$i} == 14){$ygrp_pigi="ΣΗΘ6";}
+		if (${"ygrp_pigienergy".$z.$i} == 15){$ygrp_pigi="ΣΗΘ7";}
+		if (${"ygrp_pigienergy".$z.$i} == 16){$ygrp_pigi="ΣΗΘ8";}
+		if (${"ygrp_pigienergy".$z.$i} == 17){$ygrp_pigi="ΣΗΘ9";}
+		if (${"ygrp_pigienergy".$z.$i} == 18){$ygrp_pigi="ΣΗΘ10";}
+		
+	$ygrp_type_text .= " " . $ygrp_type . " (ζώνη " . $z . ")";	
+	$ygrp_pigienergy_text .= " " . $ygrp_pigi . " (ζώνη " . $z . ")";
+	}
+
+}
+
+
+//Δίκτυο διανομής ΥΓΡΑΝΣΗΣ
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+$strSQL = "SELECT * FROM kataskeyi_xsystems_ygrd WHERE id_zwnis=$id_thermzwnes[$z]";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+${"ygrd_rows".$z} = mysql_num_rows($objQuery);
+	
+	$i=0;
+	while($objResult = mysql_fetch_array($objQuery))
+	{
+	$i++;
+	${"ygrd_id".$z.$i} = $objResult["id"];
+	${"ygrd_id_zwnis".$z.$i} = $objResult["id_zwnis"];
+	${"ygrd_type".$z.$i} = $objResult["type"];
+	${"ygrd_xwros".$z.$i} = $objResult["xwros"];
+	${"ygrd_bathm".$z.$i} = $objResult["bathm"];			
+	}
+}
+
+
+//Μονάδες Διοχέτευσης ΥΓΡΑΝΣΗΣ
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+$strSQL = "SELECT * FROM kataskeyi_xsystems_ygrt WHERE id_zwnis=$id_thermzwnes[$z]";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+${"ygrt_rows".$z} = mysql_num_rows($objQuery);
+
+	$i=0;
+	while($objResult = mysql_fetch_array($objQuery))
+	{
+	$i++;
+	${"ygrt_id".$z.$i} = $objResult["id"];
+	${"ygrt_id_zwnis".$z.$i} = $objResult["id_zwnis"];
+	${"ygrt_type".$z.$i} = $objResult["type"];
+	${"ygrt_bathm".$z.$i} = $objResult["bathm"];
+
+	$ygrt_type_text .= " " . ${"ygrt_type".$z.$i} . " (ζώνη " . $z . ")";	
+	}
+}
+
+
+
+
 	
 //Τιμές θέρμανσης και ψύξης για το κείμενο στο τεύχος ----Κεφ 5
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
@@ -1286,9 +1537,5 @@ $kataskeyi_stoixeia_aytomatismoi = $kataskeyi_stoixeia_array[0]["aytomatismoi"];
 $kataskeyi_stoixeia_kaminades = $kataskeyi_stoixeia_array[0]["kaminades"];
 $kataskeyi_stoixeia_eksaerismos = $kataskeyi_stoixeia_array[0]["eksaerismos"];
 $kataskeyi_stoixeia_anem_orofis = $kataskeyi_stoixeia_array[0]["anem_orofis"];
-
-
-$perimetros_dapedoy_array = get_times_all("*", "kataskeyi_therm_dap");
-$perimetros_dapedoy = $perimetros_dapedoy_array[0]["perimetros"];
 
 ?>

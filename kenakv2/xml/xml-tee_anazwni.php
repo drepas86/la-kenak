@@ -665,6 +665,30 @@ array_push(${"array_diafani_ffinc".$z}, $ffinc_an);
 }//τελειώνει η επανάληψη των ανοιγμάτων
 }//τελειώνει η επανάληψη των προσανατολισμών
 
+//ΟΡΟΦΕΣ ΣΤΙΣ ΑΔΙΑΦΑΝΕΙΣ
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i = 1; $i <= $rows_orofes; $i++) {
+
+if (${"orofes_id_zwnis".$i}==${"thermiki_zwni".$z}){
+array_push(${"array_adiafani_type".$z}, "Οροφή");
+array_push(${"array_adiafani_name".$z}, ${"orofes_name".$i});
+array_push(${"array_adiafani_g".$z}, "0");
+array_push(${"array_adiafani_b".$z}, "0");
+array_push(${"array_adiafani_edrom".$z}, ${"orofes_emvadon".$i});
+array_push(${"array_adiafani_u".$z}, ${"orofes_u".$i});
+array_push(${"array_adiafani_a".$z}, "0.80");
+array_push(${"array_adiafani_e".$z}, "0.80");
+array_push(${"array_adiafani_fhorh".$z}, ${"orofes_f_hor_h".$i});
+array_push(${"array_adiafani_fhorc".$z}, ${"orofes_f_hor_c".$i});
+array_push(${"array_adiafani_fovh".$z}, ${"orofes_f_ov_h".$i});
+array_push(${"array_adiafani_fovc".$z}, ${"orofes_f_ov_c".$i});
+array_push(${"array_adiafani_ffinh".$z}, ${"orofes_f_fin_h".$i});
+array_push(${"array_adiafani_ffinc".$z}, ${"orofes_f_fin_c".$i});
+}
+
+}
+}
+
 
 //Μετράω τις γραμμές
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
@@ -709,25 +733,132 @@ ${"array_diafani_ffinh".$z} = implode(",", ${"array_diafani_ffinh".$z});
 ${"array_diafani_ffinc".$z} = implode(",", ${"array_diafani_ffinc".$z});
 }
 
+//ΣΕ ΕΠΑΦΗ ΜΕ ΕΔΑΦΟΣ
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i=1;$i<=8;$i++){
+${"ground_column".$i.$z} = array();
+}
+}
+
+//Δάπεδα
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i = 1; $i <= $rows_dapedo; $i++) {
+
+if (${"dapedo_id_zwnis".$i}==${"thermiki_zwni".$z}){
+array_push(${"ground_column1".$z}, "Δάπεδο");
+array_push(${"ground_column2".$z}, ${"dapedo_name".$i});
+array_push(${"ground_column3".$z}, ${"dapedo_emvadon".$i});
+array_push(${"ground_column4".$z}, ${"dapedo_u".$i});
+array_push(${"ground_column5".$z}, ${"dapedo_bathos".$i});
+array_push(${"ground_column6".$z}, "");
+array_push(${"ground_column7".$z}, ${"dapedo_perimetros".$i});
+}
+}
+}
+
+//Τοίχοι
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i = 1; $i <= $rows_groundt; $i++) {
+
+if (${"groundt_id_zwnis".$i}==${"thermiki_zwni".$z}){
+array_push(${"ground_column1".$z}, "Τοίχος");
+array_push(${"ground_column2".$z}, ${"groundt_name".$i});
+array_push(${"ground_column3".$z}, ${"groundt_emvadon".$i});
+array_push(${"ground_column4".$z}, ${"groundt_u".$i});
+array_push(${"ground_column5".$z}, ${"groundt_k_bathos".$i});
+array_push(${"ground_column6".$z}, ${"groundt_a_bathos".$i});
+array_push(${"ground_column7".$z}, "");
+}
+}
+}
+
+
+//Μετράω τις γραμμές
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+${"count_ground".$z} = count(${"ground_column1".$z});
+}
+
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i=1;$i<=8;$i++){
+${"ground_column".$i.$z} = implode(",", ${"ground_column".$i.$z});
+}
+}
+
+
 //--------- ΣΥΣΤΗΜΑΤΑ ----------
 //Στα συστήματα στάνταρ γραμμές έχουν το δίκτυο διανομής (2) και οι τερματικές μονάδες (1).
 //Οι μονάδες παραγωγής και οι βοηθητικές μονάδες μπορούν να έχουν μεταβαλλόμενο πλήθος γραμμών από το χρήστη
-//Άρα μονάδες παραγωγής και βοηθητικές μονάδες τις βάζω σε array.
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i=1;$i<=17;$i++){
 ${"heat_production_column".$i.$z} = array();
 ${"cold_production_column".$i.$z} = array();
 ${"znx_production_column".$i.$z} = array();
+${"ygr_production_column".$i.$z} = array();
 }
+
+for ($i=1;$i<=16;$i++){
+${"kkm_production_column".$i.$z} = array();
 }
-for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+
+for ($i=1;$i<=8;$i++){
+${"heat_distribution_column".$i.$z} = array();
+${"cold_distribution_column".$i.$z} = array();
+${"znx_distribution_column".$i.$z} = array();
+${"ygr_distribution_column".$i.$z} = array();
+}
 for ($i=1;$i<=3;$i++){
+${"heat_termatic_column".$i.$z} = array();
+${"cold_termatic_column".$i.$z} = array();
+${"znx_termatic_column".$i.$z} = array();
+${"ygr_termatic_column".$i.$z} = array();
+
 ${"heat_auxiliary_column".$i.$z} = array();
+${"cold_auxiliary_column".$i.$z} = array();
+${"znx_auxiliary_column".$i.$z} = array();
+}
+
+for ($i=1;$i<=8;$i++){
+${"light_production_column".$i.$z} = array();
 }
 }
 
+//Οι τιμές των στηλών σε array. Δηλαδή όλοι οι τύποι μαζί, όλες οι μονάδες παραγωγής μαζί κ.ο.κ.
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i = 1; $i <= ${"thermp_rows".$z}; $i++) {
+		if (${"thermp_type".$z.$i} == 0){${"thermp_type".$z.$i}="Λέβητας";}
+		if (${"thermp_type".$z.$i} == 1){${"thermp_type".$z.$i}="Κεντρική υδρόψυκτη Α.Θ.";}
+		if (${"thermp_type".$z.$i} == 2){${"thermp_type".$z.$i}="Κεντρική αερόψυκτη Α.Θ.";}
+		if (${"thermp_type".$z.$i} == 3){${"thermp_type".$z.$i}="Τοπική αερόψυκτη Α.Θ.";}
+		if (${"thermp_type".$z.$i} == 4){${"thermp_type".$z.$i}="Γεωθερμική Α.Θ. με οριζόντιο εναλλάκτη";}
+		if (${"thermp_type".$z.$i} == 5){${"thermp_type".$z.$i}="Γεωθερμική Α.Θ. με κατακόρυφο εναλλάκτη";}
+		if (${"thermp_type".$z.$i} == 6){${"thermp_type".$z.$i}="Κεντρική άλλου τύπου Α.Θ.";}
+		if (${"thermp_type".$z.$i} == 7){${"thermp_type".$z.$i}="Τοπικές ηλεκτρικές μονάδες (καλοριφέρ ή θερμοπομποί ή άλλο)";}
+		if (${"thermp_type".$z.$i} == 8){${"thermp_type".$z.$i}="Τοπικές μονάδες αερίου ή υγρού καυσίμου";}
+		if (${"thermp_type".$z.$i} == 9){${"thermp_type".$z.$i}="Ανοικτές εστίες καύσης";}
+		if (${"thermp_type".$z.$i} == 10){${"thermp_type".$z.$i}="Τηλεθέρμανση";}
+		if (${"thermp_type".$z.$i} == 11){${"thermp_type".$z.$i}="ΣΗΘ";}
+		if (${"thermp_type".$z.$i} == 12){${"thermp_type".$z.$i}="Μονάδα παραγωγής άλλου τύπου";}
+		if (${"thermp_pigienergy".$z.$i} == 0){${"thermp_pigienergy".$z.$i}="Bottle gas (LPG)";}
+		if (${"thermp_pigienergy".$z.$i} == 1){${"thermp_pigienergy".$z.$i}="Natural gas";}
+		if (${"thermp_pigienergy".$z.$i} == 2){${"thermp_pigienergy".$z.$i}="Electricity";}
+		if (${"thermp_pigienergy".$z.$i} == 3){${"thermp_pigienergy".$z.$i}="Fuel oil";}
+		if (${"thermp_pigienergy".$z.$i} == 4){${"thermp_pigienergy".$z.$i}="Fuel oil with taxis";}
+		if (${"thermp_pigienergy".$z.$i} == 5){${"thermp_pigienergy".$z.$i}="District heating";}
+		if (${"thermp_pigienergy".$z.$i} == 6){${"thermp_pigienergy".$z.$i}="District heating res";}
+		if (${"thermp_pigienergy".$z.$i} == 7){${"thermp_pigienergy".$z.$i}="Biomass";}
+		if (${"thermp_pigienergy".$z.$i} == 8){${"thermp_pigienergy".$z.$i}="Biomasst";}
+		if (${"thermp_pigienergy".$z.$i} == 9){${"thermp_pigienergy".$z.$i}="ΣΗΘ1";}
+		if (${"thermp_pigienergy".$z.$i} == 10){${"thermp_pigienergy".$z.$i}="ΣΗΘ2";}
+		if (${"thermp_pigienergy".$z.$i} == 11){${"thermp_pigienergy".$z.$i}="ΣΗΘ3";}
+		if (${"thermp_pigienergy".$z.$i} == 12){${"thermp_pigienergy".$z.$i}="ΣΗΘ4";}
+		if (${"thermp_pigienergy".$z.$i} == 13){${"thermp_pigienergy".$z.$i}="ΣΗΘ5";}
+		if (${"thermp_pigienergy".$z.$i} == 14){${"thermp_pigienergy".$z.$i}="ΣΗΘ6";}
+		if (${"thermp_pigienergy".$z.$i} == 15){${"thermp_pigienergy".$z.$i}="ΣΗΘ7";}
+		if (${"thermp_pigienergy".$z.$i} == 16){${"thermp_pigienergy".$z.$i}="ΣΗΘ8";}
+		if (${"thermp_pigienergy".$z.$i} == 17){${"thermp_pigienergy".$z.$i}="ΣΗΘ9";}
+		if (${"thermp_pigienergy".$z.$i} == 18){${"thermp_pigienergy".$z.$i}="ΣΗΘ10";}
+array_push(${"heat_production_column1".$z}, ${"thermp_type".$z.$i});
+array_push(${"heat_production_column2".$z}, ${"thermp_pigienergy".$z.$i});
 array_push(${"heat_production_column3".$z}, ${"thermp_isxys".$z.$i});
 array_push(${"heat_production_column4".$z}, ${"thermp_bathm".$z.$i});
 array_push(${"heat_production_column5".$z}, ${"thermp_cop".$z.$i});
@@ -745,6 +876,36 @@ array_push(${"heat_production_column16".$z}, ${"thermp_nov".$z.$i});
 array_push(${"heat_production_column17".$z}, ${"thermp_decem".$z.$i});
 }
 for ($i = 1; $i <= ${"coldp_rows".$z}; $i++) {
+		if (${"coldp_type".$z.$i} == 0){${"coldp_type".$z.$i}="Αερόψυκτος ψύκτης";}
+		if (${"coldp_type".$z.$i} == 1){${"coldp_type".$z.$i}="Υδρόψυκτος ψύκτης";}
+		if (${"coldp_type".$z.$i} == 2){${"coldp_type".$z.$i}="Υδρόψυκτη Α.Θ.";}
+		if (${"coldp_type".$z.$i} == 3){${"coldp_type".$z.$i}="Αερόψυκτη Α.Θ.";}
+		if (${"coldp_type".$z.$i} == 4){${"coldp_type".$z.$i}="Γεωθερμική Α.Θ. με οριζόντιο εναλλάκτη";}
+		if (${"coldp_type".$z.$i} == 5){${"coldp_type".$z.$i}="Γεωθερμική Α.Θ. με κατακόρυφο εναλλάκτη";}
+		if (${"coldp_type".$z.$i} == 6){${"coldp_type".$z.$i}="Προσρόφησης απορρόφησης Α.Θ.";}
+		if (${"coldp_type".$z.$i} == 7){${"coldp_type".$z.$i}="Κεντρική άλλου τύπου Α.Θ.";}
+		if (${"coldp_type".$z.$i} == 8){${"coldp_type".$z.$i}="Μονάδα παραγωγής άλλου τύπου";}
+		if (${"coldp_pigienergy".$z.$i} == 0){${"coldp_pigienergy".$z.$i}="Bottle gas (LPG)";}
+		if (${"coldp_pigienergy".$z.$i} == 1){${"coldp_pigienergy".$z.$i}="Natural gas";}
+		if (${"coldp_pigienergy".$z.$i} == 2){${"coldp_pigienergy".$z.$i}="Electricity";}
+		if (${"coldp_pigienergy".$z.$i} == 3){${"coldp_pigienergy".$z.$i}="Fuel oil";}
+		if (${"coldp_pigienergy".$z.$i} == 4){${"coldp_pigienergy".$z.$i}="Fuel oil with taxis";}
+		if (${"coldp_pigienergy".$z.$i} == 5){${"coldp_pigienergy".$z.$i}="District heating";}
+		if (${"coldp_pigienergy".$z.$i} == 6){${"coldp_pigienergy".$z.$i}="District heating res";}
+		if (${"coldp_pigienergy".$z.$i} == 7){${"coldp_pigienergy".$z.$i}="Biomass";}
+		if (${"coldp_pigienergy".$z.$i} == 8){${"coldp_pigienergy".$z.$i}="Biomasst";}
+		if (${"coldp_pigienergy".$z.$i} == 9){${"coldp_pigienergy".$z.$i}="ΣΗΘ1";}
+		if (${"coldp_pigienergy".$z.$i} == 10){${"coldp_pigienergy".$z.$i}="ΣΗΘ2";}
+		if (${"coldp_pigienergy".$z.$i} == 11){${"coldp_pigienergy".$z.$i}="ΣΗΘ3";}
+		if (${"coldp_pigienergy".$z.$i} == 12){${"coldp_pigienergy".$z.$i}="ΣΗΘ4";}
+		if (${"coldp_pigienergy".$z.$i} == 13){${"coldp_pigienergy".$z.$i}="ΣΗΘ5";}
+		if (${"coldp_pigienergy".$z.$i} == 14){${"coldp_pigienergy".$z.$i}="ΣΗΘ6";}
+		if (${"coldp_pigienergy".$z.$i} == 15){${"coldp_pigienergy".$z.$i}="ΣΗΘ7";}
+		if (${"coldp_pigienergy".$z.$i} == 16){${"coldp_pigienergy".$z.$i}="ΣΗΘ8";}
+		if (${"coldp_pigienergy".$z.$i} == 17){${"coldp_pigienergy".$z.$i}="ΣΗΘ9";}
+		if (${"coldp_pigienergy".$z.$i} == 18){${"coldp_pigienergy".$z.$i}="ΣΗΘ10";}
+array_push(${"cold_production_column1".$z}, ${"coldp_type".$z.$i});
+array_push(${"cold_production_column2".$z}, ${"coldp_pigienergy".$z.$i});
 array_push(${"cold_production_column3".$z}, ${"coldp_isxys".$z.$i});
 array_push(${"cold_production_column4".$z}, ${"coldp_bathm".$z.$i});
 array_push(${"cold_production_column5".$z}, ${"coldp_eer".$z.$i});
@@ -762,6 +923,34 @@ array_push(${"cold_production_column16".$z}, ${"coldp_nov".$z.$i});
 array_push(${"cold_production_column17".$z}, ${"coldp_decem".$z.$i});
 }
 for ($i = 1; $i <= ${"znxp_rows".$z}; $i++) {
+		if (${"znxp_type".$z.$i} == 0){${"znxp_type".$z.$i}="Λέβητας";}
+		if (${"znxp_type".$z.$i} == 1){${"znxp_type".$z.$i}="Τηλεθέρμανση";}
+		if (${"znxp_type".$z.$i} == 2){${"znxp_type".$z.$i}="ΣΗΘ";}
+		if (${"znxp_type".$z.$i} == 3){${"znxp_type".$z.$i}="Αντλία θερμότητας (Α.Θ.)";}
+		if (${"znxp_type".$z.$i} == 4){${"znxp_type".$z.$i}="Τοπικός ηλεκτρικός θερμαντήρας";}
+		if (${"znxp_type".$z.$i} == 5){${"znxp_type".$z.$i}="Τοπική μονάδα φυσικού αερίου";}
+		if (${"znxp_type".$z.$i} == 6){${"znxp_type".$z.$i}="Μονάδα παραγωγής (κεντρική) άλλου τύπου";}
+		if (${"znxp_pigienergy".$z.$i} == 0){${"znxp_pigienergy".$z.$i}="Bottle gas (LPG)";}
+		if (${"znxp_pigienergy".$z.$i} == 1){${"znxp_pigienergy".$z.$i}="Natural gas";}
+		if (${"znxp_pigienergy".$z.$i} == 2){${"znxp_pigienergy".$z.$i}="Electricity";}
+		if (${"znxp_pigienergy".$z.$i} == 3){${"znxp_pigienergy".$z.$i}="Fuel oil";}
+		if (${"znxp_pigienergy".$z.$i} == 4){${"znxp_pigienergy".$z.$i}="Fuel oil with taxis";}
+		if (${"znxp_pigienergy".$z.$i} == 5){${"znxp_pigienergy".$z.$i}="District heating";}
+		if (${"znxp_pigienergy".$z.$i} == 6){${"znxp_pigienergy".$z.$i}="District heating res";}
+		if (${"znxp_pigienergy".$z.$i} == 7){${"znxp_pigienergy".$z.$i}="Biomass";}
+		if (${"znxp_pigienergy".$z.$i} == 8){${"znxp_pigienergy".$z.$i}="Biomasst";}
+		if (${"znxp_pigienergy".$z.$i} == 9){${"znxp_pigienergy".$z.$i}="ΣΗΘ1";}
+		if (${"znxp_pigienergy".$z.$i} == 10){${"znxp_pigienergy".$z.$i}="ΣΗΘ2";}
+		if (${"znxp_pigienergy".$z.$i} == 11){${"znxp_pigienergy".$z.$i}="ΣΗΘ3";}
+		if (${"znxp_pigienergy".$z.$i} == 12){${"znxp_pigienergy".$z.$i}="ΣΗΘ4";}
+		if (${"znxp_pigienergy".$z.$i} == 13){${"znxp_pigienergy".$z.$i}="ΣΗΘ5";}
+		if (${"znxp_pigienergy".$z.$i} == 14){${"znxp_pigienergy".$z.$i}="ΣΗΘ6";}
+		if (${"znxp_pigienergy".$z.$i} == 15){${"znxp_pigienergy".$z.$i}="ΣΗΘ7";}
+		if (${"znxp_pigienergy".$z.$i} == 16){${"znxp_pigienergy".$z.$i}="ΣΗΘ8";}
+		if (${"znxp_pigienergy".$z.$i} == 17){${"znxp_pigienergy".$z.$i}="ΣΗΘ9";}
+		if (${"znxp_pigienergy".$z.$i} == 18){${"znxp_pigienergy".$z.$i}="ΣΗΘ10";}
+array_push(${"znx_production_column1".$z}, ${"znxp_type".$z.$i});
+array_push(${"znx_production_column2".$z}, ${"znxp_pigienergy".$z.$i});
 array_push(${"znx_production_column3".$z}, ${"znxp_isxys".$z.$i});
 array_push(${"znx_production_column4".$z}, ${"znxp_bathm".$z.$i});
 array_push(${"znx_production_column5".$z}, ${"znxp_jan".$z.$i});
@@ -777,14 +966,192 @@ array_push(${"znx_production_column14".$z}, ${"znxp_okt".$z.$i});
 array_push(${"znx_production_column15".$z}, ${"znxp_nov".$z.$i});
 array_push(${"znx_production_column16".$z}, ${"znxp_decem".$z.$i});
 }
+for ($i = 1; $i <= ${"ygrp_rows".$z}; $i++) {
+		if (${"ygrp_type".$z.$i} == 0){${"ygrp_type".$z.$i}="Ατμολέβητας κεντρικής παροχής";}
+		if (${"ygrp_type".$z.$i} == 1){${"ygrp_type".$z.$i}="Τοπική μονάδα ψεκασμού";}
+		if (${"ygrp_type".$z.$i} == 2){${"ygrp_type".$z.$i}="Τοπική μονάδα παραγωγής ατμού";}
+		if (${"ygrp_type".$z.$i} == 3){${"ygrp_type".$z.$i}="Τοπική μονάδα άλλου τύπου";}
+		if (${"ygrp_pigienergy".$z.$i} == 0){${"ygrp_pigienergy".$z.$i}="Bottle gas (LPG)";}
+		if (${"ygrp_pigienergy".$z.$i} == 1){${"ygrp_pigienergy".$z.$i}="Natural gas";}
+		if (${"ygrp_pigienergy".$z.$i} == 2){${"ygrp_pigienergy".$z.$i}="Electricity";}
+		if (${"ygrp_pigienergy".$z.$i} == 3){${"ygrp_pigienergy".$z.$i}="Fuel oil";}
+		if (${"ygrp_pigienergy".$z.$i} == 4){${"ygrp_pigienergy".$z.$i}="Fuel oil with taxis";}
+		if (${"ygrp_pigienergy".$z.$i} == 5){${"ygrp_pigienergy".$z.$i}="District heating";}
+		if (${"ygrp_pigienergy".$z.$i} == 6){${"ygrp_pigienergy".$z.$i}="District heating res";}
+		if (${"ygrp_pigienergy".$z.$i} == 7){${"ygrp_pigienergy".$z.$i}="Biomass";}
+		if (${"ygrp_pigienergy".$z.$i} == 8){${"ygrp_pigienergy".$z.$i}="Biomasst";}
+		if (${"ygrp_pigienergy".$z.$i} == 9){${"ygrp_pigienergy".$z.$i}="ΣΗΘ1";}
+		if (${"ygrp_pigienergy".$z.$i} == 10){${"ygrp_pigienergy".$z.$i}="ΣΗΘ2";}
+		if (${"ygrp_pigienergy".$z.$i} == 11){${"ygrp_pigienergy".$z.$i}="ΣΗΘ3";}
+		if (${"ygrp_pigienergy".$z.$i} == 12){${"ygrp_pigienergy".$z.$i}="ΣΗΘ4";}
+		if (${"ygrp_pigienergy".$z.$i} == 13){${"ygrp_pigienergy".$z.$i}="ΣΗΘ5";}
+		if (${"ygrp_pigienergy".$z.$i} == 14){${"ygrp_pigienergy".$z.$i}="ΣΗΘ6";}
+		if (${"ygrp_pigienergy".$z.$i} == 15){${"ygrp_pigienergy".$z.$i}="ΣΗΘ7";}
+		if (${"ygrp_pigienergy".$z.$i} == 16){${"ygrp_pigienergy".$z.$i}="ΣΗΘ8";}
+		if (${"ygrp_pigienergy".$z.$i} == 17){${"ygrp_pigienergy".$z.$i}="ΣΗΘ9";}
+		if (${"ygrp_pigienergy".$z.$i} == 18){${"ygrp_pigienergy".$z.$i}="ΣΗΘ10";}
+array_push(${"ygr_production_column1".$z}, ${"ygrp_type".$z.$i});
+array_push(${"ygr_production_column2".$z}, ${"ygrp_pigienergy".$z.$i});
+array_push(${"ygr_production_column3".$z}, ${"ygrp_isxys".$z.$i});
+array_push(${"ygr_production_column4".$z}, ${"ygrp_bathm".$z.$i});
+array_push(${"ygr_production_column5".$z}, ${"ygrp_jan".$z.$i});
+array_push(${"ygr_production_column6".$z}, ${"ygrp_feb".$z.$i});
+array_push(${"ygr_production_column7".$z}, ${"ygrp_mar".$z.$i});
+array_push(${"ygr_production_column8".$z}, ${"ygrp_apr".$z.$i});
+array_push(${"ygr_production_column9".$z}, ${"ygrp_may".$z.$i});
+array_push(${"ygr_production_column10".$z}, ${"ygrp_jun".$z.$i});
+array_push(${"ygr_production_column11".$z}, ${"ygrp_jul".$z.$i});
+array_push(${"ygr_production_column12".$z}, ${"ygrp_aug".$z.$i});
+array_push(${"ygr_production_column13".$z}, ${"ygrp_sep".$z.$i});
+array_push(${"ygr_production_column14".$z}, ${"ygrp_okt".$z.$i});
+array_push(${"ygr_production_column15".$z}, ${"ygrp_nov".$z.$i});
+array_push(${"ygr_production_column16".$z}, ${"ygrp_decem".$z.$i});
 }
 
+for ($i = 1; $i <= ${"thermd_rows".$z}; $i++) {
+		if (${"thermd_type".$z.$i} == 0){${"thermd_type".$z.$i}="Δίκτυο διανομής θερμού μέσου";}
+		if (${"thermd_type".$z.$i} == 1){${"thermd_type".$z.$i}="Αεραγωγοί";}
+array_push(${"heat_distribution_column1".$z}, ${"thermd_type".$z.$i});
+		if (${"thermd_type".$z.$i} == 1){${"thermd_isxys".$z.$i}="";} //Πάντα κενή η ισχύς σε αεραγωγούς
+array_push(${"heat_distribution_column2".$z}, ${"thermd_isxys".$z.$i});
+		if (${"thermd_xwros".$z.$i} == 0){${"thermd_xwros".$z.$i}="Εσωτερικοί  ή έως και 20% σε εξωτερικούς";}
+		if (${"thermd_xwros".$z.$i} == 1){${"thermd_xwros".$z.$i}="Πάνω απο  20% σε εξωτερικούς";}	
+array_push(${"heat_distribution_column3".$z}, ${"thermd_xwros".$z.$i});
+		if (${"thermd_type".$z.$i} == 1){${"thermd_bathm".$z.$i}="";} //Πάντα κενός ο βαθμός απόδοσης σε αεραγωγούς
+array_push(${"heat_distribution_column6".$z}, ${"thermd_bathm".$z.$i});
+		if (${"thermd_monwsi".$z.$i} == 0){${"thermd_monwsi".$z.$i}="False";}
+		if (${"thermd_monwsi".$z.$i} == 1){${"thermd_monwsi".$z.$i}="True";}
+		if (${"thermd_type".$z.$i} == 0){${"thermd_monwsi".$z.$i}="False";} //Πάντα false η μόνωση σε δίκτυο διανομής θερμού μέσου
+array_push(${"heat_distribution_column7".$z}, ${"thermd_monwsi".$z.$i});
+}
+
+for ($i = 1; $i <= ${"coldd_rows".$z}; $i++) {
+		if (${"coldd_type".$z.$i} == 0){${"coldd_type".$z.$i}="Δίκτυο διανομής ψυχρού μέσου";}
+		if (${"coldd_type".$z.$i} == 1){${"coldd_type".$z.$i}="Αεραγωγοί";}
+array_push(${"cold_distribution_column1".$z}, ${"coldd_type".$z.$i});
+		if (${"coldd_type".$z.$i} == 1){${"coldd_isxys".$z.$i}="";} //Πάντα κενή η ισχύς σε αεραγωγούς
+array_push(${"cold_distribution_column2".$z}, ${"coldd_isxys".$z.$i});
+		if (${"coldd_xwros".$z.$i} == 0){${"coldd_xwros".$z.$i}="Εσωτερικοί  ή έως και 20% σε εξωτερικούς";}
+		if (${"coldd_xwros".$z.$i} == 1){${"coldd_xwros".$z.$i}="Πάνω απο  20% σε εξωτερικούς";}	
+array_push(${"cold_distribution_column3".$z}, ${"coldd_xwros".$z.$i});
+		if (${"coldd_type".$z.$i} == 1){${"coldd_bathm".$z.$i}="";} //Πάντα κενός ο βαθμός απόδοσης σε αεραγωγούς
+array_push(${"cold_distribution_column4".$z}, ${"coldd_bathm".$z.$i});
+		if (${"coldd_monwsi".$z.$i} == 0){${"coldd_monwsi".$z.$i}="False";}
+		if (${"coldd_monwsi".$z.$i} == 1){${"coldd_monwsi".$z.$i}="True";}
+		if (${"coldd_type".$z.$i} == 0){${"coldd_monwsi".$z.$i}="False";} //Πάντα false η μόνωση σε δίκτυο διανομής ψυχρού μέσου
+array_push(${"cold_distribution_column5".$z}, ${"coldd_monwsi".$z.$i});
+}
+
+for ($i = 1; $i <= ${"znxd_rows".$z}; $i++) {
+array_push(${"znx_distribution_column1".$z}, ${"znxd_type".$z.$i});
+		if (${"znxd_anakykloforia".$z.$i} == 0){${"znxd_anakykloforia".$z.$i}="False";}
+		if (${"znxd_anakykloforia".$z.$i} == 1){${"znxd_anakykloforia".$z.$i}="True";}
+array_push(${"znx_distribution_column2".$z}, ${"znxd_anakykloforia".$z.$i});
+		if (${"znxd_xwros".$z.$i} == 0){${"znxd_xwros".$z.$i}="Εσωτερικοί  ή έως και 20% σε εξωτερικούς";}
+		if (${"znxd_xwros".$z.$i} == 1){${"znxd_xwros".$z.$i}="Πάνω απο  20% σε εξωτερικούς";}	
+array_push(${"znx_distribution_column3".$z}, ${"znxd_xwros".$z.$i});
+array_push(${"znx_distribution_column4".$z}, ${"znxd_bathm".$z.$i});
+}
+
+for ($i = 1; $i <= ${"ygrd_rows".$z}; $i++) {
+array_push(${"ygr_distribution_column1".$z}, ${"ygrd_type".$z.$i});
+		if (${"ygrd_xwros".$z.$i} == 0){${"ygrd_xwros".$z.$i}="Εσωτερικοί  ή έως και 20% σε εξωτερικούς";}
+		if (${"ygrd_xwros".$z.$i} == 1){${"ygrd_xwros".$z.$i}="Πάνω απο  20% σε εξωτερικούς";}	
+array_push(${"ygr_distribution_column2".$z}, ${"ygrd_xwros".$z.$i});
+array_push(${"ygr_distribution_column3".$z}, ${"ygrd_bathm".$z.$i});
+}
+
+for ($i = 1; $i <= ${"thermb_rows".$z}; $i++) {
+		if (${"thermb_type".$z.$i} == 0){${"thermb_type".$z.$i}="Αντλίες";}
+		if (${"thermb_type".$z.$i} == 1){${"thermb_type".$z.$i}="Κυκλοφορητές";}
+		if (${"thermb_type".$z.$i} == 2){${"thermb_type".$z.$i}="Ηλεκτροβάνες";}
+		if (${"thermb_type".$z.$i} == 3){${"thermb_type".$z.$i}="Ανεμιστήρες";}
+array_push(${"heat_auxiliary_column1".$z}, ${"thermb_type".$z.$i});
+array_push(${"heat_auxiliary_column2".$z}, ${"thermb_number".$z.$i});
+array_push(${"heat_auxiliary_column3".$z}, ${"thermb_isxys".$z.$i});
+}
+
+for ($i = 1; $i <= ${"coldb_rows".$z}; $i++) {
+		if (${"coldb_type".$z.$i} == 0){${"coldb_type".$z.$i}="Αντλίες";}
+		if (${"coldb_type".$z.$i} == 1){${"coldb_type".$z.$i}="Κυκλοφορητές";}
+		if (${"coldb_type".$z.$i} == 2){${"coldb_type".$z.$i}="Ηλεκτροβάνες";}
+		if (${"coldb_type".$z.$i} == 3){${"coldb_type".$z.$i}="Ανεμιστήρες";}
+		if (${"coldb_type".$z.$i} == 4){${"coldb_type".$z.$i}="Πύργος ψύξης";}
+array_push(${"cold_auxiliary_column1".$z}, ${"coldb_type".$z.$i});
+array_push(${"cold_auxiliary_column2".$z}, ${"coldb_number".$z.$i});
+array_push(${"cold_auxiliary_column3".$z}, ${"coldb_isxys".$z.$i});
+}
+
+for ($i = 1; $i <= ${"znxb_rows".$z}; $i++) {
+		if (${"znxb_type".$z.$i} == 0){${"znxb_type".$z.$i}="Αντλίες";}
+		if (${"znxb_type".$z.$i} == 1){${"znxb_type".$z.$i}="Κυκλοφορητές";}
+		if (${"znxb_type".$z.$i} == 2){${"znxb_type".$z.$i}="Ηλεκτροβάνες";}
+		if (${"znxb_type".$z.$i} == 3){${"znxb_type".$z.$i}="Άλλου τύπου";}
+array_push(${"znx_auxiliary_column1".$z}, ${"znxb_type".$z.$i});
+array_push(${"znx_auxiliary_column2".$z}, ${"znxb_number".$z.$i});
+array_push(${"znx_auxiliary_column3".$z}, ${"znxb_isxys".$z.$i});
+}
+
+for ($i = 1; $i <= ${"systemkkm_rows".$z}; $i++) {
+array_push(${"kkm_production_column1".$z}, ${"systemkkm_type".$z.$i});
+array_push(${"kkm_production_column2".$z}, ${"systemkkm_tm_ther".$z.$i});
+array_push(${"kkm_production_column3".$z}, ${"systemkkm_F_h".$z.$i});
+array_push(${"kkm_production_column5".$z}, ${"systemkkm_R_h".$z.$i});
+array_push(${"kkm_production_column6".$z}, ${"systemkkm_Q_r_h".$z.$i});
+array_push(${"kkm_production_column7".$z}, ${"systemkkm_tm_psyx".$z.$i});
+array_push(${"kkm_production_column8".$z}, ${"systemkkm_F_c".$z.$i});
+array_push(${"kkm_production_column10".$z}, ${"systemkkm_R_c".$z.$i});
+array_push(${"kkm_production_column11".$z}, ${"systemkkm_Q_r_c".$z.$i});
+array_push(${"kkm_production_column12".$z}, ${"systemkkm_tm_ygr".$z.$i});
+array_push(${"kkm_production_column13".$z}, ${"systemkkm_H_r".$z.$i});
+array_push(${"kkm_production_column14".$z}, ${"systemkkm_filters".$z.$i});
+array_push(${"kkm_production_column15".$z}, ${"systemkkm_E_vent".$z.$i});
+}
+for ($i = 1; $i <= ${"systemlight_rows".$z}; $i++) {
+array_push(${"light_production_column1".$z}, ${"systemlight_isxys".$z.$i});
+array_push(${"light_production_column2".$z}, ${"systemlight_perioxi".$z.$i});
+array_push(${"light_production_column3".$z}, ${"systemlight_ayt_elegxoy".$z.$i});
+array_push(${"light_production_column4".$z}, ${"systemlight_ayt_kinisis".$z.$i});
+array_push(${"light_production_column6".$z}, ${"systemlight_thermotita".$z.$i});
+array_push(${"light_production_column7".$z}, ${"systemlight_asfaleia".$z.$i});
+array_push(${"light_production_column8".$z}, ${"systemlight_efedreia".$z.$i});
+}
+
+
+}
+
+//Μετατροπή από array σε τιμές χωρισμένες με κόμμα
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i=1;$i<=17;$i++){
 ${"heat_production_column".$i.$z} = implode(",", ${"heat_production_column".$i.$z});
 ${"cold_production_column".$i.$z} = implode(",", ${"cold_production_column".$i.$z});
 ${"znx_production_column".$i.$z} = implode(",", ${"znx_production_column".$i.$z});
+${"ygr_production_column".$i.$z} = implode(",", ${"ygr_production_column".$i.$z});
 }
+for ($i=1;$i<=16;$i++){
+${"kkm_production_column".$i.$z} = implode(",", ${"kkm_production_column".$i.$z});
+}
+for ($i=1;$i<=8;$i++){
+${"heat_distribution_column".$i.$z} = implode(",", ${"heat_distribution_column".$i.$z});
+${"cold_distribution_column".$i.$z} = implode(",", ${"cold_distribution_column".$i.$z});
+${"znx_distribution_column".$i.$z} = implode(",", ${"znx_distribution_column".$i.$z});
+${"ygr_distribution_column".$i.$z} = implode(",", ${"ygr_distribution_column".$i.$z});
+}
+for ($i=1;$i<=3;$i++){
+${"heat_termatic_column".$i.$z} = implode(",", ${"heat_termatic_column".$i.$z});
+${"cold_termatic_column".$i.$z} = implode(",", ${"cold_termatic_column".$i.$z});
+${"znx_termatic_column".$i.$z} = implode(",", ${"znx_termatic_column".$i.$z});
+${"ygr_termatic_column".$i.$z} = implode(",", ${"ygr_termatic_column".$i.$z});
+
+${"heat_auxiliary_column".$i.$z} = implode(",", ${"heat_auxiliary_column".$i.$z});
+${"cold_auxiliary_column".$i.$z} = implode(",", ${"cold_auxiliary_column".$i.$z});
+${"znx_auxiliary_column".$i.$z} = implode(",", ${"znx_auxiliary_column".$i.$z});
+}
+for ($i=1;$i<=8;$i++){
+${"light_production_column".$i.$z} = implode(",", ${"light_production_column".$i.$z});
+}
+
+
 }
 
 
@@ -815,7 +1182,7 @@ $xml .= '<ENR_IN>'.$br;
 			$xml .= '<blg_climate>'.($climate_data_id-1).'</blg_climate>'.$br;
 			$xml .= '<blg_datasource>0000000000</blg_datasource>'.$br;
 			$xml .= '<blg_licence_data>'.$pol_grafeio.','.$pol_year.','.$pol_number.','.$pol_year_complete.',,,,,,,,,,,,,</blg_licence_data>'.$br;
-			$xml .= '<version_tee_kenak_dll>1.28.1.73</version_tee_kenak_dll>'.$br;
+			$xml .= '<version_tee_kenak_dll>1.29.1.19</version_tee_kenak_dll>'.$br;
 	$xml .= '</EPA_NR_PROJECT>'.$br;	
 	
 	$xml .= '<LIBRARIES rid="#2">'.$br;
@@ -895,14 +1262,14 @@ for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 						$xml .= '<opaque_column14>'.${"array_adiafani_ffinh".$z}.',</opaque_column14>'.$br;
 						$xml .= '<opaque_column15>'.${"array_adiafani_ffinc".$z}.',</opaque_column15>'.$br;
 						$xml .= '<opaque_column16>,,,,,,,</opaque_column16>'.$br;
-						$xml .= '<ground_rows>1</ground_rows>'.$br;
-						$xml .= '<ground_column1>Δάπεδο,</ground_column1>'.$br;
-						$xml .= '<ground_column2>Δάπεδο επί εδάφους,</ground_column2>'.$br;
-						$xml .= '<ground_column3>'.$dapedo_embadon1.',</ground_column3>'.$br;
-						$xml .= '<ground_column4>'.$dapedo_u1.',</ground_column4>'.$br;
-						$xml .= '<ground_column5>0,</ground_column5>'.$br;
-						$xml .= '<ground_column6>0,</ground_column6>'.$br;
-						$xml .= '<ground_column7>'.$perimetros_dapedoy.',</ground_column7>'.$br;
+						$xml .= '<ground_rows>'.${"count_ground".$z}.'</ground_rows>'.$br;
+						$xml .= '<ground_column1>'.${"ground_column1".$z}.',</ground_column1>'.$br;
+						$xml .= '<ground_column2>'.${"ground_column2".$z}.',</ground_column2>'.$br;
+						$xml .= '<ground_column3>'.${"ground_column3".$z}.',</ground_column3>'.$br;
+						$xml .= '<ground_column4>'.${"ground_column4".$z}.',</ground_column4>'.$br;
+						$xml .= '<ground_column5>'.${"ground_column5".$z}.',</ground_column5>'.$br;
+						$xml .= '<ground_column6>'.${"ground_column6".$z}.',</ground_column6>'.$br;
+						$xml .= '<ground_column7>'.${"ground_column7".$z}.',</ground_column7>'.$br;
 						$xml .= '<ground_column8>,</ground_column8>'.$br;
 						$xml .= '<transparent_rows>'.${"count_diafani".$z}.'</transparent_rows>'.$br;
 						$xml .= '<transparent_column1>'.${"array_diafani_type".$z}.',</transparent_column1>'.$br;
@@ -990,8 +1357,8 @@ for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 $xml .= '<heating rid="1">'.$br.
 '<heating_exists>1</heating_exists>'.$br.
 '<production_rows>'.${"thermp_rows".$z}.'</production_rows>'.$br.
-'<production_column1>Λέβητας,</production_column1>'.$br.
-'<production_column2>Fuel oil,</production_column2>'.$br.
+'<production_column1>'.${"heat_production_column1".$z}.',</production_column1>'.$br.
+'<production_column2>'.${"heat_production_column2".$z}.',,</production_column2>'.$br.
 '<production_column3>'.${"heat_production_column3".$z}.',</production_column3>'.$br.
 '<production_column4>'.${"heat_production_column4".$z}.',</production_column4>'.$br.
 '<production_column5>'.${"heat_production_column5".$z}.',</production_column5>'.$br.
@@ -1008,23 +1375,23 @@ $xml .= '<heating rid="1">'.$br.
 '<production_column16>'.${"heat_production_column16".$z}.',</production_column16>'.$br.
 '<production_column17>'.${"heat_production_column17".$z}.',</production_column17>'.$br.
 '<production_column18>,</production_column18>'.$br.
-'<distribution_rows>2</distribution_rows>'.$br.
-'<distribution_column1>Δίκτυο διανομής θερμού μέσου,Αεραγωγοί,</distribution_column1>'.$br.
-'<distribution_column2>7,,</distribution_column2>'.$br.
-'<distribution_column3>Εσωτερικοί  ή έως και 20% σε εξωτερικούς,,</distribution_column3>'.$br.
-'<distribution_column4>85,,</distribution_column4>'.$br.
-'<distribution_column5>70,,</distribution_column5>'.$br.
-'<distribution_column6>0.915,,</distribution_column6>'.$br.
-'<distribution_column7>False,False,</distribution_column7>'.$br.
+'<distribution_rows>'.${"thermd_rows".$z}.'</distribution_rows>'.$br.
+'<distribution_column1>'.${"heat_distribution_column1".$z}.',</distribution_column1>'.$br.
+'<distribution_column2>'.${"heat_distribution_column2".$z}.',</distribution_column2>'.$br.
+'<distribution_column3>'.${"heat_distribution_column3".$z}.',</distribution_column3>'.$br.
+'<distribution_column4>,,</distribution_column4>'.$br.
+'<distribution_column5>,,</distribution_column5>'.$br.
+'<distribution_column6>'.${"heat_distribution_column6".$z}.',</distribution_column6>'.$br.
+'<distribution_column7>'.${"heat_distribution_column7".$z}.',</distribution_column7>'.$br.
 '<distribution_column8>,,</distribution_column8>'.$br.
 '<termatic_rows>1</termatic_rows>'.$br.
 '<termatic_column1>'.${"thermt_type".$z."1"}.',</termatic_column1>'.$br.
 '<termatic_column2>'.${"thermt_bathm".$z."1"}.',</termatic_column2>'.$br.
 '<termatic_column3>,</termatic_column3>'.$br.
-'<auxiliary_rows>1</auxiliary_rows>'.$br.
-'<auxiliary_column1>Κυκλοφορητές,</auxiliary_column1>'.$br.
-'<auxiliary_column2>1,</auxiliary_column2>'.$br.
-'<auxiliary_column3>0.50,</auxiliary_column3>'.$br.
+'<auxiliary_rows>'.${"thermb_rows".$z}.'</auxiliary_rows>'.$br.
+'<auxiliary_column1>'.${"heat_auxiliary_column1".$z}.',</auxiliary_column1>'.$br.
+'<auxiliary_column2>'.${"heat_auxiliary_column2".$z}.',</auxiliary_column2>'.$br.
+'<auxiliary_column3>'.${"heat_auxiliary_column3".$z}.',</auxiliary_column3>'.$br.
 '</heating>'.$br;
 
 
@@ -1032,8 +1399,8 @@ $xml .= '<heating rid="1">'.$br.
 $xml .= '<cooling rid="1">'.$br.
 '<cooling_exists>1</cooling_exists>'.$br.
 '<production_rows>'.${"coldp_rows".$z}.'</production_rows>'.$br.
-'<production_column1>Αερόψυκτος ψύκτης,</production_column1>'.$br.
-'<production_column2>Electricity,</production_column2>'.$br.
+'<production_column1>'.${"cold_production_column1".$z}.',</production_column1>'.$br.
+'<production_column2>'.${"cold_production_column2".$z}.',</production_column2>'.$br.
 '<production_column3>'.${"cold_production_column3".$z}.',</production_column3>'.$br.
 '<production_column4>'.${"cold_production_column4".$z}.',</production_column4>'.$br.
 '<production_column5>'.${"cold_production_column5".$z}.',</production_column5>'.$br.
@@ -1050,23 +1417,24 @@ $xml .= '<cooling rid="1">'.$br.
 '<production_column16>'.${"cold_production_column16".$z}.',</production_column16>'.$br.
 '<production_column17>'.${"cold_production_column17".$z}.',</production_column17>'.$br.
 '<production_column18>,</production_column18>'.$br.
-'<distribution_rows>2</distribution_rows>'.$br.
-'<distribution_column1>Δίκτυο διανομής ψυχρού μέσου,Αεραγωγοί,</distribution_column1>'.$br.
-'<distribution_column2>,,</distribution_column2>'.$br.
-'<distribution_column3>Εσωτερικοί  ή έως και 20% σε εξωτερικούς,,</distribution_column3>'.$br.
-'<distribution_column4>1,,</distribution_column4>'.$br.
-'<distribution_column5>False,False,</distribution_column5>'.$br.
+'<distribution_rows>'.${"coldd_rows".$z}.'</distribution_rows>'.$br.
+'<distribution_column1>'.${"cold_distribution_column1".$z}.',</distribution_column1>'.$br.
+'<distribution_column2>'.${"cold_distribution_column2".$z}.',</distribution_column2>'.$br.
+'<distribution_column3>'.${"cold_distribution_column3".$z}.',</distribution_column3>'.$br.
+'<distribution_column4>'.${"cold_distribution_column4".$z}.',</distribution_column4>'.$br.
+'<distribution_column5>'.${"cold_distribution_column5".$z}.',</distribution_column5>'.$br.
 '<distribution_column6>,,</distribution_column6>'.$br.
 '<termatic_rows>1</termatic_rows>'.$br.
 '<termatic_column1>'.${"coldt_type".$z."1"}.',</termatic_column1>'.$br.
 '<termatic_column2>'.${"coldt_bathm".$z."1"}.',</termatic_column2>'.$br.
 '<termatic_column3>,</termatic_column3>'.$br.
-'<auxiliary_rows>1</auxiliary_rows>'.$br.
-'<auxiliary_column1>,</auxiliary_column1>'.$br.
-'<auxiliary_column2>0,</auxiliary_column2>'.$br.
-'<auxiliary_column3>0,</auxiliary_column3>'.$br.
+'<auxiliary_rows>'.${"coldb_rows".$z}.'</auxiliary_rows>'.$br.
+'<auxiliary_column1>'.${"cold_auxiliary_column1".$z}.',</auxiliary_column1>'.$br.
+'<auxiliary_column2>'.${"cold_auxiliary_column2".$z}.',</auxiliary_column2>'.$br.
+'<auxiliary_column3>'.${"cold_auxiliary_column3".$z}.',</auxiliary_column3>'.$br.
 '</cooling>'.$br;
 
+if (${"ygrp_rows".$z}==0){ //Δεν υπάρχει ΥΓΡΑΝΣΗ
 $xml .= '<humidification rid="1">'.$br.
 '<humidification_exists/>'.$br.
 '<production_rows/>'.$br.
@@ -1097,8 +1465,42 @@ $xml .= '<humidification rid="1">'.$br.
 '<termatic_column2>,</termatic_column2>'.$br.
 '<termatic_column3>,</termatic_column3>'.$br.
 '</humidification>'.$br;
+}
+if (${"ygrp_rows".$z}>0){ //Yπάρχει ΥΓΡΑΝΣΗ
+$xml .= '<humidification rid="1">'.$br.
+'<humidification_exists>1</humidification_exists>'.$br.
+'<production_rows>'.${"ygrp_rows".$z}.'</production_rows>'.$br.
+'<production_column1>'.${"ygr_production_column1".$z}.',</production_column1>'.$br.
+'<production_column2>'.${"ygr_production_column2".$z}.',</production_column2>'.$br.
+'<production_column3>'.${"ygr_production_column3".$z}.',</production_column3>'.$br.
+'<production_column4>'.${"ygr_production_column4".$z}.',</production_column4>'.$br.
+'<production_column5>'.${"ygr_production_column5".$z}.',</production_column5>'.$br.
+'<production_column6>'.${"ygr_production_column6".$z}.',</production_column6>'.$br.
+'<production_column7>'.${"ygr_production_column7".$z}.',</production_column7>'.$br.
+'<production_column8>'.${"ygr_production_column8".$z}.',</production_column8>'.$br.
+'<production_column9>'.${"ygr_production_column9".$z}.',</production_column9>'.$br.
+'<production_column10>'.${"ygr_production_column10".$z}.',</production_column10>'.$br.
+'<production_column11>'.${"ygr_production_column11".$z}.',</production_column11>'.$br.
+'<production_column12>'.${"ygr_production_column12".$z}.',</production_column12>'.$br.
+'<production_column13>'.${"ygr_production_column13".$z}.',</production_column13>'.$br.
+'<production_column14>'.${"ygr_production_column14".$z}.',</production_column14>'.$br.
+'<production_column15>'.${"ygr_production_column15".$z}.',</production_column15>'.$br.
+'<production_column16>'.${"ygr_production_column16".$z}.',</production_column16>'.$br.
+'<production_column17>'.${"ygr_production_column17".$z}.',</production_column17>'.$br.
+'<distribution_rows>'.${"ygrd_rows".$z}.'</distribution_rows>'.$br.
+'<distribution_column1>'.${"ygr_distribution_column1".$z}.',</distribution_column1>'.$br.
+'<distribution_column2>'.${"ygr_distribution_column2".$z}.',</distribution_column2>'.$br.
+'<distribution_column3>'.${"ygr_distribution_column3".$z}.',</distribution_column3>'.$br.
+'<distribution_column4>,</distribution_column4>'.$br.
+'<termatic_rows>1</termatic_rows>'.$br.
+'<termatic_column1>'.${"ygrt_type".$z."1"}.',</termatic_column1>'.$br.
+'<termatic_column2>1,</termatic_column2>'.$br.
+'<termatic_column3>,</termatic_column3>'.$br.
+'</humidification>'.$br;
+}
 
 
+if (${"systemkkm_rows".$z}==0){ //Δεν υπάρχει ΚΚΜ
 $xml .= '<ahu rid="1">'.$br.
 '<ahu_exists/>'.$br.
 '<ahu_rows/>'.$br.
@@ -1119,13 +1521,35 @@ $xml .= '<ahu rid="1">'.$br.
 '<ahu_column15/>'.$br.
 '<ahu_column16/>'.$br.
 '</ahu>'.$br;
-
+}
+if (${"systemkkm_rows".$z}>0){ //Υπάρχει ΚΚΜ
+$xml .= '<ahu rid="1">'.$br.
+'<ahu_exists>1</ahu_exists>'.$br.
+'<ahu_rows>'.${"systemkkm_rows".$z}.'</ahu_rows>'.$br.
+'<ahu_column1>'.${"kkm_production_column1".$z}.',</ahu_column1>'.$br.
+'<ahu_column2>'.${"kkm_production_column2".$z}.',</ahu_column2>'.$br.
+'<ahu_column3>'.${"kkm_production_column3".$z}.',</ahu_column3>'.$br.
+'<ahu_column4>,</ahu_column4>'.$br.
+'<ahu_column5>'.${"kkm_production_column5".$z}.',</ahu_column5>'.$br.
+'<ahu_column6>'.${"kkm_production_column6".$z}.',</ahu_column6>'.$br.
+'<ahu_column7>'.${"kkm_production_column7".$z}.',</ahu_column7>'.$br.
+'<ahu_column8>'.${"kkm_production_column8".$z}.',</ahu_column8>'.$br.
+'<ahu_column9>,</ahu_column9>'.$br.
+'<ahu_column10>'.${"kkm_production_column10".$z}.',</ahu_column10>'.$br.
+'<ahu_column11>'.${"kkm_production_column11".$z}.',</ahu_column11>'.$br.
+'<ahu_column12>'.${"kkm_production_column12".$z}.',</ahu_column12>'.$br.
+'<ahu_column13>'.${"kkm_production_column13".$z}.',</ahu_column13>'.$br.
+'<ahu_column14>'.${"kkm_production_column14".$z}.',</ahu_column14>'.$br.
+'<ahu_column15>'.${"kkm_production_column15".$z}.',</ahu_column15>'.$br.
+'<ahu_column16>,</ahu_column16>'.$br.
+'</ahu>'.$br;
+}
 
 $xml .= '<dhw rid="1">'.$br.
 '<dhw_exists>1</dhw_exists>'.$br.
-'<production_rows>1</production_rows>'.$br.
-'<production_column1>Λέβητας,</production_column1>'.$br.
-'<production_column2>Fuel oil,</production_column2>'.$br.
+'<production_rows>'.${"znxp_rows".$z}.'</production_rows>'.$br.
+'<production_column1>'.${"znx_production_column1".$z}.',</production_column1>'.$br.
+'<production_column2>'.${"znx_production_column2".$z}.',</production_column2>'.$br.
 '<production_column3>'.${"znx_production_column3".$z}.',</production_column3>'.$br.
 '<production_column4>'.${"znx_production_column4".$z}.',</production_column4>'.$br.
 '<production_column5>'.${"znx_production_column5".$z}.',</production_column5>'.$br.
@@ -1141,22 +1565,42 @@ $xml .= '<dhw rid="1">'.$br.
 '<production_column15>'.${"znx_production_column15".$z}.',</production_column15>'.$br.
 '<production_column16>'.${"znx_production_column16".$z}.',</production_column16>'.$br.
 '<production_column17>,</production_column17>'.$br.
-'<distribution_rows>1</distribution_rows>'.$br.
-'<distribution_column1>,</distribution_column1>'.$br.
-'<distribution_column2>False,</distribution_column2>'.$br.
-'<distribution_column3>Εσωτερικοί  ή έως και 20% σε εξωτερικούς,</distribution_column3>'.$br.
-'<distribution_column4>1,</distribution_column4>'.$br.
+'<distribution_rows>'.${"znxd_rows".$z}.'</distribution_rows>'.$br.
+'<distribution_column1>'.${"znx_distribution_column1".$z}.',</distribution_column1>'.$br.
+'<distribution_column2>'.${"znx_distribution_column2".$z}.',</distribution_column2>'.$br.
+'<distribution_column3>'.${"znx_distribution_column3".$z}.',</distribution_column3>'.$br.
+'<distribution_column4>'.${"znx_distribution_column4".$z}.',</distribution_column4>'.$br.
 '<distribution_column5>,</distribution_column5>'.$br.
 '<termatic_rows>1</termatic_rows>'.$br.
 '<termatic_column1>'.${"znxa_type".$z."1"}.',</termatic_column1>'.$br.
 '<termatic_column2>'.${"znxa_bathm".$z."1"}.',</termatic_column2>'.$br.
 '<termatic_column3>,</termatic_column3>'.$br.
+'<auxiliary_rows>'.${"znxb_rows".$z}.'</auxiliary_rows>'.$br.
+'<auxiliary_column1>'.${"znx_auxiliary_column1".$z}.',</auxiliary_column1>'.$br.
+'<auxiliary_column2>'.${"znx_auxiliary_column2".$z}.',</auxiliary_column2>'.$br.
+'<auxiliary_column3>'.${"znx_auxiliary_column3".$z}.',</auxiliary_column3>'.$br.
 '</dhw>'.$br;
 
-
+if (${"znxiliakos_rows".$z}==0){ //Δεν υπάρχει ηλιακός
+$xml .= '<solar_collector rid="1">'.$br.
+'<solar_collector_exists></solar_collector_exists>'.$br.
+'<solar_collector_rows>1</solar_collector_rows>'.$br.
+'<solar_collector_column1>,</solar_collector_column1>'.$br.
+'<solar_collector_column2>,</solar_collector_column2>'.$br.
+'<solar_collector_column3>,</solar_collector_column3>'.$br.
+'<solar_collector_column4>,</solar_collector_column4>'.$br.
+'<solar_collector_column5>,</solar_collector_column5>'.$br.
+'<solar_collector_column6>,</solar_collector_column6>'.$br.
+'<solar_collector_column7>,</solar_collector_column7>'.$br.
+'<solar_collector_column8>,</solar_collector_column8>'.$br.
+'<solar_collector_column9>,</solar_collector_column9>'.$br.
+'<solar_collector_column10>,</solar_collector_column10>'.$br.
+'</solar_collector>'.$br;
+}
+if (${"znxiliakos_rows".$z}>0){ //Υπάρχει ηλιακός
 $xml .= '<solar_collector rid="1">'.$br.
 '<solar_collector_exists>1</solar_collector_exists>'.$br.
-'<solar_collector_rows>1</solar_collector_rows>'.$br.
+'<solar_collector_rows>'.${"znxiliakos_rows".$z}.'</solar_collector_rows>'.$br.
 '<solar_collector_column1>'.${"solar_collector_column1".$z}.',</solar_collector_column1>'.$br.
 '<solar_collector_column2>'.${"solar_collector_column2".$z}.',</solar_collector_column2>'.$br.
 '<solar_collector_column3>'.${"solar_collector_column3".$z}.',</solar_collector_column3>'.$br.
@@ -1168,9 +1612,10 @@ $xml .= '<solar_collector rid="1">'.$br.
 '<solar_collector_column9>'.${"iliakos_fs".$z}.',</solar_collector_column9>'.$br.
 '<solar_collector_column10>,</solar_collector_column10>'.$br.
 '</solar_collector>'.$br;
+}
 
 
-
+if (${"systemkkm_rows".$z}==0){ //Δεν υπάρχει σύστημα φωτισμού
 $xml .= '<lighting rid="1">'.$br.
 '<lighting_exists>0</lighting_exists>'.$br.
 '<lighting_parameter1/>'.$br.
@@ -1182,7 +1627,20 @@ $xml .= '<lighting rid="1">'.$br.
 '<lighting_parameter7/>'.$br.
 '<lighting_parameter8/>'.$br.
 '</lighting>'.$br;
-
+}
+if (${"systemkkm_rows".$z}>0){ //Υπάρχει σύστημα φωτισμού
+$xml .= '<lighting rid="1">'.$br.
+'<lighting_exists>1</lighting_exists>'.$br.
+'<lighting_parameter1>'.${"light_production_column1".$z}.',</lighting_parameter1>'.$br.
+'<lighting_parameter2>'.${"light_production_column2".$z}.',</lighting_parameter2>'.$br.
+'<lighting_parameter3>'.${"light_production_column3".$z}.',</lighting_parameter3>'.$br.
+'<lighting_parameter4>'.${"light_production_column4".$z}.',</lighting_parameter4>'.$br.
+'<lighting_parameter5>,</lighting_parameter5>'.$br.
+'<lighting_parameter6>'.${"light_production_column6".$z}.',</lighting_parameter6>'.$br.
+'<lighting_parameter7>'.${"light_production_column7".$z}.',</lighting_parameter7>'.$br.
+'<lighting_parameter8>'.${"light_production_column8".$z}.',</lighting_parameter8>'.$br.
+'</lighting>'.$br;
+}
 
 $xml .= '</SYSTEM>'.$br;
 $xml .= "</ZONE".$z.">".$br;

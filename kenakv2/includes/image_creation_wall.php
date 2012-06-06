@@ -117,7 +117,7 @@ $blue = ImageColorAllocate($im, 0, 0, 255);
 $grey = imagecolorallocate($im, 62, 62, 62);
 $magenda = imagecolorallocate($im, 174, 49, 194);
 $roz = imagecolorallocate($im, 103, 16, 81);
-$font = './arial.ttf';
+$font = './verdana.ttf';
 ImageFillToBorder($im, 0, 0, $black, $black);
 imagefilledrectangle ($im,1,1,$width-2,$height-2,$white);
 

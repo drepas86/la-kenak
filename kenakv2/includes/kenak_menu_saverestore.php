@@ -24,7 +24,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
 */
 ?>
-<?php	if ($sel_page["id"] == 9)	{
+<?php	if ($sel_page["id"] == 1)	{
 echo "<h2>ΚΕΝΑΚ - Αποθήκευση / Ανάκτηση μελέτης</h2>";
 ?>	
 
@@ -36,36 +36,42 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 }
 </script>
 
-Όνομα μελέτης : <input type="text" id="xmlname" /> (Σημ:χρησιμοποιήστε αγγλικούς χαρακτήρες)<br/>
-<img src="./images/style/xml.png"></img>
-<br/>
-<a class="iframe" href="./save-scripts/save-script-xml.php" id="xmlsavelink" title="" onclick=get_iframe();>Αποθήκευση τρέχουσας μελέτης σε αρχείο XML</a><br/>
-<a class="iframe" href="./save-scripts/get_files.php" title="" onclick=get_iframe();>Ανάκτηση/Διαγραφή μελέτης από αρχείο XML</a><br/>
-
+Όνομα μελέτης : <input type="text" id="xmlname" /> <font color="green">(Σημ:χρησιμοποιήστε αγγλικούς χαρακτήρες)</font><br/>
 <br/><br/>
-<img src="./images/style/xml-tee.png"></img>
-<br/>
-<a class="iframe" href="./xml/xml-tee_anazwni.php" id="teesavelink" title="" onclick=get_iframe();>Παραγωγή αρχείου XML-TEE</a><br/>
-<a class="iframe" href="./xml/excel-domika_anazwni.php" title="" onclick=get_iframe();>Προεπισκόπηση Δομικών στοιχείων σε EXCEL</a><br/>
+<table>
+<tr>
+<td align="center"><a class="iframe" href="./xml/xml-tee_anazwni.php" id="teesavelink" title="" onclick=get_iframe();>
+<img src="./images/style/xml-tee-kenak.png"></img><br/>Παραγωγή αρχείου<br/>XML-TEE<br/>για άνοιγμα στο ΤΕΕ-ΚΕΝΑΚ 1.29</a></td>
+<td align="center"><a class="iframe" href="./xml/excel-domika_anazwni.php" title="" onclick=get_iframe();>
+<img src="./images/style/xlsx.png"></img><br/>Προεπισκόπηση Δομικών<br/>στοιχείων σε XLSX</a></td>
+<td><a class="iframe" href="./save-scripts/save-script-xml.php" id="xmlsavelink" title="" onclick=get_iframe();>
+<img src="./images/style/xml-save.png"></img><br/>Αποθήκευση τρέχουσας <br/>μελέτης σε αρχείο XML</a></td>
+<td><a class="iframe" href="./save-scripts/get_files.php" title="" onclick=get_iframe();>
+<img src="./images/style/xml-open.png"></img><br/>Ανάκτηση/Διαγραφή  <br/>μελέτης από αρχείο XML</a></td>
+<td><a class="iframe" href="./save-scripts/save-script-sql.php" id="sqlsavelink" title="" onclick=get_iframe();>
+<img src="./images/style/sql-save.png"></img><br/>Αποθήκευση τρέχουσας <br/>μελέτης σε αρχείο SQL</a></td>
+<td><a class="iframe" href="./save-scripts/sql-import2.php" title="" onclick=get_iframe();>
+<img src="./images/style/sql-open.png"></img><br/>Ανάκτηση/Διαγραφή <br/>μελέτης από αρχείο SQL</a></td>
+</tr>
+</table>
 
-<br/><br/>
-<img src="./images/style/sql.png"></img>
-<br/>
-<a class="iframe" href="./save-scripts/save-script-sql.php" id="sqlsavelink" title="" onclick=get_iframe();>Αποθήκευση τρέχουσας μελέτης σε αρχείο SQL</a><br/>
-<a class="iframe" href="./save-scripts/sql-import2.php" title="" onclick=get_iframe();>Ανάκτηση/Διαγραφή μελέτης από αρχείο SQL</a><br/>
 <br/>
 <b>Προσοχή: Τα αρχεία XML τα οποία δημιουργούνται έχουν την εξής μορφή:</b> <br/>
 <ul>
   <li>lakenak-xml-onoma.xml για αποθήκευση-ανάκτηση μελέτης από το παρόν λογισμικό και βρίσκονται στο φάκελο /save-scripts. <br/>
 Το παρόν λογισμικό γνωρίζει την θέση τους και δεν χρειάζεται να τα αποθηκεύσετε σε άλλη διαδρομή εκτός της περίπτωσης<br/>
 αναβάθμισης σε νεότερη έκδοση. Το ίδιο ισχύει και για τα αρχεία sql. Ο τύπος του αρχείου (xml,sql) που θα επιλέξετε να αποθηκεύσετε<br/>
-τη μελέτη σας είναι καθαρά στην κρίση σας. Παρέχονται και οι 2 λύσεις αποθήκευσης.</li>
+τη μελέτη σας είναι καθαρά στην κρίση σας. Παρέχονται και οι 2 λύσεις αποθήκευσης.
+<ol><li>Υποστήριξη με προηγούμενες εκδόσεις παρέχεται συνεχώς για την μορφή sql. Αυτό πρακτικά σημαίνει πως σώζοντας την μελέτη σας
+σε μορφή sql με την έκδοση 2.7 μπορείτε να την ανοίξετε με την 2.8 και προφανώς να την "συμπληρώσετε" με όσες προσθήκες προέκυψαν.</li>
+<li>Η μορφή αποθήκευσης σε xml μπορεί να χρησιμοποιηθεί εαν το λογισμικό χρησιμοποιηθεί διαδικτυακά και όχι τοπικά.</li></ol></li>
   <li>tee-kenak-onoma.xml για είσοδο στο πρόγραμμα του ΤΕΕ-ΚΕΝΑΚ και βρίσκονται στο φάκελο /xml της διανομής.</li>
 </ul> 
 <br/>
 
+<font color="green">
 <b>Τα αρχεία με πρόθεμα tee-kenak-onoma.xml είναι τα μόνα που μπορείτε να προσθέσετε στο TEE-KENAK<br/>
-και σε αυτά σας δίνεται η δυνατότητα να τα κατεβάσετε/αποθηκεύσετε σε οποιαδήποτε θέση.</b>
+και σε αυτά σας δίνεται η δυνατότητα να τα κατεβάσετε/αποθηκεύσετε σε οποιαδήποτε θέση.</b></font>
 <script type="text/javascript">
     var linkxml= document.getElementById('xmlsavelink');
 	var linksql= document.getElementById('sqlsavelink');

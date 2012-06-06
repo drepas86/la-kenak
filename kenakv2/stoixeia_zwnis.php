@@ -39,7 +39,20 @@ include("includes/apotelesmata_mesi_kat_znx.php");
 include("includes/apotelesmata_dieisdysi.php");
 ?>	
 	
-		<?php	if ($sel_page["id"] == 1)	{ ?>
+<?php	if ($sel_page["id"] == 1)	{ ?>
+
+<script language="JavaScript">
+function get_active(){
+document.getElementById("tabvanilla").style.display="block";
+}
+</script>
+			
+<div id="tabvanilla" class="widget" style="display:none;">
+		<ul class="tabnav">  
+		<li><a href="#tab-znx">Υπολογισμός ΖΝΧ</a></li>
+		</ul>
+		
+		<div id="tab-znx" class="tabdiv">
 			<h2>Μέση κατανάλωση ΖΝΧ</h2>
 			<img src="images/style/znx.png"></img>
 			<form accept-charset="utf-8" action="stoixeia_zwnis.php" method="post">
@@ -56,10 +69,26 @@ include("includes/apotelesmata_dieisdysi.php");
 						</tr>
 					</table>
 					</form>
-					
-			<?php } ?>
+		</div>
+</div>		
+<?php } ?>
+
+
 		
 		<?php	if ($sel_page["id"] == 2)	{ ?>
+		
+<script language="JavaScript">
+function get_active(){
+document.getElementById("tabvanilla").style.display="block";
+}
+</script>
+			
+<div id="tabvanilla" class="widget" style="display:none;">
+		<ul class="tabnav">  
+		<li><a href="#tab-aerismos">Διείσδυση αέρα</a></li>
+		</ul>
+		
+		<div id="tab-znx" class="tabdiv">
 			<h2>Διείσδυση αέρα από κουφώματα</h2>
 			<img src="images/style/window1.png"></img>
 			<form action="stoixeia_zwnis.php" method="post">
@@ -126,7 +155,11 @@ include("includes/apotelesmata_dieisdysi.php");
 					<br/>
 					Για τα μερικώς ανοιγόμενα κουφώματα των γυάλινων προσόψεων (π.χ. με προβαλλόμενα τμήματα)
 					λαμβάνεται υπόψη μόνο το μη σταθερό τμήμα, ανάλογα προς τις παραπάνω κατηγορίες αυτού του πίνακα. (Παρ. 3.4.2 ΤΟΤΕΕ-20701-1.2nd edition)
-					<?php } ?>
+					
+		</div>
+</div>
+	<?php } ?>
+	
 		</td>
 	</tr>
 </table>

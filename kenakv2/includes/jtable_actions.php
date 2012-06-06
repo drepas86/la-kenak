@@ -109,7 +109,12 @@ try
 		}
 		//Update record in database
 		$result = mysql_query("UPDATE ".$pinakas." SET ".$query_update." WHERE id = " . $_POST["id"] . ";");
-
+		
+		/*
+		$handle = fopen('jtable_log.txt','w+');
+		fwrite($handle,"<br/>" . "UPDATE ".$pinakas." SET ".$query_update." WHERE id = " . $_POST["id"] . ";");
+		*/
+		
 		//Return result to jTable
 		$jTableResult = array();
 		$jTableResult['Result'] = "OK";

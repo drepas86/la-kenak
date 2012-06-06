@@ -232,8 +232,8 @@ for ($i=1;$i<=${"thermp_rows".$z};$i++){
 		if (${"thermp_type".$z.$i} == 4){$thermp_type="Γεωθερμική Α.Θ. με οριζόντιο εναλλάκτη";}
 		if (${"thermp_type".$z.$i} == 5){$thermp_type="Γεωθερμική Α.Θ. με κατακόρυφο εναλλάκτη";}
 		if (${"thermp_type".$z.$i} == 6){$thermp_type="Κεντρική άλλου τύπου Α.Θ.";}
-		if (${"thermp_type".$z.$i} == 7){$thermp_type="Τοπικές ηλεκτρικές μονάδες";}
-		if (${"thermp_type".$z.$i} == 8){$thermp_type="Τοπικές μονάδες αερίου";}
+		if (${"thermp_type".$z.$i} == 7){$thermp_type="Τοπικές ηλεκτρικές μονάδες (καλοριφέρ ή θερμοπομποί ή άλλο)";}
+		if (${"thermp_type".$z.$i} == 8){$thermp_type="Τοπικές μονάδες αερίου ή υγρού καυσίμου";}
 		if (${"thermp_type".$z.$i} == 9){$thermp_type="Ανοικτές εστίες καύσης";}
 		if (${"thermp_type".$z.$i} == 10){$thermp_type="Τηλεθέρμανση";}
 		if (${"thermp_type".$z.$i} == 11){$thermp_type="ΣΗΘ";}
@@ -244,8 +244,20 @@ for ($i=1;$i<=${"thermp_rows".$z};$i++){
 		if (${"thermp_pigienergy".$z.$i} == 2){$thermp_pigi="Ηλεκτρισμός";}
 		if (${"thermp_pigienergy".$z.$i} == 3){$thermp_pigi="Πετρέλαιο θέρμανσης";}
 		if (${"thermp_pigienergy".$z.$i} == 4){$thermp_pigi="Πετρέλαιο κίνησης";}
-		if (${"thermp_pigienergy".$z.$i} == 5){$thermp_pigi="Τηλεθέρμανση";}
-		if (${"thermp_pigienergy".$z.$i} == 6){$thermp_pigi="Βιομάζα";}
+		if (${"thermp_pigienergy".$z.$i} == 5){$thermp_pigi="Τηλεθέρμανση (ΔΕΗ)";}
+		if (${"thermp_pigienergy".$z.$i} == 6){$thermp_pigi="Τηλεθέρμανση (ΑΠΕ)";}
+		if (${"thermp_pigienergy".$z.$i} == 7){$thermp_pigi="Βιομάζα";}
+		if (${"thermp_pigienergy".$z.$i} == 8){$thermp_pigi="Βιομάζα τυποποιημένη";}
+		if (${"thermp_pigienergy".$z.$i} == 9){$thermp_pigi="ΣΗΘ1";}
+		if (${"thermp_pigienergy".$z.$i} == 10){$thermp_pigi="ΣΗΘ2";}
+		if (${"thermp_pigienergy".$z.$i} == 11){$thermp_pigi="ΣΗΘ3";}
+		if (${"thermp_pigienergy".$z.$i} == 12){$thermp_pigi="ΣΗΘ4";}
+		if (${"thermp_pigienergy".$z.$i} == 13){$thermp_pigi="ΣΗΘ5";}
+		if (${"thermp_pigienergy".$z.$i} == 14){$thermp_pigi="ΣΗΘ6";}
+		if (${"thermp_pigienergy".$z.$i} == 15){$thermp_pigi="ΣΗΘ7";}
+		if (${"thermp_pigienergy".$z.$i} == 16){$thermp_pigi="ΣΗΘ8";}
+		if (${"thermp_pigienergy".$z.$i} == 17){$thermp_pigi="ΣΗΘ9";}
+		if (${"thermp_pigienergy".$z.$i} == 18){$thermp_pigi="ΣΗΘ10";}
 $pin9 .= "<tr><td style=\"text-align:left;width:50%;\">Είδος μονάδας παραγωγής θερμότητας</td>".
 "<td style=\"text-align:center;width:50%;\">$thermp_type</td></tr><tr>".
 "<td style=\"text-align:left;\">Ισχύς</td>".
@@ -340,8 +352,20 @@ for ($i=1;$i<=${"coldp_rows".$z};$i++){
 		if (${"coldp_pigienergy".$z.$i} == 2){$coldp_pigi="Ηλεκτρισμός";}
 		if (${"coldp_pigienergy".$z.$i} == 3){$coldp_pigi="Πετρέλαιο θέρμανσης";}
 		if (${"coldp_pigienergy".$z.$i} == 4){$coldp_pigi="Πετρέλαιο κίνησης";}
-		if (${"coldp_pigienergy".$z.$i} == 5){$coldp_pigi="Τηλεθέρμανση";}
-		if (${"coldp_pigienergy".$z.$i} == 6){$coldp_pigi="Βιομάζα";}
+		if (${"coldp_pigienergy".$z.$i} == 5){$coldp_pigi="Τηλεθέρμανση (ΔΕΗ)";}
+		if (${"coldp_pigienergy".$z.$i} == 6){$coldp_pigi="Τηλεθέρμανση (ΑΠΕ)";}
+		if (${"coldp_pigienergy".$z.$i} == 7){$coldp_pigi="Βιομάζα";}
+		if (${"coldp_pigienergy".$z.$i} == 8){$coldp_pigi="Βιομάζα τυποποιημένη";}
+		if (${"coldp_pigienergy".$z.$i} == 9){$coldp_pigi="ΣΗΘ1";}
+		if (${"coldp_pigienergy".$z.$i} == 10){$coldp_pigi="ΣΗΘ2";}
+		if (${"coldp_pigienergy".$z.$i} == 11){$coldp_pigi="ΣΗΘ3";}
+		if (${"coldp_pigienergy".$z.$i} == 12){$coldp_pigi="ΣΗΘ4";}
+		if (${"coldp_pigienergy".$z.$i} == 13){$coldp_pigi="ΣΗΘ5";}
+		if (${"coldp_pigienergy".$z.$i} == 14){$coldp_pigi="ΣΗΘ6";}
+		if (${"coldp_pigienergy".$z.$i} == 15){$coldp_pigi="ΣΗΘ7";}
+		if (${"coldp_pigienergy".$z.$i} == 16){$coldp_pigi="ΣΗΘ8";}
+		if (${"coldp_pigienergy".$z.$i} == 17){$coldp_pigi="ΣΗΘ9";}
+		if (${"coldp_pigienergy".$z.$i} == 18){$coldp_pigi="ΣΗΘ10";}
 $pin10 .= "<tr><td style=\"text-align:left;width:50%;\">Είδος μονάδας παραγωγής ψύξης</td>".
 "<td style=\"text-align:center;width:50%;\">$coldp_type</td></tr>".
 "<tr><td style=\"text-align:left;\">Ισχύς</td>".
@@ -450,8 +474,20 @@ for ($i=1;$i<=${"znxp_rows".$z};$i++){
 		if (${"znxp_pigienergy".$z.$i} == 2){$znxp_pigi="Ηλεκτρισμός";}
 		if (${"znxp_pigienergy".$z.$i} == 3){$znxp_pigi="Πετρέλαιο θέρμανσης";}
 		if (${"znxp_pigienergy".$z.$i} == 4){$znxp_pigi="Πετρέλαιο κίνησης";}
-		if (${"znxp_pigienergy".$z.$i} == 5){$znxp_pigi="Τηλεθέρμανση";}
-		if (${"znxp_pigienergy".$z.$i} == 6){$znxp_pigi="Βιομάζα";}
+		if (${"znxp_pigienergy".$z.$i} == 5){$znxp_pigi="Τηλεθέρμανση (ΔΕΗ)";}
+		if (${"znxp_pigienergy".$z.$i} == 6){$znxp_pigi="Τηλεθέρμανση (ΑΠΕ)";}
+		if (${"znxp_pigienergy".$z.$i} == 7){$znxp_pigi="Βιομάζα";}
+		if (${"znxp_pigienergy".$z.$i} == 8){$znxp_pigi="Βιομάζα τυποποιημένη";}
+		if (${"znxp_pigienergy".$z.$i} == 9){$znxp_pigi="ΣΗΘ1";}
+		if (${"znxp_pigienergy".$z.$i} == 10){$znxp_pigi="ΣΗΘ2";}
+		if (${"znxp_pigienergy".$z.$i} == 11){$znxp_pigi="ΣΗΘ3";}
+		if (${"znxp_pigienergy".$z.$i} == 12){$znxp_pigi="ΣΗΘ4";}
+		if (${"znxp_pigienergy".$z.$i} == 13){$znxp_pigi="ΣΗΘ5";}
+		if (${"znxp_pigienergy".$z.$i} == 14){$znxp_pigi="ΣΗΘ6";}
+		if (${"znxp_pigienergy".$z.$i} == 15){$znxp_pigi="ΣΗΘ7";}
+		if (${"znxp_pigienergy".$z.$i} == 16){$znxp_pigi="ΣΗΘ8";}
+		if (${"znxp_pigienergy".$z.$i} == 17){$znxp_pigi="ΣΗΘ9";}
+		if (${"znxp_pigienergy".$z.$i} == 18){$znxp_pigi="ΣΗΘ10";}
 $pin68 .= "<tr><td style=\"text-align:left;width:50%;\">Είδος μονάδας παραγωγής ZNX</td>".
 "<td style=\"text-align:center;width:50%;\">$znxp_type</td></tr><tr>".
 "<td style=\"text-align:left;\">Θερμική απόδοση μονάδας</td>".
@@ -530,9 +566,9 @@ $pin69 .= "<tr><td style=\"text-align:left;width:50%;\">Είδος ηλιακο�
 "<td style=\"text-align:left;width:50%;\">Εμβαδόν επιφάνεια ηλιακών συλλεκτών (m²)</td>".
 "<td style=\"text-align:center;width:50%;\">${"znxiliakos_epifaneia".$z.$i}</td></tr><tr>".
 "<td style=\"text-align:left;width:50%;\">Κλίση τοποθέτησης ηλιακών συλλεκτών(º)</td>".
-"<td style=\"text-align:center;width:50%;\">${"znxiliakos_gdeg".$z.$i}</td></tr><tr>".
-"<td style=\"text-align:left;width:50%;\">Προσανατολισμός ηλιακών συλλεκτών (º)</td>".
 "<td style=\"text-align:center;width:50%;\">${"znxiliakos_bdeg".$z.$i}</td></tr><tr>".
+"<td style=\"text-align:left;width:50%;\">Προσανατολισμός ηλιακών συλλεκτών (º)</td>".
+"<td style=\"text-align:center;width:50%;\">${"znxiliakos_gdeg".$z.$i}</td></tr><tr>".
 "<td style=\"text-align:left;width:50%;\">Συντελεστής σκίασης F-s</td>".
 "<td style=\"text-align:center;width:50%;\">${"znxiliakos_fs".$z.$i}</td></tr>";
 }
@@ -694,15 +730,30 @@ $f1 .= "<tr><td style=\"text-align:left;\"><b>Ζώνη $z</b></td>".
 $f1 .= "</table>";
 //*********************************************************************************************
 $f2 = "<table>".
-"<tr><td style=\"text-align:left;width:25%;\"><b>Είδος</b></td>".
-"<td style=\"text-align:center;width:15%;\"><b>Εμβαδόν</b></td>".
-"<td style=\"text-align:center;width:15%;\"><b>U</b></td>".
+"<tr><td style=\"text-align:left;width:20%;\"><b>Είδος</b></td>".
+"<td style=\"text-align:center;width:10%;\"><b>Εμβαδόν</b></td>".
+"<td style=\"text-align:center;width:10%;\"><b>U</b></td>".
+"<td style=\"text-align:center;width:15%;\"><b>b</b></td>".
+"<td style=\"text-align:center;width:15%;\"><b>Κατ. Βάθος</b></td>".
+"<td style=\"text-align:center;width:15%;\"><b>Περίμετρος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>UxA</b></td></tr>";
 for($i = 1; $i <= $rows_dapedo; $i++) {
 $f2 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
 "<td style=\"text-align:center;\">${"dapedo_emvadon".$i}</td>".
 "<td style=\"text-align:center;\">${"dapedo_u".$i}</td>".
+"<td style=\"text-align:center;\">${"dapedo_b".$i}</td>".
+"<td style=\"text-align:center;\">${"dapedo_bathos".$i}</td>".
+"<td style=\"text-align:center;\">${"dapedo_perimetros".$i}</td>".
 "<td style=\"text-align:center;\">${"dapedo_ua".$i}</td></tr>";
+}
+for($i = 1; $i <= $rows_orofes; $i++) {
+$f2 .= "<tr><td style=\"text-align:left;\">${"orofes_name".$i}</td>".
+"<td style=\"text-align:center;\">${"orofes_emvadon".$i}</td>".
+"<td style=\"text-align:center;\">${"orofes_u".$i}</td>".
+"<td style=\"text-align:center;\">${"orofes_b".$i}</td>".
+"<td style=\"text-align:center;\"></td>".
+"<td style=\"text-align:center;\"></td>".
+"<td style=\"text-align:center;\">${"orofes_ua".$i}</td></tr>";
 }
 $f2 .= "</table>";
 //*********************************************************************************************
@@ -726,11 +777,11 @@ $f3 .= "<tr><td style=\"text-align:left;\">${"thermo_eksw_drop".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_ua".$i}</td></tr>";
 }
-$f3 .= "<tr><td style=\"text-align:left;\">Δαπέδου (υπολογισμός με βάση την περίμετρο)</td>".
+$f3 .= "<tr><td style=\"text-align:left;\"></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
 "<td style=\"text-align:center;\"></td>".
-"<td style=\"text-align:center;\">$thermo_dapedo_drop</td></tr>";
+"<td style=\"text-align:center;\"></td></tr>";
 $f3 .= "</table>";
 //*********************************************************************************************
 for ($p=4;$p<=7;$p++){
@@ -1067,7 +1118,7 @@ $f14 .= "</td></tr></table><br/>";
 
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 if ($check_thermzwnes[$z] == 1){
-$f14 .= "Έλεγχος Pgen<table><tr><td>Ζώνη $z</td></tr>
+$f14 .= "Έλεγχος Pgen<br/><br/><table><tr><td>Ζώνη $z</td></tr>
 <tr><td>Μετά τον έλεγχο της θερμομονωτικής επάρκειας βρέθηκε P<sub>gen</sub>=A*U<sub>m</sub>*ΔΤ*2,5=".number_format(${"pgen".$z},2,".",",")." KW<br/>";
 if (${"pgen".$z} <20) { $f14 .= "Βρέθηκε τιμή μικρότερη των 20KW επομένως Pgen=20KW σύμφωνα με την παρ. 4.2.1.1 της ΤΟΤΕΕ-20701-1.2nd edition";}
 $f14 .= "</td></tr></table><br/>";
