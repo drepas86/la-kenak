@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Φιλοξενητής: localhost
--- Χρόνος δημιουργίας: 06 Ιουν 2012 στις 18:32:21
+-- Χρόνος δημιουργίας: 06 Ιουν 2012 στις 21:50:24
 -- Έκδοση Διακομιστή: 5.5.16
 -- Έκδοση PHP: 5.3.8
 
@@ -4138,7 +4138,7 @@ CREATE TABLE IF NOT EXISTS `kataskeyi_xsystems_ygrd` (
   `xwros` int(11) NOT NULL,
   `bathm` decimal(5,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -4167,7 +4167,7 @@ CREATE TABLE IF NOT EXISTS `kataskeyi_xsystems_ygrp` (
   `nov` decimal(5,2) NOT NULL,
   `decem` decimal(5,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -4182,7 +4182,7 @@ CREATE TABLE IF NOT EXISTS `kataskeyi_xsystems_ygrt` (
   `type` varchar(256) NOT NULL,
   `bathm` decimal(5,2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -4362,7 +4362,7 @@ CREATE TABLE IF NOT EXISTS `kataskeyi_zwnes` (
   `name` varchar(256) NOT NULL,
   `xrisi` int(11) NOT NULL,
   `thermoeparkeia` int(11) NOT NULL,
-  `klines` int(11) NOT NULL,
+  `klines` decimal(5,2) NOT NULL,
   `anigmeni_thermo` int(11) NOT NULL,
   `aytomatismoi` int(11) NOT NULL,
   `kaminades` int(11) NOT NULL,
@@ -4376,8 +4376,8 @@ CREATE TABLE IF NOT EXISTS `kataskeyi_zwnes` (
 --
 
 INSERT INTO `kataskeyi_zwnes` (`id`, `name`, `xrisi`, `thermoeparkeia`, `klines`, `anigmeni_thermo`, `aytomatismoi`, `kaminades`, `eksaerismos`, `anem_orofis`) VALUES
-(1, 'Ζώνη 1', 1, 1, 5, 165, 0, 0, 0, 0),
-(2, 'Ζώνη 2', 1, 0, 0, 165, 0, 0, 0, 0);
+(1, 'Ζώνη 1', 1, 1, 5.00, 165, 0, 0, 0, 0),
+(2, 'Ζώνη 2', 1, 0, 0.00, 165, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
