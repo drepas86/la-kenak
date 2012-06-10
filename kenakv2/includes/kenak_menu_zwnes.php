@@ -113,6 +113,10 @@ function get_thermo_eksg(){
 $(".eksg").colorbox({rel:'eksg'});
 }
 
+function iframe_ground(){
+$(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
+}
+
 </script>
 		
 <div id="tabvanilla" class="widget" style="display:none;">
@@ -196,7 +200,7 @@ $(".eksg").colorbox({rel:'eksg'});
 		type: {title: 'Τύπος',width: '20%',listClass: 'center', options: {'0':'Δάπεδο επί εδάφους','1':'Δάπεδο σε Μ.Θ.Χ.','2':'Δάπεδο σε πυλωτή'}},
 		name: {title: 'Όνομα',width: '20%',listClass: 'center'},
 		emvadon: {title: 'Εμβαδόν',width: '20%',listClass: 'center'},
-		u: {title: 'U',width: '20%',listClass: 'center'},
+		u: {title: 'U (ισοδ. συντ.) <a class=\"iframe\" href=\"./domika_kelyfos.php?page=3&min=1\" onclick=iframe_ground();><img src=\"./images/style/help.png\" /></a>',width: '20%',listClass: 'center'},
 		b: {title: 'Μειωτικός συντελεστής',width: '20%',listClass: 'center', options: {'1.0':'b=1','0.5':'b=0.5'}},
 		bathos: {title: 'Κατώτερο βάθος',width: '20%',listClass: 'center'},
 		perimetros: {title: 'Περίμετρος',width: '20%',listClass: 'center'}
@@ -215,7 +219,7 @@ $(".eksg").colorbox({rel:'eksg'});
 		type: {title: 'Τύπος',width: '20%',listClass: 'center', options: {'0':'Κεκλιμένη στέγη','1':'Οροφή πλάκα'}},
 		name: {title: 'Όνομα',width: '20%',listClass: 'center'},
 		emvadon: {title: 'Εμβαδόν',width: '20%',listClass: 'center'},
-		u: {title: 'U',width: '20%',listClass: 'center'},
+		u: {title: 'U (ισοδ. συντ.) <a class=\"iframe\" href=\"./domika_kelyfos.php?page=3&min=1\" onclick=iframe_ground();><img src=\"./images/style/help.png\" /></a>',width: '20%',listClass: 'center'},
 		b: {title: 'Μειωτικός συντελεστής',width: '20%',listClass: 'center', options: {'1.0':'b=1','0.5':'b=0.5'}},
 		f_hor_h: {title: 'f_hor_h',width: '20%',listClass: 'center'},
 		f_hor_c: {title: 'f_hor_c',width: '20%',listClass: 'center'},

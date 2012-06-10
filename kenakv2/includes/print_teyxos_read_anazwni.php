@@ -165,7 +165,7 @@ for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 $pin8 .= "<table>";
 $pin8 .= "<tr><td colspan=\"2\">Ζώνη $z</td></tr>";
 $pin8 .= "<tr><td style=\"text-align:left;width:40%;\">Παράμετρος</td>".
-		 "<td style=\"text-align:center;width:15%;\">Τιμή</td></tr><tr>".
+		 "<td style=\"text-align:center;width:60%;\">Τιμή</td></tr><tr>".
          "<td style=\"text-align:left;\">Κατηγορία</td>".
 		 "<td style=\"text-align:center;\">".${"array_leitoyrgias".$z}[0][1]."</td></tr><tr>".
          "<td style=\"text-align:left;\">Χρήση</td>".
@@ -215,7 +215,8 @@ $pin8 .= "<tr><td style=\"text-align:left;width:40%;\">Παράμετρος</td>
          "<td style=\"text-align:left;\">Μέσος συντ. ετεροχρ.</td>".
 		 "<td style=\"text-align:center;\">".${"array_leitoyrgias".$z}[0][24]."</td></tr><tr>".
          "<td style=\"text-align:left;\">Ετεροχρ. ισχύς εξοπλ.</td>".
-		 "<td style=\"text-align:center;\">".${"array_leitoyrgias".$z}[0][25]."</td></tr></table>";
+		 "<td style=\"text-align:center;\">".${"array_leitoyrgias".$z}[0][25]."</td></tr></table>
+		 <p style=\"page-break-before:always;\">&nbsp;</p>";
 }
 //*********************************************************************************************
 $pin9 = "";
@@ -458,7 +459,7 @@ for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 if (isset(${"znxp_type".$z."1"})){
 
 $pin68 .= "<table>";
-$pin68 .= "<tr><td style=\"text-align:left;width:40%;\">Ζώνη $z</td></tr>";
+$pin68 .= "<tr><td colspan=\"2\">Ζώνη $z</td></tr>";
 $pin68 .= "<tr><td style=\"text-align:left;width:50%;\">ΜΟΝΑΔΕΣ ΠΑΡΑΓΩΓΗΣ</td><td></td></tr>";
 
 for ($i=1;$i<=${"znxp_rows".$z};$i++){
@@ -1099,12 +1100,18 @@ $f13 .= "<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/PDF/znxcha
 $f14 = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 
+${"dieisdysi_aera_kam".$z}=${"kaminades".$z}*20;
+${"dieisdysi_aera_thyr".$z}=${"eksaerismos".$z}*10;
+${"dieisdysi_aera_syn".$z}=${"dieisdysi_aera_kam".$z}+${"dieisdysi_aera_thyr".$z}+${"dieisdysi_aera".$z};
 $f14 .= "<table>";
 $f14 .= "<tr><td>Ζώνη $z</td></tr>";
 $f14 .= "<tr><td>Η συνολική διείσδυση αέρα από κουφώματα είναι: ". number_format(${"dieisdysi_aera".$z},3,".",",") . " m³/h<br/>".
+"Η συνολική διείσδυση αέρα από καμινάδες είναι: ". number_format(${"dieisdysi_aera_kam".$z},3,".",",") . " m³/h<br/>".
+"Η συνολική διείσδυση αέρα από θυρίδες εξ. είναι: ". number_format(${"dieisdysi_aera_thyr".$z},3,".",",") . " m³/h<br/>".
+"Η συνολική διείσδυση αέρα είναι: ". number_format(${"dieisdysi_aera_syn".$z},3,".",",") . " m³/h<br/>".
 "Η απαιτούμενη διείσδυση αέρα είναι: " . number_format(${"apaitoymeni_dieisdysi_aera".$z},3,".",",") . " m³/h<br/>";
 if ($check_thermzwnes[$z] == 1){
-	if (${"apaitoymeni_dieisdysi_aera".$z} <= ${"dieisdysi_aera".$z}){
+	if (${"apaitoymeni_dieisdysi_aera".$z} <= ${"dieisdysi_aera_syn".$z}){
 	$f14 .="Η απαίτηση ικανοποιείται.";
 	}else{
 	$f14 .="ΔΕΝ ικανοποιείται η απαίτηση.";
@@ -1209,6 +1216,126 @@ ${"toixoi".$tab}.="</tr></table>";
 */
 }
 
+//ΦΩΤΙΣΜΟΣ
+$pinfwtismos = "";
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+if (${"systemlight_rows".$z}==0){
+$pinfwtismos .= "<table>";
+$pinfwtismos .= "<tr><td>Ζώνη $z</td></tr>";
+$pinfwtismos .= "<tr><td>Τα φωτιστικά που θα χρησιμοποιηθούν για τους χώρους για χρήση ". ${"array_leitoyrgias".$z}[0][2].
+" και για τους κοινόχρηστους θερμαινόμενους  και μη χώρους, δεν λαμβάνονται υπ’ όψη στους υπολογισμούς.</td></tr>";	
+$pinfwtismos .= "</table><br/>";
+}
+	for ($i=1;$i<=${"systemlight_rows".$z};$i++){
+		if (isset(${"systemlight_id_zwnis".$z.$i})){
+		
+		if (${"systemlight_ayt_elegxoy".$z.$i}==1){${"systemlight_ayt_elegxoy".$z.$i}="Αυτόματος";}
+		if (${"systemlight_ayt_elegxoy".$z.$i}==2){${"systemlight_ayt_elegxoy".$z.$i}="Χειροκίνητος";}
+		
+		if (${"systemlight_ayt_kinisis".$z.$i}==0){${"systemlight_ayt_kinisis".$z.$i}="Χειροκίνητος διακόπτης (αφής/σβέσης)";}
+		if (${"systemlight_ayt_kinisis".$z.$i}==1){${"systemlight_ayt_kinisis".$z.$i}="Χειροκίνητος διακόπτης (αφής/σβέσης) και αισθητήρας παρουσίας";}
+		if (${"systemlight_ayt_kinisis".$z.$i}==2){${"systemlight_ayt_kinisis".$z.$i}="Ανίχνευση με αυτόματη έναυση / ρύθμιση φωτεινής ροής (dimming)";}
+		if (${"systemlight_ayt_kinisis".$z.$i}==3){${"systemlight_ayt_kinisis".$z.$i}="Ανίχνευση με αυτόματo έναυση και σβέση";}
+		if (${"systemlight_ayt_kinisis".$z.$i}==4){${"systemlight_ayt_kinisis".$z.$i}="Ανίχνευση με χειροκίνητη έναυση / ρύθμιση φωτεινής ροής (dimming)";}
+		if (${"systemlight_ayt_kinisis".$z.$i}==5){${"systemlight_ayt_kinisis".$z.$i}="Ανίχνευση με χειροκίνητη έναυση / αυτόματη σβέση";}
+		
+		if (${"systemlight_thermotita".$z.$i}==0){${"systemlight_thermotita".$z.$i}="OXI";}
+		if (${"systemlight_thermotita".$z.$i}==1){${"systemlight_thermotita".$z.$i}="NAI";}
+		
+		if (${"systemlight_asfaleia".$z.$i}==0){${"systemlight_asfaleia".$z.$i}="OXI";}
+		if (${"systemlight_asfaleia".$z.$i}==1){${"systemlight_asfaleia".$z.$i}="NAI";}
+		
+		if (${"systemlight_efedreia".$z.$i}==0){${"systemlight_efedreia".$z.$i}="OXI";}
+		if (${"systemlight_efedreia".$z.$i}==1){${"systemlight_efedreia".$z.$i}="NAI";}
+		
+		$pinfwtismos .= "<table>";
+		$pinfwtismos .= "<tr><td colspan=\"2\">Ζώνη $z</td></tr>";
+		$pinfwtismos .= "<tr><td colspan=\"2\"> Η κατανάλωση ενέργειας για φωτισμό 
+		θα υπολογισθεί και θα συμπεριληφθεί στην τελική κατανάλωση πρωτογενούς ενέργειας 
+		για την ενεργειακή πιστοποίηση του τμήματος της ζώνης του κτηρίου</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;width:40%;\">Παράμετρος</td>".
+		"<td style=\"text-align:center;width:60%;\">Τιμή</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Χρήση ζώνης</td>".
+		"<td style=\"text-align:center;\">".${"array_leitoyrgias".$z}[0][2]."</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Στάθμη φωτισμού (lux)</td>".
+		"<td style=\"text-align:center;\">".${"array_leitoyrgias".$z}[0][13]."</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Ισχύς (kW)</td>".
+		"<td style=\"text-align:center;\">".${"systemlight_isxys".$z.$i}."</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Περιοχή ΦΦ(%)</td>".
+		"<td style=\"text-align:center;\">".${"systemlight_perioxi".$z.$i}."</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Αυτοματισμοί ελέγχου ΦΦ </td>".
+		"<td style=\"text-align:center;\">".${"systemlight_ayt_elegxoy".$z.$i}."</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Αυτοματισμοί ανίχνευσης κίνησης</td>".
+		"<td style=\"text-align:center;\">".${"systemlight_ayt_kinisis".$z.$i}."</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Σύστημα απομάκρυνσης θερμότητας</td>".
+		"<td style=\"text-align:center;\">".${"systemlight_thermotita".$z.$i}."</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Φωτισμός ασφαλείας</td>".
+		"<td style=\"text-align:center;\">".${"systemlight_asfaleia".$z.$i}."</td></tr>";
+		$pinfwtismos .= "<tr><td style=\"text-align:left;\">Σύστημα εφεδρείας</td>".
+		"<td style=\"text-align:center;\">".${"systemlight_efedreia".$z.$i}."</td></tr>";
+		$pinfwtismos .= "</table>";
+		$pinfwtismos .= "<br/><br/>Η διακριτοποίηση των ζωνών έγινε με κριτήριο την μεταβολή 
+		της στάθμης φυσικού φωτισμού στην διάρκεια της ημέρας και τον προσανατολισμό τους. 
+		Σε κάθε επιμέρους ζώνη θα υπάρχει η δυνατότητα αφής/σβέσης του 50% του συνόλου των φωτιστικών σωμάτων.";
+		$pinfwtismos .= "<br/><br/>Η συνολική εγκατεστημένη ισχύς για φωτισμό [W] σε μια θερμική ζώνη υπολογίζεται από τον τύπο των 
+		συστημάτων φωτισμού που είναι εγκατεστημένα και την καταγραφή του αριθμού φωτιστικών, των λαμπτήρων 
+		και των στραγγαλιστικών πηνίων.";
+		$pinfwtismos .= "<br/><br/>Για κατακόρυφα ανοίγματα υπολογίστηκε η περιοχή φωτισμού ως:<br/><br/>
+		Βάθος περιοχής φωτισμού: L<sub>ΖΦΦ</sub>=2,5 x h<sub>ΖΦΦ</sub>=2,5 x (h<sub>Π</sub>-h<sub>ΕΕ</sub>)<br/>
+		Με:
+		<ol>
+		<li>h<sub>Π</sub>: ύψος πρεκιού ανοίγματος</li>
+		<li>h<sub>ΕΕ</sub>: Ύψος επιφάνειας εργασίας</li>
+		<li>L<sub>ΖΦΦ</sub>: Βάθος ζώνης φωτισμού</li>
+		</ol>
+		<br/><br/>
+		Πλάτος περιοχής φωτισμού: W<sub>ΖΦΦ</sub>=W<sub>Π</sub> + 0,5 x L<sub>ΖΦΦ</sub><br/>
+		Με:
+		<ol>
+		<li>L<sub>ΖΦΦ</sub>: Βάθος ζώνης φωτισμού</li>
+		<li>W<sub>Π</sub>: Πλάτος παραθύρου</li>
+		<li>W<sub>ΖΦΦ</sub>: Πλάτος ζώνης φωτισμού</li>
+		</ol>
+		<br/>";
+		//$pinfwtismos .= "<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/filemanager/userfiles/light_platos.png\" style=\"width:800px;height:463px; vertical-align:middle;\" ></img>";
+		$pinfwtismos .= "<br/><br/>Η περιοχή φυσικού φωτισμού από τα ανοίγματα οροφής υπολογίζεται ανάλογα το πλάτος του
+		ανοίγματος W<sub>ΑΟ</sub>, το ύψος του χώρου h<sub>K</sub> και το ύψος της επιφάνειας 
+		εργασίας h<sub>EE</sub>.
+		<br/>
+		Η περιοχή που μπορεί να καλυφθεί με φυσικό φωτισμό από ένα άνοιγμα οροφής ορίζεται 
+		περιμετρικά με την ευθεία που ξεκινάει από το άνοιγμα οροφής και προσπίπτει επάνω στην 
+		επιφάνεια εργασίας (με ύψος h<sub>EE</sub>) με κλίση 30<sup>o</sup>. Για ένα κυκλικό άνοιγμα, η περιοχή στο 
+		επίπεδο επιφάνειας εργασίας που καλύπτει το άνοιγμα οροφής θα αντιστοιχεί σε μια κυκλική 
+		περιοχή με διάμετρο D<sub>ΖΦΦ</sub> όπως υπολογίζεται από τη σχέση:
+		<br/>
+		D<sub>ΖΦΦ</sub>=W<sub>ΑΟ</sub> + 2 x (h<sub>K</sub> - h<sub>EE</sub>) x εφ(30<sup>o</sup>)
+		<br/>";
+		//$pinfwtismos .= "<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv2/includes/filemanager/userfiles/light_orofis.png\" style=\"width:600px;height:353px; border:1px solid black; vertical-align:middle;\" ></img>";
+		}else{
+		$pinfwtismos .= "<table>";
+		$pinfwtismos .= "<tr><td>Ζώνη $z</td></tr>";
+		$pinfwtismos .= "<tr><td>Τα φωτιστικά που θα χρησιμοποιηθούν για τους χώρους για χρήση ". ${"array_leitoyrgias".$z}[0][2].
+		" και για τους κοινόχρηστους θερμαινόμενους  και μη χώρους, δεν λαμβάνονται υπ’ όψη στους υπολογισμούς.</td></tr>";	
+		$pinfwtismos .= "</table>";
+		}
+	}
+}
+
+//ΥΓΡΑΝΣΗ
+$pinygransi = "";
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+	if (${"ygrp_rows".$z}==0){
+	$pinygransi .= "<table>";
+	$pinygransi .= "<tr><td>Ζώνη $z</td></tr>";
+	$pinygransi .= "<tr><td>Δεν εφαρμόζεται σύστημα ύγρανσης στη ζώνη του κτιρίου.</td></tr>";	
+	$pinygransi .= "</table><br/>";
+	}
+	for ($i=1;$i<=${"ygrp_rows".$z};$i++){
+		if (isset(${"ygrp_id_zwnis".$z.$i})){
+		$pinygransi .= ""; //Χώρος για περιγραφή του συστήματος ύγρανσης
+		}
+	}
+}	
 
 //****************************************************************************************************************
 //                          ΜΕΤΑΦΟΡΑ ΤΩΝ ΣΤΟΙΧΕΙΩΝ ΣΤΟ ΤΕΥΧΟΣ                                                    *
@@ -1424,6 +1551,11 @@ $z1[95]=$syntelestis_dieisdysi_aera_text;
 $z[96]="{SYNTZNX1}";
 $z1[96]=$syntelestis_znx_iliakos_text;
 
+$z[97]="{PINFWTISMOS}";
+$z1[97]=$pinfwtismos;
+
+$z[98]="{PINYGRANSI}";
+$z1[98]=$pinygransi;
 
 $z[99]="<table>";
 $z1[99]="<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" style=\"width:100%;\" >";

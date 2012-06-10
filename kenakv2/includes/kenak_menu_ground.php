@@ -65,6 +65,10 @@ function get_active(){
 document.getElementById("tabvanilla").style.display="block";
 }
 
+function iframe_ground(){
+$(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
+}
+
 </script>		
 			<div id="tabvanilla" class="widget" style="display:none;">
 					<ul class="tabnav">  
@@ -85,7 +89,7 @@ document.getElementById("tabvanilla").style.display="block";
 		id_zwnis: {title: 'ΖΩΝΗ',width: '20%',listClass: 'center',options: ".getzwnes()."},
 		name: {title: 'Όνομα',width: '20%',listClass: 'center'},
 		emvadon: {title: 'Εμβαδόν',width: '20%',listClass: 'center'},
-		u: {title: 'U',width: '10%',listClass: 'center'},
+		u: {title: 'U (ισοδύναμος συντ.) <a class=\"iframe\" href=\"./domika_kelyfos.php?page=3&min=1#tab-u2\" onclick=iframe_ground();><img src=\"./images/style/help.png\" /></a>',width: '10%',listClass: 'center'},
 		k_bathos: {title: 'Κατώτερο βάθος',width: '15%',listClass: 'center'},
 		a_bathos: {title: 'Ανώτερο βάθος',width: '15%',listClass: 'center'}
 	}";

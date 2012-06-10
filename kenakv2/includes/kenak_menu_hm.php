@@ -120,6 +120,9 @@ function help_coldtbathm(){
 $.colorbox({inline:true,  href:"#guide_coldtbathm", width:"60%", height:"60%"});
 }
 
+function help_znxdbathm(){
+$.colorbox({inline:true,  href:"#guide_znxdbathm", width:"60%", height:"60%"});
+}
 
 function help_iliakostherm(){
 $.colorbox({inline:true,  href:"#guide_iliakostherm", width:"60%", height:"40%"});
@@ -185,6 +188,32 @@ or_platos = document.getElementById('light_or_platos').value;
 orff_d = parseFloat(or_platos) + 2*(parseFloat(or_orofi)-parseFloat(or_height))*Math.tan(30*(180/Math.PI));
 document.getElementById('light_orff_d').value = orff_d.toFixed(2);
 }
+
+function help_kkm_fh(){
+$.colorbox({inline:true,  href:"#guide_kkm_fh", width:"60%", height:"40%"});
+}
+function help_kkm_rh(){
+$.colorbox({inline:true,  href:"#guide_kkm_rh", width:"60%", height:"40%"});
+}
+function help_kkm_qrh(){
+$.colorbox({inline:true,  href:"#guide_kkm_qrh", width:"60%", height:"40%"});
+}
+function help_kkm_fc(){
+$.colorbox({inline:true,  href:"#guide_kkm_fc", width:"60%", height:"40%"});
+}
+function help_kkm_rc(){
+$.colorbox({inline:true,  href:"#guide_kkm_rc", width:"60%", height:"40%"});
+}
+function help_kkm_qrc(){
+$.colorbox({inline:true,  href:"#guide_kkm_qrc", width:"60%", height:"40%"});
+}
+function help_kkm_hr(){
+$.colorbox({inline:true,  href:"#guide_kkm_hr", width:"60%", height:"40%"});
+}
+function help_kkm_event(){
+$.colorbox({inline:true,  href:"#guide_kkm_event", width:"60%", height:"40%"});
+}
+
 </script>
 <font color="green">Εαν δεν υπάρχουν δεδομένα φωτισμού, ΚΚΜ, Ύγρανσης ή ηλιακού δεν εισάγονται και δεν εμφανίζονται στο ΤΕΕ-ΚΕΝΑΚ. <br/>
 Επίσης εαν η χρήση απαγορεύει την ύπαρξη ενός συστήματος στο ΤΕΕ-ΚΕΝΑΚ (πχ Μονοκατοικία-Φωτισμός)τότε και να έχει προστεθεί δεν εμφανίζεται.<br/>
@@ -1192,11 +1221,95 @@ document.getElementById('light_orff_d').value = orff_d.toFixed(2);
 					'1.00':'Πάνω από 20% σε εξωτερικούς',
 					}
 		},
-		bathm: {title: 'Βαθμ.',width: '15%',listClass: 'center'}
+		bathm: {title: 'Βαθμ. <a href=\"#guide_znxdbathm\" onclick=help_znxdbathm();><img src=\"./images/style/help.png\"/></a>',width: '15%',listClass: 'center'}
 	}";
 	include('includes/jtable.php');
 	?>	
-	
+
+<!--  Κρυφό div class για βοήθεια στην επιλογή znxd bathm ------------------->
+<div style='display:none'>
+	<div id='guide_znxdbathm' style='padding:10px; background:#ebf9c9;'>
+	<b>Βαθμός απόδοσης δικτύου διανομής ZNX:</b>
+	<br/><br/>
+	<b>Ποσοστό ψυκτικών απωλειών:</b>
+
+	<table border="1">
+	<tr><th rowspan="2" align="middle">Ημερήσια ζήτηση Ζ.Ν.Χ. [σε lt]</th>
+	<th colspan="4" align="middle">Χωρίς ανακυκλοφορία</th>
+	<th colspan="3" align="middle">Με ανακυκλοφορία</th>
+	</tr>
+	<tr>
+	<th>Μόνωση κτηρίου αναφοράς [%]</th>
+	<th>Ανεπαρκής μόνωση [%]</th>
+	<th>Χωρίς μόνωση [%]</th>
+	<th>Μόνωση κτηρίου αναφοράς [%]</th>
+	<th>Ανεπαρκής μόνωση [%]</th>
+	<th>Χωρίς μόνωση [%]</th>
+	</tr>
+	<tr>
+	<td colspan="8" align="middle">Δίκτυα διανομής ΖΝΧ</td>
+	</tr>
+	<tr>
+	<td>50 - 200</td>
+	<td align="center">8,0</td>
+	<td align="center">16,0</td>
+	<td align="center">28,0</td>
+	<td align="center">12,8</td>
+	<td align="center">25,6</td>
+	<td align="center">44,8</td>
+	</tr>
+	<tr>
+	<td>200 - 1000</td>
+	<td align="center">7,7</td>
+	<td align="center">15,4</td>
+	<td align="center">27,0</td>
+	<td align="center">12,4</td>
+	<td align="center">24,8</td>
+	<td align="center">43,4</td>
+	</tr>
+	<tr>
+	<td>1000 - 4000</td>
+	<td align="center">7,5</td>
+	<td align="center">15,0</td>
+	<td align="center">26,3</td>
+	<td align="center">12,1</td>
+	<td align="center">24,2</td>
+	<td align="center">42,4</td>
+	</tr>
+	<tr>
+	<td>4000 - 7000</td>
+	<td align="center">7,3</td>
+	<td align="center">14,6</td>
+	<td align="center">25,6</td>
+	<td align="center">11,8</td>
+	<td align="center">23,6</td>
+	<td align="center">41,3</td>
+	</tr>
+	<tr>
+	<td>>7000</td>
+	<td align="center">7,0</td>
+	<td align="center">14,0</td>
+	<td align="center">25,4</td>
+	<td align="center">11,5</td>
+	<td align="center">23,0</td>
+	<td align="center">40,3</td>
+	</tr>
+	<tr>	
+	</table>
+	<br/>
+Σε περίπτωση τοπικών μονάδων παραγωγής Ζ.Ν.Χ. (π.χ. σε κτήρια κατοικιών), όπου το δίκτυο
+διανομής είναι μικρό, οι απώλειες δικτύου λαμβάνονται μηδενικές.<br/><br/>
+Σε περίπτωση θερμικής ζώνης με περισσότερους του ενός κλάδους διανομής Ζ.Ν.Χ. και με
+διαφορετικές θερμικές αποδόσεις των κλάδων, για τους υπολογισμούς λαμβάνεται υπόψη η
+χαμηλότερη θερμική απόδοση μεταξύ των δύο κλάδων.<br/><br/>
+Σε περίπτωση μη ύπαρξης συστήματος παραγωγής Ζ.Ν.Χ. θεωρείται ότι το κτήριο διαθέτει
+σύστημα παραγωγής Ζ.Ν.Χ. όπως το κτήριο αναφοράς, με διέλευση από εσωτερικούς χώρους και
+χωρίς ανακυκλοφορία. Στις χρήσεις κτηρίων κατά τις οποίες το κτήριο αναφοράς διαθέτει κεντρικό
+σύστημα παραγωγής Ζ.Ν.Χ., τότε και το εξεταζόμενο κτήριο θα διαθέτει κεντρικό σύστημα παραγωγής
+Ζ.Ν.Χ. και με απώλειες δικτύου διανομής, ανάλογα με την ημερήσια ζήτηση Ζ.Ν.Χ.
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>	
 	
 	<h3>Αποθηκευτικές μονάδες - ΖΝΧ</h3>
 	<?php 
@@ -1795,35 +1908,114 @@ document.getElementById('light_orff_d').value = orff_d.toFixed(2);
 					'1':'NAI',
 					}
 		},
-		F_h: {title: 'F_h (m<sup>3</sup>/h) ',width: '7%',listClass: 'center'},
-		R_h: {title: 'R_h',width: '7%',listClass: 'center'},
-		Q_r_h: {title: 'Q_r_h',width: '7%',listClass: 'center'},
+		F_h: {title: 'F_h (m<sup>3</sup>/h) <a href=\"#guide_kkm_fh\" onclick=help_kkm_fh();><img src=\"./images/style/help.png\"/></a>',width: '7%',listClass: 'center'},
+		R_h: {title: 'R_h <a href=\"#guide_kkm_rh\" onclick=help_kkm_rh();><img src=\"./images/style/help.png\"/></a>',width: '5%',listClass: 'center'},
+		Q_r_h: {title: 'Q_r_h <a href=\"#guide_kkm_qrh\" onclick=help_kkm_qrh();><img src=\"./images/style/help.png\"/></a>',width: '5%',listClass: 'center'},
 		tm_psyx: {title: 'Τμήμα ψύξης',width: '7%',listClass: 'center',
 			options: {'0':'OXI',
 					'1':'NAI',
 					}
 		},
-		F_c: {title: 'F_c (m<sup>3</sup>/h) ',width: '7%',listClass: 'center'},
-		R_c: {title: 'R_c',width: '7%',listClass: 'center'},
-		Q_r_c: {title: 'Q_r_c',width: '7%',listClass: 'center'},
-		tm_ygr: {title: 'Τμήμα Ύγρανσης',width: '7%',listClass: 'center',
+		F_c: {title: 'F_c (m<sup>3</sup>/h) <a href=\"#guide_kkm_fc\" onclick=help_kkm_fc();><img src=\"./images/style/help.png\"/></a>',width: '7%',listClass: 'center'},
+		R_c: {title: 'R_c <a href=\"#guide_kkm_rc\" onclick=help_kkm_rc();><img src=\"./images/style/help.png\"/></a>',width: '5%',listClass: 'center'},
+		Q_r_c: {title: 'Q_r_c <a href=\"#guide_kkm_qrc\" onclick=help_kkm_qrc();><img src=\"./images/style/help.png\"/></a>',width: '5%',listClass: 'center'},
+		tm_ygr: {title: 'Τμήμα Ύγρανσης',width: '5%',listClass: 'center',
 			options: {'0':'OXI',
 					'1':'NAI',
 					}
 		},
-		H_r: {title: 'H_r ',width: '7%',listClass: 'center'},
-		filters: {title: 'Φίλτρα',width: '7%',listClass: 'center',
+		H_r: {title: 'H_r <a href=\"#guide_kkm_hr\" onclick=help_kkm_hr();><img src=\"./images/style/help.png\"/></a>',width: '6%',listClass: 'center'},
+		filters: {title: 'Φίλτρα',width: '5%',listClass: 'center',
 			options: {'0':'OXI',
 					'1':'NAI',
 					}
 		},
-		E_vent: {title: 'E_vent (kW/m<sup>3</sup>/s)',width: '7%',listClass: 'center'}
+		E_vent: {title: 'E_vent (kW/m<sup>3</sup>/s)<a href=\"#guide_kkm_event\" onclick=help_kkm_event();><img src=\"./images/style/help.png\"/></a>',width: '20%',listClass: 'center'}
 	}";
 	include('includes/jtable.php');
 	?>
 	</div><!--ΚΚΜ-->
 	
+<!--  Κρυφό div class για βοήθεια στην επιλογή kkm_fh -------------------------->
+<div style='display:none'>
+	<div id='guide_kkm_fh' style='padding:10px; background:#ebf9c9;'>
+	<b>Παροχή αέρα-Τμήμα Θέρμανσης:</b>
+	<br/>
+	<hr>
 	
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>	
+<!--  Κρυφό div class για βοήθεια στην επιλογή kkm_rh -------------------------->
+<div style='display:none'>
+	<div id='guide_kkm_rh' style='padding:10px; background:#ebf9c9;'>
+	<b>Συντελεστής ανακυκλοφορίας αέρα-Τμήμα Θέρμανσης:</b>
+	<br/>
+	<hr>
+	
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή kkm_qrh -------------------------->
+<div style='display:none'>
+	<div id='guide_kkm_qrh' style='padding:10px; background:#ebf9c9;'>
+	<b>Συντελεστής ανάκτησης θερμότητας-Τμήμα Θέρμανσης:</b>
+	<br/>
+	<hr>
+	
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή kkm_fc -------------------------->
+<div style='display:none'>
+	<div id='guide_kkm_fc' style='padding:10px; background:#ebf9c9;'>
+	<b>Παροχή αέρα-Τμήμα Ψύξης:</b>
+	<br/>
+	<hr>
+	
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>	
+<!--  Κρυφό div class για βοήθεια στην επιλογή kkm_rc -------------------------->
+<div style='display:none'>
+	<div id='guide_kkm_rc' style='padding:10px; background:#ebf9c9;'>
+	<b>Συντελεστής ανακυκλοφορίας αέρα-Τμήμα Ψύξης:</b>
+	<br/>
+	<hr>
+	
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή kkm_qrc -------------------------->
+<div style='display:none'>
+	<div id='guide_kkm_qrc' style='padding:10px; background:#ebf9c9;'>
+	<b>Συντελεστής ανάκτησης θερμότητας-Τμήμα Ψύξης:</b>
+	<br/>
+	<hr>
+	
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή kkm_hr -------------------------->
+<div style='display:none'>
+	<div id='guide_kkm_hr' style='padding:10px; background:#ebf9c9;'>
+	<b>Συντελεστής ανάκτησης υγρασίας-Τμήμα Ύγρανσης:</b>
+	<br/>
+	<hr>
+	
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή kkm_event -------------------------->
+<div style='display:none'>
+	<div id='guide_kkm_event' style='padding:10px; background:#ebf9c9;'>
+	<b>Ειδική ηλεκτρική ισχύς:</b>
+	<br/>
+	<hr>
+	
+	</div>
+</div>
+<!------------------------------------------------------------------------------------>
 	
 	<div id="tab-ygransi" class="tabdiv"> <!--Ύγρανση-->
 	<img src="images/style/ygransi.png"></img>
