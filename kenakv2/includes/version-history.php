@@ -4,6 +4,7 @@
 		<h2>Welcome to La-Kenak v.<?=VERSION?> </h2>
 		<div id="timeline" >
 		<ul id="dates">
+			<li><a href="#100612">10/6</a></li>
 			<li><a href="#110512">11/5</a></li>
 			<li><a href="#010412">1/4</a></li>
 			<li><a href="#220312">22/3</a></li>
@@ -16,6 +17,19 @@
 	
 		</ul>
 		<ul id="issues">
+		<li id="100612">
+				<img src="version-history/images/version-changes.png" width="256" height="256" />
+				<h1>10/6/2012</h1>
+				<p>La-kenak v2.8<br/><br/>
+				1. Προσθήκη jtable στα συστήματα. (ks1f14s) <br/>
+				2. Προσθήκη συστημάτων ύγρανσης,κκμ,φωτισμού. (ks1f14s)<br/>
+				3. Προσθήκη κατακόρυφων σε επαφή με το έδαφος στη μελέτη (ks1f14s)<br/>
+				4. Διαχωρισμός δαπέδων - οροφών στα οριζόντια στοιχεία. (ks1f14s)<br/>
+				5. Προσθήκη συστήματος φωτισμού στο τεύχος. (ks1f14s).<br/>
+				6. Προσθήκη βοήθειας στο τεύχος (ks1f14s).<br/>
+				<br/><br/>
+				</p>
+			</li>
 		<li id="110512">
 				<img src="version-history/images/version-changes.png" width="256" height="256" />
 				<h1>11/5/2012</h1>
