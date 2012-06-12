@@ -45,7 +45,7 @@ tsak mods - Κώστας Τσακίρης - πολιτικός μηχανικός - ktsaki@tee.gr     *
 	if ($template=="1"){
 	?><script type="text/javascript">window.location = "kenak_editteyxos.php?#kef<?=$kf?>"</script><?php
 	}else{
-	?><script type="text/javascript">window.location = "../kenak.php?save=1&page=5#kef<?=$kf?>"</script><?php
+	?><script type="text/javascript">window.location = "../kenak.php?save=1&page=10#kef<?=$kf?>"</script><?php
 	}
 	
 ?>

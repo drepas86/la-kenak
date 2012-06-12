@@ -232,81 +232,84 @@ if ($pinakas_num == 21){
 $pinakas = "kataskeyi_teyxos";
 }
 if ($pinakas_num == 22){
-$pinakas = "kataskeyi_therm_eks";
+$pinakas = "kataskeyi_therm_alles";
 }
 if ($pinakas_num == 23){
-$pinakas = "kataskeyi_therm_es";
+$pinakas = "kataskeyi_therm_eks";
 }
 if ($pinakas_num == 24){
-$pinakas = "kataskeyi_t_a";
+$pinakas = "kataskeyi_therm_es";
 }
 if ($pinakas_num == 25){
-$pinakas = "kataskeyi_t_b";
+$pinakas = "kataskeyi_t_a";
 }
 if ($pinakas_num == 26){
-$pinakas = "kataskeyi_t_d";
+$pinakas = "kataskeyi_t_b";
 }
 if ($pinakas_num == 27){
-$pinakas = "kataskeyi_t_n";
+$pinakas = "kataskeyi_t_d";
 }
 if ($pinakas_num == 28){
-$pinakas = "kataskeyi_xsystems_coldb";
+$pinakas = "kataskeyi_t_n";
 }
 if ($pinakas_num == 29){
-$pinakas = "kataskeyi_xsystems_coldd";
+$pinakas = "kataskeyi_xsystems_coldb";
 }
 if ($pinakas_num == 30){
-$pinakas = "kataskeyi_xsystems_coldp";
+$pinakas = "kataskeyi_xsystems_coldd";
 }
 if ($pinakas_num == 31){
-$pinakas = "kataskeyi_xsystems_coldt";
+$pinakas = "kataskeyi_xsystems_coldp";
 }
 if ($pinakas_num == 32){
-$pinakas = "kataskeyi_xsystems_kkm";
+$pinakas = "kataskeyi_xsystems_coldt";
 }
 if ($pinakas_num == 33){
-$pinakas = "kataskeyi_xsystems_light";
+$pinakas = "kataskeyi_xsystems_kkm";
 }
 if ($pinakas_num == 34){
-$pinakas = "kataskeyi_xsystems_thermb";
+$pinakas = "kataskeyi_xsystems_light";
 }
 if ($pinakas_num == 35){
-$pinakas = "kataskeyi_xsystems_thermd";
+$pinakas = "kataskeyi_xsystems_thermb";
 }
 if ($pinakas_num == 36){
-$pinakas = "kataskeyi_xsystems_thermp";
+$pinakas = "kataskeyi_xsystems_thermd";
 }
 if ($pinakas_num == 37){
-$pinakas = "kataskeyi_xsystems_thermt";
+$pinakas = "kataskeyi_xsystems_thermp";
 }
 if ($pinakas_num == 38){
-$pinakas = "kataskeyi_xsystems_ygrd";
+$pinakas = "kataskeyi_xsystems_thermt";
 }
 if ($pinakas_num == 39){
-$pinakas = "kataskeyi_xsystems_ygrp";
+$pinakas = "kataskeyi_xsystems_ygrd";
 }
 if ($pinakas_num == 40){
-$pinakas = "kataskeyi_xsystems_ygrt";
+$pinakas = "kataskeyi_xsystems_ygrp";
 }
 if ($pinakas_num == 41){
-$pinakas = "kataskeyi_xsystems_znxa";
+$pinakas = "kataskeyi_xsystems_ygrt";
 }
 if ($pinakas_num == 42){
-$pinakas = "kataskeyi_xsystems_znxb";
+$pinakas = "kataskeyi_xsystems_znxa";
 }
 if ($pinakas_num == 43){
-$pinakas = "kataskeyi_xsystems_znxd";
+$pinakas = "kataskeyi_xsystems_znxb";
 }
 if ($pinakas_num == 44){
-$pinakas = "kataskeyi_xsystems_znxiliakos";
+$pinakas = "kataskeyi_xsystems_znxd";
 }
 if ($pinakas_num == 45){
-$pinakas = "kataskeyi_xsystems_znxp";
+$pinakas = "kataskeyi_xsystems_znxiliakos";
 }
 if ($pinakas_num == 46){
-$pinakas = "kataskeyi_xwroi";
+$pinakas = "kataskeyi_xsystems_znxp";
 }
 if ($pinakas_num == 47){
+$pinakas = "kataskeyi_xwroi";
+}
+if ($pinakas_num == 48){
 $pinakas = "kataskeyi_zwnes";
 }
 
@@ -435,81 +438,84 @@ if ($pinakas_num == 21){
 $pinakas = "kataskeyi_teyxos";
 }
 if ($pinakas_num == 22){
-$pinakas = "kataskeyi_therm_eks";
+$pinakas = "kataskeyi_therm_alles";
 }
 if ($pinakas_num == 23){
-$pinakas = "kataskeyi_therm_es";
+$pinakas = "kataskeyi_therm_eks";
 }
 if ($pinakas_num == 24){
-$pinakas = "kataskeyi_t_a";
+$pinakas = "kataskeyi_therm_es";
 }
 if ($pinakas_num == 25){
-$pinakas = "kataskeyi_t_b";
+$pinakas = "kataskeyi_t_a";
 }
 if ($pinakas_num == 26){
-$pinakas = "kataskeyi_t_d";
+$pinakas = "kataskeyi_t_b";
 }
 if ($pinakas_num == 27){
-$pinakas = "kataskeyi_t_n";
+$pinakas = "kataskeyi_t_d";
 }
 if ($pinakas_num == 28){
-$pinakas = "kataskeyi_xsystems_coldb";
+$pinakas = "kataskeyi_t_n";
 }
 if ($pinakas_num == 29){
-$pinakas = "kataskeyi_xsystems_coldd";
+$pinakas = "kataskeyi_xsystems_coldb";
 }
 if ($pinakas_num == 30){
-$pinakas = "kataskeyi_xsystems_coldp";
+$pinakas = "kataskeyi_xsystems_coldd";
 }
 if ($pinakas_num == 31){
-$pinakas = "kataskeyi_xsystems_coldt";
+$pinakas = "kataskeyi_xsystems_coldp";
 }
 if ($pinakas_num == 32){
-$pinakas = "kataskeyi_xsystems_kkm";
+$pinakas = "kataskeyi_xsystems_coldt";
 }
 if ($pinakas_num == 33){
-$pinakas = "kataskeyi_xsystems_light";
+$pinakas = "kataskeyi_xsystems_kkm";
 }
 if ($pinakas_num == 34){
-$pinakas = "kataskeyi_xsystems_thermb";
+$pinakas = "kataskeyi_xsystems_light";
 }
 if ($pinakas_num == 35){
-$pinakas = "kataskeyi_xsystems_thermd";
+$pinakas = "kataskeyi_xsystems_thermb";
 }
 if ($pinakas_num == 36){
-$pinakas = "kataskeyi_xsystems_thermp";
+$pinakas = "kataskeyi_xsystems_thermd";
 }
 if ($pinakas_num == 37){
-$pinakas = "kataskeyi_xsystems_thermt";
+$pinakas = "kataskeyi_xsystems_thermp";
 }
 if ($pinakas_num == 38){
-$pinakas = "kataskeyi_xsystems_ygrd";
+$pinakas = "kataskeyi_xsystems_thermt";
 }
 if ($pinakas_num == 39){
-$pinakas = "kataskeyi_xsystems_ygrp";
+$pinakas = "kataskeyi_xsystems_ygrd";
 }
 if ($pinakas_num == 40){
-$pinakas = "kataskeyi_xsystems_ygrt";
+$pinakas = "kataskeyi_xsystems_ygrp";
 }
 if ($pinakas_num == 41){
-$pinakas = "kataskeyi_xsystems_znxa";
+$pinakas = "kataskeyi_xsystems_ygrt";
 }
 if ($pinakas_num == 42){
-$pinakas = "kataskeyi_xsystems_znxb";
+$pinakas = "kataskeyi_xsystems_znxa";
 }
 if ($pinakas_num == 43){
-$pinakas = "kataskeyi_xsystems_znxd";
+$pinakas = "kataskeyi_xsystems_znxb";
 }
 if ($pinakas_num == 44){
-$pinakas = "kataskeyi_xsystems_znxiliakos";
+$pinakas = "kataskeyi_xsystems_znxd";
 }
 if ($pinakas_num == 45){
-$pinakas = "kataskeyi_xsystems_znxp";
+$pinakas = "kataskeyi_xsystems_znxiliakos";
 }
 if ($pinakas_num == 46){
-$pinakas = "kataskeyi_xwroi";
+$pinakas = "kataskeyi_xsystems_znxp";
 }
 if ($pinakas_num == 47){
+$pinakas = "kataskeyi_xwroi";
+}
+if ($pinakas_num == 48){
 $pinakas = "kataskeyi_zwnes";
 }
 

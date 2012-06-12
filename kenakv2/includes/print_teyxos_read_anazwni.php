@@ -69,18 +69,31 @@ $pin43 .= "</table>";
 		
 $pin44 = "<table>";
 $pin44 .= "<tr><td style=\"text-align:left;width:40%;\">Δομικό στοιχείο</td>".
-		 "<td style=\"text-align:center;width:15%;\">Φύλλο ελέγχου</td>".
-		 "<td style=\"text-align:center;width:15%;\">U [W/(m²K)]</td>".
-		 "<td style=\"text-align:center;width:15%;\">Μέσο βάθος z (m)</td>".
-		 "<td style=\"text-align:center;width:15%;\">U' [W/(m²K)]</td></tr>";
+		 "<td style=\"text-align:center;width:10%;\">Φύλλο ελέγχου</td>".
+		 "<td style=\"text-align:center;width:10%;\">Εμβαδόν</td>".
+		 "<td style=\"text-align:center;width:10%;\">U' [W/(m²K)]</td>".
+		 "<td style=\"text-align:center;width:10%;\">Κατώτερο βάθος z (m)</td>".
+		 "<td style=\"text-align:center;width:10%;\">Ανώτερο βάθος z (m)</td>".
+		 "<td style=\"text-align:center;width:10%;\">Περίμετρος</td></tr>";
 for ($i=1;$i<=$rows_dapedo;$i++){	
 if (${"dapedo_type".$i} == 0){	
 $pin44 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
-		  "<td style=\"text-align:center;\">&nbsp;</td>".
+		  "<td style=\"text-align:center;\"></td>".
+		  "<td style=\"text-align:center;\">" . ${"dapedo_emvadon".$i} . "</td>".
 		  "<td style=\"text-align:center;\">" . ${"dapedo_u".$i} . "</td>".
-		  "<td style=\"text-align:center;\">&nbsp;</td>".
-		  "<td style=\"text-align:center;\">0</td></tr>";
+		  "<td style=\"text-align:center;\">" . ${"dapedo_bathos".$i} . "</td>".
+		  "<td style=\"text-align:center;\"></td>".
+		  "<td style=\"text-align:center;\">" . ${"dapedo_perimetros".$i} . "</td></tr>";
 }
+}
+for ($i=1;$i<=$rows_groundt;$i++){		
+$pin44 .= "<tr><td style=\"text-align:left;\">" . ${"groundt_name".$i} . "</td>".
+		  "<td style=\"text-align:center;\"></td>".
+		  "<td style=\"text-align:center;\">" . ${"groundt_emvadon".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"groundt_u".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"groundt_k_bathos".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"groundt_a_bathos".$i} . "</td>".
+		  "<td style=\"text-align:center;\"></td></tr>";
 }
 $pin44 .= "</table>";
 
@@ -765,18 +778,25 @@ $f3 = "<table>".
 "<td style=\"text-align:center;width:15%;\"><b>Ύψος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>UxΑ</b></td></tr>";
 for ($i = 1; $i <= $rows_es_g; $i++) {
-$f3 .= "<tr><td style=\"text-align:left;\">${"thermo_esw_drop".$i}</td>".
+$f3 .= "<tr><td style=\"text-align:left;\">Ψ=-".${"thermo_esw_drop".$i}."-ΕΣΓ</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_id_zwnis".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_gwnia_p".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_gwnia_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_gwnia_ua".$i}</td></tr>";
 }
 for ($i = 1; $i <= $rows_eks_g; $i++) {
-$f3 .= "<tr><td style=\"text-align:left;\">${"thermo_eksw_drop".$i}</td>".
+$f3 .= "<tr><td style=\"text-align:left;\">Ψ=-".${"thermo_eksw_drop".$i}."-ΕΞΓ</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_id_zwnis".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_p".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_ua".$i}</td></tr>";
+}
+for ($i = 1; $i <= $rows_alles_g; $i++) {
+$f3 .= "<tr><td style=\"text-align:left;\">".${"thermo_alles_drop".$i}[1]."</td>".
+"<td style=\"text-align:center;\">${"thermo_alles_id_zwnis".$i}</td>".
+"<td style=\"text-align:center;\">${"thermo_alles_gwnia_p".$i}</td>".
+"<td style=\"text-align:center;\">${"thermo_alles_gwnia_ypsos".$i}</td>".
+"<td style=\"text-align:center;\">${"thermo_alles_gwnia_ua".$i}</td></tr>";
 }
 $f3 .= "<tr><td style=\"text-align:left;\"></td>".
 "<td style=\"text-align:center;\"></td>".

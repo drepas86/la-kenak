@@ -26,7 +26,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 $file = $_GET["filename"];
 include ("functions_xml.php");
 
-for ($i = 0; $i <= 47; $i++) {
+for ($i = 0; $i <= 48; $i++) {
 retrivexmldata($i,$file);
 }
 //Για τα νούμερα από 1 μέχρι 40 δες functions_xml.php ή xmltotables.php

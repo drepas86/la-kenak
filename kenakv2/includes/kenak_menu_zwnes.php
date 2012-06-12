@@ -264,6 +264,23 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 	}";
 	include('includes/jtable.php');
 ?>
+<h3>Θερμογέφυρες άλλου τύπου</h3><br/>
+<font color="green">Προστίθενται εαν έχετε υπολογίσει μία θερμογέφυρα σε άλλο λογισμικό και δεν γνωρίζετε που να την προσθέσετε 
+ή θέλετε να προσθέσετε όλες τις θερμογέφυρες χειροκίνητα και να τις αφήσετε κενές σε τοίχους και ανοίγματα</font>
+<?php
+	$ped="kataskeyi_therm_alles";
+	$dig="0|0|0|0|2|0|0|0|0|0|0";
+	$tb_name="TableContainer_therm_alles";
+	$fields="fields: {
+		id: {key: true,create: false,edit: false,list: false},
+		id_zwnis: {title: 'ΖΩΝΗ',width: '25%',listClass: 'center',options: ".getzwnes()."},
+		thermo_u: {title: 'Θερμογέφυρα',width: '25%',listClass: 'center', options: ".jtable_getthermo_alles()."},
+		plithos: {title: 'Πλήθος',width: '25%',listClass: 'center'},
+		ypsos: {title: 'Ύψος',width: '25%',listClass: 'center'}
+	}";
+	include('includes/jtable.php');
+	
+?>
 </div><!--/tab-thermo-->
 
 <div id="tab-draw" class="tabdiv"> 
@@ -521,6 +538,90 @@ while($objResult = mysql_fetch_array($objQuery))
 	//$ret[$objResult["id"]] =  $objResult["name"];
 	$ret[$objResult["y"].'|'.$objResult["id"]] =  $objResult["name"];
 }					
+return json_encode($ret);
+}
+
+
+//ΘΕΡΜΟΓΕΦΥΡΕΣ ΑΛΛΟΥ ΤΥΠΟΥ
+function jtable_getthermo_alles(){
+$ret=array();
+$strSQL = "SELECT * FROM thermo_esg";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}	
+$strSQL = "SELECT * FROM thermo_eksg";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
+$strSQL = "SELECT * FROM thermo_d";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
+$strSQL = "SELECT * FROM thermo_de";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}	
+$strSQL = "SELECT * FROM thermo_dp";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
+$strSQL = "SELECT * FROM thermo_ed";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
+$strSQL = "SELECT * FROM thermo_edp";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
+$strSQL = "SELECT * FROM thermo_eds";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
+$strSQL = "SELECT * FROM thermo_ak";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
+$strSQL = "SELECT * FROM thermo_l";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
+$strSQL = "SELECT * FROM thermo_pr";
+$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+while($objResult = mysql_fetch_array($objQuery))
+{
+	//$ret[$objResult["id"]] =  $objResult["name"];
+	$ret[$objResult["y"].'|'.$objResult["name"]] =  $objResult["name"];
+}
 return json_encode($ret);
 }
 

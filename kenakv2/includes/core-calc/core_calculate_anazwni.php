@@ -215,10 +215,30 @@
 					}
 				}
 			}
+			//Άλλου τύπου
+			$strSQL = "SELECT * FROM kataskeyi_therm_alles";
+			$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+			$rows_alles_g = mysql_num_rows($objQuery);
+			$i = 0;
+			while($objResult = mysql_fetch_array($objQuery))
+			{
+			$i++;
+			${"thermo_alles_id_zwnis".$i} = $objResult["id_zwnis"];
+			${"thermo_alles_drop".$i} = explode("|",$objResult["thermo_u"]);
+			${"thermo_alles_gwnia_p".$i} = $objResult["plithos"];
+			${"thermo_alles_gwnia_ypsos".$i} = $objResult["ypsos"];
+			${"thermo_alles_gwnia_ua".$i} = ${"thermo_alles_gwnia_p".$i} * ${"thermo_alles_gwnia_ypsos".$i} * ${"thermo_alles_drop".$i}[0];
+			
+				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+					if (${"thermo_alles_id_zwnis".$i} == $id_thermzwnes[$z]){
+					${"thermo_alles_gwnia_ua_zwnis".$z} += ${"thermo_alles_gwnia_ua".$i}; //Θερμογέφυρες εσωτερικών γωνιών θερμικής ζώνης
+					}
+				}
+			}
 			
 			
 			for ($z=1;$z<=$arithmos_thermzwnes;$z++){
-			${"thermogefyres_gwnia".$z} = ${"thermo_esw_gwnia_ua_zwnis".$z} + ${"thermo_eksw_gwnia_ua_zwnis".$z}; // Θερμογέφυρες γωνιών κάτοψης για τη θερμική ζώνη
+			${"thermogefyres_gwnia".$z} = ${"thermo_esw_gwnia_ua_zwnis".$z} + ${"thermo_eksw_gwnia_ua_zwnis".$z} + ${"thermo_alles_gwnia_ua_zwnis".$z}; // Θερμογέφυρες γωνιών κάτοψης για τη θερμική ζώνη
 			}
 			
 			
