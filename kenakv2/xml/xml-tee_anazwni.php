@@ -745,6 +745,7 @@ for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i = 1; $i <= $rows_dapedo; $i++) {
 
 if (${"dapedo_id_zwnis".$i}==${"thermiki_zwni".$z}){
+if (${"dapedo_type".$i}==0){
 array_push(${"ground_column1".$z}, "Δάπεδο");
 array_push(${"ground_column2".$z}, ${"dapedo_name".$i});
 array_push(${"ground_column3".$z}, ${"dapedo_emvadon".$i});
@@ -752,6 +753,7 @@ array_push(${"ground_column4".$z}, ${"dapedo_u".$i});
 array_push(${"ground_column5".$z}, ${"dapedo_bathos".$i});
 array_push(${"ground_column6".$z}, "");
 array_push(${"ground_column7".$z}, ${"dapedo_perimetros".$i});
+}
 }
 }
 }
