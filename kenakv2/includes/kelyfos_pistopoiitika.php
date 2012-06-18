@@ -35,7 +35,8 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 					<li><a href="#tab-oikad">Απαιτήσεις</a></li>
 					<li><a href="#tab-katak">Κατακόρυφα στοιχεία</a></li>
 					<li><a href="#tab-oriz">Οριζόντια στοιχεία</a></li>
-					<li><a href="#tab-entypa">Έντυπα</a></li>
+					<li><a href="#tab-entypa">Υ.Δ.</a></li>
+					<li><a href="#tab-entypa1">Π.Φ.Α.</a></li>
 					</ul>  
 					
 
@@ -593,6 +594,189 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			8 τιμωρείται με φυλάκιση τουλάχιστον τριών μηνών. Εάν ο υπαίτιος αυτών των πράξεων σκόπευε να προσπορίσει στον εαυτόν του 
 			ή σε άλλον περιουσιακό όφελος βλάπτοντας τρίτον ή σκόπευε να βλάψει άλλον, τιμωρείται με κάθειρξη μέχρι 10 ετών.<br/>
 			(4) Σε περίπτωση ανεπάρκειας χώρου η δήλωση συνεχίζεται στην πίσω όψη της και υπογράφεται από τον δηλούντα ή την δηλούσα. <br/>
+			</div>
+			
+			
+			
+			
+			<div id="tab-entypa1" class="tabdiv" >
+			<font style="text-align: center; font-size:200%;">Δήλωση προκαταβλητέου φόρου στις αμοιβές μηχανικών</font><br/>
+			<br/>
+			
+			<form name="pfa" action="domika_kelyfos.php" method="post">
+			<div id="container" style="background:#eee;border:1px solid #000000;padding:3px;width:99%;height:580px;">
+			<textarea name="kefaa" id="kefaa" >
+			
+			<table style="width: 650px;">
+			<tr>
+			<td  style="width: 60%;" align="center">Προς<br/>Δημόσια οικονομική υπηρεσία ...................</td>
+			<td style="width: 30%;"></td>
+			<td style="width: 10%;">Αριθ. ...................</td>
+			</tr>
+			<tr>
+			<td colspan="3" align="center"><br/><b>ΑΝΑΛΥΤΙΚΟ ΔΕΛΤΙΟ</b><br/>(Άρθρο 19 Ν. 820/78)</td>
+			</tr>
+			<tr>
+			<td colspan="3" align="center">Αφορά την ................... Άδεια της Υπηρ ...................</td>
+			</tr>
+			</table>
+			<br/>
+			
+			<table border="1" style="width: 650px;">
+			<tr>
+			<td rowspan="3">
+			<div style="float: left; position: relative; -moz-transform: rotate(270deg); -o-transform: rotate(270deg);  
+			-webkit-transform: rotate(270deg); 	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3); 
+			-ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); align: middle;">
+			ΣΤΟΙΧΕΙΑ ΜΗΧΑΝΙΚΟΥ
+			</div>
+			</td>
+			<td>Ονοματεπώνυμο ή Επωνυμία ...................</td>
+			<td>Αριθ. Φορολ. Μητρ. ή Ταυτ. ...................</td>
+			</tr>
+			<tr>
+			<td>Διεύθυνση επαγγέλματος ...................</td>
+			<td>Αρμόδια Υπηρεσία ΟΙΚΟΝΟΜΙΚΗ ΥΠΗΡΕΣΙΑ ...................</td>
+			</tr>
+			<tr>
+			<td>Διεύθυνση κατοικίας ...................</td>
+			<td>Αρμόδια Δημόσια ΟΙΚΟΝΟΜΙΚΗ ΥΠΗΡΕΣΙΑ ...................</td>
+			</tr>
+			</table>
+			<br/>
+			
+			<table border="1" style="width: 650px;">
+			<tr>
+			<td rowspan="3">
+			<div style="float: left; position: relative; -moz-transform: rotate(270deg); -o-transform: rotate(270deg);  
+			-webkit-transform: rotate(270deg); 	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3); 
+			-ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); align: middle;">
+			ΣΤΟΙΧ. ΙΔΙΟΚΤ. **<br/>
+			ΠΟΣΟΣΤΟ
+			</div>
+			</td>
+			<td rowspan="3" vertival-align="bottom">
+			<div style="float: left; position: relative; -moz-transform: rotate(270deg); -o-transform: rotate(270deg);  
+			-webkit-transform: rotate(270deg); 	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3); 
+			-ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);">
+			Η ΕΡΓΟΛΑΒΟΥ
+			</div>
+			</td>
+			<td>Ονοματεπώνυμο ή Επωνυμία ...................</td>
+			<td>Αριθ. Φορολ. Μητρ. ή Ταυτ. ...................</td>
+			</tr>
+			<tr>
+			<td>Διεύθυνση επαγγέλματος ...................</td>
+			<td>Αρμόδια Υπηρεσία ΟΙΚΟΝΟΜΙΚΗ ΥΠΗΡΕΣΙΑ ...................</td>
+			</tr>
+			<tr>
+			<td>Διεύθυνση κατοικίας ...................</td>
+			<td>Αρμόδια Δημόσια ΟΙΚΟΝΟΜΙΚΗ ΥΠΗΡΕΣΙΑ ...................</td>
+			</tr>
+			</table>
+			<br/>
+			
+			<table border="1" style="width: 650px;">
+			<tr>
+			<td rowspan="3">
+			<div style="float: left; position: relative; -moz-transform: rotate(270deg); -o-transform: rotate(270deg);  
+			-webkit-transform: rotate(270deg); 	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3); 
+			-ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); align: middle;">
+			ΣΤΟΙΧΕΙΑ ΕΡΓΟΛΑΒΟΥ. **
+			</div>
+			</td>
+			<td rowspan="3" vertival-align="bottom">
+			<div style="float: left; position: relative; -moz-transform: rotate(270deg); -o-transform: rotate(270deg);  
+			-webkit-transform: rotate(270deg); 	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3); 
+			-ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);">
+			Η ΥΠΗΡΕΣΙΑ ΕΡΓΟΛΑΒΟΥ
+			</div>
+			</td>
+			<td>Ονοματεπώνυμο ή Επωνυμία ...................</td>
+			<td>Αριθ. Φορολ. Μητρ. ή Ταυτ. ...................</td>
+			</tr>
+			<tr>
+			<td>Διεύθυνση επαγγέλματος ...................</td>
+			<td>Αρμόδια Υπηρεσία ΟΙΚΟΝΟΜΙΚΗ ΥΠΗΡΕΣΙΑ ...................</td>
+			</tr>
+			<tr>
+			<td>Διεύθυνση κατοικίας ...................</td>
+			<td>Αρμόδια Δημόσια ΟΙΚΟΝΟΜΙΚΗ ΥΠΗΡΕΣΙΑ ...................</td>
+			</tr>
+			</table>
+			<br/>
+			
+			<table border="1" style="width: 650px;">
+			<tr>
+			<td rowspan="5">
+			<div style="float: left; position: relative; -moz-transform: rotate(270deg); -o-transform: rotate(270deg);  
+			-webkit-transform: rotate(270deg); 	filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=3); 
+			-ms-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); align: middle;">
+			ΣΤΟΙΧΕΙΑ ΕΡΓΟΥ
+			</div>
+			</td>
+			<td>Διεύθυνση ή τοποθεσία ...................</td>
+			<td>Αρμόδια ΔΗΜΟΣΙΑ ΟΙΚΟΝΟΜΙΚΗ ΥΠΗΡΕΣΙΑ ...................</td>
+			</tr>
+			<tr>
+			<td colspan="2">Σύντομη περιγραφή ...................</td>
+			</tr>
+			<tr>
+			<td>Διαμερίσματα Μ<sup>(2)</sup> ...................</td>
+			<td>Αξία ...................</td>
+			</tr>
+			<tr>
+			<td>Επαγγελμ. Χώροι Μ<sup>(2)</sup> ...................</td>
+			<td>Έναρξη μήνας ................... Έτος ...................</td>
+			</tr>
+			<tr>
+			<td>Λοιποί Χώροι Μ<sup>(2)</sup> ...................</td>
+			<td>Διάρκεια μήνες ...................</td>
+			</tr>
+			</table>
+			<br/>
+			
+			<table style="width: 650px;">
+			<tr>
+			<td  style="width: 20%;" align="center">Ημερομηνία ...................</td>
+			<td style="width: 60%;"></td>
+			<td style="width: 20%;">Ημερομηνία παραλαβής ...................</td>
+			</tr>
+			<tr>
+			<td  style="width: 20%;" align="center">Ο Δηλών</td>
+			<td style="width: 60%;"></td>
+			<td style="width: 20%;">Ο Προιστάμενος Δ.Ο.Υ.</td>
+			</tr>
+			</table>
+			<br/><br/><br/><br/>
+			
+			<table style="width: 650px;">
+			<tr>
+			<td  style="width: 30%;" align="center">
+			*Συμπληρώνεται από την υπηρεσία <br/>
+			**Ανάλογα με την περίπτωση σημειώνεται Χ στο αντίστοιχο τετραγωνίδιο από το δηλούντα
+			</td>
+			<td style="width: 20%;"></td>
+			<td style="width: 50%;">
+			Το αναλυτικό δελτίο στάλθηκε στη ΜΗ.Κ.Υ.Ο. την .............<br/>
+			201.................με το .............έγγραφό μας.<br/>
+			Ο Προιστάμενος Δ.Ο.Υ.
+			</td>
+			</tr>
+			</table>
+			
+			</textarea>
+			<input type="submit" name="pfa_submit" value="Παραγωγή pdf">
+			</form>
+			
+			
+			<script type="text/javascript">
+			CKEDITOR.replace('kefaa');
+			</script>
+			</div>
+			
+			</form></div>
+			
 			</div>
 </div>			
 

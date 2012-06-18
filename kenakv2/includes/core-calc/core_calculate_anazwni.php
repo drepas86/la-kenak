@@ -106,6 +106,7 @@
 				}
 			}
 			
+			
 			//Οροφές
 			$strSQL = "SELECT * FROM kataskeyi_oro";
 			$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
@@ -270,6 +271,8 @@
 			${"groundt_u".$i} = $objResult["u"];
 			${"groundt_k_bathos".$i} = $objResult["k_bathos"];
 			${"groundt_a_bathos".$i} = $objResult["a_bathos"];
+			
+			if (${"groundt_type".$i}==1){${"groundt_u".$i} = ${"groundt_u".$i} / 2;}
 			${"groundt_ua".$i} = ${"groundt_emvadon".$i} * ${"groundt_u".$i};
 			
 				for ($z=1;$z<=$arithmos_thermzwnes;$z++){

@@ -284,7 +284,7 @@ $pin9 .= "<tr><td style=\"text-align:left;width:50%;\">Είδος μονάδας
 
 $pin9 .= "<tr><td style=\"text-align:left;width:50%;\">ΔΙΚΤΥΟ ΔΙΑΝΟΜΗΣ</td><td></td></tr>";
 $pin9 .= "<tr><td style=\"text-align:left;\">Συνολική ισχύς δικτύου διανομής (70% της ισχύος του λέβητα)</td>".
-"<td style=\"text-align:center;\">$thermansi_value_kw_text</td></tr><tr>".
+"<td style=\"text-align:center;\">".${"thermd_isxys".$z."1"}."</td></tr><tr>".
 "<td style=\"text-align:left;\">Διέλευση από εσ. χώρους</td>".
 "<td style=\"text-align:center;\">ΝΑΙ</td></tr><tr>".
 "<td style=\"text-align:left;\">Θερμοκρασία προσαγωγής θερμού μέσου στο δίκτυο διανομής (ºC)</td>".
@@ -403,7 +403,7 @@ if (${"coldd_monwsi".$z.$i_diktyoydianomis} == 1){$coldt_monwsi="NAI";}
 
 $pin10 .= "<tr><td style=\"text-align:left;width:50%;\">ΔΙΚΤΥΟ ΔΙΑΝΟΜΗΣ</td><td></td></tr>";
 $pin10 .= "<tr><td style=\"text-align:left;\">Ψυκτική ισχύς που μεταφέρει το δίκτυο διανομής</td>".
-"<td style=\"text-align:center;\">$klimatismos_value_kw_text</td></tr>".
+"<td style=\"text-align:center;\">".${"coldd_isxys".$z."1"}."</td></tr>".
 "<tr><td style=\"text-align:left;\">Διέλευση από εσ. χώρους</td>".
 "<td style=\"text-align:center;\">ΝΑΙ</td></tr>".
 "<tr><td style=\"text-align:left;\">Εξωτερικοί χώροι</td>".
@@ -537,6 +537,18 @@ $pin68 .= "</table>";
 $pin68 .= "<table>".
 "<tr><td>ΙΑΝ</td><td>ΦΕΒ</td><td>ΜΑΡ</td><td>ΑΠΡ</td><td>MAI</td><td>IOYN</td>".
 "<td>IOYΛ</td><td>ΑΥΓ</td><td>ΣΕΠ</td><td>ΟΚΤ</td><td>ΝΟΕ</td><td>ΔΕΚ</td></tr>";
+if (${"pososto_petr_jan".$z}<0){${"pososto_petr_jan".$z}=0;}
+if (${"pososto_petr_feb".$z}<0){${"pososto_petr_feb".$z}=0;}
+if (${"pososto_petr_mar".$z}<0){${"pososto_petr_mar".$z}=0;}
+if (${"pososto_petr_apr".$z}<0){${"pososto_petr_apr".$z}=0;}
+if (${"pososto_petr_may".$z}<0){${"pososto_petr_may".$z}=0;}
+if (${"pososto_petr_jun".$z}<0){${"pososto_petr_jun".$z}=0;}
+if (${"pososto_petr_jul".$z}<0){${"pososto_petr_jul".$z}=0;}
+if (${"pososto_petr_aug".$z}<0){${"pososto_petr_aug".$z}=0;}
+if (${"pososto_petr_sep".$z}<0){${"pososto_petr_sep".$z}=0;}
+if (${"pososto_petr_okt".$z}<0){${"pososto_petr_okt".$z}=0;}
+if (${"pososto_petr_nov".$z}<0){${"pososto_petr_nov".$z}=0;}
+if (${"pososto_petr_dec".$z}<0){${"pososto_petr_dec".$z}=0;}
 $pin68 .= "<tr><td>${"pososto_petr_jan".$z}</td><td>${"pososto_petr_feb".$z}</td>".
 "<td>${"pososto_petr_mar".$z}</td><td>${"pososto_petr_apr".$z}</td>".
 "<td>${"pososto_petr_may".$z}</td><td>${"pososto_petr_jun".$z}</td>".
@@ -694,13 +706,13 @@ $pinepar1 .= "<tr><td>A/V</td><td>" . ${"aprosv".$z} . "</td></tr>";
 $pinepar1 .= "<tr><td>Τιμή (U*A)/Α</td><td>" . ${"uadiaa".$z} . "</td></tr>";
 $pinepar1 .= "<tr><td>Umax  [W/(m2·Κ)] :</td><td>" . ${"umax".$z} . "</td></tr>";
 $sygkrisiua1 = ${"uadiaa".$z}  / ${"umax".$z};
-			if (${"sygkrisiua".$z}>1)${"elegxosua".$z}="ΔΕΝ τηρείται U &lt;= Umax";
-			if (${"sygkrisiua".$z}<=1)${"elegxosua".$z}="ΙΣΧΥΕΙ U &lt;= Umax";
-$pinepar1 .= "<tr><td>Έλεγχος</td><td>" . ${"elegxosua".$z} . "</td></tr>";
+			if (${"sygkrisiua".$z}>1)${"elegxosua".$z}="ΔΕΝ τηρείται U μικρότερο Umax.";
+			if (${"sygkrisiua".$z}<=1)${"elegxosua".$z}="ΙΣΧΥΕΙ U μικρότερο Umax.";
+//$pinepar1 .= "<tr><td>Έλεγχος</td><td>" . ${"elegxosua".$z} . "</td></tr>";
 $pinepar1 .= "</table><br />";
 
 $pinepar1 .="<br />Όπως προέκυψε A/V = " . number_format(${"aprosv".$z},3,".",",") . " m<sup>-1</sup> το οποίο από τον πίνακα 4.1 αντιστοιχεί σε μέγιστο επιτρεπτό Um,max="
- . number_format(${"umax".$z},3,".",",") . " W/(m²K) (με χρήση γραμμικής παρεμβολής).<br />".
+ . number_format(${"umax".$z},3,".",",") . " W/(m²K) (με χρήση γραμμικής παρεμβολής). ". ${"elegxosua".$z} . "<br />".
 "Στον πίνακα παρακάτω δίνονται συγκεντρωτικά τα εμβαδά των δομικών στοιχείων, τα αθροίσματα των U×A, καθώς και 
 τα αθροίσματα των Ψxl. Όπως προκύπτει, ο μέσος συντελεστής θερμοπερατότητας του κτιρίου ισούται με:".
 "Um= " . number_format(${"uadiaa".$z},3,".",",") . " W/(m²K) < Um,max= " . number_format(${"umax".$z},3,".",",") . " W/(m²K)".
@@ -1357,6 +1369,58 @@ for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 	}
 }	
 
+
+//Δάπεδα - Οροφές κείμενα τεύχους (6.3.3.2 , 6.3.3.3)
+//Υπάρχει δομικό στοιχείο σε επαφή με το έδαφος που είναι το .
+//Υπάρχουν δομικά στοιχεία σε επαφή με μη θερμαινόμενους χώρους και είναι .
+$pin_adiafani_edafos = "<strong>Οριζόντια δομικά στοιχεία </strong><br/>";
+$pin_adiafani_mthx = "<strong>Οριζόντια δομικά στοιχεία </strong><br/>";
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+${"arr_ad_type".$z} = array();
+${"arr_ad_name".$z} = array();
+${"arr_ad_name".$z}[0] = " ";
+${"arr_ad_name".$z}[1] = " ";
+	for ($i=1;$i<=$rows_dapedo;$i++){
+		if (${"dapedo_id_zwnis".$i} == $id_thermzwnes[$z]){
+		array_push(${"arr_ad_type".$z}, ${"dapedo_type".$i});
+			if (${"dapedo_type".$i} == 0){
+			${"arr_ad_name".$z}[0] .= ${"dapedo_name".$i} . ", ";
+			}
+			if (${"dapedo_type".$i} == 1){
+			${"arr_ad_name".$z}[1] .= ${"dapedo_name".$i} . ", ";
+			}
+		}
+	}
+
+if (in_array(0, ${"arr_ad_type".$z})) $pin_adiafani_edafos .= "(Ζώνη ". $z . ") Υπάρχουν δομικά στοιχεία σε επαφή με το έδαφος τα εξής: " . ${"arr_ad_name".$z}[0] . "<br/>";
+if (in_array(1, ${"arr_ad_type".$z})) $pin_adiafani_mthx .= "(Ζώνη ". $z . ") Υπάρχουν δομικά στοιχεία σε επαφή με Μ.Θ.Χ. τα εξής: " . ${"arr_ad_name".$z}[1] . "<br/>";
+}
+
+$pin_adiafani_edafos .= "<strong>Κατακόρυφα δομικά στοιχεία </strong><br/>";
+$pin_adiafani_mthx .= "<strong>Κατακόρυφα δομικά στοιχεία </strong><br/>";	
+for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+${"arr_gr_type".$z} = array();
+${"arr_gr_name".$z} = array();
+${"arr_gr_name".$z}[0] = " ";
+${"arr_gr_name".$z}[1] = " ";
+	for ($i=1;$i<=$rows_groundt;$i++){
+		if (${"groundt_id_zwnis".$i} == $id_thermzwnes[$z]){
+		array_push(${"arr_gr_type".$z}, ${"groundt_type".$i});
+			if (${"groundt_type".$i} == 0){
+			${"arr_gr_name".$z}[0] .= ${"groundt_name".$i} . ", ";
+			}
+			if (${"groundt_type".$i} == 1){
+			${"arr_gr_name".$z}[1] .= ${"groundt_name".$i} . ", ";
+			}
+		}
+	}
+
+if (in_array(0, ${"arr_gr_type".$z})) $pin_adiafani_edafos .= "(Ζώνη ". $z . ") Υπάρχουν κατακόρυφα δομικά στοιχεία σε επαφή με το έδαφος τα εξής: " . ${"arr_gr_name".$z}[0] . "<br/>";
+if (in_array(1, ${"arr_gr_type".$z})) $pin_adiafani_mthx .= "(Ζώνη ". $z . ") Υπάρχουν κατακόρυφα δομικά στοιχεία σε επαφή με Μ.Θ.Χ. τα εξής: " . ${"arr_gr_name".$z}[1] . "<br/>";	
+}
+
+
+
 //****************************************************************************************************************
 //                          ΜΕΤΑΦΟΡΑ ΤΩΝ ΣΤΟΙΧΕΙΩΝ ΣΤΟ ΤΕΥΧΟΣ                                                    *
 //****************************************************************************************************************
@@ -1577,8 +1641,14 @@ $z1[97]=$pinfwtismos;
 $z[98]="{PINYGRANSI}";
 $z1[98]=$pinygransi;
 
-$z[99]="<table>";
-$z1[99]="<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" style=\"width:100%;\" >";
+$z[99]="{ADIAFANI_EDAFOS}";
+$z1[99]=$pin_adiafani_edafos;
+
+$z[100]="{ADIAFANI_MTHX}";
+$z1[100]=$pin_adiafani_mthx;
+
+$z[101]="<table>";
+$z1[101]="<table border=\"1\" cellpadding=\"5\" cellspacing=\"0\" style=\"width:100%;\" >";
 
 $teyxos = str_replace($z, $z1, $teyxos);
 

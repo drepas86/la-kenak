@@ -39,7 +39,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 	}
 	echo "Διαγραφή βόρειου ανοίγματος επιτυχής.";
 	//Tsak mod
-	?><script type="text/javascript">window.location = "./kenak.php?page=4#anb"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#anb"</script><?php
 	exit;
 }
 
@@ -77,7 +77,7 @@ if (isset($_POST['prosthiki_anb'])) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε βόρειο άνοιγμα επιτυχώς";
 	//Tsak mod
-	?><script type="text/javascript">window.location = "./kenak.php?page=4#anb"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#anb"</script><?php
 	exit;
 			} else {
 			// Λάθος.
@@ -102,7 +102,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 	}
 	echo "Διαγραφή Ανατολικού ανοίγματος επιτυχής.";
 	//Tsak mod
-	?><script type="text/javascript">window.location = "./kenak.php?page=4#ana"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#ana"</script><?php
 	exit;
 }
 
@@ -140,7 +140,7 @@ if (isset($_POST['prosthiki_ana'])) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε Ανατολικό άνοιγμα επιτυχώς";
 	//Tsak mod
-	?><script type="text/javascript">window.location = "./kenak.php?page=4#ana"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#ana"</script><?php
 	exit;
 			} else {
 			// Λάθος.
@@ -167,7 +167,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 	}
 	echo "Διαγραφή Νότιου ανοίγματος επιτυχής.";
 	//Tsak mod
-	?><script type="text/javascript">window.location = "./kenak.php?page=4#ann"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#ann"</script><?php
 	exit;
 }
 
@@ -205,7 +205,7 @@ if (isset($_POST['prosthiki_ann'])) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε Νότιο άνοιγμα επιτυχώς";
 	//Tsak mod
-	?><script type="text/javascript">window.location = "./kenak.php?page=4#ann"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#ann"</script><?php
 	exit;
 			} else {
 			// Λάθος.
@@ -230,7 +230,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 	}
 	echo "Διαγραφή Δυτιοκού Ανοίγματος επιτυχής.";
 	//Tsak mod
-	?><script type="text/javascript">window.location = "./kenak.php?page=4#and"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#and"</script><?php
 	exit;
 }
 
@@ -268,7 +268,7 @@ if (isset($_POST['prosthiki_and'])) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε Δυτικό άνοιγμα επιτυχώς";
 	//Tsak mod
-	?><script type="text/javascript">window.location = "./kenak.php?page=4#and"</script><?php
+	?><script type="text/javascript">window.location = "./kenak.php?page=7#and"</script><?php
 	exit;
 			} else {
 			// Λάθος.

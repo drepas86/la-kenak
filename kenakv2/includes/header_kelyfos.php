@@ -39,7 +39,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		<script src="javascripts/jquery.jtable.js" type="text/javascript"></script>
 
 		<script src="javascripts/encoder.js" type="text/javascript"></script>
-		<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+		<script type="text/javascript" src="includes/ckeditor/ckeditor.js"></script>
 		<script src="javascripts/cssfix.js"></script>
 		
 		<script  type="text/javascript">

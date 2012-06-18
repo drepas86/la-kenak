@@ -573,7 +573,7 @@ $typos_an = "Αδιαφανής πόρτα";
 }//Αδιαφανής πόρτα
 
 if (${$an."anoig_eidos".$i} == 2) {
-$type_anoigmatwn = "Μη ανοιγόμενο κούφωμα";
+$type_anoigmatwn = "Ανοιγόμενο κούφωμα";
 $typos_an = "Συρόμενο παράθυρο";
 }//Συρόμενο παράθυρο
 
@@ -583,17 +583,17 @@ $typos_an = "Ανοιγόμενο παράθυρο";
 }//Ανοιγόμενο παράθυρο
 
 if (${$an."anoig_eidos".$i} == 4) {
-$type_anoigmatwn = "Μη ανοιγόμενο κούφωμα";
+$type_anoigmatwn = "Ανοιγόμενο κούφωμα";
 $typos_an = "Επάλληλο παράθυρο";
 }//Επάλληλο παράθυρο
 
 if (${$an."anoig_eidos".$i} == 5) {
-$type_anoigmatwn = "Μη ανοιγόμενο κούφωμα";
+$type_anoigmatwn = "Ανοιγόμενο κούφωμα";
 $typos_an = "Συρόμενη πόρτα μονή";
 }//Συρόμενη πόρτα μονή
 
 if (${$an."anoig_eidos".$i} == 6) {
-$type_anoigmatwn = "Μη ανοιγόμενο κούφωμα";
+$type_anoigmatwn = "Ανοιγόμενο κούφωμα";
 $typos_an = "Συρόμενη πόρτα διπλή";
 }//Συρόμενη πόρτα διπλή
 
@@ -608,7 +608,7 @@ $typos_an = "Ανοιγόμενη πόρτα διπλή";
 }//Ανοιγόμενη πόρτα διπλή
 
 if (${$an."anoig_eidos".$i} == 9) {
-$type_anoigmatwn = "Μη ανοιγόμενο κούφωμα";
+$type_anoigmatwn = "Ανοιγόμενο κούφωμα";
 $typos_an = "Επάλληλη πόρτα";
 }//Επάλληλη πόρτα
 
@@ -665,12 +665,13 @@ array_push(${"array_diafani_ffinc".$z}, $ffinc_an);
 }//τελειώνει η επανάληψη των ανοιγμάτων
 }//τελειώνει η επανάληψη των προσανατολισμών
 
+$type_orofes = "Οροφή";
 //ΟΡΟΦΕΣ ΣΤΙΣ ΑΔΙΑΦΑΝΕΙΣ
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i = 1; $i <= $rows_orofes; $i++) {
 
 if (${"orofes_id_zwnis".$i}==${"thermiki_zwni".$z}){
-array_push(${"array_adiafani_type".$z}, "Οροφή");
+array_push(${"array_adiafani_type".$z}, $type_orofes);
 array_push(${"array_adiafani_name".$z}, ${"orofes_name".$i});
 array_push(${"array_adiafani_g".$z}, "0");
 array_push(${"array_adiafani_b".$z}, "0");
@@ -1235,34 +1236,34 @@ $xml .= '<ENR_IN>'.$br;
 	
 	$xml .= '<LIBRARIES rid="#2">'.$br;
 		$xml .= '<id>Lib</id>'.$br;
-		$xml .= '<lib_const>C:\Program Files\TEE\TEE KENAK\EnrConstGr.xml</lib_const>'.$br;
-		$xml .= '<lib_clim>C:\Program Files\TEE\TEE KENAK\EnrClimateGR.xml</lib_clim>'.$br;
-		$xml .= '<lib_fuel>C:\Program Files\TEE\TEE KENAK\EnrFuelGr.xml</lib_fuel>'.$br;
+		$xml .= '<lib_const>C:\Program Files (x86)\TEE\TEE_KENAK_1.29\EnrConstGr.xml</lib_const>'.$br;
+		$xml .= '<lib_clim>C:\Program Files (x86)\TEE\TEE_KENAK_1.29\EnrClimateGR.xml</lib_clim>'.$br;
+		$xml .= '<lib_fuel>C:\Program Files (x86)\TEE\TEE_KENAK_1.29\EnrFuelGr.xml</lib_fuel>'.$br;
 	$xml .= '</LIBRARIES>'.$br;
 	$xml .= '<BUILDING rid="1">'.$br;
 		$xml .= '<blg_parameter1>'.$synoliko_embadon.'</blg_parameter1>'.$br; //συνολική επιφάνεια
-		$xml .= '<blg_parameter2>0</blg_parameter2>'.$br;
-		$xml .= '<blg_parameter3>0</blg_parameter3>'.$br;
-		$xml .= '<blg_parameter4>0</blg_parameter4>'.$br;
+		$xml .= '<blg_parameter2>0</blg_parameter2>'.$br; //Θερμαινόμενη επιφάνεια
+		$xml .= '<blg_parameter3>0</blg_parameter3>'.$br; //Ψυχόμενη επιφάνεια
+		$xml .= '<blg_parameter4>0</blg_parameter4>'.$br; //Συνολικός όγκος
 		$xml .= '<blg_parameter5>'.$thermainomenos_ogkos.'</blg_parameter5>'.$br; //θερμαινόμενος όγκος
-		$xml .= '<blg_parameter6>0</blg_parameter6>'.$br;
-		$xml .= '<blg_parameter7>0</blg_parameter7>'.$br;
-		$xml .= '<blg_parameter8>0</blg_parameter8>'.$br;
-		$xml .= '<blg_parameter9>0</blg_parameter9>'.$br;
-		$xml .= '<blg_parameter10>-1</blg_parameter10>'.$br;
+		$xml .= '<blg_parameter6>0</blg_parameter6>'.$br; //Ψυχόμενος όγκος
+		$xml .= '<blg_parameter7>0</blg_parameter7>'.$br; //Αριθμός ορόφων
+		$xml .= '<blg_parameter8>0</blg_parameter8>'.$br; //Ύψος τυπικού ορόφου (m)
+		$xml .= '<blg_parameter9>0</blg_parameter9>'.$br; //Ύψος ισογείου (m)
+		$xml .= '<blg_parameter10>-1</blg_parameter10>'.$br; //Έκθεση κτιρίου
 		$xml .= '<blg_parameter11>'.$arithmos_thermzwnes.'</blg_parameter11>'.$br; //θερμικές ζώνες
-		$xml .= '<blg_parameter12>1</blg_parameter12>'.$br;
-		$xml .= '<blg_parameter13>0</blg_parameter13>'.$br;
+		$xml .= '<blg_parameter12>0</blg_parameter12>'.$br; //Αριθμός μη θερμαινόμενων χώρων
+		$xml .= '<blg_parameter13>0</blg_parameter13>'.$br; //Αριθμός ηλιακών χώρων
 		$xml .= '<blg_parameter14>'.$xrisi_znx_iliakos.'</blg_parameter14>'.$br; // χρήση κτιρίου
-		$xml .= '<blg_parameter15>0000</blg_parameter15>'.$br;
-		$xml .= '<blg_parameter16>1</blg_parameter16>'.$br;
-		$xml .= '<blg_parameter17>0</blg_parameter17>'.$br;
-		$xml .= '<blg_parameter18/>'.$br;
-		$xml .= '<blg_parameter19>0</blg_parameter19>'.$br;
-		$xml .= '<blg_parameter20/>'.$br;
-		$xml .= '<blg_parameter21>0</blg_parameter21>'.$br;
-		$xml .= '<blg_parameter22/>'.$br;
-		$xml .= '<blg_parameter23/>'.$br;
+		$xml .= '<blg_parameter15>0000</blg_parameter15>'.$br; //Συνθήκες θερμικής άνεσης
+		$xml .= '<blg_parameter16>1</blg_parameter16>'.$br; //Θερμομόνωση των κατακόρυφων δομικών στοιχείων
+		$xml .= '<blg_parameter17>0</blg_parameter17>'.$br; //Αρ. Γραμμών πίνακα καταναλώσεων
+		$xml .= '<blg_parameter18/>'.$br; //Δεδομένα πίνακα καταναλώσεων
+		$xml .= '<blg_parameter19>0</blg_parameter19>'.$br; //Αρ. Γραμμών πίνακα υδρευση, αποχετευση, αρδευση
+		$xml .= '<blg_parameter20/>'.$br; //Δεδομένα πίνακα υδρευση, αποχετευση, αρδευση
+		$xml .= '<blg_parameter21>0</blg_parameter21>'.$br; //Αρ. Γραμμών πίνακα ανελκυστήρες
+		$xml .= '<blg_parameter22/>'.$br; //Δεδομένα πίνακα ανελκυστήρες
+		$xml .= '<blg_parameter23/>'.$br; //Υπαρχουν ανεμογεννήτριες αστικού περιβάλλοντος
 		$xml .= '<blg_parameter24/>'.$br;
 		$xml .= '<blg_parameter25/>'.$br;
 		$xml .= '<blg_parameter26>0</blg_parameter26>'.$br;
@@ -1342,7 +1343,7 @@ if (${"drop_xrisi".$z}==51){${"xrisi_eid".$z}="Βιβλιοθήκες";} //Βι�
 				$xml .= '<zn_parameter12>'.${"mesi_katanalwsi_znx".$z}.'</zn_parameter12>'.$br;
 					$xml .= "<ENVELOPE rid=\"1\">".$br;
 						$xml .= '<opaque_rows>'.${"count_adiafani".$z}.'</opaque_rows>'.$br;
-						$xml .= '<opaque_column1>'.${"$array_adiafani_type".$z}.',</opaque_column1>'.$br;
+						$xml .= '<opaque_column1>'.${"array_adiafani_type".$z}.',</opaque_column1>'.$br;
 						$xml .= '<opaque_column2>'.${"array_adiafani_name".$z}.',</opaque_column2>'.$br;
 						$xml .= '<opaque_column3>'.${"array_adiafani_g".$z}.',</opaque_column3>'.$br;
 						$xml .= '<opaque_column4>'.${"array_adiafani_b".$z}.',</opaque_column4>'.$br;

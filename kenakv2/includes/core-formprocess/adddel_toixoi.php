@@ -39,7 +39,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 	}
 	echo "Διαγραφή βόρειου τοίχου επιτυχής.";
 			//Tsak mod
-			?><script type="text/javascript">window.location = "./kenak.php?page=3#toixoib"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=6#toixoib"</script><?php
 			exit;
 }
 
@@ -94,7 +94,7 @@ if (isset($_POST['prosthiki_toixoib'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε ο βόρειος τοίχος που δηλώσατε επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=3#toixoib"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=6#toixoib"</script><?php
 			exit;
 			} else {
 			// Λάθος.
@@ -118,7 +118,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή ανατολικού τοίχου επιτυχής.";
-			?><script type="text/javascript">window.location = "./kenak.php?page=3#toixoia"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=6#toixoia"</script><?php
 			exit;
 }
 
@@ -173,7 +173,7 @@ if (isset($_POST['prosthiki_toixoia'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε ο Ανατολικός τοίχος που δηλώσατε επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=3#toixoia"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=6#toixoia"</script><?php
 			exit;
 			} else {
 			// Λάθος.
@@ -196,7 +196,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 	echo "Διαγραφή νότιου τοίχου επιτυχής.";
-			?><script type="text/javascript">window.location = "./kenak.php?page=3#toixoin"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=6#toixoin"</script><?php
 			exit;
 }
 
@@ -251,7 +251,7 @@ if (isset($_POST['prosthiki_toixoin'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			echo "Προστέθηκε ο Νότιος τοίχος που δηλώσατε επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=3#toixoin"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=6#toixoin"</script><?php
 			exit;
 			} else {
 			// Λάθος.
@@ -276,7 +276,7 @@ for($i=0;$i<count($_POST["delcheck"]);$i++)
 		}
 	}
 //	echo "Διαγραφή δυτικού τοίχου επιτυχής.";
-			?><script type="text/javascript">window.location = "./kenak.php?page=3#toixoid"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=6#toixoid"</script><?php
 			exit;
 	
 }
@@ -332,7 +332,7 @@ if (isset($_POST['prosthiki_toixoid'])) {
 			if ($result) {
 			// Εγγραφή επιτυχής
 			//echo "Προστέθηκε ο Δυτικός τοίχος που δηλώσατε επιτυχώς";
-			?><script type="text/javascript">window.location = "./kenak.php?page=3#toixoid"</script><?php
+			?><script type="text/javascript">window.location = "./kenak.php?page=6#toixoid"</script><?php
 			exit;
 			} else {
 			// Λάθος.

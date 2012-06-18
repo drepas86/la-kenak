@@ -140,7 +140,7 @@ $pdf->MultiCell(30, 7, "RΛ=",$border = '',$align = 'R',$fill = false,$ln = 0,$x
 $pdf->MultiCell(30, 7, $sdl,$border = 'LTRB',$align = 'C',$fill = true,$ln = 0,$x = '',$y = '',$reseth = true,$stretch = 0,$ishtml = false,$autopadding = true,$maxh = 7,$valign = 'M',$fitcell = false);
 
 $pdf->Ln();
-$pdf->Ln();
+//$pdf->Ln();
 $pdf->SetFont('dejavusans', 'N', 10);
 $pdf->Cell(0, 0, 'ΥΠΟΛΟΓΙΣΜΟΣ ΣΥΝΤΕΛΕΣΤΗ ΘΕΡΜΟΠΕΡΑΤΟΤΗΤΑΣ (U)', 0, 0, 'L', 0, '', 0, false, 'T', 'B');
 $pdf->SetFont('dejavusans', 'N', 8);
