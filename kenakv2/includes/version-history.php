@@ -4,6 +4,7 @@
 		<h2>Welcome to La-Kenak v.<?=VERSION?> </h2>
 		<div id="timeline" >
 		<ul id="dates">
+			<li><a href="#190612">19/6</a></li>
 			<li><a href="#100612">10/6</a></li>
 			<li><a href="#110512">11/5</a></li>
 			<li><a href="#010412">1/4</a></li>
@@ -17,6 +18,16 @@
 	
 		</ul>
 		<ul id="issues">
+		<li id="190612">
+				<img src="version-history/images/version-changes.png" width="256" height="256" />
+				<h1>19/6/2012</h1>
+				<p>La-kenak v2.83<br/><br/>
+				1. Προσθήκες - τεύχος. (ks1f14s) <br/>
+				2. Διόρθωση παραγωγής xml-τεε ως προς τον τύπο των τοίχων. (ks1f14s)<br/>
+				3. Έντυπο προκαταβλητέου φόρου αμοιβών (ks1f14s)<br/>
+				<br/><br/>
+				</p>
+			</li>
 		<li id="100612">
 				<img src="version-history/images/version-changes.png" width="256" height="256" />
 				<h1>10/6/2012</h1>

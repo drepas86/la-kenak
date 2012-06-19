@@ -191,4 +191,244 @@ echo "Το pdf σώθηκε. Ανοίξτε το <a href=\"includes/PDF/yd-n1599
 <?php
 }
 
+
+
+
+
+if (isset($_POST['pfa_submit'])) {
+require_once('/includes/tcpdf/config/lang/eng.php');
+require_once('/includes/tcpdf/tcpdf.php');
+	// Δεδομένα για τη φόρμα
+	$textarea = $_POST['kefaa'];
+		
+// Extend the TCPDF class to create custom Header and Footer
+class MYPDF extends TCPDF {
+	//Page header
+	public function Header() {
+		// Logo
+		//$image_file = 'images/style/ethnosimo.jpg';
+		//$this->Image($image_file, 10, 5, 8, 8, 'JPG', '', 'T', false, 300, 'C', false, false, 0, false, false, false);
+		// Set font
+		//$this->SetFont('dejavusans', 'B', 10);
+		// Title
+		//$this->Cell(0, 15, '', 'B', false, 'C', 0, '', 0, false, 'M', 'B');
+	}
+	// Page footer
+	public function Footer() {
+		// Position at 15 mm from bottom
+		$this->SetY(-15);
+		// Set font
+		$this->SetFont('dejavusans', 'N', 8);
+		// Page number
+		//$this->Cell(0, 10, 'Σελ. '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 'T', false, 'R', 0, '', 0, false, 'T', 'M');
+		$this->Cell(0, 10, '  ', 'T', false, 'R', 0, '', 0, false, 'T', 'M');
+	}
+}
+
+$print_yd=$textarea;
+
+// create new PDF document
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+// set document information
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('');
+$pdf->SetTitle('La-Kenak');
+$pdf->SetSubject('');
+$pdf->SetKeywords('');
+// set default header data
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+// set header and footer fonts
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+//set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+//set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+//set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+//set some language-dependent strings
+$pdf->setLanguageArray($l);
+// ---------------------------------------------------------
+// set font
+$pdf->SetFont('dejavusans', 'N', 8);
+// add a page
+$pdf->AddPage();
+$pdf->writeHTML($print_yd, $ln = true, $fill = false, $reseth = true, $cell = false, $align = '' ) ;
+
+
+ob_end_clean();
+// ---------------------------------------------------------
+//Close and output PDF document
+
+$pdf->Output('includes/PDF/yd-pfa.pdf', 'F');
+
+echo "Το pdf σώθηκε. Ανοίξτε το <a href=\"includes/PDF/yd-pfa.pdf\">εδώ.<a>";
+?>
+<script type="text/javascript">window.location = "includes/PDF/yd-pfa.pdf"</script>
+<?php
+}
+
+
+
+
+if (isset($_POST['symfwnia_submit'])) {
+require_once('/includes/tcpdf/config/lang/eng.php');
+require_once('/includes/tcpdf/tcpdf.php');
+	// Δεδομένα για τη φόρμα
+	$textarea = $_POST['symfwnia'];
+		
+// Extend the TCPDF class to create custom Header and Footer
+class MYPDF extends TCPDF {
+	//Page header
+	public function Header() {
+		// Logo
+		//$image_file = 'images/style/ethnosimo.jpg';
+		//$this->Image($image_file, 10, 5, 8, 8, 'JPG', '', 'T', false, 300, 'C', false, false, 0, false, false, false);
+		// Set font
+		//$this->SetFont('dejavusans', 'B', 10);
+		// Title
+		//$this->Cell(0, 15, '', 'B', false, 'C', 0, '', 0, false, 'M', 'B');
+	}
+	// Page footer
+	public function Footer() {
+		// Position at 15 mm from bottom
+		$this->SetY(-15);
+		// Set font
+		$this->SetFont('dejavusans', 'N', 8);
+		// Page number
+		//$this->Cell(0, 10, 'Σελ. '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 'T', false, 'R', 0, '', 0, false, 'T', 'M');
+		$this->Cell(0, 10, '  ', 'T', false, 'R', 0, '', 0, false, 'T', 'M');
+	}
+}
+
+$print_yd=$textarea;
+
+// create new PDF document
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+// set document information
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('');
+$pdf->SetTitle('La-Kenak');
+$pdf->SetSubject('');
+$pdf->SetKeywords('');
+// set default header data
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+// set header and footer fonts
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+//set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+//set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+//set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+//set some language-dependent strings
+$pdf->setLanguageArray($l);
+// ---------------------------------------------------------
+// set font
+$pdf->SetFont('dejavusans', 'N', 8);
+// add a page
+$pdf->AddPage();
+$pdf->writeHTML($print_yd, $ln = true, $fill = false, $reseth = true, $cell = false, $align = '' ) ;
+
+
+ob_end_clean();
+// ---------------------------------------------------------
+//Close and output PDF document
+
+$pdf->Output('includes/PDF/yd-symfwnia.pdf', 'F');
+
+echo "Το pdf σώθηκε. Ανοίξτε το <a href=\"includes/PDF/yd-symfwnia.pdf\">εδώ.<a>";
+?>
+<script type="text/javascript">window.location = "includes/PDF/yd-symfwnia.pdf"</script>
+<?php
+}
+
+
+
+
+if (isset($_POST['prokatabliteos_submit'])) {
+require_once('/includes/tcpdf/config/lang/eng.php');
+require_once('/includes/tcpdf/tcpdf.php');
+	// Δεδομένα για τη φόρμα
+	$textarea = $_POST['prokatabliteos'];
+		
+// Extend the TCPDF class to create custom Header and Footer
+class MYPDF extends TCPDF {
+	//Page header
+	public function Header() {
+		// Logo
+		//$image_file = 'images/style/ethnosimo.jpg';
+		//$this->Image($image_file, 10, 5, 8, 8, 'JPG', '', 'T', false, 300, 'C', false, false, 0, false, false, false);
+		// Set font
+		//$this->SetFont('dejavusans', 'B', 10);
+		// Title
+		//$this->Cell(0, 15, '', 'B', false, 'C', 0, '', 0, false, 'M', 'B');
+	}
+	// Page footer
+	public function Footer() {
+		// Position at 15 mm from bottom
+		$this->SetY(-15);
+		// Set font
+		$this->SetFont('dejavusans', 'N', 8);
+		// Page number
+		//$this->Cell(0, 10, 'Σελ. '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 'T', false, 'R', 0, '', 0, false, 'T', 'M');
+		$this->Cell(0, 10, '  ', 'T', false, 'R', 0, '', 0, false, 'T', 'M');
+	}
+}
+
+$print_yd=$textarea;
+
+// create new PDF document
+$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+// set document information
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('');
+$pdf->SetTitle('La-Kenak');
+$pdf->SetSubject('');
+$pdf->SetKeywords('');
+// set default header data
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+// set header and footer fonts
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+//set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+//set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+//set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+//set some language-dependent strings
+$pdf->setLanguageArray($l);
+// ---------------------------------------------------------
+// set font
+$pdf->SetFont('dejavusans', 'N', 8);
+// add a page
+$pdf->AddPage();
+$pdf->writeHTML($print_yd, $ln = true, $fill = false, $reseth = true, $cell = false, $align = '' ) ;
+
+
+ob_end_clean();
+// ---------------------------------------------------------
+//Close and output PDF document
+
+$pdf->Output('includes/PDF/yd-prokatabliteos.pdf', 'F');
+
+echo "Το pdf σώθηκε. Ανοίξτε το <a href=\"includes/PDF/yd-prokatabliteos.pdf\">εδώ.<a>";
+?>
+<script type="text/javascript">window.location = "includes/PDF/yd-prokatabliteos.pdf"</script>
+<?php
+}
 ?>
