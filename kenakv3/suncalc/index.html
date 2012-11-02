@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+	<title>Ηλιακή τροχιά</title>
+
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	
+	
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen, projection" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+	<!-- libraries -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="scripts/jquery.address-1.2rc.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&language=en"></script>
+	<script type="text/javascript" src="scripts/gears_init.js"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="scripts/raphael-min.js"></script>
+
+	<!-- my code -->
+	<script type="text/javascript" src="scripts/suncalc.js"></script>
+	<script type="text/javascript" src="scripts/suncalc-overlay.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+</head>
+
+<body>
+	<div id="header">
+		<h1><a href="#">SunCalc</a></h1>
+		
+		<div id="welcome" title="Βοήθεια">
+			<p><strong>Η ηλιακή τροχιά</strong> </p><br/>
+			<font color="red">21 Ιουνίου</font><br/>
+			<font color="cyan">21 Δεκεμβρίου</font><br/>
+			<font color="yellow">Ανατολή ηλίου</font><br/>
+			<font color="FF9900">Δύση ηλίου</font><br/>
+			<p><img src="images/help.png"></p>
+			<p></p>
+			
+			
+		</div>
+		
+		<p id="settings">
+			<span id="tagline">για </span>
+			<span id="location-container">
+				<input class="title" id="location" type="text" value="" /> <button id="go-location">Πάμε</button><br />
+				<button id="detect-location">Βρες την τοποθεσία μου</button>
+			</span> 
+			<span id="date-container">
+				την <input class="title" id="date" type="text" /> 
+			</span>
+			<a href="#now" id="now-link" class="button">Τώρα</a> Ημερομηνίες ΚΕΝΑΚ: 
+			<a href="#21jun09" id="21jun09-link" class="button">21 Jun 09:00</a>
+			<a href="#21jun09" id="21jun12-link" class="button">21 Jun 12:00</a>
+			<a href="#21jun09" id="21jun15-link" class="button">21 Jun 15:00</a>
+			<a href="#21dec09" id="21dec09-link" class="button">21 Δεκ 09:00</a>
+			<a href="#21dec09" id="21dec12-link" class="button">21 Δεκ 12:00</a>
+			<a href="#21dec09" id="21dec15-link" class="button">21 Δεκ 15:00</a>
+		</p>
+		
+		<div id="time-slider-container">
+			<div id="time-scale-container"></div>
+			<div id="time-slider-2">
+				<div id="time-scale-twilight"></div>
+				<div id="time-scale-twilight-2"></div>
+				<div id="time-scale-sunlight"></div>
+				<div id="time-scale-sunlight-2"></div>
+			</div>
+		</div>
+	</div>
+	<div id="legend" class="map-content">
+		<!-- time: your | <a href="#">local</a><br /><br /> -->
+		<span id="before-sunrise">
+			<span class="time-span dark morning-dark-time">...</span> &mdash; 
+			<acronym title="A period of time during which it's dark enough for any astronomical observations and the sky is not illuminated by sun.">night</acronym><br />
+			<span class="time-span twilight morning-astro-time">...</span> &mdash; 
+			<acronym title="A period of time during which it's dark enough for many astronomical observations but the sky is already illuminated by sun.">astronomical twilight</acronym><br />
+			<span class="time-span twilight morning-nau-time">...</span> &mdash; 
+			<acronym title="A period of time during which there's enough light from the sun to perform navigation via the horizon at sea but not enough for other outdoor activities without artificial sources of light.">nautical twilight</acronym><br />
+			<span class="time-span twilight morning-civil-time">...</span> &mdash; 
+			<acronym title="A period of time during which there's enough light from the sun that artificial sources of light may not be needed to perform outdoor activities.">civil twilight</acronym><br />
+		</span>
+		<span id="dawn">
+			<span class="time-span twilight dawn-time">...</span> &mdash; 
+			<acronym title="A time that marks the beginning of the twilight before sunrise. It is recognized by the presence of weak sunlight, while the sun itself is still below the horizon.">dawn</acronym><br />
+		</span>
+		<span id="sunset-sunrise">
+			<span class="time-span sunrise sunrise-time">...</span> &mdash; 
+			<acronym title="The moment when the top of the sun disc touches the horizon on sunrise.">sunrise</acronym><br />
+			<span id="daylight">
+				<span class="time-span sun daylight-time">...</span> &mdash; daylight<br />
+			</span>
+			<span id="transit">
+				<span class="time-span transit transit-time">...</span> &mdash; 
+				<acronym title="The moment when the sun appears the highest in the sky, compared to its positions during the rest of the day.">solar noon</acronym><br />
+			</span>
+			<span class="time-span sunset sunset-time">...</span> &mdash; 
+			<acronym title="The moment when the top of the sun disc touches the horizon on sunset.">sunset</acronym><br />
+		</span>
+		<span id="dusk">
+			<span class="time-span twilight dusk-time">...</span> &mdash; 
+			<acronym title="A time that marks the end of the twilight after sunset and the beginning of darkness in the evening.">dusk</acronym><br />
+		</span>
+		<span id="after-sunset">
+			<span class="time-span twilight night-civil-time">...</span> &mdash; civil twilight<br />
+			<span class="time-span twilight night-nau-time">...</span> &mdash; nautical twilight<br />
+			<span class="time-span twilight night-astro-time">...</span> &mdash; astronomical twilight<br />
+			<span class="time-span dark night-dark-time">...</span> &mdash; night<br />
+		</span>
+		<a id="more-detailed-link" href="#more-detailed">More detailed &raquo;</a>
+		<!-- <span class="sun specified-time">...</span> &mdash; <span class="altitude">...</span> -->
+	</div>
+	<div id="map"></div>
+	<div id="forecast" class="map-content"><img src="images/weather.png" id="forecast-link" ><img src="images/print.png" target="_blank" title="print" onclick="window.open('print_map.html')"></div>
+	<div id="links" class="map-content">
+		<a id="about-link" href="#about">Βοήθεια</a><br />
+	</div>
+	<div id="footer">
+		&copy; 2009 <a href="#">Vladimir Agafonkin</a>. Based on <a href="#">Astronomy Answers formulae</a>. Powered by <a href="#">Google Maps API v3</a>, 
+		<a href="#">jQuery</a> and <a href="#">jQuery UI</a>, <a href="#">Raphael</a>.
+	</div>
+	
+</body>
+</html>
