@@ -1,0 +1,1088 @@
+﻿<?php
+/*
+Copyright (C) 2012 - Labros KENAK v.1.0 
+Author: Labros Karoyntzos 
+
+Labros KENAK v.1.0 from Labros Karountzos is free software: 
+you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3 of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License version 3
+along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
+
+Το παρόν με την ονομασία Labros KENAK v.1.0. με δημιουργό τον Λάμπρο Καρούντζο
+στοιχεία επικοινωνίας info@chem-lab.gr www.chem-lab.gr
+είναι δωρεάν λογισμικό. Μπορείτε να το τροποποιήσετε και επαναδιανείμετε υπό τους
+όρους της άδειας GNU General Public License όπως δίδεται από το Free Software Foundation
+στην έκδοση 3 αυτής της άδειας.
+Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
+*/
+
+//ΣΧΕΔΙΑΣΗ ΚΕΙΜΕΝΟΥ
+function dxf_drawtext($x, $y, $string, $layer="0", $textheight=0.1){
+$text = "0
+TEXT
+  8
+$layer
+ 10
+$x
+ 20
+$y
+ 30
+0.0
+ 40
+$textheight
+  1
+$string
+  7
+FONT1
+";
+return $text;
+}
+
+//ΣΧΕΔΙΑΣΗ ΓΡΑΜΜΗΣ
+function dxf_drawline($x1,$y1,$x2,$y2, $layer="0"){
+$line = "0
+LINE
+  8
+$layer
+  62
+    0
+10
+$x1
+20
+$y1
+30
+0.0
+11
+$x2
+21
+$y2
+31
+0.0
+";
+return $line;
+}
+
+//Function που δέχεται  array με τα σημεία ως  συνεχόμενες τιμές x,y και προαιρετικά το όνομα του layer
+//Επιστρέφει το block  του dxf σε φορματ 2000 για lwpolyline.
+function dxf_drawlwpolyline($points_array, $layer=0){
+
+$point_count = count($points_array)/2;
+$text ="
+  0
+LWPOLYLINE
+  8
+$layer
+ 90
+";
+$text .="
+".$point_count."
+";
+$text .="		
+ 70
+   0
+ 43
+0.0
+";
+for ($i=1; $i<=$point_count; $i++){
+$text .="
+ 10
+";
+$text .="
+".$points_array[$i]."
+";
+$text .="
+ 20
+";
+$text .="
+".$points_array[$i+1]."
+";
+}
+return $text;
+}
+
+//ΣΧΕΔΙΑΣΗ ΚΥΚΛΟΥ
+function dxf_drawcircle($x,$y,$r, $layer="0"){
+$circle = "0
+CIRCLE
+  8
+$layer
+  5
+43
+ 10
+$x
+ 20
+$y
+ 30
+0.0
+ 40
+$r
+";
+return $circle;
+}
+
+//ΣΧΕΔΙΑΣΗ ΟΡΘΟΓΩΝΙΟΥ
+function dxf_drawrectangle($x,$y,$dx,$dy,$layer="0"){
+$x1=$x;
+$y1=$y;
+$x2=$x+$dx;
+$y2=$y;
+$x3=$x+$dx;
+$y3=$y-$dy;
+$x4=$x;
+$y4=$y-$dy;
+$rectangle = dxf_drawline($x1,$y1,$x2,$y2,$layer);
+$rectangle .= dxf_drawline($x2,$y2,$x3,$y3,$layer);
+$rectangle .= dxf_drawline($x3,$y3,$x4,$y4,$layer);
+$rectangle .= dxf_drawline($x4,$y4,$x1,$y1,$layer);
+
+return $rectangle;
+}
+
+function dxf_startentities(){
+$section = "0
+SECTION
+  2
+ENTITIES
+";
+return $section;
+}
+
+function dxf_endsection(){
+$section = "0
+ENDSEC
+";
+return $section;
+}
+
+function dxf_start(){
+
+$start = '0
+SECTION
+  2
+HEADER
+  9
+$ACADVER
+  1
+AC1009
+  9
+$INSBASE
+  10
+0.0
+  20
+0.0
+  30
+0.0
+  9
+$EXTMIN
+  10
+0.0
+  20
+0.0
+  30
+0.0
+  9
+$EXTMAX
+  10
+63
+  20
+59.4
+  30
+0.0
+  9
+$LIMMIN
+  10
+0.0
+  20
+0.0
+  9
+$LIMMAX
+  10
+63
+  20
+59.4
+  9
+$ORTHOMODE
+ 70
+     1
+  9
+$REGENMODE
+ 70
+     1
+  9
+$FILLMODE
+ 70
+     1
+  9
+$QTEXTMODE
+ 70
+     0
+  9
+$MIRRTEXT
+ 70
+     0
+  9
+$DRAGMODE
+ 70
+     2
+  9
+$LTSCALE
+ 40
+1.0
+  9
+$OSMODE
+ 70
+     0
+  9
+$ATTMODE
+ 70
+     1
+  9
+$TEXTSIZE
+ 40
+0.2
+  9
+$TRACEWID
+ 40
+0.05
+  9
+$TEXTSTYLE
+  7
+STANDARD
+  9
+$CLAYER
+  8
+0
+  9
+$CELTYPE
+  6
+BYLAYER
+  9
+$CECOLOR
+ 62
+   256
+  9
+$DIMSCALE
+ 40
+1.0
+  9
+$DIMASZ
+ 40
+0.0
+  9
+$DIMEXO
+ 40
+0.125
+  9
+$DIMDLI
+ 40
+0.0
+  9
+$DIMRND
+ 40
+0.0
+  9
+$DIMDLE
+ 40
+0.125
+  9
+$DIMEXE
+ 40
+0.125
+  9
+$DIMTP
+ 40
+0.0
+  9
+$DIMTM
+ 40
+0.0
+  9
+$DIMTXT
+ 40
+0.125
+  9
+$DIMCEN
+ 40
+0.09
+  9
+$DIMTSZ
+ 40
+0.05
+  9
+$DIMTOL
+ 70
+     0
+  9
+$DIMLIM
+ 70
+     0
+  9
+$DIMTIH
+ 70
+     0
+  9
+$DIMTOH
+ 70
+     0
+  9
+$DIMSE1
+ 70
+     0
+  9
+$DIMSE2
+ 70
+     0
+  9
+$DIMTAD
+ 70
+     1
+  9
+$DIMZIN
+ 70
+     0
+  9
+$DIMBLK
+  1
+
+  9
+$DIMASO
+ 70
+     1
+  9
+$DIMSHO
+ 70
+     1
+  9
+$DIMPOST
+  1
+
+  9
+$DIMAPOST
+  1
+
+  9
+$DIMALT
+ 70
+     0
+  9
+$DIMALTD
+ 70
+     2
+  9
+$DIMALTF
+ 40
+25.4
+  9
+$DIMLFAC
+ 40
+1.0
+  9
+$DIMTOFL
+ 70
+     0
+  9
+$DIMTVP
+ 40
+0.0
+  9
+$DIMTIX
+ 70
+     0
+  9
+$DIMSOXD
+ 70
+     0
+  9
+$DIMSAH
+ 70
+     0
+  9
+$DIMBLK1
+  1
+
+  9
+$DIMBLK2
+  1
+
+  9
+$LUNITS
+ 70
+     2
+  9
+$LUPREC
+ 70
+     4
+  9
+$AXISMODE
+ 70
+     0
+  9
+$AXISUNIT
+ 10
+0.0
+ 20
+0.0
+  9
+$SKETCHINC
+ 40
+0.1
+  9
+$FILLETRAD
+ 40
+0.0
+  9
+$AUNITS
+ 70
+     0
+  9
+$AUPREC
+ 70
+     0
+  9
+$MENU
+  1
+acad
+  9
+$ELEVATION
+ 40
+0.0
+  9
+$THICKNESS
+ 40
+0.0
+  9
+$LIMCHECK
+ 70
+     0
+  9
+$BLIPMODE
+ 70
+     1
+  9
+$CHAMFERA
+ 40
+0.0
+  9
+$CHAMFERB
+ 40
+0.0
+  9
+$SKPOLY
+ 70
+     0
+  9
+$TDCREATE
+ 40
+2449760.6321530091
+  9
+$TDUPDATE
+ 40
+2449760.6321530091
+  9
+$TDINDWG
+ 40
+0.0000000000
+  9
+$TDUSRTIMER
+ 40
+0.0000000000
+  9
+$USRTIMER
+ 70
+     1
+  9
+$ANGBASE
+ 50
+0.0
+  9
+$ANGDIR
+ 70
+     0
+  9
+$PDMODE
+ 70
+     0
+  9
+$PDSIZE
+ 40
+0.0
+  9
+$PLINEWID
+ 40
+0.0
+  9
+$COORDS
+ 70
+     2
+  9
+$SPLFRAME
+ 70
+     0
+  9
+$SPLINETYPE
+ 70
+     6
+  9
+$SPLINESEGS
+ 70
+     8
+  9
+$ATTDIA
+ 70
+     0
+  9
+$ATTREQ
+ 70
+     1
+  9
+$HANDLING
+ 70
+     0
+  9
+$HANDSEED
+  5
+0
+  9
+$SURFTAB1
+ 70
+     6
+  9
+$SURFTAB2
+ 70
+     6
+  9
+$SURFTYPE
+ 70
+     6
+  9
+$SURFU
+ 70
+     6
+  9
+$SURFV
+ 70
+     6
+  9
+$FLATLAND
+ 70
+     1
+  9
+$UCSNAME
+  2
+
+  9
+$UCSORG
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSXDIR
+ 10
+1.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSYDIR
+ 10
+0.0
+ 20
+1.0
+ 30
+0.0
+  9
+$USERI1
+ 70
+     0
+  9
+$USERI2
+ 70
+     0
+  9
+$USERI3
+ 70
+     0
+  9
+$USERI4
+ 70
+     0
+  9
+$USERI5
+ 70
+     0
+  9
+$USERR1
+ 40
+0.0
+  9
+$USERR2
+ 40
+0.0
+  9
+$USERR3
+ 40
+0.0
+  9
+$USERR4
+ 40
+0.0
+  9
+$USERR5
+ 40
+0.0
+  9
+$WORLDVIEW
+ 70
+     1
+  9
+$VIEWCTR
+ 10
+2.281323
+ 20
+14.37967
+  9
+$VIEWSIZE
+ 40
+18.0
+  9
+$SNAPMODE
+ 70
+     0
+  9
+$SNAPUNIT
+ 10
+0.05
+ 20
+0.05
+  9
+$SNAPBASE
+ 10
+0.0
+ 20
+0.0
+  9
+$SNAPANG
+ 50
+0.0
+  9
+$SNAPSTYLE
+ 70
+     0
+  9
+$SNAPISOPAIR
+ 70
+     0
+  9
+$GRIDMODE
+ 70
+     0
+  9
+$GRIDUNIT
+ 10
+0.0
+ 20
+0.0
+  9
+$FASTZOOM
+ 70
+     1
+  9
+$VIEWDIR
+ 10
+0.0
+ 20
+0.0
+ 30
+1.0
+  0
+ENDSEC
+  0
+SECTION
+  2
+TABLES
+  0
+TABLE
+  2
+LTYPE
+ 70
+    25
+  0
+LTYPE
+  2
+CONTINUOUS
+ 70
+    0
+  3
+Solid line
+ 72
+    65
+ 73
+    0
+ 40
+ 0.0
+  0
+LTYPE
+  2
+DASHED
+  70
+     0
+  3
+
+  72
+     65
+  73
+     2
+  40
+0.7500000
+  49
+0.5000000
+  49
+-0.2500000
+  0
+LTYPE
+  2
+HIDDEN
+  70
+     0
+  3
+
+  72
+     65
+  73
+     2
+  40
+0.3750000
+  49
+0.2500000
+  49
+-0.1250000
+  0
+LTYPE
+  2
+CENTER
+  70
+     0
+  3
+
+  72
+     65
+  73
+     4
+  40
+2
+  49
+1.25
+  49
+-0.2500000
+  49
+0.2500000
+  49
+-0.2500000
+  0
+LTYPE
+  2
+PHANTOM
+  70
+     0
+  3
+
+  72
+     65
+  73
+     6
+  40
+2.5
+  49
+1.25
+  49
+-0.2500000
+  49
+0.2500000
+  49
+-0.2500000
+  49
+0.2500000
+  49
+-0.2500000
+  0
+LTYPE
+  2
+DOT
+  70
+     0
+  3
+
+  72
+     65
+  73
+     2
+  40
+0.2500000
+  49
+0.0
+  49
+-0.2500000
+  0
+LTYPE
+  2
+DASHDOT
+  70
+     0
+  3
+
+  72
+     65
+  73
+     4
+  40
+1.0000000
+  49
+0.5000000
+  49
+-0.2500000
+  49
+0.0
+  49
+-0.2500000
+  0
+LTYPE
+  2
+BORDER
+  70
+     0
+  3
+
+  72
+     65
+  73
+     6
+  40
+1.75
+  49
+0.5000000
+  49
+-0.2500000
+  49
+0.5000000
+  49
+-0.2500000
+  49
+0.0
+  49
+-0.2500000
+  0
+LTYPE
+  2
+DIVIDE
+  70
+     0
+  3
+
+  72
+     65
+  73
+     6
+  40
+1.25
+  49
+0.5000000
+  49
+-0.2500000
+  49
+0.0
+  49
+-0.2500000
+  49
+0.0
+  49
+-0.2500000
+  0
+ENDTAB
+  0
+TABLE
+  2
+STYLE
+ 70
+    2
+  0
+STYLE
+  2
+STANDARD
+ 70
+    64
+ 40
+ 0.0
+ 41
+ 1.0
+ 50
+ 0.0
+ 71
+    0
+ 42
+ 0.2
+  3
+Arial
+  4
+
+  0
+ENDTAB
+  0
+TABLE
+  2
+VPORT
+ 70
+     1
+  0
+VPORT
+  2
+*ACTIVE
+ 70
+     0
+ 10
+0.0
+ 20
+0.0
+ 11
+1.0
+ 21
+1.0
+ 12
+2.281323
+ 22
+14.37967
+ 13
+0.0
+ 23
+0.0
+ 14
+0.05
+ 24
+0.05
+ 15
+0.0
+ 25
+0.0
+ 16
+0.0
+ 26
+0.0
+ 36
+1.0
+ 17
+18.519313
+ 27
+8.526316
+ 37
+0.0
+ 40
+7.381408
+ 41
+1.380723
+ 42
+50.0
+ 43
+-1.104533
+ 44
+-1.104533
+ 50
+0.0
+ 51
+0.0
+ 71
+     0
+ 72
+   100
+ 73
+     1
+ 74
+     1
+ 75
+     0
+ 76
+     0
+ 77
+     0
+ 78
+     0
+  0
+ENDTAB
+  0
+TABLE
+  2
+LAYER
+ 70
+     3
+  0
+LAYER
+  2
+0
+ 70
+    64
+ 62
+     7
+  6
+CONTINUOUS
+  0
+ENDTAB
+  0
+TABLE
+  2
+VIEW
+ 70
+     0
+  0
+ENDTAB
+  0
+TABLE
+  2
+UCS
+ 70
+     0
+  0
+ENDTAB
+  0
+TABLE
+  2
+DWGMGR
+ 70
+     0
+  0
+ENDTAB
+  0
+ENDSEC
+  0
+SECTION
+  2
+BLOCKS
+  0
+ENDSEC
+';
+return $start;
+}
+
+
+
+function dxf_end(){
+
+$end = '0
+EOF
+';
+return $end;
+
+}
+
+
+
+?>

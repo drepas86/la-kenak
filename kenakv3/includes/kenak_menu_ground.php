@@ -86,7 +86,7 @@ $.colorbox({inline:true,  href:"#guidetypeground", width:"80%", height:"80%"});
 	
 	<?php
 	$ped="kataskeyi_ground";
-	$dig="0|0|0|0|0|2|2|2|1|0|0|0|0";
+	$dig="0|0|0|0|0|2|2|2|2|2|0|0|0";
 	$tb_name="TableContainer_ground";
 	$fields="fields: {
 		id: {key: true,create: false,edit: false,list: false},
@@ -96,7 +96,7 @@ $.colorbox({inline:true,  href:"#guidetypeground", width:"80%", height:"80%"});
 		type: {title: 'Τύπος <a class=\"esg\" href=\"#guidetypeground\" onclick=help_typeground();><img src=\"./images/style/help.png\"/></a>',width: '10%',listClass: 'center', options: {'0':'Σε έδαφος','1':'Σε Μ.Θ.Χ.'}},
 		name: {title: 'Όνομα',width: '20%',listClass: 'center'},
 		emvadon: {title: 'Εμβαδόν',width: '20%',listClass: 'center'},
-		u: {title: 'U (ισοδύναμος συντ.) <a class=\"iframe\" href=\"./domika_kelyfos.php?page=3&min=1#tab-u2\" onclick=iframe_ground();><img src=\"./images/style/help.png\" /></a>',width: '10%',listClass: 'center'},
+		u: {title: 'U (ονομαστικός συντ.) <a class=\"iframe\" href=\"./domika_kelyfos.php?page=3&min=1#tab-u2\" onclick=iframe_ground();><img src=\"./images/style/help.png\" /></a>',width: '10%',listClass: 'center'},
 		k_bathos: {title: 'Κατώτερο βάθος',width: '15%',listClass: 'center'},
 		a_bathos: {title: 'Ανώτερο βάθος',width: '15%',listClass: 'center'}
 	}";

@@ -1207,6 +1207,9 @@ if ($xrisi_id_ktirio==50){$xrisi_id_ktirio=59;$xrisi_ktirio="Γραφείο";} /
 if ($xrisi_id_ktirio==51){$xrisi_id_ktirio=60;$xrisi_ktirio="Βιβλιοθήκη";} //Βιβλιοθήκη->Βιβλιοθήκη
 
 
+//Διαχωριστικές επιφάνειες
+//ΜΘΧ
+
 
 
 //Μεταφορά xml-schema για το ΤΕΕ-ΚΕΝΑΚ
@@ -1409,10 +1412,12 @@ if (${"drop_xrisi".$z}==51){${"xrisi_eid".$z}="Βιβλιοθήκες";} //Βι�
 						$xml .= '<direct_benefit_column14>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,</direct_benefit_column14>'.$br;
 						$xml .= '<direct_benefit_column15>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,</direct_benefit_column15>'.$br;
 						$xml .= '<direct_benefit_column16>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,</direct_benefit_column16>'.$br;
+						
+						//Διαχωριστικές επιφάνειες
 							$xml .= '<internal1 rid="1">'.$br;
-								$xml .= '<space_between>0</space_between>'.$br;
-								$xml .= '<opaque_rows>1</opaque_rows>'.$br;
-								$xml .= '<opaque_column1>,</opaque_column1>'.$br;
+								$xml .= '<space_between>0</space_between>'.$br; //Διαχωρισμός με θερμαινόμενο ή ηλιακό χώρο (-1:χωρίς επιλογή, 0:για 1ο χώρο, 1:για δεύτερο κλπ)
+								$xml .= '<opaque_rows>1</opaque_rows>'.$br; //Αρ. Γραμμών πίνακα Αδιαφανείς επιφάνειες Διαχωριστικής
+								$xml .= '<opaque_column1>,</opaque_column1>'.$br; //Τοίχος ή Οροφή ή Δάπεδο ή Πόρτα
 								$xml .= '<opaque_column2>,</opaque_column2>'.$br;
 								$xml .= '<opaque_column3>,</opaque_column3>'.$br;
 								$xml .= '<opaque_column4>,</opaque_column4>'.$br;
@@ -1428,7 +1433,7 @@ if (${"drop_xrisi".$z}==51){${"xrisi_eid".$z}="Βιβλιοθήκες";} //Βι�
 								$xml .= '<opaque_column14>,</opaque_column14>'.$br;
 								$xml .= '<opaque_column15>,</opaque_column15>'.$br;
 								$xml .= '<opaque_column16>,</opaque_column16>'.$br;
-								$xml .= '<transparent_rows>0</transparent_rows>'.$br;
+								$xml .= '<transparent_rows>0</transparent_rows>'.$br; //Αρ. Γραμμών πίνακα Διαφανείς επιφάνειες Διαχωριστικής
 								$xml .= '<transparent_column1/>'.$br;
 								$xml .= '<transparent_column2/>'.$br;
 								$xml .= '<transparent_column3/>'.$br;
@@ -1444,10 +1449,10 @@ if (${"drop_xrisi".$z}==51){${"xrisi_eid".$z}="Βιβλιοθήκες";} //Βι�
 								$xml .= '<transparent_column13/>'.$br;
 								$xml .= '<transparent_column14/>'.$br;
 								$xml .= '<transparent_column15/>'.$br;
-								$xml .= '<opaque_tb_rows>0</opaque_tb_rows>'.$br;
-								$xml .= '<opaque_tb_column1/>'.$br;
-								$xml .= '<opaque_tb_column2/>'.$br;
-								$xml .= '<opaque_tb_column3/>'.$br;
+								$xml .= '<opaque_tb_rows>0</opaque_tb_rows>'.$br; //Αρ. Γραμμών πίνακα Θερμογεφυρών διαχωριστικής
+								$xml .= '<opaque_tb_column1/>'.$br; //Περιγραφή
+								$xml .= '<opaque_tb_column2/>'.$br; //κενό
+								$xml .= '<opaque_tb_column3/>'.$br; //ΣΨl
 							$xml .= '</internal1>'.$br;	
 					$xml .= '</ENVELOPE>'.$br;
 					
@@ -1745,7 +1750,63 @@ $xml .= '</SYSTEM>'.$br;
 $xml .= "</ZONE".$z.">".$br;
 
 
-}
+} //Εδώ τελειώνουν οι θερμικές ζώνες και ξεκινούν οι μη θερμαινόμενοι χώροι
+
+$xml .= '<UNHEATED1 rid="1">'.$br;
+$xml .= '<un_parameter1></un_parameter1>'.$br; //Συνολική επιφάνεια (m²)
+$xml .= '<un_parameter2></un_parameter2>'.$br; //Διείσδυση αέρα (m³/h)
+
+$xml .= '<ENVELOPE rid="1">'.$br;
+$xml .= '<opaque_rows>0</opaque_rows>'.$br; //Αρ. Γραμμών πίνακα Αδιαφανείς επιφάνειες ΜΘΧ
+$xml .= '<opaque_column1>,</opaque_column1>'.$br; //Τοίχος ή Οροφή ή Πυλωτή ή Πόρτα
+$xml .= '<opaque_column2>adiafanes_mthx,</opaque_column2>'.$br; 
+$xml .= '<opaque_column3>,</opaque_column3>'.$br;
+$xml .= '<opaque_column4>,</opaque_column4>'.$br;
+$xml .= '<opaque_column5>,</opaque_column5>'.$br;
+$xml .= '<opaque_column6>,</opaque_column6>'.$br;
+$xml .= '<opaque_column7>,</opaque_column7>'.$br;
+$xml .= '<opaque_column8>,</opaque_column8>'.$br;
+$xml .= '<opaque_column9>,</opaque_column9>'.$br;
+$xml .= '<opaque_column10>,</opaque_column10>'.$br;
+$xml .= '<opaque_column11>,</opaque_column11>'.$br;
+$xml .= '<opaque_column12>,</opaque_column12>'.$br;
+$xml .= '<opaque_column13>,</opaque_column13>'.$br;
+$xml .= '<opaque_column14>,</opaque_column14>'.$br;
+$xml .= '<opaque_column15>,</opaque_column15>'.$br;
+$xml .= '<opaque_column16>,</opaque_column16>'.$br;
+$xml .= '<ground_rows>0</ground_rows>'.$br;
+$xml .= '<ground_column1>,</ground_column1>'.$br; //Τοίχος ή Δάπεδο
+$xml .= '<ground_column2>,</ground_column2>'.$br;
+$xml .= '<ground_column3>,</ground_column3>'.$br;
+$xml .= '<ground_column4>,</ground_column4>'.$br;
+$xml .= '<ground_column5>,</ground_column5>'.$br;
+$xml .= '<ground_column6>,</ground_column6>'.$br;
+$xml .= '<ground_column7>,</ground_column7>'.$br;
+$xml .= '<ground_column8>,</ground_column8>'.$br;
+$xml .= '<transparent_rows>1</transparent_rows>'.$br;
+$xml .= '<transparent_column1>,</transparent_column1>'.$br;
+$xml .= '<transparent_column2>,</transparent_column2>'.$br;
+$xml .= '<transparent_column3>,</transparent_column3>'.$br;
+$xml .= '<transparent_column4>,</transparent_column4>'.$br;
+$xml .= '<transparent_column5>,</transparent_column5>'.$br;
+$xml .= '<transparent_column6>,</transparent_column6>'.$br;
+$xml .= '<transparent_column7>,</transparent_column7>'.$br;
+$xml .= '<transparent_column8>,</transparent_column8>'.$br;
+$xml .= '<transparent_column9>,</transparent_column9>'.$br;
+$xml .= '<transparent_column10>,</transparent_column10>'.$br;
+$xml .= '<transparent_column11>,</transparent_column11>'.$br;
+$xml .= '<transparent_column12>,</transparent_column12>'.$br;
+$xml .= '<transparent_column13>,</transparent_column13>'.$br;
+$xml .= '<transparent_column14>,</transparent_column14>'.$br;
+$xml .= '<transparent_column15>,</transparent_column15>'.$br;
+$xml .= '<opaque_tb_rows>0</opaque_tb_rows>'.$br;
+$xml .= '<opaque_tb_column1></opaque_tb_column1>'.$br;
+$xml .= '<opaque_tb_column2></opaque_tb_column2>'.$br;
+$xml .= '<opaque_tb_column3></opaque_tb_column3>'.$br;
+$xml .= '</ENVELOPE>'.$br;
+$xml .= '</UNHEATED1>'.$br;
+
+
 $xml .= '</BUILDING>'.$br;
 
 $xml .= '</ENR_IN>'.$br;
@@ -1756,6 +1817,12 @@ $handle = fopen("user".$_SESSION['user_id']."-tee-kenak-".$namefile.".xml",'w+')
 fwrite($handle,$xml);
 echo "Το αρχείο user".$_SESSION['user_id']."-tee-kenak-" . $namefile . ".xml" . " εγγράφηκε επιτυχώς";
 echo "<br/>" . "<a href=\"".$_SESSION['user_id']."-tee-kenak-$namefile.xml\" >Κατεβάστε το αρχείο xml-tee</a>";
+echo "<br/><br/>Αριθμός θερμικών ζωνών=<b><font color=\"red\">".$arithmos_pragmatikesthermzwnes."</font></b> αριθμός ΜΘΧ=<b><font color=\"red\">".$arithmos_pragmatikoimthx."</font></b><br/><br/>";
+			echo "<font color=\"red\">ΠΡΟΣΟΧΗ:To Λογισμικό στην παρούσα έκδοση βρίσκεται σε κατάσταση development και δεν μεταφέρει διαχωριστικές επιφάνειες στο xml.<br/>
+			(αυτές οι επιφάνειες είτε προστίθενται στα κατακόρυφα αδιαφανή στοιχεία με το διορθωτικό b=0,5 είτε εισάγονται χειροκίνητα ως διαχωριστικές επιφάνειες.<br/>
+			Στην περίπτωση δαπέδου προς ΜΘΧ ο μοναδικός τρόπος εισαγωγής στο τεε-κενακ βρίσκεται σε διαχωριστικές επιφάνειες-αδιαφανείς επιφάνειες-δάπεδα)<br/>
+			Επίσης μεταφέρει τους ΜΘΧ ως ξεχωριστή ζώνη. (Μπορείτε να αντιγράψετε το κέλυφος της ζώνης που περιέχει το μθχ σε μη θερμαινόμενο χώρο στο λογισμικό ΤΕΕ-ΚΕΝΑΚ και έπειτα να 
+			διαγράψετε τη ζώνη.)</font>";
 fclose($handle);
 
 ?>

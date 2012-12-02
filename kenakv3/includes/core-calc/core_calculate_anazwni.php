@@ -82,6 +82,12 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			$id_thermzwnes[0] = 0;
 			$check_thermzwnes[0] = 0;
 			
+			//πραγματικές θερμικές ζώνες και ΜΘΧ ανάλογα με το αν επιλέχθηκε έλεγχος θερμ. επάρκειας.
+			$id_pragmatikeszwnes = array();
+			$id_pragmatikoimthx = array();
+			$id_pragmatikeszwnes[0] = 0;
+			$id_pragmatikoimthx[0] = 0;
+			
 			$i = 0;
 			while($objResult = mysql_fetch_array($objQuery))
 			{
@@ -98,7 +104,17 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			
 			array_push($id_thermzwnes, $objResult["id"]);
 			array_push($check_thermzwnes, $objResult["thermoeparkeia"]);
+			
+				if (${"thermoeparkeia".$i} == 0){
+				array_push($id_pragmatikoimthx, $objResult["id"]);
+				}
+				if (${"thermoeparkeia".$i} == 1){
+				array_push($id_pragmatikeszwnes, $objResult["id"]);
+				}
 			}
+			
+			$arithmos_pragmatikesthermzwnes = count($id_pragmatikeszwnes)-1;
+			$arithmos_pragmatikoimthx = count($id_pragmatikoimthx)-1;
 			
 			//Έπειτα για κάθε πίνακα που περιέχει στοιχεία που είναι εξαρτημένα της θερμικής ζώνης
 			//πρέπει να υπολογίσω όπως έκανα και παλαιότερα ανά προσανατολισμό και τις μεταβλητές που δεν έχουν i, j
@@ -121,7 +137,15 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			${"dapedo_b".$i} = $objResult["b"];
 			${"dapedo_bathos".$i} = $objResult["bathos"];
 			${"dapedo_perimetros".$i} = $objResult["perimetros"];
-			${"dapedo_ua".$i} = ${"dapedo_emvadon".$i} * ${"dapedo_u".$i} * ${"dapedo_b".$i};
+			${"dapedo_xaraktiristiki".$i} = 2*${"dapedo_emvadon".$i}/${"dapedo_perimetros".$i};
+			if (${"dapedo_type".$i}==0){
+			${"dapedo_u_is".$i} = isodynamos_dapedoy(${"dapedo_u".$i}, ${"dapedo_bathos".$i}, ${"dapedo_xaraktiristiki".$i});
+			}else{
+			${"dapedo_u".$i} = ${"dapedo_u".$i} * ${"dapedo_b".$i};
+			${"dapedo_u_is".$i} = ${"dapedo_u".$i};
+			}
+			
+			${"dapedo_ua".$i} = ${"dapedo_emvadon".$i} * ${"dapedo_u_is".$i};
 			
 				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 					if (${"dapedo_id_zwnis".$i} == $id_thermzwnes[$z]){
@@ -130,6 +154,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 					}
 				}
 			}
+			
 			
 			
 			//Οροφές
@@ -297,8 +322,15 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			${"groundt_k_bathos".$i} = $objResult["k_bathos"];
 			${"groundt_a_bathos".$i} = $objResult["a_bathos"];
 			
-			if (${"groundt_type".$i}==1){${"groundt_u".$i} = ${"groundt_u".$i} / 2;}
-			${"groundt_ua".$i} = ${"groundt_emvadon".$i} * ${"groundt_u".$i};
+				if (${"groundt_type".$i}==1){
+				${"groundt_b".$i} = 0.5;
+				${"groundt_u".$i} = ${"groundt_u".$i} * ${"groundt_b".$i};
+				${"groundt_u_is".$i} = ${"groundt_u".$i};
+				}
+				if (${"groundt_type".$i}==0){
+				${"groundt_u_is".$i} = isodynamos_katakoryfoy(${"groundt_u".$i}, ${"groundt_k_bathos".$i}, ${"groundt_a_bathos".$i});
+				}
+			${"groundt_ua".$i} = ${"groundt_emvadon".$i} * ${"groundt_is".$i};
 			
 				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 					if (${"groundt_id_zwnis".$i} == $id_thermzwnes[$z]){

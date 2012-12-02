@@ -307,8 +307,8 @@ for ($j=1;$j<=4;$j++){
 						$id_zwnis = dropdown("SELECT id, name FROM kataskeyi_zwnes WHERE user_id=".$_SESSION['user_id']." AND meleti_id=".$_SESSION['meleti_id'], "id", "name", $vasi."_id_zwnis");
 						echo "<td>".$id_zwnis."</td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_name\" maxlength=\"50\" size=\"25\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_mikos\" maxlength=\"10\" size=\"5\" /></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_ypsos\" maxlength=\"10\" size=\"5\" /></td>";
+						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_mikos\" id=\"t_mikos".$j."\" maxlength=\"10\" size=\"5\" /></td>";
+						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_ypsos\" id=\"t_ypsos".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_platos\" id=\"t_p".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_t_u\" id=\"t_u".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><select name=\"" . $vasi . "_t_thermo\" id=\"t_thermo".$j."\"/>" . $thermo_d . $thermo_oe . $thermo_pr . "</select></td>";
@@ -321,7 +321,9 @@ for ($j=1;$j<=4;$j++){
 						<th>U<br/><a class="iframe" href="./domika_kelyfos.php?page=1&min=1&t=d&p=<?=$j;?>" onclick=iframe_t_u();><img src="./images/style/help.png" /></a></th>
 						<th>Ψ<br/><a class="dok" href="./includes/kenak_help2.php?p=<?=$j;?>" title="" onclick=get_thermo_dok();><img src="./images/style/help.png"/></a></th>
 <!--					<th>Ψ<br/><a class="dok" href="./images/thermo/edp/edp4.jpg" title="" onclick=get_thermo_dok();><img src="./images/style/help.png" /></a></th> -->
-						<th>Μήκος<br/><a class="inline" href="#inline_content6" onclick=get_inlinetext(6);><img src="./images/style/help.png"/></a></th>
+						<th>Μήκος<br/><a class="inline" href="#inline_content6" onclick=get_inlinetext(6);><img src="./images/style/help.png"/></a>
+						<input type="text" name="feronpp<?=$j;?>" id="feronpp<?=$j;?>" title="Εισάγετε το ποσοστό του φέροντα οργανισμού" maxlength="3" size="3" onkeyup=get_persentferon(<?=$j;?>);>
+						</th>
 						<th>Πλήθος<br/><a class="inline" href="#inline_content7" onclick=get_inlinetext(7);><img src="./images/style/help.png"/></a></th>
 						<th>U<br/><a class="iframe" href="./domika_kelyfos.php?page=1&min=1&t=y&p=<?=$j;?>" onclick=iframe_t_u();><img src="./images/style/help.png" /></a></th>
 						<th>Ψ<br/><a class="ypost" href="./includes/kenak_help3.php?p=<?=$j;?>" title="" onclick=get_thermo_ypost();><img src="./images/style/help.png"/></a></th>
@@ -330,10 +332,10 @@ for ($j=1;$j<=4;$j++){
 						<th>U<br/><a class="iframe" href="./domika_kelyfos.php?page=1&min=1&t=s&p=<?=$j;?>" onclick=iframe_t_u();><img src="./images/style/help.png" /></a></th>
 						</tr><tr>
 						<?php
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_d_ypsos\" maxlength=\"10\" size=\"5\" /></td>";
+						echo "<td><input type=\"text\" name=\"" . $vasi . "_d_ypsos\" id=\"d_ypsos".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_d_u\" id=\"d_u".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><select name=\"" . $vasi . "_d_thermo\" id=\"d_thermo".$j."\"/>" . $thermo_edp . $thermo_pr . "</select></td>";
-						echo "<td><input type=\"text\" name=\"" . $vasi . "_yp_mikos\" maxlength=\"10\" size=\"5\" /></td>";
+						echo "<td><input type=\"text\" name=\"" . $vasi . "_yp_mikos\" id=\"yp_mikos".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_yp_plithos\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><input type=\"text\" name=\"" . $vasi . "_yp_u\" id=\"y_u".$j."\" maxlength=\"10\" size=\"5\" /></td>";
 						echo "<td><select name=\"" . $vasi . "_yp_thermo\" id=\"yp_thermo".$j."\"/>" . $thermo_pr . "</select></td>";
@@ -396,6 +398,9 @@ for ($j=1;$j<=4;$j++){
 		<td>1981 έως 1999</td><td>Μη γωνιακό</td><td>30%</td><td>35%</td>
 		</tr>
 		</table>
+		<font color="red">Είτε εισάγετε κανονικά το μήκος των υποστυλωμάτων και το ύψος της δοκού
+		είτε εισάγετε το ποσοστό (πχ 15 για 15%) στο κελί δίπλα στο σύμβολο.<br/> Εαν επιλεγεί ποσοστό
+		μηδενίζεται το ύψος της δοκού ενώ το μήκος των υποστυλωμάτων παίρνει την τιμή (Μήκος τοίχου)*ποσοστό/100</font>
 		</div></div>
 <!------------------------------------------------------------------------------------>
 <!--        Κρυφό div για βοήθεια πλήθος των υποστηλωμάτων                          -->
@@ -467,6 +472,17 @@ document.getElementById("t_thermodap1").selectedIndex="13";
 document.getElementById("t_thermodap2").selectedIndex="13";
 document.getElementById("t_thermodap3").selectedIndex="13";
 document.getElementById("t_thermodap4").selectedIndex="13";
+
+function get_persentferon(n){
+var n = n;
+var t_mikos = document.getElementById("t_mikos"+n).value;
+var feronpp = document.getElementById("feronpp"+n).value;
+
+var pp = t_mikos*feronpp/100;
+document.getElementById("d_ypsos"+n).value = 0;
+document.getElementById("yp_mikos"+n).value = pp;
+
+}
 </script>
 
 

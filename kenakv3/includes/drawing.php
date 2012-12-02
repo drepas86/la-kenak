@@ -61,6 +61,8 @@ if(add_new_table("kataskeyi_drawing")){
 
 		<script type="text/javascript" src="../javascripts/wz_jsgraphics.js"></script>
 		<script src="../javascripts/draw_scripts.js" type="text/javascript"></script>
+		<script src="./canvassaver/canvas2image.js" type="text/javascript"></script>
+		<script src="./canvassaver/base64.js" type="text/javascript"></script>
 
 	</head>
 	<body style="background:#ffffff;">
@@ -79,6 +81,8 @@ if(add_new_table("kataskeyi_drawing")){
 <img src="../images/domika/png.png" width="50px" height="50px" style="cursor:pointer;" title="εισαγωγή κάτοψης"  id="insert" onclick="set_action('insert');" /><br /><br />
 <img src="../images/domika/tape.png" width="50px" height="50px" style="cursor:pointer;" title="βαθμονόμηση κάτοψης"  id="calibr" onclick="set_action('calibr');" /><br /><br />
 <img src="../images/domika/help1.png" width="50px" height="50px" style="cursor:pointer;" title="οδηγίες"  id="help" onclick="set_action('help');" /><br /><br />
+<a class="iframe" href="./dxfwrite/dxf_export.php?floor=<?php echo $floor; ?>" id="dxfsavelink" onclick=iframe_exportdxf();>
+<img src="../images/domika/drawpath.png" width="50px" height="50px" style="cursor:pointer;" title="DXF Export"  id="dxfexport" /></a><br /><br />
 </div>
 
 <div style="position:absolute;top:10px;left:60px;width:100%;height:30px;" id="infobox" >
@@ -108,6 +112,8 @@ Ymax= <input type="text" id="ymax" style="width:50px;" onchange="setmax();">
 <input type="radio" id="d3" name="dtype" value="3" onclick="set_type();" />Άνοιγμα
 <input type="radio" id="d4" name="dtype" value="4" onclick="set_type();" />Υποστύλωμα
 <input type="radio" id="d6" name="dtype" value="6" onclick="set_type();" />Θερμογέφυρα
+<input type="button" id="savepngbtn" value="Save PNG" onclick="saveCanvas(document.getElementById('canvas_container'), 'PNG');">
+<input type="button" id="savejpgbtn" value="Save JPG" onclick="saveCanvas(document.getElementById('canvas_container'), 'JPEG');">
 </div>
 
 <div style="position:absolute;top:49px;left:60px;width:800px;height:1px;" id="drawbox" >
@@ -406,6 +412,7 @@ echo "<select id=\"a_thermo\" >" . $thermo_ak . "</select>";
 </div></div>
 <!------------------------------------------------------------------------------------>
 <script type="text/javascript">
+
 	function rectangle(x,y,w,h,type){
 		this.x=x;	// συντεταγμένες άνω αριστερής γωνίας σε pixel
 		this.y=y;	//					''
@@ -483,6 +490,7 @@ for ($i=1;$i<=$rec_count;$i++){
 }
 ?>
 	function change_floor(){
+	
 		if (save==0){
 			if(confirm('Οι αλλαγές δεν έχουν αποθηκευθεί. Επιθυμείτε αλλαγή στάθμης;')==false){document.getElementById("floor").value=floor;return;}
 		}
@@ -494,6 +502,11 @@ for ($i=1;$i<=$rec_count;$i++){
 	}
 
 init();	
+
+
+function iframe_exportdxf(){
+$(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
+}
 </script>
 
 </body>

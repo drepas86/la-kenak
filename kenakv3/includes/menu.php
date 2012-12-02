@@ -54,10 +54,27 @@ $xpmenu->addCategory("m5", "Μ Ε Λ Ε Τ Η", "", "5");
 	$xpmenu->addOption("m510", "Τ Ε Υ Χ Ο Σ", "", "kenak.php?page=10", "m5", "5");
 	$xpmenu->addOption("m511", "Αμοιβές", "", "amoivi.php", "m5", "5");
 
+$xpmenu->addMenu("6");
+$xpmenu->addCategory("m6", "ΧΡΗΣΤΗΣ", "theme/icons/authors.gif", "6");
+if (!isset($_SESSION['user_id'])){
+	$xpmenu->addOption("m61", " Σύνδεση", "", "login.php", "m6", "6");
+}
+if (isset($_SESSION['user_id'])){	
+	$xpmenu->addOption("m61", "Καλωσήρθες ".$_SESSION['username'], "", "staff.php", "m6", "6");
+}
+if (!isset($_SESSION['meleti_id'])){
+	$xpmenu->addOption("m62", " Επιλογή Μελέτης", "", "staff.php", "m6", "6");
+}
+if (isset($_SESSION['meleti_id'])){
+	$xpmenu->addOption("m62", $_SESSION['meleti_perigrafi'], "", "staff.php", "m6", "6");
+}
+
+	
 //javascript for the menu
 echo $xpmenu->javaScript();
 //css for menu
 echo $xpmenu->style();
+
 ?>
 
 <div style="position:absolute;top:0;left:0;width:100%;height:50px;background:#558806;">
@@ -70,10 +87,12 @@ echo $xpmenu->style();
 			<td id="menu3" style="vertical-align:top;width:150px;"><?php echo $xpmenu->mountMenu("3"); ?></td>
 			<td id="menu4" style="vertical-align:top;width:150px;"><?php echo $xpmenu->mountMenu("4"); ?></td>
 			<td id="menu5" style="vertical-align:top;width:150px;"><?php echo $xpmenu->mountMenu("5"); ?></td>
+			<td id="separator" style="vertical-align:top;width:10px;"></td>
+			<td id="menu6" style="vertical-align:top;width:150px;"><?php echo $xpmenu->mountMenu("6"); ?></td>
   		</tr>
   	</table>
 </table>
 </div></div>
-<div style="position:absolute;top:0;left:900;width:300px;height:50px;z-index:0;">
+<div style="position:absolute;top:0;left:980;width:300px;height:50px;z-index:0;">
 <h1 style="color: #8D0D19;">La-Kenak v<?php echo VERSION; ?> </h1>
 </div>

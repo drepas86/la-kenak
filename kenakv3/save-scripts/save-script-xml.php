@@ -27,6 +27,7 @@ include ("../includes/database.php");
 include ("../includes/connection.php");
 include ("../includes/functions.php");
 require_once("../includes/session.php");
+confirm_logged_in();
 $host=DB_SERVER;
 $user=DB_USER;
 $pass=DB_PASS;

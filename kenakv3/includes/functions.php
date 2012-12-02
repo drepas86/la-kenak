@@ -1019,6 +1019,146 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	
 	
 	
+	// Γραμμές πριν και μετά τον πίνακα ισοδύναμου συντελεστή δαπέδου για το βάθος
+	function get_dapedovathos($vathos){
+			if ($vathos == 0) {
+			$grammi1 = 0;
+			}
+			if ($vathos == 0.5) {
+			$grammi1 = 0.5;
+			}
+			if ($vathos == 1) {
+			$grammi1 = 1;
+			}
+			if ($vathos == 1.5) {
+			$grammi1 = 1.5;
+			}
+			if ($vathos == 2) {
+			$grammi1 = 2;
+			}
+			if ($vathos == 2.5) {
+			$grammi1 = 2.5;
+			}
+			if ($vathos == 3) {
+			$grammi1 = 3;
+			}
+			if ($vathos == 4.5) {
+			$grammi1 = 4.5;
+			}
+			if ($vathos == 6) {
+			$grammi1 = 6;
+			}
+			if ($vathos >= 9) {
+			$grammi1 = 9;
+			}
+			if ($vathos > 0 && $vathos < 0.5) {
+			$grammi1 = 0;
+			$grammi2 = 0.5;
+			}
+			if ($vathos > 0.5 && $vathos < 1) {
+			$grammi1 = 0.5;
+			$grammi2 = 1;
+			}
+			if ($vathos > 1 && $vathos < 1.5) {
+			$grammi1 = 1;
+			$grammi2 = 1.5;
+			}
+			if ($vathos > 1.5 && $vathos < 2) {
+			$grammi1 = 1.5;
+			$grammi2 = 2;
+			}
+			if ($vathos > 2 && $vathos < 2.5) {
+			$grammi1 = 2;
+			$grammi2 = 2.5;
+			}
+			if ($vathos > 2.5 && $vathos < 3) {
+			$grammi1 = 2.5;
+			$grammi2 = 3;
+			}
+			if ($vathos > 3 && $vathos < 4.5) {
+			$grammi1 = 3;
+			$grammi2 = 4.5;
+			}
+			if ($vathos > 4.5 && $vathos < 6) {
+			$grammi1 = 4.5;
+			$grammi2 = 6;
+			}
+			if ($vathos > 6 && $vathos < 9) {
+			$grammi1 = 6;
+			$grammi2 = 9;
+			}
+			
+			return array ($grammi1,$grammi2);
+	}
+	
+	
+	
+	// Γραμμές πριν και μετά τον πίνακα ισοδύναμου συντελεστή TOIXOY για το βάθος
+	function get_toixosvathos($vathos){
+			if ($vathos <= 0.5) {
+			$grammi1 = 0.5;
+			}
+			if ($vathos == 1) {
+			$grammi1 = 1;
+			}
+			if ($vathos == 1.5) {
+			$grammi1 = 1.5;
+			}
+			if ($vathos == 2) {
+			$grammi1 = 2;
+			}
+			if ($vathos == 2.5) {
+			$grammi1 = 2.5;
+			}
+			if ($vathos == 3) {
+			$grammi1 = 3;
+			}
+			if ($vathos == 4.5) {
+			$grammi1 = 4.5;
+			}
+			if ($vathos == 6) {
+			$grammi1 = 6;
+			}
+			if ($vathos >= 9) {
+			$grammi1 = 9;
+			}
+			if ($vathos > 0.5 && $vathos < 1) {
+			$grammi1 = 0.5;
+			$grammi2 = 1;
+			}
+			if ($vathos > 1 && $vathos < 1.5) {
+			$grammi1 = 1;
+			$grammi2 = 1.5;
+			}
+			if ($vathos > 1.5 && $vathos < 2) {
+			$grammi1 = 1.5;
+			$grammi2 = 2;
+			}
+			if ($vathos > 2 && $vathos < 2.5) {
+			$grammi1 = 2;
+			$grammi2 = 2.5;
+			}
+			if ($vathos > 2.5 && $vathos < 3) {
+			$grammi1 = 2.5;
+			$grammi2 = 3;
+			}
+			if ($vathos > 3 && $vathos < 4.5) {
+			$grammi1 = 3;
+			$grammi2 = 4.5;
+			}
+			if ($vathos > 4.5 && $vathos < 6) {
+			$grammi1 = 4.5;
+			$grammi2 = 6;
+			}
+			if ($vathos > 6 && $vathos < 9) {
+			$grammi1 = 6;
+			$grammi2 = 9;
+			}
+			
+			return array ($grammi1,$grammi2);
+	}
+	
+	
 	
 	//Γραμμική παρεμβολή.Παλινδρόμηση ονομάστηκε εξαιτίας λάθους το οποίο συνεχίστηκε. Δεν την μετονόμασα καθώς την είχα καλέσει αρκετές φορές έπειτα από το λάθος.
 	function palindromisi($y1, $y2, $x1, $x2, $y0) {
@@ -1088,4 +1228,163 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 	}
 	
 	
+//ks1f14s mod -- Μετατροπή μιας στήλης από ένα πίνακα της βάσης σε Array με προεραιτική χρήση συνθήκης.
+	
+	function turn_col_into_array($column, $table,$condition){
+	if (!$condition){
+	$result = mysql_query("SELECT ".$column." FROM ".$table." WHERE user_id=".$_SESSION['user_id']." AND meleti_id=".$_SESSION['meleti_id']);
+	}else{
+	$result = mysql_query("SELECT ".$column." FROM ".$table." WHERE user_id=".$_SESSION['user_id']." AND meleti_id=".$_SESSION['meleti_id']." AND ".$condition);
+	}
+		while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
+		$array[] = $row[0];
+		}
+	//εδώ μπορεί να προστεθεί και implode για να επιστρέφονται κατευθείαν τιμές διαχωρισμένες με κόμμα.
+	return $array;
+	}	
+	
+	
+	
+	//Υπολογισμός ισοδύναμου συντελεστή δαπέδου. Ορίζεται ο ονομαστικός, το βάθος και η χαρακτηριστική και επιστρέφει τον ισοδύναμο
+	function isodynamos_dapedoy($dapedo_ufb, $vathos, $xaraktiristiki){
+	$stiles = get_xaraktiristiki($xaraktiristiki);
+		$stiles1 = $stiles[0];
+		$stiles2 = $stiles[1];
+		$grammes = get_ufb($dapedo_ufb);
+		$grammes1 = $grammes[0];
+		$grammes2 = $grammes[1];
+		$zgrammes = get_dapedovathos($vathos);
+		$vathos1 = $zgrammes[0];
+		$vathos2 = $zgrammes[1];
+		
+		
+			//υπολογισμός για το πρώτο βάθος
+			if (!isset($stiles2)){ //H χαρακτηριστική διάσταση ακριβώς
+				if (!isset($grammes2)) { //Το Ufb ακριβώς
+				$timiu_vathos1 = get_dapedo_edafoys($stiles1, $vathos1, $grammes1);
+				}
+				
+				if (isset($grammes2)) { //Το Ufb δεν πέφτει ακριβώς
+				$timiu1 = get_dapedo_edafoys($stiles1, $vathos1, $grammes1);
+				$timiu2 = get_dapedo_edafoys($stiles1, $vathos1, $grammes2);
+				$timiu_vathos1 = palindromisi($grammes1, $grammes2, $timiu1, $timiu2, $dapedo_ufb);
+				}
+			}
+		
+			else{ //H χαρακτηριστική διάσταση δεν πέφτει ακριβώς
+				if (!isset($grammes2)) { //Το Ufb ακριβώς
+				$timiu1 = get_dapedo_edafoys($stiles1, $vathos1, $grammes1);
+				$timiu2 = get_dapedo_edafoys($stiles2, $vathos1, $grammes1);
+				$timiu_vathos1 = palindromisi($stiles1, $stiles2, $timiu1, $timiu2, $xaraktiristiki);
+				}
+				
+				if (isset($grammes2)) { //Το Ufb δεν πέφτει ακριβώς
+				$timiu11 = get_dapedo_edafoys($stiles1, $vathos1, $grammes1);
+				$timiu12 = get_dapedo_edafoys($stiles1, $vathos1, $grammes2);
+				$timiu1 = palindromisi($grammes1, $grammes2, $timiu11, $timiu12, $dapedo_ufb);
+				$timiu21 = get_dapedo_edafoys($stiles2, $vathos1, $grammes1);
+				$timiu22 = get_dapedo_edafoys($stiles2, $vathos1, $grammes2);
+				$timiu2 = palindromisi($grammes1, $grammes2, $timiu21, $timiu22, $dapedo_ufb);
+				$timiu_vathos1 = palindromisi($stiles1, $stiles2, $timiu1, $timiu2, $xaraktiristiki);
+				
+				}
+			}
+		
+		//εαν ορίστηκε και δεύτερο βάθος (ενδιάμεση τιμή) τότε υπολογισμός και για το δεύτερο και παρεμβολή.
+		if (isset($vathos2)){
+		
+			//υπολογισμός για το δεύτερο βάθος
+			if (!isset($stiles2)){ //H χαρακτηριστική διάσταση ακριβώς
+				if (!isset($grammes2)) { //Το Ufb ακριβώς
+				$timiu_vathos2 = get_dapedo_edafoys($stiles1, $vathos2, $grammes1);
+				}
+				
+				if (isset($grammes2)) { //Το Ufb δεν πέφτει ακριβώς
+				$timiu1 = get_dapedo_edafoys($stiles1, $vathos2, $grammes1);
+				$timiu2 = get_dapedo_edafoys($stiles1, $vathos2, $grammes2);
+				$timiu_vathos2 = palindromisi($grammes1, $grammes2, $timiu1, $timiu2, $dapedo_ufb);
+				}
+			}
+		
+			else{ //H χαρακτηριστική διάσταση δεν πέφτει ακριβώς
+				if (!isset($grammes2)) { //Το Ufb ακριβώς
+				$timiu1 = get_dapedo_edafoys($stiles1, $vathos2, $grammes1);
+				$timiu2 = get_dapedo_edafoys($stiles2, $vathos2, $grammes1);
+				$timiu_vathos2 = palindromisi($stiles1, $stiles2, $timiu1, $timiu2, $xaraktiristiki);
+				}
+				
+				if (isset($grammes2)) { //Το Ufb δεν πέφτει ακριβώς
+				$timiu11 = get_dapedo_edafoys($stiles1, $vathos2, $grammes1);
+				$timiu12 = get_dapedo_edafoys($stiles1, $vathos2, $grammes2);
+				$timiu1 = palindromisi($grammes1, $grammes2, $timiu11, $timiu12, $dapedo_ufb);
+				$timiu21 = get_dapedo_edafoys($stiles2, $vathos2, $grammes1);
+				$timiu22 = get_dapedo_edafoys($stiles2, $vathos2, $grammes2);
+				$timiu2 = palindromisi($grammes1, $grammes2, $timiu21, $timiu22, $dapedo_ufb);
+				$timiu_vathos2 = palindromisi($stiles1, $stiles2, $timiu1, $timiu2, $xaraktiristiki);
+				
+				}
+			}
+			
+			$timi_u = palindromisi($vathos1, $vathos2, $timiu_vathos1, $timiu_vathos2, $vathos);
+			
+		}
+		
+		if (!isset($vathos2)){
+		return $timiu_vathos1;
+		}
+		else{
+		return $timi_u;
+		}
+	}
+	
+	
+	
+	
+	//Υπολογισμός ισοδύναμου συντελεστή κατακόρυφου στοιχείου σε έδαφος. Ορίζεται ο ονομαστικός, το βάθος και επιστρέφει τον ισοδύναμο
+	function isodynamos_katakoryfoy($utb, $katwterovathos, $anwterovathos){
+		$stiles = get_utb($utb);
+		$stiles1 = $stiles[0];
+		$stiles2 = $stiles[1];	
+		$vathos = $katwterovathos - $anwterovathos;
+		$zgrammes1 = get_toixosvathos($vathos);
+		$z1 = $zgrammes1[0];
+		$z2 = $zgrammes1[1];		
+		
+		//#################################################################################
+		//################# Υπολογισμός για το ανώτερο βάθος ##############################
+			if (!isset($stiles2)){
+			$timiu_z1 = get_katakoryfo_utb($z1, $stiles1);
+			}
+		
+			else{
+				$timiu1 = get_katakoryfo_utb($z1, $stiles1);
+				$timiu2 = get_katakoryfo_utb($z1, $stiles2);
+				$timiu_z1 = palindromisi($stiles1, $stiles2, $timiu1, $timiu2, $utb);
+			}
+			
+		//εαν ορίστηκε και δεύτερο βάθος (ενδιάμεση τιμή) τότε υπολογισμός και για το δεύτερο και παρεμβολή.
+		if (isset($z2)){
+		
+			if (!isset($stiles2)){
+			$timiu_anwterovathos2 = get_katakoryfo_utb($z2, $stiles1);
+			}
+		
+			else{
+				$timiu1 = get_katakoryfo_utb($z2, $stiles1);
+				$timiu2 = get_katakoryfo_utb($z2, $stiles2);
+				$timiu_z2 = palindromisi($stiles1, $stiles2, $timiu1, $timiu2, $utb);
+			}
+			
+		$timiu_z = palindromisi($z1, $z2, $timiu_z1, $timiu_z2, $anwterovathos);
+		}
+		
+		//ο υπολογισμός είναι ίδιος για κατώτερο και ανώτερο βάθος. Όποιο και να επιστραφεί είναι το ίδιο. Επιλέγω ανώτερο βάθος.
+			if (isset($z2)){ //το βάθος πέφτει ενδιάμεσα
+			return $timiu_z;
+			}
+			if (!isset($z2)){ //το βάθος δεν πέφτει ενδιάμεσα
+			return $timiu_z1;
+			}
+		
+	}
 ?>

@@ -104,13 +104,15 @@ $pin43 .= "</table>";
 	
 	
 $pin44 = "<table>";
-$pin44 .= "<tr><td style=\"text-align:left;width:40%;\">Δομικό στοιχείο</td>".
+$pin44 .= "<tr><td style=\"text-align:left;width:25%;\">Δομικό στοιχείο</td>".
 		 "<td style=\"text-align:center;width:10%;\">Φύλλο ελέγχου</td>".
 		 "<td style=\"text-align:center;width:10%;\">Εμβαδόν</td>".
-		 "<td style=\"text-align:center;width:10%;\">U' [W/(m²K)]</td>".
+		 "<td style=\"text-align:center;width:10%;\">U [W/(m²K)]</td>".
 		 "<td style=\"text-align:center;width:10%;\">Κατώτερο βάθος z (m)</td>".
 		 "<td style=\"text-align:center;width:10%;\">Ανώτερο βάθος z (m)</td>".
-		 "<td style=\"text-align:center;width:10%;\">Περίμετρος</td></tr>";
+		 "<td style=\"text-align:center;width:10%;\">Περίμετρος</td>".
+		 "<td style=\"text-align:center;width:5%;\">Β (χαρ.)</td>".
+		 "<td style=\"text-align:center;width:10%;\">U' [W/(m²K)]</td></tr>";
 for ($i=1;$i<=$rows_dapedo;$i++){	
 if (${"dapedo_type".$i} == 0){	
 $pin44 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
@@ -119,7 +121,9 @@ $pin44 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
 		  "<td style=\"text-align:center;\">" . ${"dapedo_u".$i} . "</td>".
 		  "<td style=\"text-align:center;\">" . ${"dapedo_bathos".$i} . "</td>".
 		  "<td style=\"text-align:center;\"></td>".
-		  "<td style=\"text-align:center;\">" . ${"dapedo_perimetros".$i} . "</td></tr>";
+		  "<td style=\"text-align:center;\">" . ${"dapedo_perimetros".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . round(${"dapedo_xaraktiristiki".$i},3) . "</td>".
+		  "<td style=\"text-align:center;\">" . round(${"dapedo_u_is".$i},3) . "</td></tr>";
 }
 }
 for ($i=1;$i<=$rows_groundt;$i++){		
@@ -129,7 +133,9 @@ $pin44 .= "<tr><td style=\"text-align:left;\">" . ${"groundt_name".$i} . "</td>"
 		  "<td style=\"text-align:center;\">" . ${"groundt_u".$i} . "</td>".
 		  "<td style=\"text-align:center;\">" . ${"groundt_k_bathos".$i} . "</td>".
 		  "<td style=\"text-align:center;\">" . ${"groundt_a_bathos".$i} . "</td>".
-		  "<td style=\"text-align:center;\"></td></tr>";
+		  "<td style=\"text-align:center;\"></td>".
+		  "<td style=\"text-align:center;\"></td>".
+		  "<td style=\"text-align:center;\">" . round(${"groundt_u_is".$i},3) . "</td></tr>";
 }
 $pin44 .= "</table>";
 

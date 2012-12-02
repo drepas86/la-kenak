@@ -27,6 +27,7 @@ include ("../includes/database.php");
 include ("../includes/connection.php");
 include ("../includes/functions.php");
 require_once("../includes/session.php");
+confirm_logged_in();
 backup_tables(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
 
 

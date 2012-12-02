@@ -184,7 +184,13 @@ include_once("includes/form_functions.php");
 	}
 ?>
 
-<div class="topright"><?php echo $login_message ?><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
+<script language="JavaScript">
+function get_iframe(){
+$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+}
+</script>
+
+<div class="topright"><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
 <table id="structure">
 	<tr>
 		<td id="navigation">
@@ -193,8 +199,9 @@ include_once("includes/form_functions.php");
 		<td id="page">
 			<h2>Περιοχή χρηστών</h2>
 			<p>Καλωσήρθες στην περιοχή χρηστών, <?php echo $_SESSION['username']; ?>.</p>
-			<font color="green">Τώρα μπορείτε να έχετε πρόσβαση στο λογισμικό.</font><img src="images/domika/yes.png">
-
+			<font color="green">Τώρα μπορείτε να έχετε πρόσβαση στο λογισμικό.</font><img src="images/domika/yes.png"><br/>
+			
+			<b>Μενού χρήστη</b>
 			<ul>
 				<li><a href="addresses.php">Οι διευθύνσεις μου</a></li>
 				<?php		
@@ -207,6 +214,25 @@ include_once("includes/form_functions.php");
 				?>
 				<li><a href="logout.php">Αποσύνδεση</a></li>
 			</ul>
+			
+			
+			
+			<?php		
+			if ($_SESSION['username']=="admin")
+			{
+			?>
+			<b>Κατάλογος φακέλων</b>
+			<ul>
+			<li><a class="iframe" href="includes/PDF/" target="_blank" onclick=get_iframe();><img src="theme/icons/pdf.png"></img>Φάκελος PDF</a></li>
+			<li><a class="iframe" href="uploadimg/images/" target="_blank" onclick=get_iframe();><img src="theme/icons/jpg.png"></img>Φάκελος ΠΕΑ</a></li>
+			<li><a class="iframe" href="xml/" target="_blank" onclick=get_iframe();><img src="theme/icons/xml.png"></img>Φάκελος XML</a></li>
+			<li><a class="iframe" href="includes/dxfwrite/" target="_blank" onclick=get_iframe();><img src="theme/icons/draw.png"></img>Φάκελος DXF</a></li>
+			</ul>
+			<?php
+			}
+			?>
+			
+			
 			
 			<h2>Οι μελέτες μου</h2>
 			<br/><hr>

@@ -26,6 +26,8 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 $file = $_GET["filename"];
 include ("functions_xml.php");
 include ("../includes/connection.php");
+require_once("../includes/session.php");
+confirm_logged_in();
 
 for ($i = 0; $i <= 48; $i++) {
 insertxmldata($i,$file);

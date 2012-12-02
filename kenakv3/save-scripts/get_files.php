@@ -24,6 +24,9 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
 */
 
+require_once("../includes/session.php");
+confirm_logged_in();
+
 class ExtensionFilterIterator extends FilterIterator
 {
 

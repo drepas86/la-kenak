@@ -38,7 +38,7 @@ if (!isset($_SESSION['meleti_id'])){$login_message.=" - Επιλέξτε μελ�
 if (!isset($_SESSION['user_id'])){$login_message="<a href=\"login.php\">Σύνδεση</a>";}
 ?>
 
-<div class="topright"><?php echo $login_message ?><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
+<div class="topright"><a href="index.php"><img src="images/home.png" align="right"></img></a></div>
 <table id="structure">
 	<tr>
 		<td id="page">

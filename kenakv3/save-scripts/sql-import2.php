@@ -43,7 +43,8 @@
 include ("../includes/database.php");
 include ("../includes/connection.php");
 include ("../includes/functions.php");
-
+require_once("../includes/session.php");
+confirm_logged_in();
 $db_server   = DB_SERVER;
 $db_name     = DB_NAME;
 $db_username = DB_USER;

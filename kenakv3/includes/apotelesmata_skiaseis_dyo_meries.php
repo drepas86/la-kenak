@@ -93,136 +93,15 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			$pinakasthesisar = "320a";
 			$pinakasthesisde = "320b";
 			
-			//Εύρεση των στηλών στη βάση δεδομένων που θα χρησιμοποιηθούν είτε για απ' ευθείας τιμές είτε για παρεμβολή.ΠΡΟΣΑΝΑΤΟΛΙΣΜΟΣ ΕΠΙΦΑΝΕΙΑΣ
-			$arrayprosanatolismoy = get_prosanatolismo_pleyrika($pros);
-			$stili1 = $arrayprosanatolismoy[0];
-			$stili2 = $arrayprosanatolismoy[1];
-			$prosanatolismos_epif = $arrayprosanatolismoy[2];
-			$timi_stili1 = $arrayprosanatolismoy[3];
-			$timi_stili2 = $arrayprosanatolismoy[4];
+			$array_ar = calc_skiasi_fin($degtoixoyar, ${"pros".$i}, 1);
+			$f_har = $array_ar[0];
+			$f_car = $array_ar[1];
+			$array_de = calc_skiasi_fin($degtoixoyde, ${"pros".$i}, 2);
+			$f_hde = $array_de[0];
+			$f_cde = $array_de[1];
 			
-			//Εύρεση των γραμμών στη βάση δεδομένων που θα χρησιμοποιηθούν είτε για απ' ευθείας τιμές είτε για παρεμβολή.ΤΟΙΧΟΣ
-			$arrayskiasistoixoyar = get_skiasi_pleyrika($degtoixoyar);
-			$grammi1toixoyar = $arrayskiasistoixoyar[0];
-			$grammi2toixoyar = $arrayskiasistoixoyar[1];
-						
-			$arrayskiasistoixoyde = get_skiasi_pleyrika($degtoixoyde);
-			$grammi1toixoyde = $arrayskiasistoixoyde[0];
-			$grammi2toixoyde = $arrayskiasistoixoyde[1];
 			
-			//υπολογισμός τοίχου αριστερά
-			if (!isset($stili2)) {	//δεν έχει οριστεί ενδιάμεσος προσανατολισμός πλευράς
-					if (!isset($grammi2toixoyar)) { //η σκίαση έχει πέσει σε στάνταρ τιμή
-					$timesf = get_skiaseis_toixoy_pleyrika($stili1, $sqltable1, $grammi1toixoyar);
-					$f_har = $timesf[0][0];
-					$f_car = $timesf[1][0];
-					}
-					if (isset($grammi2toixoyar)) { //η σκίαση δεν πέφτει σε στάνταρ τιμή.παλινδρόμιση ανάμεσα στις γραμμές με τη γωνία σκίασης
-					$timesf1 = get_skiaseis_toixoy_pleyrika($stili1, $sqltable1, $grammi1toixoyar);
-					$f_h1 = $timesf1[0][0];
-					$f_c1 = $timesf1[1][0];
-					$timesf2 = get_skiaseis_toixoy_pleyrika($stili1, $sqltable1, $grammi2toixoyar);
-					$f_h2 = $timesf2[0][0];
-					$f_c2 = $timesf2[1][0];
-					$f_har = palindromisi($grammi1toixoyar, $grammi2toixoyar, $f_h1, $f_h2, $degtoixoyar);
-					$f_car = palindromisi($grammi1toixoyar, $grammi2toixoyar, $f_c1, $f_c2, $degtoixoyar);
-					}
-					
-			}
-			else{ //έχει οριστεί ενδιάμεσος προσανατολισμός
-					if (!isset($grammi2toixoyar)) { //η σκίαση έχει πέσει σε στάνταρ τιμή.παλινδρόμιση ανάμεσα στις στηλες (προσανατολισμός) με τον προσανατολισμό
-					$timesf1 = get_skiaseis_toixoy_pleyrika($stili1, $sqltable1, $grammi1toixoyar);
-					$f_h1_toixoy = $timesf1[0][0];
-					$f_c1_toixoy = $timesf1[1][0];
-					
-					$timesf2 = get_skiaseis_toixoy_pleyrika($stili2, $sqltable1, $grammi1toixoyar);
-					$f_h2_toixoy = $timesf2[0][0];
-					$f_c2_toixoy = $timesf2[1][0];
-					$f_har = palindromisi($timi_stili1, $timi_stili2, $f_h1_toixoy, $f_h2_toixoy, $pros);
-					$f_car = palindromisi($timi_stili1, $timi_stili2, $f_c1_toixoy, $f_c2_toixoy, $pros);
-					}
-					if (isset($grammi2toixoyar)) { // η σκιαση έχει πέσει ενδιάμεσα. ο προσανατολισμός έχει πέσει ενδιάμεσα
-					$timesf71 = get_skiaseis_toixoy_pleyrika($stili1, $sqltable1, $grammi1toixoyar);
-					$f_h71_toixoy = $timesf71[0][0];
-					$f_c71_toixoy = $timesf71[1][0];
-					$timesf81 = get_skiaseis_toixoy_pleyrika($stili2, $sqltable1, $grammi1toixoyar);
-					$f_h81_toixoy = $timesf81[0][0];
-					$f_c81_toixoy = $timesf81[1][0];
-					
-					// παλινδρόμηση ανάμεσα στις τιμές της πρώτης γραμμής για στήλη 1 και 2
-					$f_h11ar_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_h71_toixoy, $f_h81_toixoy, $pros);
-					$f_c11ar_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_c71_toixoy, $f_c81_toixoy, $pros);
-					
-					$timesf72 = get_skiaseis_toixoy_pleyrika($stili1, $sqltable1, $grammi2toixoyar);
-					$f_h72_toixoy = $timesf72[0][0];
-					$f_c72_toixoy = $timesf72[1][0];
-					$timesf82 = get_skiaseis_toixoy_pleyrika($stili2, $sqltable1, $grammi2toixoyar);
-					$f_h82_toixoy = $timesf82[0][0];
-					$f_c82_toixoy = $timesf82[1][0];
-					// παλινδρόμηση ανάμεσα στις τιμές της δεύτερης γραμμής για στήλη 1 και 2
-					$f_h12ar_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_h72_toixoy, $f_h82_toixoy, $pros);
-					$f_c12ar_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_c72_toixoy, $f_c82_toixoy, $pros);
-					// παλινδρόμηση ανάμεσα στις τιμές των δύο γραμμών που βρέθηκαν με την γωνία σκίασης.
-					$f_har = palindromisi($grammi1toixoyar, $grammi2toixoyar, $f_h11ar_toixoy, $f_h12ar_toixoy, $degtoixoyar);
-					$f_car = palindromisi($grammi1toixoyar, $grammi2toixoyar, $f_c11ar_toixoy, $f_c12ar_toixoy, $degtoixoyar);
-					}
-			}
 			
-			//υπολογισμός τοίχου ΔΕΞΙΑ
-			if (!isset($stili2)) {	//δεν έχει οριστεί ενδιάμεσος προσανατολισμός πλευράς
-					if (!isset($grammi2toixoyde)) { //η σκίαση έχει πέσει σε στάνταρ τιμή
-					$timesfde = get_skiaseis_toixoy_pleyrika($stili1, $sqltable2, $grammi1toixoyde);
-					$f_hde = $timesfde[0][0];
-					$f_cde = $timesfde[1][0];
-					}
-					if (isset($grammi2toixoyde)) { //η σκίαση δεν πέφτει σε στάνταρ τιμή.παλινδρόμιση ανάμεσα στις γραμμές με τη γωνία σκίασης
-					$timesf1de = get_skiaseis_toixoy_pleyrika($stili1, $sqltable2, $grammi1toixoyde);
-					$f_h1 = $timesf1de[0][0];
-					$f_c1 = $timesf1de[1][0];
-					$timesf2de = get_skiaseis_toixoy_pleyrika($stili1, $sqltable2, $grammi2toixoyde);
-					$f_h2 = $timesf2de[0][0];
-					$f_c2 = $timesf2de[1][0];
-					$f_hde = palindromisi($grammi1toixoyde, $grammi2toixoyde, $f_h1, $f_h2, $degtoixoyde);
-					$f_cde = palindromisi($grammi1toixoyde, $grammi2toixoyde, $f_c1, $f_c2, $degtoixoyde);
-					}
-					
-			}
-			else{ //έχει οριστεί ενδιάμεσος προσανατολισμός
-					if (!isset($grammi2toixoyde)) { //η σκίαση έχει πέσει σε στάνταρ τιμή.παλινδρόμιση ανάμεσα στις στηλες (προσανατολισμός) με τον προσανατολισμό
-					$timesf1de = get_skiaseis_toixoy_pleyrika($stili1, $sqltable2, $grammi1toixoyde);
-					$f_h1de_toixoy = $timesf1de[0][0];
-					$f_c1de_toixoy = $timesf1de[1][0];
-					$timesf2de = get_skiaseis_toixoy_pleyrika($stili2, $sqltable2, $grammi1toixoyde);
-					$f_h2de_toixoy = $timesf2de[0][0];
-					$f_c2de_toixoy = $timesf2de[1][0];
-					$f_hde = palindromisi($stili1, $stili2, $f_h1de_toixoy, $f_h2de_toixoy, $pros);
-					$f_cde = palindromisi($stili1, $stili2, $f_c1de_toixoy, $f_c2de_toixoy, $pros);
-					}
-					if (isset($grammi2toixoyde)) { // η σκιαση έχει πέσει ενδιάμεσα. ο προσανατολισμός έχει πέσει ενδιάμεσα
-					$timesf71de = get_skiaseis_toixoy_pleyrika($stili1, $sqltable2, $grammi1toixoyde);
-					$f_h71de_toixoy = $timesf71de[0][0];
-					$f_c71de_toixoy = $timesf71de[1][0];
-					$timesf81de = get_skiaseis_toixoy_pleyrika($stili2, $sqltable2, $grammi1toixoyde);
-					$f_h81de_toixoy = $timesf81de[0][0];
-					$f_c81de_toixoy = $timesf81de[1][0];
-					// παλινδρόμηση ανάμεσα στις τιμές της πρώτης γραμμής για στήλη 1 και 2
-					$f_h11de_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_h71de_toixoy, $f_h81de_toixoy, $pros);
-					$f_c11de_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_c71de_toixoy, $f_c81de_toixoy, $pros);
-					
-					$timesf72de = get_skiaseis_toixoy_pleyrika($stili1, $sqltable2, $grammi2toixoyde);
-					$f_h72de_toixoy = $timesf72de[0][0];
-					$f_c72de_toixoy = $timesf72de[1][0];
-					$timesf82de = get_skiaseis_toixoy_pleyrika($stili2, $sqltable2, $grammi2toixoyde);
-					$f_h82de_toixoy = $timesf82de[0][0];
-					$f_c82de_toixoy = $timesf82de[1][0];
-					// παλινδρόμηση ανάμεσα στις τιμές της δεύτερης γραμμής για στήλη 1 και 2
-					$f_h12de_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_h72de_toixoy, $f_h82de_toixoy, $pros);
-					$f_c12de_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_c72de_toixoy, $f_c82de_toixoy, $pros);
-					// παλινδρόμηση ανάμεσα στις τιμές των δύο γραμμών που βρέθηκαν με την γωνία σκίασης.
-					$f_hde = palindromisi($grammi1toixoyde, $grammi2toixoyde, $f_h11de_toixoy, $f_h12de_toixoy, $degtoixoyde);
-					$f_cde = palindromisi($grammi1toixoyde, $grammi2toixoyde, $f_c11de_toixoy, $f_c12de_toixoy, $degtoixoyde);
-					}
-			}
 			$f_h_syn = $f_hde * $f_har;
 			$f_c_syn = $f_cde * $f_car;
 			
@@ -231,7 +110,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			
 			if (${"name".$i}!=''){
 			echo "<tr><td>" . ${"name".$i} . "</td><td>" . $degtoixoyar . " μοίρες</td><td>" . $degtoixoyde . " μοίρες</td><td>Πίνακας: " . $pinakasthesisar . $pinakasthesisde . "</td><td>" . 
-			$prosanatolismos_epif . "</td><td>" . round($f_har,3) . "</td><td>" . round($f_car,3) . "</td><td>" . round($f_hde,3) . "</td><td>" . round($f_cde,3) . "</td><td>" . round($f_h_syn,3) . "</td><td>" . round($f_c_syn,3) . "</td></tr>";
+			$prosanatolismos_epif . "</td><td>" . $f_har . "</td><td>" . $f_car . "</td><td>" . $f_hde . "</td><td>" . $f_cde . "</td><td>" . $f_h_syn . "</td><td>" . $f_c_syn . "</td></tr>";
 			}
 		}//επανάληψη x10
 			echo "</table>";

@@ -4,6 +4,7 @@
 		<h2>Welcome to La-Kenak v.<?=VERSION?> </h2>
 		<div id="timeline" >
 		<ul id="dates">
+			<li><a href="#131112">13/11</a></li>
 			<li><a href="#190612">19/6</a></li>
 			<li><a href="#100612">10/6</a></li>
 			<li><a href="#110512">11/5</a></li>
@@ -18,6 +19,18 @@
 	
 		</ul>
 		<ul id="issues">
+		<li id="131112">
+				<img src="version-history/images/version-changes.png" width="256" height="256" />
+				<h1>13/11/2012</h1>
+				<p>La-kenak v3.1<br/><br/>
+				1. Προσθήκες - τεύχος (b,B',U'). (ks1f14s) <br/>
+				2. Δημιουργία function ισοδύναμων U. (ks1f14s)<br/>
+				3. Διόρθωση λάθους εισαγωγής του U ισοδύναμου αντί του ονομαστικού στο xml (ks1f14s)<br/>
+				4. Προσθήκη συνεδρίας σε script εισαγωγής στη βάση (ks1f14s)<br/>
+				5. Προσθήκη δήλωσης διαγραφής φακέλου install (ks1f14s)<br/>
+				<br/><br/>
+				</p>
+			</li>
 		<li id="190612">
 				<img src="version-history/images/version-changes.png" width="256" height="256" />
 				<h1>19/6/2012</h1>
