@@ -81,12 +81,12 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 						<tr style="background-color:#ddd;border:1px #6699CC dotted;">
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">α/α</td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Όνομα στοιχείου (Αλφαριθμητικό)</td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Πλάτος τοίχου (m)<br/>a=<input id="default_fin_a" type="text" size="5" onkeyup="set_fin_a();calc_fin();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση τοίχου από εμπόδιο (m)<br/>b=<input id="default_fin_b" type="text" size="5" onkeyup="set_fin_b();calc_fin();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Πλάτος ανοίγματος (m)<br/>c=<input id="default_fin_c" type="text" size="5" onkeyup="set_fin_c();calc_fin();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση ανοίγματος από εμπόδιο (m)<br/>d=<input id="default_fin_d" type="text" size="5" onkeyup="set_fin_d();calc_fin();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Πλάτος τοίχου (m)<br/>W=<input id="default_fin_a" type="text" size="5" onkeyup="set_fin_a();calc_fin();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση τοίχου από εμπόδιο (m)<br/>dx=<input id="default_fin_b" type="text" size="5" onkeyup="set_fin_b();calc_fin();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Πλάτος ανοίγματος (m)<br/>W<sub>w</sub>=<input id="default_fin_c" type="text" size="5" onkeyup="set_fin_c();calc_fin();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση ανοίγματος από εμπόδιο (m)<br/>dx<sub>w</sub>=<input id="default_fin_d" type="text" size="5" onkeyup="set_fin_d();calc_fin();"></td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση υαλοστασίων από εξωτερική παρειά (m)<br/>g=<input id="default_fin_g" type="text" size="5" onkeyup="set_fin_g();calc_fin();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Μήκος εμποδίου (m)<br/>e=<input id="default_fin_e" type="text" size="5" onkeyup="set_fin_e();calc_fin();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Μήκος εμποδίου (m)<br/>W<sub>1,2</sub>=<input id="default_fin_e" type="text" size="5" onkeyup="set_fin_e();calc_fin();"></td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Θέση εμποδίου <br/>(1=αριστερά, 2=δεξιά)<br/>f=<input id="default_fin_f" type="text" size="5" onkeyup="set_fin_f();calc_fin();"></td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Προσανατολισμός <br/>deg=<input id="default_fin_pros" type="text" size="5" onkeyup="set_fin_pros();calc_fin();"></td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Deg Τοίχου</td>
@@ -132,10 +132,10 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 						<tr style="background-color:#ddd;border:1px #6699CC dotted;">
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">α/α</td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Όνομα στοιχείου (Αλφαριθμητικό)</td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος τοίχου (m)<br/>a=<input id="default_hor_a" type="text" size="5" onkeyup="set_hor_a();calc_hor();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος πόρτας (m)<br/>b=<input id="default_hor_b" type="text" size="5" onkeyup="set_hor_b();calc_hor();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος παραθύρου (m)<br/>c=<input id="default_hor_c" type="text" size="5" onkeyup="set_hor_c();calc_hor();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος ποδιάς (m)<br/>d=<input id="default_hor_d" type="text" size="5" onkeyup="set_hor_d();calc_hor();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος τοίχου (m)<br/>H=<input id="default_hor_a" type="text" size="5" onkeyup="set_hor_a();calc_hor();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος πόρτας (m)<br/>H<sub>w</sub>=<input id="default_hor_b" type="text" size="5" onkeyup="set_hor_b();calc_hor();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος παραθύρου (m)<br/>H<sub>w1</sub>=<input id="default_hor_c" type="text" size="5" onkeyup="set_hor_c();calc_hor();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος ποδιάς (m)<br/>d<sub>1</sub>=<input id="default_hor_d" type="text" size="5" onkeyup="set_hor_d();calc_hor();"></td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση υαλοστασίων από εξωτερική παρειά (m) <br/>g=<input id="default_hor_g" type="text" size="5" onkeyup="set_hor_g();calc_hor();"></td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση εμποδίου (m)<br/>e=<input id="default_hor_e" type="text" size="5" onkeyup="set_hor_e();calc_hor();"></td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος εμποδίου (m)<br/>f=<input id="default_hor_f" type="text" size="5" onkeyup="set_hor_f();calc_hor();"></td>
@@ -190,13 +190,13 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 						<tr style="background-color:#ddd;border:1px #6699CC dotted;">
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">α/α</td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Όνομα στοιχείου (Αλφαριθμητικό)</td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος τοίχου (m) a=<input id="default_ov_a" type="text" size="5" onkeyup="set_ov_a();calc_ov();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος πόρτας (m) b=<input id="default_ov_b" type="text" size="5" onkeyup="set_ov_b();calc_ov();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος παραθύρου (m) c=<input id="default_ov_c" type="text" size="5" onkeyup="set_ov_c();calc_ov();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος ποδιάς (m) d=<input id="default_ov_d" type="text" size="5" onkeyup="set_ov_d();calc_ov();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση υαλοστασίων από εξωτερική παρειά (m) g=<input id="default_ov_g" type="text" size="5" onkeyup="set_ov_g();calc_ov();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Μήκος προβόλου (m) e=<input id="default_ov_e" type="text" size="5" onkeyup="set_ov_e();calc_ov();"></td>
-						<td style="border:1px #6699CC dotted;vertical-align:middle;">Προσανατολισμός deg=<input id="default_ov_pros" type="text" size="5" onkeyup="set_ov_pros();calc_ov();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος τοίχου (m) <br/>H=<input id="default_ov_a" type="text" size="5" onkeyup="set_ov_a();calc_ov();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος πόρτας (m) <br/>H<sub>w</sub>=<input id="default_ov_b" type="text" size="5" onkeyup="set_ov_b();calc_ov();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος παραθύρου (m) <br/>H<sub>w1</sub>=<input id="default_ov_c" type="text" size="5" onkeyup="set_ov_c();calc_ov();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος ποδιάς (m) <br/>d=<input id="default_ov_d" type="text" size="5" onkeyup="set_ov_d();calc_ov();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση υαλοστασίων από εξωτερική παρειά (m) <br/>g=<input id="default_ov_g" type="text" size="5" onkeyup="set_ov_g();calc_ov();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Μήκος προβόλου (m) <br/>L=<input id="default_ov_e" type="text" size="5" onkeyup="set_ov_e();calc_ov();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Προσανατολισμός <br/>deg=<input id="default_ov_pros" type="text" size="5" onkeyup="set_ov_pros();calc_ov();"></td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Deg Τοίχου</td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Deg Πόρτας</td>
 						<td style="border:1px #6699CC dotted;vertical-align:middle;">Deg Ανοίγματος</td>
@@ -286,14 +286,133 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 					<br/> Πίνακας σκίασης από δεξιές πλευρικές προεξοχές: Πίνακας 3.20β της ΤΟΤΕΕ 20701-1.
 					<?php } ?>
 					
+					
+					
+					
+					
+					
+					
+					<?php
+						//Φόρμα για Σκιάσεις από τέντες
+					if ($sel_page["id"] == 56)	{ ?>
+					<img src="images/tentes.png"></img><br/>
+					<form action="index_skiaseis.php" method="post">
+					<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
+						<tr style="background-color:#ddd;border:1px #6699CC dotted;">
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">α/α</td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Όνομα στοιχείου (Αλφαριθμητικό)</td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος τοίχου κάτω από τέντα (m) <br/>H=<input id="default_ovt_a" type="text" size="5" onkeyup="set_ovt_a();calc_ovt();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος πόρτας (m) <br/>H<sub>w</sub>=<input id="default_ovt_b" type="text" size="5" onkeyup="set_ovt_b();calc_ovt();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος παραθύρου (m) <br/>H<sub>w1</sub>=<input id="default_ovt_c" type="text" size="5" onkeyup="set_ovt_c();calc_ovt();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος ποδιάς (m) <br/>d=<input id="default_ovt_d" type="text" size="5" onkeyup="set_ovt_d();calc_ovt();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόστ. υαλοστασίων (m) <br/>d=<input id="default_ovt_g" type="text" size="5" onkeyup="set_ovt_g();calc_ovt();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Μήκος τέντας L (m) <br/>L<sub>1</sub>=<input id="default_ovt_e" type="text" size="5" onkeyup="set_ovt_e();calc_ovt();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Ύψος τέντας H (m) <br/>H<sub>1</sub>=<input id="default_ovt_f" type="text" size="5" onkeyup="set_ovt_f();calc_ovt();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Προσανατολισμός (μοίρες) <br/>deg=<input id="default_ovt_pros" type="text" size="5" onkeyup="set_ovt_pros();calc_ovt();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Deg Τοίχου</td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Deg Πόρτας</td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Deg Ανοίγματος</td>
+						
+						</tr>
+						<?php for ($i=1;$i<=10;$i++){ ?>
+						<tr>
+						<td><?=$i;?></td>
+						<td><input type="text" id="ovt_name<?php echo $i; ?>" name="name<?=$i;?>" maxlength="30" size="10" value="Τ-<?php echo $i; ?>" /></td>
+						<td><input type="text" id="ovt_a<?php echo $i; ?>" name="ipsos_toixoy<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_ovt();" /></td>
+						<td><input type="text" id="ovt_b<?php echo $i; ?>" name="ipsos_portas<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_ovt();" /></td>
+						<td><input type="text" id="ovt_c<?php echo $i; ?>" name="ipsos_parath<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_ovt();" /></td>
+						<td><input type="text" id="ovt_d<?php echo $i; ?>" name="ipsos_podias<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_ovt();" /></td>
+						<td><input type="text" id="ovt_g<?php echo $i; ?>" name="apost_yalo<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_ovt();" /></td>
+						<td><input type="text" id="ovt_e<?php echo $i; ?>" name="ipsos_prov<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_ovt();" /></td>
+						<td><input type="text" id="ovt_f<?php echo $i; ?>" name="ipsos_prov<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_ovt();" /></td>
+						<td><input type="text" id="ovt_pros<?php echo $i; ?>" name="pros<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_ovt();" /></td>
+						<td><input type="text" id="ovt_deg_t<?php echo $i; ?>" style="font-weight:bold;text-align:center;width:50px;" disabled="disabled" class="disabled"></td>
+						<td><input type="text" id="ovt_deg_door<?php echo $i; ?>" style="font-weight:bold;text-align:center;width:50px;" disabled="disabled" class="disabled"></td>
+						<td><input type="text" id="ovt_deg_an<?php echo $i; ?>" style="font-weight:bold;text-align:center;width:50px;" disabled="disabled" class="disabled"></td>
+						</tr>
+						<?php } ?>
+						
+						<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
+						<tr>
+							<td><input type="submit" name="submit5" value="calculate" /></td>
+							<td><button type="button" onclick="calc_ovt(1);"/>Εκτύπωση αποτελεσμάτων</button></td>
+						</tr>
+						</table>
+					</table>
+					<input type="hidden" name="min" value="<?php echo $min; ?>" /> 
+					</form>
+					
+					<div id='f_ovt_h_general' style='padding:15px; background:#ebf9c9;'></div>
+					
+					<br/><br/> Πίνακας σκίασης για τέντες: Πίνακας 3.19 (Συντελεστές προβόλου) της ΤΟΤΕΕ 20701-1.
+					<?php } ?>
+					
+					
+					
+					
+					
+					<?php
+						//Φόρμα για Σκιάσεις περσίδες
+					if ($sel_page["id"] == 57)	{ ?>
+					<img src="images/persides.png"></img><br/>
+					<form action="index_skiaseis.php" method="post">
+					<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
+						<tr style="background-color:#ddd;border:1px #6699CC dotted;">
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">α/α</td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Όνομα στοιχείου (Αλφαριθμητικό)</td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Τύπος περσίδων (m) <br/>(1:Σταθερές 2:Κινητές)=<input id="default_fsh_a" type="text" size="5" onkeyup="set_fsh_a();calc_fsh();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Μήκος περσίδων (m) <br/>L=<input id="default_fsh_b" type="text" size="5" onkeyup="set_fsh_b();calc_fsh();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Απόσταση περσίδων (m) <br/>Η=<input id="default_fsh_c" type="text" size="5" onkeyup="set_fsh_c();calc_fsh();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Προσανατολισμός (μοίρες) <br/>deg=<input id="default_fsh_pros" type="text" size="5" onkeyup="set_fsh_pros();calc_fsh();"></td>
+						<td style="border:1px #6699CC dotted;vertical-align:middle;">Deg Τοίχου</td>
+						
+						</tr>
+						<?php for ($i=1;$i<=10;$i++){ ?>
+						<tr>
+						<td><?=$i;?></td>
+						<td><input type="text" id="fsh_name<?php echo $i; ?>" name="name<?=$i;?>" maxlength="30" size="10" value="Τ-<?php echo $i; ?>" /></td>
+						<td><input type="text" id="fsh_a<?php echo $i; ?>" name="platos_toixoy<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_fin2();" /></td>
+						<td><input type="text" id="fsh_b<?php echo $i; ?>" name="apost_ar<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_fsh();" /></td>
+						<td><input type="text" id="fsh_c<?php echo $i; ?>" name="mikos_ar<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_fsh();" /></td>
+						<td><input type="text" id="fsh_pros<?php echo $i; ?>" name="pros<?=$i;?>" style="text-align:center;width:50px;" onchange="calc_fsh();" /></td>
+						<td><input type="text" id="fsh_deg_t<?php echo $i; ?>" style="font-weight:bold;text-align:center;width:50px;" disabled="disabled" class="disabled"></td
+						
+						</tr>
+						<?php } ?>
+						
+						<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
+						<tr>
+							<td><input type="submit" name="submit6" value="calculate" /></td>
+							<td><button type="button" onclick="calc_fsh(1);"/>Εκτύπωση αποτελεσμάτων</button></td>
+						</tr>
+						</table>
+					</table>
+					<input type="hidden" name="min" value="<?php echo $min; ?>" /> 
+					</form>
+					
+					<div id='f_fsh_h_general' style='padding:15px; background:#ebf9c9;'></div>
+					
+					<br/><br/> Πίνακας σκίασης από αριστερές πλευρικές προεξοχές: Πίνακας 3.20α της ΤΟΤΕΕ 20701-1.
+					<br/> Πίνακας σκίασης από δεξιές πλευρικές προεξοχές: Πίνακας 3.20β της ΤΟΤΕΕ 20701-1.
+					<?php } ?>
+					
+					
+					
+					
+					
+					
+					
 					<?php 
 					if ($sel_page["id"] != 40) {
 					//Αν η επιλογή είναι απο αριστερά και δεξιά μην εμφανίζεις πίνακες με τιμές. Για τις άλλες 4 επιλογές εμφάνισε.
 						$vivliothikes = get_skiaseis($sel_page);
-						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Μοίρες (degrees)</td><td>Περίοδος</td><td>Β (γ=0deg)</td><td>ΒΑ (γ=45deg)</td><td>Α (γ=90deg)</td><td>ΝΑ (γ=135deg)</td><td>Ν (γ=180deg)</td><td>ΝΔ (γ=225deg)</td><td>Δ (γ=270deg)</td><td>ΒΔ (γ=315deg)</td></tr>";
+						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td>";
+						if ($sel_page["id"] == 57){echo "<td>Τύπος περσίδων</td>";}
+						echo "<td>Μοίρες (degrees)</td><td>Περίοδος</td><td>Β (γ=0deg)</td><td>ΒΑ (γ=45deg)</td><td>Α (γ=90deg)</td><td>ΝΑ (γ=135deg)</td><td>Ν (γ=180deg)</td><td>ΝΔ (γ=225deg)</td><td>Δ (γ=270deg)</td><td>ΒΔ (γ=315deg)</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
 						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["id"] . "</td>";
+						if ($sel_page["id"] == 57){echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["type"] . "</td>";}
 						echo "<td class=\"vivliothiki\" width=\"50\">" . $vivliothikes[$i]["deg"] . "</td>";
 						echo "<td class=\"vivliothiki\" width=\"50\">" . $vivliothikes[$i]["periode"] . "</td>";
 						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["b"] . "</td>";
@@ -526,10 +645,10 @@ var ov_pros=parseFloat(document.getElementById("ov_pros"+k).value);
 var tan_toixoy =  (ov_e / (ov_a/2));
 var deg_toixoy = Math.atan(tan_toixoy) *  180 / Math.PI;
 
-var tan_door = ((ov_e+ov_g) / (ov_a - ov_d - (ov_c/2)));
+var tan_door = ((ov_e+ov_g) / (ov_a -(ov_b/2)));
 var deg_door = Math.atan(tan_door) *  180 / Math.PI;
 
-var tan_an = ((ov_e+ov_g) / (ov_a -(ov_b/2)));
+var tan_an = ((ov_e+ov_g) / (ov_a - ov_d - (ov_c/2)));
 var deg_an = Math.atan(tan_an) *  180 / Math.PI;
 
 document.getElementById("ov_deg_t"+k).value=number_format(deg_toixoy,2);
@@ -761,6 +880,198 @@ x += "&fin_a"+k+"=" + fin_a + "&fin_b"+k+"=" + fin_b + "&fin_c"+k+"=" + fin_c + 
 
 
 <!--######################## fin scripts ########################### -->
+
+
+
+
+<!--######################## ovt scripts ########################### -->
+//θέσε όλα τα ύψη των τοίχων -ovt
+function set_ovt_a(){
+var default_ovt_a=document.getElementById("default_ovt_a").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("ovt_a"+i).value=default_ovt_a;
+	}
+}
+//θέσε όλα Ύψος πόρτας -ovt
+function set_ovt_b(){
+var default_ovt_b=document.getElementById("default_ovt_b").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("ovt_b"+i).value=default_ovt_b;
+	}
+}
+//θέσε όλα Ύψος παραθύρου -ovt
+function set_ovt_c(){
+var default_ovt_c=document.getElementById("default_ovt_c").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("ovt_c"+i).value=default_ovt_c;
+	}
+}
+//θέσε όλα Ύψος ποδιάς -ovt
+function set_ovt_d(){
+var default_ovt_d=document.getElementById("default_ovt_d").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("ovt_d"+i).value=default_ovt_d;
+	}
+}
+//θέσε όλες τις αποστάσεις υαλοστασίων -ovt
+function set_ovt_g(){
+var default_ovt_g=document.getElementById("default_ovt_g").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("ovt_g"+i).value=default_ovt_g;
+	}
+}
+//θέσε όλα Μήκος τέντας -ovt
+function set_ovt_e(){
+var default_ovt_e=document.getElementById("default_ovt_e").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("ovt_e"+i).value=default_ovt_e;
+	}
+}
+//θέσε όλα Μήκος τέντας -ovt
+function set_ovt_f(){
+var default_ovt_f=document.getElementById("default_ovt_f").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("ovt_f"+i).value=default_ovt_f;
+	}
+}
+//θέσε όλους τους προσανατολισμούς -ovt
+function set_ovt_pros(){
+var default_ovt_pros=document.getElementById("default_ovt_pros").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("ovt_pros"+i).value=default_ovt_pros;
+	}
+}
+
+function calc_ovt(print=0){
+
+var x="includes/calc_skiaseis_f.php?skiasi=5&print="+print;
+
+for (k=1;k<=10;k++){
+var ovt_name=document.getElementById("ovt_name"+k).value;
+var ovt_a=parseFloat(document.getElementById("ovt_a"+k).value);
+var ovt_b=parseFloat(document.getElementById("ovt_b"+k).value);
+var ovt_c=parseFloat(document.getElementById("ovt_c"+k).value);
+var ovt_d=parseFloat(document.getElementById("ovt_d"+k).value);
+var ovt_g=parseFloat(document.getElementById("ovt_g"+k).value);
+var ovt_e=parseFloat(document.getElementById("ovt_e"+k).value);
+var ovt_f=parseFloat(document.getElementById("ovt_f"+k).value);
+var ovt_pros=parseFloat(document.getElementById("ovt_pros"+k).value);
+
+var tan_toixoy =  (ovt_e / ((ovt_a/2) - ovt_f));
+var deg_toixoy = Math.atan(tan_toixoy) *  180 / Math.PI;
+
+var tan_door = ((ovt_e+ovt_g) / (ovt_a - (ovt_b/2) - ovt_f));
+var deg_door = Math.atan(tan_door) *  180 / Math.PI;
+
+var tan_an = ((ovt_e+ovt_g) / (ovt_a - ovt_d - (ovt_c/2) - ovt_f));
+var deg_an = Math.atan(tan_an) *  180 / Math.PI;
+
+document.getElementById("ovt_deg_t"+k).value=number_format(deg_toixoy,2);
+document.getElementById("ovt_deg_door"+k).value=number_format(deg_door,2);
+document.getElementById("ovt_deg_an"+k).value=number_format(deg_an,2);
+
+x += "&name"+k+"=" + ovt_name + "&deg_toixoy"+k+"=" + deg_toixoy + "&deg_door"+k+"=" + deg_door + "&deg_an"+k+"=" + deg_an + "&pros"+k+"=" + ovt_pros;
+x += "&ovt_a"+k+"=" + ovt_a + "&ovt_b"+k+"=" + ovt_b + "&ovt_c"+k+"=" + ovt_c + "&ovt_d"+k+"=" + ovt_d + "&ovt_g"+k+"=" + ovt_g + "&ovt_e"+k+"=" + ovt_e + "&ovt_f"+k+"=" + ovt_f;
+}//τέλος επαναληψης
+
+	if(print==0){
+	//json result
+	jQuery.ajax({
+			url: x,
+			type: "POST",
+			async: true, //αλλαγή σε false δουλεύει πάντοτε αλλά επιβραδύνει τον browser
+			success: function (data) {
+				var html = data;
+				document.getElementById("f_ovt_h_general").innerHTML=html;
+			}
+		});
+	}
+	
+	if(print==1){
+	window.open(x,"La-Kenak");
+	}
+}
+
+
+<!--######################## ovt scripts ########################### -->
+
+
+
+
+
+
+
+<!--######################## fsh scripts ########################### -->
+//θέσε όλα τον τύπο περσίδων -fsh
+function set_fsh_a(){
+var default_fsh_a=document.getElementById("default_fsh_a").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("fsh_a"+i).value=default_fsh_a;
+	}
+}
+//θέσε όλα το μήκος περσίδων -fsh
+function set_fsh_b(){
+var default_fsh_b=document.getElementById("default_fsh_b").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("fsh_b"+i).value=default_fsh_b;
+	}
+}
+//θέσε όλα την απόσταση περσίδων -fsh
+function set_fsh_c(){
+var default_fsh_c=document.getElementById("default_fsh_c").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("fsh_c"+i).value=default_fsh_c;
+	}
+}
+//θέσε όλους τους προσανατολισμούς -fsh
+function set_fsh_pros(){
+var default_fsh_pros=document.getElementById("default_fsh_pros").value;
+	for (i=1;i<=10;i++){
+	document.getElementById("fsh_pros"+i).value=default_fsh_pros;
+	}
+}
+
+function calc_fsh(print=0){
+
+var x="includes/calc_skiaseis_f.php?skiasi=6&print="+print;
+
+for (k=1;k<=10;k++){
+var fsh_name=document.getElementById("fsh_name"+k).value;
+var fsh_a=parseFloat(document.getElementById("fsh_a"+k).value);
+var fsh_b=parseFloat(document.getElementById("fsh_b"+k).value);
+var fsh_c=parseFloat(document.getElementById("fsh_c"+k).value);
+var fsh_pros=parseFloat(document.getElementById("fsh_pros"+k).value);
+
+var tan_toixoy =  fsh_b / fsh_c;
+var deg_toixoy = Math.atan(tan_toixoy) *  180 / Math.PI;
+
+
+document.getElementById("fsh_deg_t"+k).value=number_format(deg_toixoy,2);
+
+x += "&name"+k+"=" + fsh_name + "&deg_toixoy"+k+"=" + deg_toixoy + "&pros"+k+"=" + fsh_pros;
+x += "&fsh_a"+k+"=" + fsh_a + "&fsh_b"+k+"=" + fsh_b + "&fsh_c"+k+"=" + fsh_c;
+}//τέλος επαναληψης
+
+	if(print==0){
+	//json result
+	jQuery.ajax({
+			url: x,
+			type: "POST",
+			async: true, //αλλαγή σε false δουλεύει πάντοτε αλλά επιβραδύνει τον browser
+			success: function (data) {
+				var html = data;
+				document.getElementById("f_fsh_h_general").innerHTML=html;
+			}
+		});
+	}
+	
+	if(print==1){
+	window.open(x,"La-Kenak");
+	}
+}
+
+
+<!--######################## fsh scripts ########################### -->
 
 </script>
 

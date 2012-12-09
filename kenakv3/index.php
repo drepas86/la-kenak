@@ -141,12 +141,15 @@ $tb_name="jtable_container";
 						include('includes/jtable_b.php');
 					}
 					
-					if ($sel_page["id"] > 22 && $sel_page["id"] < 27)	{
+					if (($sel_page["id"] > 22 && $sel_page["id"] < 27) OR ($sel_page["id"] > 55 && $sel_page["id"] < 58))	{
 					$vivliothikes = get_skiaseis($sel_page);
-						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Μοίρες (degrees)</td><td>Περίοδος</td><td>Β (γ=0deg)</td><td>ΒΑ (γ=45deg)</td><td>Α (γ=90deg)</td><td>ΝΑ (γ=135deg)</td><td>Ν (γ=180deg)</td><td>ΝΔ (γ=225deg)</td><td>Δ (γ=270deg)</td><td>ΒΔ (γ=315deg)</td></tr>";
+						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td>";
+						if ($sel_page["id"] == 57){echo "<td>Τύπος περσίδων</td>";}
+						echo "<td>Μοίρες (degrees)</td><td>Περίοδος</td><td>Β (γ=0deg)</td><td>ΒΑ (γ=45deg)</td><td>Α (γ=90deg)</td><td>ΝΑ (γ=135deg)</td><td>Ν (γ=180deg)</td><td>ΝΔ (γ=225deg)</td><td>Δ (γ=270deg)</td><td>ΒΔ (γ=315deg)</td></tr>";
 						for ($i = 0; $i <= (count($vivliothikes)-1); $i++) {
 						echo "<tr class=\"vivliothiki\">";
 						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["id"] . "</td>";
+						if ($sel_page["id"] == 57){echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["type"] . "</td>";}
 						echo "<td class=\"vivliothiki\" width=\"50\">" . $vivliothikes[$i]["deg"] . "</td>";
 						echo "<td class=\"vivliothiki\" width=\"50\">" . $vivliothikes[$i]["periode"] . "</td>";
 						echo "<td class=\"vivliothiki\" width=\"10\">" . $vivliothikes[$i]["b"] . "</td>";
@@ -184,7 +187,7 @@ $tb_name="jtable_container";
 						. "<br/><b>f_CO2:</b> Συντελεστής μετατροπής από ενέργεια καυσίμου (MJ) σε Kg CO2";
 					}
 					
-					if ($sel_page["id"] > 27)	{
+					if ($sel_page["id"] > 27 && $sel_page["id"] < 56)	{
 					$vivliothikes = get_synthikes($sel_page);
 						echo "<table class=\"sortable\" border=\"1\" width=\"100%\"><tr><td>Α/Α</td><td>Κατηγορία</td><td>Χρήση</td><td>Ώρες λειτουρ γίας (h)</td><td>Ημέρες λειτουρ γίας</td>
 						<td>Μήνες λειτουρ γίας</td><td>θ,i,h (C)</td><td>θ,i,c (C)</td><td>Χ,i,h (%)</td><td>Χ,i,c (%)</td><td>Άτομα / 100 m2</td><td>Νωπός αέρας (m3 / h / person)</td>

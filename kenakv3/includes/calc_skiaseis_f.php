@@ -153,7 +153,7 @@ $print=$_GET["print"];
 	
 	
 	if ($skiasi==2){//σκίαση προβόλου
-	$prothema = "fin2";
+	$prothema = "ov";
 	$pdftitle = "Σκιάσεις Προβόλου";
 		for ($i=1;$i<=10;$i++){
 		${"deg_toixoy".$i}=$_GET["deg_toixoy".$i];
@@ -161,22 +161,22 @@ $print=$_GET["print"];
 		${"deg_an".$i}=$_GET["deg_an".$i];
 		${"pros".$i}=$_GET["pros".$i];
 		${"name".$i}=$_GET["name".$i];
-		${"fin2_a".$i}=$_GET["fin2_a".$i];
-		${"fin2_b".$i}=$_GET["fin2_b".$i];
-		${"fin2_c".$i}=$_GET["fin2_c".$i];
-		${"fin2_d".$i}=$_GET["fin2_d".$i];
-		${"fin2_g".$i}=$_GET["fin2_g".$i];
-		${"fin2_e".$i}=$_GET["fin2_e".$i];
+		${"ov_a".$i}=$_GET["ov_a".$i];
+		${"ov_b".$i}=$_GET["ov_b".$i];
+		${"ov_c".$i}=$_GET["ov_c".$i];
+		${"ov_d".$i}=$_GET["ov_d".$i];
+		${"ov_g".$i}=$_GET["ov_g".$i];
+		${"ov_e".$i}=$_GET["ov_e".$i];
 		
-		${"array_toixoy".$i} = calc_skiasi_fin2(${"deg_toixoy".$i}, ${"pros".$i});
+		${"array_toixoy".$i} = calc_skiasi_ov(${"deg_toixoy".$i}, ${"pros".$i});
 		${"f_h_t".$i} = ${"array_toixoy".$i}[0];
 		${"f_c_t".$i} = ${"array_toixoy".$i}[1];
 		
-		${"array_door".$i} = calc_skiasi_fin2(${"deg_door".$i}, ${"pros".$i});
+		${"array_door".$i} = calc_skiasi_ov(${"deg_door".$i}, ${"pros".$i});
 		${"f_h_door".$i} = ${"array_door".$i}[0];
 		${"f_c_door".$i} = ${"array_door".$i}[1];
 		
-		${"array_an".$i} = calc_skiasi_fin2(${"deg_an".$i}, ${"pros".$i});
+		${"array_an".$i} = calc_skiasi_ov(${"deg_an".$i}, ${"pros".$i});
 		${"f_h_an".$i} = ${"array_an".$i}[0];
 		${"f_c_an".$i} = ${"array_an".$i}[1];
 		}
@@ -184,7 +184,7 @@ $print=$_GET["print"];
 	
 	$result .= "";
 	if ($print==1){
-	$result .= "<br/><img src=\"../images/prfin2olos.png\"></img><br/>";
+	$result .= "<br/><img src=\"../images/provolos.png\"></img><br/>";
 	}
 	
 	
@@ -204,12 +204,12 @@ $print=$_GET["print"];
 	$result .= "<tr>
 	<td>".$i."</td>
 	<td>".${"name".$i}."</td>
-	<td>".${"fin2_a".$i}."</td>
-	<td>".${"fin2_b".$i}."</td>
-	<td>".${"fin2_c".$i}."</td>
-	<td>".${"fin2_d".$i}."</td>
-	<td>".${"fin2_g".$i}."</td>
-	<td>".${"fin2_e".$i}."</td>
+	<td>".${"ov_a".$i}."</td>
+	<td>".${"ov_b".$i}."</td>
+	<td>".${"ov_c".$i}."</td>
+	<td>".${"ov_d".$i}."</td>
+	<td>".${"ov_g".$i}."</td>
+	<td>".${"ov_e".$i}."</td>
 	<td>".${"pros".$i}."</td>
 	</tr>";
 	}
@@ -228,12 +228,12 @@ $print=$_GET["print"];
 	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Τοίχου</td>
 	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Πόρτας</td>
 	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Ανοίγμ.</td>
-	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_fin2_h</td>
-	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_fin2_c</td>
-	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_fin2_h</td>
-	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_fin2_c</td>
-	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_fin2_h</td>
-	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_fin2_c</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ov_h</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ov_c</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ov_h</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ov_c</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ov_h</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ov_c</td>
 	</tr>";
 
 	for ($i=1;$i<=10;$i++){
@@ -364,7 +364,7 @@ $print=$_GET["print"];
 //#############################################################################	
 	
 	
-	if ($skiasi==4){//Πλευρική σκίαση από 2 μεριές
+	if ($skiasi==4){//Πλευρική σκίαση από 1 μεριά
 	$prothema = "fin";
 	$pdftitle = "Σκιάσεις αριστερά ή δεξιά";
 		for ($i=1;$i<=10;$i++){
@@ -458,6 +458,212 @@ $print=$_GET["print"];
 	$result .= "</table><br/>";
 	
 	}//Τέλος αποτελεσμάτων πλευρικών από 2 μεριές (ΝΟ 4)
+
+
+
+	
+//#############################################################################	
+	
+	
+	if ($skiasi==5){//σκίαση τέντας
+	$prothema = "ovt";
+	$pdftitle = "Σκιάσεις τέντας";
+		for ($i=1;$i<=10;$i++){
+		${"deg_toixoy".$i}=$_GET["deg_toixoy".$i];
+		${"deg_door".$i}=$_GET["deg_door".$i];
+		${"deg_an".$i}=$_GET["deg_an".$i];
+		${"pros".$i}=$_GET["pros".$i];
+		${"name".$i}=$_GET["name".$i];
+		${"ovt_a".$i}=$_GET["ovt_a".$i];
+		${"ovt_b".$i}=$_GET["ovt_b".$i];
+		${"ovt_c".$i}=$_GET["ovt_c".$i];
+		${"ovt_d".$i}=$_GET["ovt_d".$i];
+		${"ovt_g".$i}=$_GET["ovt_g".$i];
+		${"ovt_e".$i}=$_GET["ovt_e".$i];
+		${"ovt_f".$i}=$_GET["ovt_f".$i];
+		
+		${"array_toixoy".$i} = calc_skiasi_ov(${"deg_toixoy".$i}, ${"pros".$i});
+		${"f_h_t".$i} = ${"array_toixoy".$i}[0];
+		${"f_c_t".$i} = ${"array_toixoy".$i}[1];
+		
+		${"array_door".$i} = calc_skiasi_ov(${"deg_door".$i}, ${"pros".$i});
+		${"f_h_door".$i} = ${"array_door".$i}[0];
+		${"f_c_door".$i} = ${"array_door".$i}[1];
+		
+		${"array_an".$i} = calc_skiasi_ov(${"deg_an".$i}, ${"pros".$i});
+		${"f_h_an".$i} = ${"array_an".$i}[0];
+		${"f_c_an".$i} = ${"array_an".$i}[1];
+		}
+	
+	
+	$result .= "";
+	if ($print==1){
+	$result .= "<br/><img src=\"../images/tentes.png\"></img><br/>";
+	}
+	
+	
+	$result .= "<table style=\"width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;\">
+	<tr style=\"background-color:#ddd;border:1px #6699CC dotted;\">
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">A/A</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Όνομα στοιχείου</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Ύψος τοίχου</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Ύψος πόρτας</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Ύψος αν.</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Ύψος ποδιάς</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Απόσταση υαλ.</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Μήκος τέντας</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Ύψος τέντας</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Προσ.</td>
+	</tr>";
+	for ($i=1;$i<=10;$i++){
+	$result .= "<tr>
+	<td>".$i."</td>
+	<td>".${"name".$i}."</td>
+	<td>".${"ovt_a".$i}."</td>
+	<td>".${"ovt_b".$i}."</td>
+	<td>".${"ovt_c".$i}."</td>
+	<td>".${"ovt_d".$i}."</td>
+	<td>".${"ovt_g".$i}."</td>
+	<td>".${"ovt_e".$i}."</td>
+	<td>".${"ovt_f".$i}."</td>
+	<td>".${"pros".$i}."</td>
+	</tr>";
+	}
+	$result .= "</table><br/>";
+	
+
+	$result .= "<table style=\"width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;\">
+	<tr style=\"background-color:#ddd;border:1px #6699CC dotted;\">
+	<td rowspan=\"2\" style=\"border:1px #6699CC dotted;vertical-align:middle;\">Όνομα</td>
+	<td colspan=\"3\" style=\"border:1px #6699CC dotted;vertical-align:middle;\">Γωνίες σκίασης</td>
+	<td colspan=\"2\" style=\"border:1px #6699CC dotted;vertical-align:middle;\">Τοίχος</td>
+	<td colspan=\"2\" style=\"border:1px #6699CC dotted;vertical-align:middle;\">Πόρτα</td>
+	<td colspan=\"2\" style=\"border:1px #6699CC dotted;vertical-align:middle;\">Άνοιγμα</td>
+	</tr>
+	<tr style=\"background-color:#ddd;border:1px #6699CC dotted;\">
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Τοίχου</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Πόρτας</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Ανοίγμ.</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ovt_h</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ovt_c</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ovt_h</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ovt_c</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ovt_h</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_ovt_c</td>
+	</tr>";
+
+	for ($i=1;$i<=10;$i++){
+	$result .= "<tr>
+	<td>".${"name".$i}."</td>
+	<td>".round(${"deg_toixoy".$i},2)."</td>
+	<td>".round(${"deg_door".$i},2)."</td>
+	<td>".round(${"deg_an".$i},2)."</td>
+	<td>".${"f_h_t".$i}."</td>
+	<td>".${"f_c_t".$i}."</td>
+	<td>".${"f_h_door".$i}."</td>
+	<td>".${"f_c_door".$i}."</td>
+	<td>".${"f_h_an".$i}."</td>
+	<td>".${"f_c_an".$i}."</td>
+	</tr>";
+	}
+	$result .= "</table><br/>";
+	
+	/* Οι εικόνες πρέπει να αποθηκευτούν προσωρινά για να περάσουν στο pdf
+		for ($i=1;$i<=10;$i++){
+		$result_fin2 .=  "<img src=\"includes/image_creation_prfin2olou.php" . 
+		"?ipsost=" . ${"fin2_a".$i} . "&ipsosp=" . ${"fin2_b".$i} . "&ipsospar=" . 
+		${"fin2_c".$i} . "&ipsospod=" . ${"hor_d".$i} . "&apostyal=" . ${"fin2_g".$i} . "&mikos_prfin2=" . 
+		${"fin2_e".$i} . "&pros=" . ${"pros".$i} . "&name=" . ${"name".$i} . "\"></img><br/>";
+		}
+	*/
+	}//Τέλος αποτελεσμάτων τέντας (ΝΟ 5)
+
+	
+
+
+
+//#############################################################################	
+	
+	
+	if ($skiasi==6){//σκίαση περσίδων
+	$prothema = "fsh";
+	$pdftitle = "Σκιάσεις περσίδων";
+		for ($i=1;$i<=10;$i++){
+		${"deg_toixoy".$i}=$_GET["deg_toixoy".$i];
+		${"pros".$i}=$_GET["pros".$i];
+		${"name".$i}=$_GET["name".$i];
+		${"fsh_a".$i}=$_GET["fsh_a".$i];
+		${"fsh_b".$i}=$_GET["fsh_b".$i];
+		${"fsh_c".$i}=$_GET["fsh_c".$i];
+		
+		${"array_toixoy".$i} = calc_skiasi_fsh(${"deg_toixoy".$i}, ${"pros".$i}, ${"fsh_a".$i});
+		${"f_h_t".$i} = ${"array_toixoy".$i}[0];
+		${"f_c_t".$i} = ${"array_toixoy".$i}[1];
+
+		}
+	
+	
+	$result .= "";
+	if ($print==1){
+	$result .= "<br/><img src=\"../images/persides.png\"></img><br/>";
+	}
+	
+	
+	$result .= "<table style=\"width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;\">
+	<tr style=\"background-color:#ddd;border:1px #6699CC dotted;\">
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">A/A</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Όνομα</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Τύπος</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Μήκος περσίδων</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Απόσταση περσίδων</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Προσ.</td>
+	</tr>";
+	for ($i=1;$i<=10;$i++){
+	$result .= "<tr>
+	<td>".$i."</td>
+	<td>".${"name".$i}."</td>
+	<td>".${"fsh_a".$i}."</td>
+	<td>".${"fsh_b".$i}."</td>
+	<td>".${"fsh_c".$i}."</td>
+	<td>".${"pros".$i}."</td>
+	</tr>";
+	}
+	$result .= "</table><br/>";
+	
+
+	$result .= "<table style=\"width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;\">
+	<tr style=\"background-color:#ddd;border:1px #6699CC dotted;\">
+	<td rowspan=\"2\" style=\"border:1px #6699CC dotted;vertical-align:middle;\">Όνομα</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Γωνίες σκίασης</td>
+	<td colspan=\"2\" style=\"border:1px #6699CC dotted;vertical-align:middle;\">Τοίχος</td>
+	</tr>
+	<tr style=\"background-color:#ddd;border:1px #6699CC dotted;\">
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">Περσίδων</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_fsh_h</td>
+	<td style=\"border:1px #6699CC dotted;vertical-align:middle;\">f_fsh_c</td>
+	</tr>";
+
+	for ($i=1;$i<=10;$i++){
+	$result .= "<tr>
+	<td>".${"name".$i}."</td>
+	<td>".round(${"deg_toixoy".$i},2)."</td>
+	<td>".${"f_h_t".$i}."</td>
+	<td>".${"f_c_t".$i}."</td>
+	</tr>";
+	}
+	$result .= "</table><br/>";
+	
+	/* Οι εικόνες πρέπει να αποθηκευτούν προσωρινά για να περάσουν στο pdf
+		for ($i=1;$i<=10;$i++){
+		$result_fin2 .=  "<img src=\"includes/image_creation_prfin2olou.php" . 
+		"?ipsost=" . ${"fin2_a".$i} . "&ipsosp=" . ${"fin2_b".$i} . "&ipsospar=" . 
+		${"fin2_c".$i} . "&ipsospod=" . ${"hor_d".$i} . "&apostyal=" . ${"fin2_g".$i} . "&mikos_prfin2=" . 
+		${"fin2_e".$i} . "&pros=" . ${"pros".$i} . "&name=" . ${"name".$i} . "\"></img><br/>";
+		}
+	*/
+	}//Τέλος αποτελεσμάτων περσίδων (ΝΟ 6)
+	
+
 	
 	
 //ΕΠΙΛΟΓΗ ΕΜΦΑΝΙΣΗΣ Η ΑΠΟΘΗΚΕΥΣΗΣ

@@ -26,7 +26,9 @@ $xpmenu->addCategory("m2", "Σκιάσεις", "", "2");
 	$xpmenu->addOption("m23", "από ορίζοντα", "", "index_skiaseis.php?page=25", "m2", "2");
 	$xpmenu->addOption("m24", "από πρόβολο", "", "index_skiaseis.php?page=26", "m2", "2");
 	$xpmenu->addOption("m25", "από δεξιά και αριστερά", "", "index_skiaseis.php?page=40", "m2", "2");
-	$xpmenu->addOption("m26", "Ηλιακή τροχιά", "", "astronomical.php", "m2", "2");
+	$xpmenu->addOption("m26", "από τέντες", "", "index_skiaseis.php?page=56", "m2", "2");
+	$xpmenu->addOption("m27", "από ορ. περσίδες", "", "index_skiaseis.php?page=57", "m2", "2");
+	$xpmenu->addOption("m28", "Ηλιακή τροχιά", "", "astronomical.php", "m2", "2");
 
 $xpmenu->addMenu("3");
 $xpmenu->addCategory("m3", "Στοιχεία Ζώνης", "", "3");

@@ -390,6 +390,20 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
+		if ($sel_page["id"] == "56"){
+			
+			$query = "SELECT * FROM skiaseis_provolos";
+			$array_set = mysql_query($query, $connection);
+			while($vivliothikes[] = mysql_fetch_array($array_set));
+			return $vivliothikes;
+		}
+		if ($sel_page["id"] == "57"){
+			
+			$query = "SELECT * FROM skiaseis_persides";
+			$array_set = mysql_query($query, $connection);
+			while($vivliothikes[] = mysql_fetch_array($array_set));
+			return $vivliothikes;
+		}
 		
 	}
 		// Εμφάνιση βιβλιοθηκών για τα καύσιμα
@@ -499,6 +513,19 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			$query = "SELECT " . $prosanatolismos . " ";
 			$query .= "FROM " . $sqltable . " ";
 			$query .= "WHERE deg=" . $gwnia_skiasis . " ";
+			$array_set = mysql_query($query, $connection);
+			confirm_query($array_set);
+			while($timesf[] = mysql_fetch_array($array_set));
+			return $timesf;
+	}
+	
+		// Εύρεση από τους πίνακες των πλευρικών σκιάσεων
+	function get_skiaseis_toixoy_fsh($prosanatolismos, $sqltable, $gwnia_skiasis, $type){
+		global $connection;
+			$query = "SELECT " . $prosanatolismos . " ";
+			$query .= "FROM " . $sqltable . " ";
+			$query .= "WHERE type='" . $type . "' ";
+			$query .= "AND deg=" . $gwnia_skiasis . " ";
 			$array_set = mysql_query($query, $connection);
 			confirm_query($array_set);
 			while($timesf[] = mysql_fetch_array($array_set));
@@ -769,6 +796,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			return array ($grammi1,$grammi2);
 	}
 	
+	
 	//Γραμμική παρεμβολή.Παλινδρόμηση ονομάστηκε εξαιτίας λάθους το οποίο συνεχίστηκε. Δεν την μετονόμασα καθώς την είχα καλέσει αρκετές φορές έπειτα από το λάθος.
 	function palindromisi($y1, $y2, $x1, $x2, $y0) {
 		
@@ -991,13 +1019,13 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			else{ //έχει οριστεί ενδιάμεσος προσανατολισμός
 					if (!isset($grammi2)) { //η σκίαση έχει πέσει σε στάνταρ τιμή.παλινδρόμιση ανάμεσα στις στηλες (προσανατολισμός) με τον προσανατολισμό
 					$timesf1 = get_skiaseis_toixoy_pleyrika($stili1, $sqltable, $grammi1);
-					$f_h1_toixoy = $timesf1[0][0];
-					$f_c1_toixoy = $timesf1[1][0];
+					$f_h1 = $timesf1[0][0];
+					$f_c1 = $timesf1[1][0];
 					$timesf2 = get_skiaseis_toixoy_pleyrika($stili2, $sqltable, $grammi1);
-					$f_h2_toixoy = $timesf2[0][0];
-					$f_c2_toixoy = $timesf2[1][0];
-					$f_h_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_h1_toixoy, $f_h2_toixoy, $pros);
-					$f_c_toixoy = palindromisi($timi_stili1, $timi_stili2, $f_c1_toixoy, $f_c2_toixoy, $pros);
+					$f_h2 = $timesf2[0][0];
+					$f_c2 = $timesf2[1][0];
+					$f_h = palindromisi($timi_stili1, $timi_stili2, $f_h1, $f_h2, $pros);
+					$f_c = palindromisi($timi_stili1, $timi_stili2, $f_c1, $f_c2, $pros);
 					}
 					if (isset($grammi2)) { // η σκιαση έχει πέσει ενδιάμεσα. ο προσανατολισμός έχει πέσει ενδιάμεσα
 					$timesf71 = get_skiaseis_toixoy_pleyrika($stili1, $sqltable, $grammi1);
@@ -1014,6 +1042,100 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 					$f_h72 = $timesf72[0][0];
 					$f_c72 = $timesf72[1][0];
 					$timesf82 = get_skiaseis_toixoy_pleyrika($stili2, $sqltable, $grammi2);
+					$f_h82 = $timesf82[0][0];
+					$f_c82 = $timesf82[1][0];
+					// παλινδρόμηση ανάμεσα στις τιμές της δεύτερης γραμμής για στήλη 1 και 2
+					$f_h12 = palindromisi($timi_stili1, $timi_stili2, $f_h72, $f_h82, $pros);
+					$f_c12 = palindromisi($timi_stili1, $timi_stili2, $f_c72, $f_c82, $pros);
+					// παλινδρόμηση ανάμεσα στις τιμές των δύο γραμμών που βρέθηκαν με την γωνία σκίασης.
+					$f_h = palindromisi($grammi1, $grammi2, $f_h11, $f_h12, $deg);
+					$f_c = palindromisi($grammi1, $grammi2, $f_c11, $f_c12, $deg);
+					}
+			}
+	$array = array(round($f_h,3), round($f_c,3));
+	return $array;
+	}
+	
+	
+	//Υπολογισμός συντελεστών σκίασης περσίδων
+	function calc_skiasi_fsh($deg, $pros, $type){
+	$sqltable = "skiaseis_persides";
+	if ($type == 1) { 
+	$type = "Σταθερές";
+	}
+	else {
+	$type = "Κινητές";
+	}
+	//Εύρεση των στηλών στη βάση δεδομένων που θα χρησιμοποιηθούν είτε για απ' ευθείας τιμές είτε για παρεμβολή.ΠΡΟΣΑΝΑΤΟΛΙΣΜΟΣ ΕΠΙΦΑΝΕΙΑΣ
+			$arrayprosanatolismoy = get_prosanatolismo_pleyrika($pros);
+			$stili1 = $arrayprosanatolismoy[0];
+			$stili2 = $arrayprosanatolismoy[1];
+			$prosanatolismos_epif = $arrayprosanatolismoy[2];
+			$timi_stili1 = $arrayprosanatolismoy[3];
+			$timi_stili2 = $arrayprosanatolismoy[4];
+			
+			//Εύρεση των γραμμών στη βάση δεδομένων που θα χρησιμοποιηθούν είτε για απ' ευθείας τιμές είτε για παρεμβολή
+			if ($type=="Σταθερές" AND $deg>30 AND $deg<45){
+			$grammi1 = 30;
+			$grammi2 = 45;
+			}
+			if ($type=="Σταθερές" AND $deg<=30){
+			$grammi1 = 30;
+			}
+			if ($type=="Σταθερές" AND $deg>=45){
+			$grammi1 = 45;
+			}
+			if ($type=="Κινητές"){
+			$grammi1 = 45;
+			}
+			
+			
+			//Παρεμβολή εαν είμαστε ενδιάμεσα σε τιμές προσανατολισμού.
+			//Αν όχι πάρε τις στάνταρ τιμές από τον πίνακα
+			if (!isset($stili2)) {	//δεν έχει οριστεί ενδιάμεσος προσανατολισμός πλευράς
+					if (!isset($grammi2)) { //η σκίαση έχει πέσει σε στάνταρ τιμή
+					$timesf = get_skiaseis_toixoy_fsh($stili1, $sqltable, $grammi1, $type);
+					$f_h = $timesf[0][0];
+					$f_c = $timesf[1][0];
+					}
+					if (isset($grammi2)) { //η σκίαση δεν πέφτει σε στάνταρ τιμή.παλινδρόμιση ανάμεσα στις γραμμές με τη γωνία σκίασης
+					$timesf1 = get_skiaseis_toixoy_fsh($stili1, $sqltable, $grammi1, $type);
+					$f_h1 = $timesf1[0][0];
+					$f_c1 = $timesf1[1][0];
+					$timesf2 = get_skiaseis_toixoy_fsh($stili1, $sqltable, $grammi2, $type);
+					$f_h2 = $timesf2[0][0];
+					$f_c2 = $timesf2[1][0];
+					$f_h = palindromisi($grammi1, $grammi2, $f_h1, $f_h2, $deg);
+					$f_c = palindromisi($grammi1, $grammi2, $f_c1, $f_c2, $deg);
+					}
+					
+			}
+			else{ //έχει οριστεί ενδιάμεσος προσανατολισμός
+					if (!isset($grammi2)) { //η σκίαση έχει πέσει σε στάνταρ τιμή.παλινδρόμιση ανάμεσα στις στηλες (προσανατολισμός) με τον προσανατολισμό
+					$timesf1 = get_skiaseis_toixoy_fsh($stili1, $sqltable, $grammi1, $type);
+					$f_h1 = $timesf1[0][0];
+					$f_c1 = $timesf1[1][0];
+					$timesf2 = get_skiaseis_toixoy_fsh($stili2, $sqltable, $grammi1, $type);
+					$f_h2 = $timesf2[0][0];
+					$f_c2 = $timesf2[1][0];
+					$f_h = palindromisi($timi_stili1, $timi_stili2, $f_h1, $f_h2, $pros);
+					$f_c = palindromisi($timi_stili1, $timi_stili2, $f_c1, $f_c2, $pros);
+					}
+					if (isset($grammi2)) { // η σκιαση έχει πέσει ενδιάμεσα. ο προσανατολισμός έχει πέσει ενδιάμεσα
+					$timesf71 = get_skiaseis_toixoy_fsh($stili1, $sqltable, $grammi1, $type);
+					$f_h71 = $timesf71[0][0];
+					$f_c71 = $timesf71[1][0];
+					$timesf81 = get_skiaseis_toixoy_fsh($stili2, $sqltable, $grammi1, $type);
+					$f_h81 = $timesf81[0][0];
+					$f_c81 = $timesf81[1][0];
+					// παλινδρόμηση ανάμεσα στις τιμές της πρώτης γραμμής για στήλη 1 και 2
+					$f_h11 = palindromisi($timi_stili1, $timi_stili2, $f_h71, $f_h81, $pros);
+					$f_c11 = palindromisi($timi_stili1, $timi_stili2, $f_c71, $f_c81, $pros);
+					
+					$timesf72 = get_skiaseis_toixoy_fsh($stili1, $sqltable, $grammi2, $type);
+					$f_h72 = $timesf72[0][0];
+					$f_c72 = $timesf72[1][0];
+					$timesf82 = get_skiaseis_toixoy_fsh($stili2, $sqltable, $grammi2, $type);
 					$f_h82 = $timesf82[0][0];
 					$f_c82 = $timesf82[1][0];
 					// παλινδρόμηση ανάμεσα στις τιμές της δεύτερης γραμμής για στήλη 1 και 2

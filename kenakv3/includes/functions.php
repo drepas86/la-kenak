@@ -390,6 +390,20 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			while($vivliothikes[] = mysql_fetch_array($array_set));
 			return $vivliothikes;
 		}
+		if ($sel_page["id"] == "56"){
+			
+			$query = "SELECT * FROM skiaseis_provolos";
+			$array_set = mysql_query($query, $connection);
+			while($vivliothikes[] = mysql_fetch_array($array_set));
+			return $vivliothikes;
+		}
+		if ($sel_page["id"] == "57"){
+			
+			$query = "SELECT * FROM skiaseis_persides";
+			$array_set = mysql_query($query, $connection);
+			while($vivliothikes[] = mysql_fetch_array($array_set));
+			return $vivliothikes;
+		}
 		
 	}
 	
