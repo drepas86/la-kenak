@@ -29,5 +29,6 @@ define("DB_USER", "database_user"); //το όνομα του χρήστη.
 define("DB_PASS", "database_password"); //το συνθηματικό για τον παραπάνω χρήστη. Το έχετε δηλώσει στο http://localhost/security/index.php για xampp
 define("DB_NAME", "database_name"); //το όνομα της βάσης δεδομένων
 define("VERSION", "3.1"); //Η τρέχουσα έκδοση της διανομής
+define("VERSION_ΤΕΕ", "1.29.1.19"); //Η τρέχουσα έκδοση του ΤΕΕ-ΚΕΝΑΚ
 
 ?>

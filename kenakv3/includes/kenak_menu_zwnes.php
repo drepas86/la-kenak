@@ -124,6 +124,36 @@ $(".esg").colorbox({rel:'esg'});
 function get_thermo_eksg(){
 $(".eksg").colorbox({rel:'eksg'});
 }
+function get_thermo_ak(){
+$(".ak").colorbox({rel:'ak'});
+}
+function get_thermo_d(){
+$(".d").colorbox({rel:'d'});
+}
+function get_thermo_de(){
+$(".de").colorbox({rel:'de'});
+}
+function get_thermo_dp(){
+$(".dp").colorbox({rel:'dp'});
+}
+function get_thermo_ed(){
+$(".ed").colorbox({rel:'ed'});
+}
+function get_thermo_edp(){
+$(".edp").colorbox({rel:'edp'});
+}
+function get_thermo_eds(){
+$(".eds").colorbox({rel:'eds'});
+}
+function get_thermo_l(){
+$(".l").colorbox({rel:'l'});
+}
+function get_thermo_oe(){
+$(".oe").colorbox({rel:'oe'});
+}
+function get_thermo_pr(){
+$(".pr").colorbox({rel:'pr'});
+}
 
 function iframe_ground(){
 $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
@@ -144,7 +174,7 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 <h3>Θερμικές ζώνες κτηρίου</h3>
 <?php
 	$ped="kataskeyi_zwnes";
-	$dig="0|0|0|0|0|0|0|0|0|0|0|0|0";
+	$dig="0|0|0|0|0|0|2|0|0|0|0|0|0";
 	$tb_name="TableContainer_zvnes";
 	$fields="fields: {
 		id: {key: true,create: false,edit: false,list: false},
@@ -164,6 +194,7 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 	include('includes/jtable.php');
 ?>
 <br/>
+<font color="red">Ανανεώστε την σελίδα αφού προσθέσετε την ζώνη.</font>
 
 </div><!--/zwnes-->
 
@@ -230,10 +261,7 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 <font color="green">Δάπεδο σε επαφή με το έδαφος υπολογίζεται αυτόματα με βάση τον ισοδύναμο συντελεστή. 
 Πρέπει να δηλωθεί ο ονομαστικός U ο οποίος προστίθεται στο xml. Στον υπολογισμό UxA υπολογίζεται αυτόματα με βάση τον ισοδύναμο.</font><br/>
 <font color="#8B008B">Οι υπόλοιπες περιπτώσεις υπολογίζονται με βάση το διορθωτικό συντελεστή b. πχ σε δάπεδο σε επαφή με ΜΘΧ πρέπει να δηλωθεί b=0.5. 
-Σε δάπεδο που έρχεται σε επαφή με εξωτερικό αέρα (πυλωτή) εισάγεται b=1.
-Δηλώνεται ο ονομαστικός ο οποίος προστίθεται στο xml. Στον υπολογισμό UxA υπολογίζεται με ως bxU</font><br/>
-<font color="red">Το λογισμικό δεν προσθέτει διαχωριστικές επιφάνειες στο xml. Επομένως δάπεδο σε επαφή με ΜΘΧ δεν εμφανίζεται στο λογισμικό και πρέπει να προστεθεί χειροκίνητα.
-Δάπεδα σε επαφή με ΜΘΧ υπολογίζονται μόνο στο UxA.</font>
+Σε δάπεδο που έρχεται σε επαφή με εξωτερικό αέρα (πυλωτή) εισάγεται b=1.</font><br/>
 
 
 <h3>Οροφές (Κέλυφος - Αδιαφανή)</h3>	
@@ -260,6 +288,7 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 	}";
 	include('includes/jtable.php');
 ?>
+<br/> <br/> 
 Ο συνολικός συντελεστής σκίασης για τις επιστεγάσεις οριζόντιες ή κεκλιμένες (π.χ. δώματα ή στέγες), εξαρτάται από τη μορφολογία του περιβάλλοντος χώρου 
 (δηλαδή από φυσικά ή τεχνητά εμπόδια) και από τις εγκαταστάσεις που υπάρχουν επάνω στις επιστεγάσεις, όπως η απόληξη κλιμακοστασίου, οι ηλιακοί συλλέκτες, 
 οι εγκαταστάσεις κλιματισμού, κ.ά. Για λόγους απλοποίησης, για τον υπολογισμό της ενεργειακής απόδοσης κτηρίων ο συντελεστής σκίασης κατά την ενεργειακή 
@@ -312,9 +341,23 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 	}";
 	include('includes/jtable.php');
 ?>
-<h3>Θερμογέφυρες άλλου τύπου</h3><br/>
-<font color="green">Προστίθενται εαν έχετε υπολογίσει μία θερμογέφυρα σε άλλο λογισμικό και δεν γνωρίζετε που να την προσθέσετε 
-ή θέλετε να προσθέσετε όλες τις θερμογέφυρες χειροκίνητα και να τις αφήσετε κενές σε τοίχους και ανοίγματα</font>
+<h3>Θερμογέφυρες άλλου τύπου</h3></h3><br/>
+Τύποι θερμογεφυρών:  
+<a class="ak" href="./images/thermo/ak/ak1.jpg" title="" onclick=get_thermo_ak();>AK</a> | 
+<a class="d" href="./images/thermo/d/d1.jpg" title="" onclick=get_thermo_d();>Δ</a> | 
+<a class="de" href="./images/thermo/de/de1.jpg" title="" onclick=get_thermo_de();>ΔΕ</a> | 
+<a class="dp" href="./images/thermo/dp/dp1.jpg" title="" onclick=get_thermo_dp();>ΔΠ</a> | 
+<a class="ed" href="./images/thermo/ed/ed1.jpg" title="" onclick=get_thermo_ed();>ΕΔ</a> | 
+<a class="edp" href="./images/thermo/edp/edp1.jpg" title="" onclick=get_thermo_edp();>ΕΔΠ</a> | 
+<a class="eds" href="./images/thermo/eds/eds1.jpg" title="" onclick=get_thermo_eds();>ΕΔΣ</a> | 
+<a class="l" href="./images/thermo/l/l1.jpg" title="" onclick=get_thermo_l();>Λ</a> | 
+<a class="oe" href="./images/thermo/oe/oe1.jpg" title="" onclick=get_thermo_oe();>ΟΕ</a> | 
+<a class="pr" href="./images/thermo/pr/pr1.jpg" title="" onclick=get_thermo_pr();>ΠΡ</a>
+<br/>
+<font color="green">
+Εδώ μπορείτε να προσθέσετε εαν έχετε υπολογίσει μία θερμογέφυρα σε άλλο λογισμικό και δεν γνωρίζετε που να την προσθέσετε 
+ή θέλετε να προσθέσετε όλες τις θερμογέφυρες χειροκίνητα και να τις αφήσετε κενές σε τοίχους και ανοίγματα.<br/> 
+Εισάγετε τον πλησιέστερο τύπο συντελεστή ψ και το μήκος όπου η κάθετη ροή θερμότητας σε κάποια επιφάνεια δεν μπορεί να περιγραφεί μονοδιάστατα από το νόμο του Fourier.</font><br/> 
 <?php
 	$ped="kataskeyi_therm_alles";
 	$dig="0|0|0|0|0|0|2|0|0|0|0|0|0";
@@ -331,6 +374,7 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 	include('includes/jtable.php');	
 	
 ?>
+<br/> <br/> 
 Σε περίπτωση μη αναφοράς ενός τύπου θερμογέφυρας του κτηρίου, τότε για τους υπολογισμούς λαμβάνεται ο πλησιέστερος τύπος θερμογέφυρας που περιγράφεται στην ΤOTEE 20701-2/2010.                                                                                             
 
 Επειδή ο ΚENAK στον υπολογισμό των θερμογεφυρών δεν έχει λάβει υπόψη άλλα υλικά εκτός του οπλισμένου σκυροδέματος και της οπτοπλινθοδομής, όλα τα υπόλοιπα υλικά κατά απλοποιητική παραδοχή ανάγονται σε αυτά τα δύο. Δηλαδή:
@@ -344,7 +388,7 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 </div><!--/tab-thermo-->
 
 <div id="tab-draw" class="tabdiv"> 
-<iframe src='includes/drawing.php' width=100%  height=660px marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0  scrolling='no'></iframe></div>
+<iframe src='includes/drawing.php' width=100%  height=700px marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0  scrolling='no'></iframe></div>
 </div>
 
 
@@ -407,7 +451,8 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 <!------------------------------------------------------------------------------------>
 
 <!------------------------------------------------------------------------------------>	
-<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών δαπέδου  -->
+
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών ΔΑΠΕΔΟΥ  -->
 		<div style='display:none'>
 		<?php 
 		for ($i = 2; $i <= 65; $i++) {
@@ -427,6 +472,96 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 		}
 		for ($i = 1; $i <= 28; $i++) {
 		echo "<p><a class=\"dap\" href=\"./images/thermo/dp/dp" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών AK  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 21; $i++) {
+		echo "<p><a class=\"ak\" href=\"./images/thermo/ak/ak" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών D  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 65; $i++) {
+		echo "<p><a class=\"d\" href=\"./images/thermo/d/d" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών DE  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 13; $i++) {
+		echo "<p><a class=\"de\" href=\"./images/thermo/de/de" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών DP  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 28; $i++) {
+		echo "<p><a class=\"dp\" href=\"./images/thermo/dp/dp" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών ED  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 16; $i++) {
+		echo "<p><a class=\"ed\" href=\"./images/thermo/ed/ed" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών EDP  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 25; $i++) {
+		echo "<p><a class=\"edp\" href=\"./images/thermo/edp/edp" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών EDS  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 5; $i++) {
+		echo "<p><a class=\"eds\" href=\"./images/thermo/eds/eds" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών L  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 15; $i++) {
+		echo "<p><a class=\"l\" href=\"./images/thermo/l/l" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών OE  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 26; $i++) {
+		echo "<p><a class=\"oe\" href=\"./images/thermo/oe/oe" . $i . ".jpg\" title=\"\"></a></p>";
+		}
+		?>
+		</div>
+<!------------------------------------------------------------------------------------>
+<!--  Κρυφό div class για βοήθεια στην επιλογή θερμογεφυρών PR  -->
+		<div style='display:none'>
+		<?php 
+		for ($i = 2; $i <= 4; $i++) {
+		echo "<p><a class=\"pr\" href=\"./images/thermo/pr/pr" . $i . ".jpg\" title=\"\"></a></p>";
 		}
 		?>
 		</div>
@@ -577,12 +712,15 @@ $(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
 <!------------------------------------------------------------------------------------>
 <!--  Κρυφό div class για βοήθεια στην επιλογή ελέγχου θερμομονωτικής επάρκειας ------>
 		<div style='display:none'><div id='guideelegxosthermo' style='padding:10px; background:#ebf9c9;'>
-<b>Έλεγχος θερμομονωτικής επάρκειας για τη ζώνη:</b><br/>
-Εαν επιλεγεί ο έλεγχος τότε
+<b>Έλεγχος θερμομονωτικής επάρκειας για τη ζώνη:</b><br/><br/>
+Εαν επιλεγεί ο έλεγχος τότε:
 <ol><li>Εμφανίζεται ο υπολογισμός ελέγχου θερμομονωτικής επάρκειας στο τεύχος</li>
 <li>Υπολογίζονται ΖΝΧ για τη ζώνη και εμφανίζονται στο τεύχος,</li> 
 <li>Υπολογίζεται αερισμός για τη ζώνη</li></ol><br/>
-Μπορείτε να προσθέσετε μη θερμαινόμενους χώρους για τους οποίους θέλετε να εμφανίσετε το κέλυφος στο τεύχος αλλά δεν απαιτείται έλεγχος θερμομονωτικής επάρκειας.
+Μπορείτε να προσθέσετε μη θερμαινόμενους χώρους για τους οποίους θέλετε να εμφανίσετε το κέλυφος στο τεύχος αλλά δεν απαιτείται έλεγχος θερμομονωτικής επάρκειας.<br/><br/>
+
+Κατά την παραγωγή του xml για το λογισμικό ΤΕΕ-ΚΕΝΑΚ όπου έχει δηλωθεί ΝΑΙ στον έλεγχο θερμομονωτικής επάρκειας εισάγεται ζώνη ενώ όπου έχει δηλωθεί ΟΧΙ εισάγεται Μη Θερμ. Χώρος.
+
 		</div></div>
 <!------------------------------------------------------------------------------------>
 <?php } 

@@ -1401,4 +1401,115 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			}
 		
 	}
+	
+//Τσεκάρει εαν μια αλφαριθμητική τιμή $string περιέχει μια άλλη $substring
+function contains_substring($string, $substring) {
+        $pos = strpos($string, $substring);
+ 
+        if($pos === false) {
+                // string needle NOT found in haystack
+                return false;
+        }
+        else {
+                // string needle found in haystack
+                return true;
+        }
+ 
+}
+
+//Γυρνάει την εικόνα από την τιμή της θερμογέφυρας άλλου τύπου
+function getimg_thermo_alles($thermostring) {
+
+	if(contains_substring($thermostring, "-ΑΚ-")){
+	$pinakas = "thermo_ak";
+	$folder= "ak";
+	}
+	if(contains_substring($thermostring, "-Δ-")){
+	$pinakas = "thermo_d";
+	$folder= "d";
+	}
+	if(contains_substring($thermostring, "-ΔΕ-")){
+	$pinakas = "thermo_de";
+	$folder= "de";
+	}
+	if(contains_substring($thermostring, "-ΔΠ-")){
+	$pinakas = "thermo_dp";
+	$folder= "dp";
+	}
+	if(contains_substring($thermostring, "-ΕΔ-")){
+	$pinakas = "thermo_ed";
+	$folder= "ed";
+	}
+	if(contains_substring($thermostring, "-ΕΔΠ-")){
+	$pinakas = "thermo_edp";
+	$folder= "edp";
+	}
+	if(contains_substring($thermostring, "-ΕΔΣ-")){
+	$pinakas = "thermo_eds";
+	$folder= "eds";
+	}
+	if(contains_substring($thermostring, "-ΕΞΓ-")){
+	$pinakas = "thermo_eksg";
+	$folder= "eksg";
+	}
+	if(contains_substring($thermostring, "-ΕΣΓ-")){
+	$pinakas = "thermo_esg";
+	$folder= "esg";
+	}
+	if(contains_substring($thermostring, "-Λ-")){
+	$pinakas = "thermo_l";
+	$folder= "l";
+	}
+	if(contains_substring($thermostring, "-ΟΕ-")){
+	$pinakas = "thermo_oe";
+	$folder= "oe";
+	}
+	if(contains_substring($thermostring, "-ΠΡ-")){
+	$pinakas = "thermo_pr";
+	$folder= "pr";
+	}
+	if(contains_substring($thermostring, "-ΥΠ-")){
+	$pinakas = "thermo_yp";
+	$folder= "yp";
+	}
+		$strSQL = "SELECT id FROM ".$pinakas." WHERE name='".$thermostring."'";
+		$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."]");
+		while($objResult = mysql_fetch_array($objQuery))
+		{
+		$id_thermo = $objResult["id"];
+		}
+		
+	return "<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv3/images/thermo/".$folder."/".$folder.$id_thermo.".jpg\" width=\"150\" height=\"150\">";	
+}
+
+
+//Τσεκάρει με βάση το id της ζώνης αν πρόκειται για ΘΧ ή ΜΘΧ
+function check_zone_by_id($zone_id){
+	$strSQL = "SELECT thermoeparkeia FROM kataskeyi_zwnes WHERE user_id=".$_SESSION['user_id']." AND meleti_id=".$_SESSION['meleti_id']." AND id=".$zone_id;
+	$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."] με id ζώνης=".$zone_id);
+	while($objResult = mysql_fetch_array($objQuery))
+	{
+	$zone_thermo = $objResult["thermoeparkeia"];
+	}
+	return $zone_thermo;
+}
+
+
+//Τσεκάρει με βάση το id του τοίχου αν το παράθυρο βρίσκεται σε ΘΧ ή ΜΘΧ
+function check_window_by_tid($toixos_id,$pros){
+	$strSQL = "SELECT id_zwnis FROM kataskeyi_t_".$pros." WHERE user_id=".$_SESSION['user_id']." AND meleti_id=".$_SESSION['meleti_id']." AND id=".$toixos_id;
+	$objQuery = mysql_query($strSQL) or die ("Error Query [".$strSQL."] με προσανατολισμό=".$pros);
+	while($objResult = mysql_fetch_array($objQuery))
+	{
+	$zone_id = $objResult["id_zwnis"];
+	}
+	$zone_thermo = check_zone_by_id($zone_id);
+	
+	return $zone_thermo;
+}
+
+
+
+
+
 ?>

@@ -42,8 +42,8 @@ $name = $_GET['name'];
 // θέσε HTTP header type σε PNG
 header("Content-type: image/png");
 // Θέσε το πλάτος και μήκος της εικόνας σε pixels
-$width = 700;
-$height = 510;
+$height = $ypsos_empod*30+20;
+$width = $apost_empod*30+20;
 // Θέσε την εικόνα
 $im = ImageCreateTrueColor($width, $height); 
 // switch on image antialising if it is available
@@ -57,13 +57,35 @@ $blue = ImageColorAllocate($im, 0, 0, 255);
 $grey = imagecolorallocate($im, 62, 62, 62);
 $magenda = imagecolorallocate($im, 174, 49, 194);
 $roz = imagecolorallocate($im, 103, 16, 81);
- // Φτιάξε το εμπόδιο αφου είναι ψηλότερο (ολες οι διαστασεις επι 30)
+$hatch1='../images/hatch/brick1.png';
+$hatch2='../images/hatch/concr.png';
+$hatch3='../images/hatch/glass.png';
+$values = array();
+
+	
+// Φτιάξε το εμπόδιο αφου είναι ψηλότερο (ολες οι διαστασεις επι 30)
+ 
 ImageLine($im, 0, 0, 0, ($ypsos_empod*30), $black);
 ImageLine($im, 10, 0, 10, ($ypsos_empod*30), $black);
 ImageLine($im, 0, 0, 10, 0, $black);
 ImageLine($im, 0, ($ypsos_empod*30), 10, ($ypsos_empod*30), $black);
+//Γέμισμα εμποδίου με μπετό
+$imagebg = imageCreateFromPNG ($hatch2); 
+imageSetTile ($im, $imagebg);
+$values[0]=0;
+$values[1]=0;
+$values[2]=10;
+$values[3]=0;
+$values[4]=10;
+$values[5]=$ypsos_empod*30;
+$values[6]=0;
+$values[7]=$ypsos_empod*30;
+imagefilledpolygon($im, $values, 4, IMG_COLOR_TILED);
+imagepolygon($im, $values, 4, $fg);
+
 //φτιάξε την απόσταση τοίχου και εμποδίου
 ImageLine($im, 10, ($ypsos_empod*30), (($apost_empod*30)+10), ($ypsos_empod*30), $magenda);
+
 // φτιάξε τον τοίχο
 $x1toixos = (($apost_empod*30)+10);
 $y1toixos = ($ypsos_empod*30);
@@ -73,14 +95,19 @@ ImageLine($im, $x1toixos, $y1toixos, $x2toixos, $y2toixos, $black);
 ImageLine($im, ($x1toixos+10), $y1toixos, ($x2toixos+10), $y2toixos, $black);
 ImageLine($im, $x1toixos, $y1toixos, ($x1toixos+10), $y1toixos, $black);
 ImageLine($im, $x2toixos, $y2toixos, ($x2toixos+10), $y2toixos, $black);
-
-// φτιάξε το άνοιγμα (παράθυρο)
-$x1anoig = $x1toixos;
-$y1anoig = ($y1toixos - ($ipsos_podias*30));
-$x2anoig = $x1toixos;
-$y2anoig = ($y1toixos - ($ipsos_podias*30)-($ipsos_parath*30));
-ImageLine($im, $x1anoig, $y1anoig, ($x1anoig+10), $y1anoig, $blue);
-ImageLine($im, $x1anoig, $y2anoig, ($x1anoig+10), $y2anoig, $blue);
+//Γέμισμα τοίχου με τούβλο
+$imagebg = imageCreateFromPNG ($hatch1); 
+imageSetTile ($im, $imagebg);
+$values[0]=$x1toixos;
+$values[1]=$y1toixos;
+$values[2]=$x1toixos+10;
+$values[3]=$y1toixos;
+$values[4]=$x1toixos+10;
+$values[5]=$y2toixos;
+$values[6]=$x1toixos;
+$values[7]=$y2toixos;
+imagefilledpolygon($im, $values, 4, IMG_COLOR_TILED);
+imagepolygon($im, $values, 4, $fg);
 
 // φτιάξε το άνοιγμα (πόρτα)
 $x1porta = $x1toixos;
@@ -89,6 +116,41 @@ $x2porta = $x1toixos;
 $y2porta = ($y1toixos - ($ipsos_portas*30));
 ImageLine($im, $x1porta, $y1porta, ($x1porta+10), $y1porta, $roz);
 ImageLine($im, $x1porta, $y2porta, ($x1porta+10), $y2porta, $roz);
+//Γέμισμα ανοίγματος με γυαλί
+$imagebg = imageCreateFromPNG ($hatch3); 
+imageSetTile ($im, $imagebg);
+$values[0]=$x1porta;
+$values[1]=$y1porta;
+$values[2]=$x1porta+10;
+$values[3]=$y1porta;
+$values[4]=$x1porta+10;
+$values[5]=$y2porta;
+$values[6]=$x1porta;
+$values[7]=$y2porta;
+imagefilledpolygon($im, $values, 4, IMG_COLOR_TILED);
+imagepolygon($im, $values, 4, $fg);
+
+// φτιάξε το άνοιγμα (παράθυρο)
+$x1anoig = $x1toixos;
+$y1anoig = ($y1toixos - ($ipsos_podias*30));
+$x2anoig = $x1toixos;
+$y2anoig = ($y1toixos - ($ipsos_podias*30)-($ipsos_parath*30));
+ImageLine($im, $x1anoig, $y1anoig, ($x1anoig+10), $y1anoig, $blue);
+ImageLine($im, $x1anoig, $y2anoig, ($x1anoig+10), $y2anoig, $blue);
+//Γέμισμα ανοίγματος με γυαλί
+$imagebg = imageCreateFromPNG ($hatch3); 
+imageSetTile ($im, $imagebg);
+$values[0]=$x1anoig;
+$values[1]=$y1anoig;
+$values[2]=$x1anoig+10;
+$values[3]=$y1anoig;
+$values[4]=$x1anoig+10;
+$values[5]=$y2anoig;
+$values[6]=$x1anoig;
+$values[7]=$y2anoig;
+imagefilledpolygon($im, $values, 4, IMG_COLOR_TILED);
+imagepolygon($im, $values, 4, $fg);
+
 
 //Φτιάξε τη σκίαση
 $ymesotoixoy = ($y1toixos - (($ipsos_toixoy * 30)/2));
@@ -98,9 +160,9 @@ ImageLine($im, 10, 0, $x1toixos, $ymesotoixoy, $black);
 ImageLine($im, 10, 0, $x1toixos, $ymesoanoig, $blue);
 ImageLine($im, 10, 0, $x1toixos, $ymesoporta, $roz);
 //Γράψε τις παραμέτρους στην εικόνα
-$height = 10;
+$height_txt = 11;
 $angle = 0;
-$text0 = "Για το στοιχείo " . $name . " :";
+$text0 = $name;
 $text1 = "Το ύψος του τοίχου είναι: " . $ipsos_toixoy . " m.";
 $text2 = "Το ύψος του εμποδίου είναι: " . $ypsos_empod . " m.";
 $text3 = "Η απόσταση του εμποδίου είναι: " . $apost_empod . " m.";
@@ -109,32 +171,37 @@ $text5 = "Το ύψος του παραθύρου είναι: " . $ipsos_parath 
 $text6 = "Το ύψος ποδιάς του παραθύρου είναι: " . $ipsos_podias . " m.";
 
 $font = './verdana.ttf';
-imagefttext($im, 11, $angle, 300, 15, $grey, $font, $text0);
-imagefttext($im, $height, $angle, 300, 30, $grey, $font, $text1);
-imagefttext($im, $height, $angle, 300, 50, $grey, $font, $text2);
-imagefttext($im, $height, $angle, 300, 70, $magenda, $font, $text3);
-imagefttext($im, $height, $angle, 300, 90, $roz, $font, $text4);
-imagefttext($im, $height, $angle, 300, 110, $blue, $font, $text5);
-imagefttext($im, $height, $angle, 300, 130, $blue, $font, $text6);
+imagefttext($im, $height_txt, $angle, $width/2, $height/2, $grey, $font, $text0);
+/*
+imagefttext($im, $height_txt, $angle, 300, 30, $grey, $font, $text1);
+imagefttext($im, $height_txt, $angle, 300, 50, $grey, $font, $text2);
+imagefttext($im, $height_txt, $angle, 300, 70, $magenda, $font, $text3);
+imagefttext($im, $height_txt, $angle, 300, 90, $roz, $font, $text4);
+imagefttext($im, $height_txt, $angle, 300, 110, $blue, $font, $text5);
+imagefttext($im, $height_txt, $angle, 300, 130, $blue, $font, $text6);
+*/
+
+/*
 //βρες την γνωνία της σκίασης για τοίχο
 $tantoixoy = ($ymesotoixoy / ($apost_empod*30));
 $deg1 = rad2deg(atan($tantoixoy));
 $deg1text = "Η γωνία για τον τοίχο είναι: " . $deg1 . " deg.";
 //Γράψε τη γωνία για τον τοίχο
-imagefttext($im, $height, $angle, 300, 150, $magenda, $font, $deg1text);
+imagefttext($im, $height_txt, $angle, 300, 150, $magenda, $font, $deg1text);
 //βρες την γνωνία της σκίασης για το άνοιγμα
 $tananoig =  (($ypsos_empod - ($ipsos_portas / 2)) / ($apost_empod+$apost_yalo));
 $deg2 = rad2deg(atan($tananoig));
 $deg2text = "Η γωνία για το άνοιγμα είναι: " . $deg2 . " deg.";
 //Γράψε τη γωνία για το άνοιγμα
-imagefttext($im, $height, $angle, 300, 170, $blue, $font, $deg2text);
+imagefttext($im, $height_txt, $angle, 300, 170, $blue, $font, $deg2text);
 
 //βρες την γνωνία της σκίασης για την πόρτα
 $tanporta = (($ypsos_empod - ($ipsos_parath / 2) - $ipsos_podias) / ($apost_empod+$apost_yalo));
 $deg3 = rad2deg(atan($tanporta));
 $deg3text = "Η γωνία για την πόρτα είναι: " . $deg3 . " deg.";
 //Γράψε τη γωνία για την πόρτα
-imagefttext($im, $height, $angle, 300, 190, $roz, $font, $deg3text);
+imagefttext($im, $height_txt, $angle, 300, 190, $roz, $font, $deg3text);
+*/
 
 // στείλε την PNG εικόνα στο browser
 ob_clean();

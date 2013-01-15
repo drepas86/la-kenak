@@ -23,10 +23,15 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 στην έκδοση 3 αυτής της άδειας.
 Το παρόν σχόλιο πρέπει να παραμένει ως έχει ώστε να τηρείται η παραπάνω άδεια κατά τη διανομή.
 */?>
-		<table style="width:100%;height:75px;border-bottom:1px solid #D4E6F4;background:#558806"><tr><td style="vertical-align:middle;text-align:center;  color: #D4E6F4;">
-		Copyright 2012, Labros Karountzos - This is free software distributed under the GPLv3 public lisence<br/><br/> 
-		PHPExcel and PHPWord is used in this software which is lisenced under the LGPL lisence</td><td style="vertical-align:middle;">
-		<a href="http://www.chem-lab.gr" target="_blank"><img src="images/logo_small.png"></img></a></td><td style="vertical-align:middle;">
+		<table style="width:100%;height:75px;border-bottom:1px solid #D4E6F4;background:#558806">
+		<tr>
+		<td style="vertical-align:middle;text-align:center;  color: #D4E6F4;">
+		Copyright 2012, Labros Karountzos - This is free software distributed under the GPLv3 public lisence<br/> 
+		PHPExcel and PHPWord is used in this software which is lisenced under the LGPL lisence<br/><br/>
+		Συμβατότητα ΤΕΕ-ΚΕΝΑΚ: Έκδοση <?php echo VERSION_ΤΕΕ; ?></td>
+		<td style="vertical-align:middle;">
+		<a href="http://www.chem-lab.gr" target="_blank"><img src="images/logo_small.png"></img></a></td>
+		<td style="vertical-align:middle;">
 		<a href="http://fsfe.org/projects/gplv3/gplv3.el.html" target="_blank"><img src="images/gpl3.png" ></img></a>&nbsp;&nbsp;&nbsp;</td></tr></table>
 	</body>
 </html>

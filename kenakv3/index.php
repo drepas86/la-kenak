@@ -102,7 +102,7 @@ $tb_name="jtable_container";
 						
 					if ($sel_page["id"] > 5 && $sel_page["id"] < 18)	{
 						$ped=$pin[$sel_page["id"]];
-						$dig="0|0|3|0|2|3|0|0|0|0|0";
+						$dig="0|0|3|3|3|3|0|0|0|0|0";
 						$fields="fields: {
 							id: {key: true,create: false,edit: false,list: false},
 							name: {title: 'Ονομα',width: '30%'},
@@ -113,6 +113,37 @@ $tb_name="jtable_container";
 							hatch: {title: 'Γραμμοσκίαση',width: '10%',listClass: 'center'}
 						}";
 						include('includes/jtable_b.php');
+					?>
+					Πίνακες γραμμοσκίασης:
+					<table border="1">
+					<tr>
+					<td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+					<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+					<td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+					<td>17</td>
+					</tr>
+					<tr>
+					<td><img src="images/hatch/blank.png"></td>
+					<td><img src="images/hatch/bricks.png"></td>
+					<td><img src="images/hatch/sand.png"></td>
+					<td><img src="images/hatch/insul.png"></td>
+					<td><img src="images/hatch/concr.png"></td>
+					<td><img src="images/hatch/metal.png"></td>
+					<td><img src="images/hatch/wood.png"></td>
+					<td><img src="images/hatch/stone.png"></td>
+					<td><img src="images/hatch/tile.png"></td>
+					<td><img src="images/hatch/keramidia.png"></td>
+					<td><img src="images/hatch/concrete.png"></td>
+					<td><img src="images/hatch/extruded_polystyrene.png"></td>
+					<td><img src="images/hatch/petrovamvakas.png"></td>
+					<td><img src="images/hatch/polyourethani.png"></td>
+					<td><img src="images/hatch/granitis.png"></td>
+					<td><img src="images/hatch/granitis1.png"></td>
+					<td><img src="images/hatch/wood1.png"></td>
+					<td><img src="images/hatch/dirt.png"></td>
+					</tr>
+					</table>
+					<?php
 					}
 
 					if ($sel_page["id"] == 18)	{
@@ -121,7 +152,7 @@ $tb_name="jtable_container";
 						$fields="fields: {
 							id: {key: true,create: false,edit: false,list: false},
 							name: {title: 'Ονομα',width: '50%'},
-							r: {title: 'Θερμική Αντίσταση',width: '30%',listClass: 'center'},
+							r: {title: 'Θερμική Αγωγιμότητα',width: '30%',listClass: 'center'},
 							hatch: {title: 'Γραμμοσκίαση',width: '20%',listClass: 'center'}
 						}";
 						include('includes/jtable_b.php');

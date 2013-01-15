@@ -26,29 +26,45 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 		<title>La-Kenak - v<?php echo VERSION; ?> - Βιβλιοθήκες</title>
 		<link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
-		<link href="stylesheets/by_tsak1.css" media="all" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="stylesheets/colorbox.css" />
-		<link rel="stylesheet" href="stylesheets/style-timeline.css" type="text/css" media="screen" />
 		<link href="stylesheets/jquery-ui-1.8.18.custom.css" rel="stylesheet" type="text/css" />
 		<link href="stylesheets/jtable_green.css" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/by_tsak1.css" media="all" rel="stylesheet" type="text/css" />
 
 		<script src="javascripts/jquery-1.7.2.js" type="text/javascript"></script>
 		<script src="javascripts/jquery-ui-1.8.18.custom.min.js" type="text/javascript"></script>
 		<script src="javascripts/jquery.colorbox.js" type="text/javascript"></script>
 		<script src="javascripts/jquery.jtable.js" type="text/javascript"></script>
 
+		<script src="javascripts/encoder.js" type="text/javascript"></script>
+		<script type="text/javascript" src="includes/ckeditor/ckeditor.js"></script>
 		<script src="javascripts/cssfix.js"></script>
+		<link rel="stylesheet" href="stylesheets/style-timeline.css" type="text/css" media="screen" />
 		<script src="version-history/js/jquery.timelinr-0.9.5.js" type="text/javascript"></script>
 		<script type="text/javascript"> 
 		$(function(){
 			$().timelinr()
 		});
 		</script>
+		<script>
+		$(document).ready(function() {  
+		$('#tabvanilla').tabs();  
+		}); 
+		</script>
+		<script>
+		$(document).ready(function() {  
+		$('#helpme').tabs();  
+		}); 
+		</script>
+		<script>
+		$("#kenakform").validator();
+		</script>
 		
 	</head>
-	<body>
+	<body onload=get_active();>
 		<div id="header">
 		</div>
 <?php include ('menu.php'); ?>

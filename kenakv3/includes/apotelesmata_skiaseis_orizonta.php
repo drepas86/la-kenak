@@ -58,7 +58,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			echo "<img src=\"includes/image_creation_orizonta.php" . 
 			"?ipsost=" . ${"ipsos_toixoy".$i} . "&ipsosp=" . ${"ipsos_portas".$i} . "&ipsospar=" . 
 			${"ipsos_parath".$i} . "&ipsospod=" . ${"ipsos_podias".$i} . "&apostyal=" . ${"apost_yalo".$i} . "&apostemp=" . 
-			${"apost_empod".$i} . "&ypsosemp=" . ${"ypsos_empod".$i} . "&pros=" . ${"pros".$i} . "&name=" . ${"name".$i} . "\"></img><br/>";
+			${"apost_empod".$i} . "&ypsosemp=" . ${"ypsos_empod".$i} . "&pros=" . ${"pros".$i} . "&name=" . ${"name".$i} . "\"></img>";
 			}
 			}
 			

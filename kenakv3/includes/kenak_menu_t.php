@@ -508,6 +508,7 @@ function drawit(){
 	var dh=document.getElementById("dh"+active_tab+t).innerHTML;
 	var yl=document.getElementById("yl"+active_tab+t).innerHTML;
 	var yn=document.getElementById("yn"+active_tab+t).innerHTML;
+	//yl = yl/yn;
 	var id=document.getElementById("id"+active_tab+t).value;
 	var yprec=document.getElementById("yprec"+active_tab+t).value;
 	if (isNaN(parseFloat(yprec))){yprec="0";}

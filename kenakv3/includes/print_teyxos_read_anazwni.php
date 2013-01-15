@@ -92,34 +92,53 @@ if ($p==4)$an = "an_b_";
 if ($p==5)$an = "an_a_";
 if ($p==6)$an = "an_n_";
 if ($p==7)$an = "an_d_";
+$zone_thermo=check_zone_by_id(${"id_zwnis_".$t.$i});
 $pin43 .= "<tr><td style=\"text-align:left;width:40%;\"><b>".$onoma."</b></td>".
-"<td style=\"text-align:center;width:20%;\"><b>".number_format(${"u_".$t.$i},2,".",",")."</b></td>".
-"<td style=\"text-align:center;width:20%;\"><b>".$domika412."</b></td>";
-if (${"u_".$t.$i}<=$domika412){$adiafani_apaitisi="<font color=\"green\">ΟΚ</font>";}
-if (${"u_".$t.$i}>$domika412){$adiafani_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}
+"<td style=\"text-align:center;width:20%;\"><b>".number_format(${"u_".$t.$i},2,".",",")."</b></td>";
+if ($zone_thermo == 1){
+$pin43 .= "<td style=\"text-align:center;width:20%;\"><b>".$domika412."</b></td>";
+}else{
+$pin43 .= "<td style=\"text-align:center;width:20%;\">-</td>";
+}
+
+	if ($zone_thermo == 1){
+		if (${"u_".$t.$i}<=$domika412){$adiafani_apaitisi="<font color=\"green\">ΟΚ</font>";}
+		if (${"u_".$t.$i}>$domika412){$adiafani_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}
+	}else{
+	$adiafani_apaitisi="<font color=\"grey\">ΜΘΧ-Δεν υπάρχει απαίτηση</font>";
+	}
 $pin43 .= "<td style=\"text-align:center;width:20%;\"><b>".$adiafani_apaitisi."</b></td></tr>";
 }
 }
 $pin43 .= "</table>";
-	
-	
+
+
+//ΣΕ ΕΠΑΦΗ ΜΕ ΜΘΧ
 $pin44 = "<table>";
-$pin44 .= "<tr><td style=\"text-align:left;width:25%;\">Δομικό στοιχείο</td>".
-		 "<td style=\"text-align:center;width:10%;\">Φύλλο ελέγχου</td>".
+$pin44 .= "<tr><td style=\"text-align:left;width:20%;\">Δομικό στοιχείο</td>".
 		 "<td style=\"text-align:center;width:10%;\">Εμβαδόν</td>".
 		 "<td style=\"text-align:center;width:10%;\">U [W/(m²K)]</td>".
+		 "<td style=\"text-align:center;width:10%;\">Umax [W/(m²K)]</td>".
 		 "<td style=\"text-align:center;width:10%;\">Κατώτερο βάθος z (m)</td>".
 		 "<td style=\"text-align:center;width:10%;\">Ανώτερο βάθος z (m)</td>".
 		 "<td style=\"text-align:center;width:10%;\">Περίμετρος</td>".
-		 "<td style=\"text-align:center;width:5%;\">Β (χαρ.)</td>".
-		 "<td style=\"text-align:center;width:10%;\">U' [W/(m²K)]</td></tr>";
-for ($i=1;$i<=$rows_dapedo;$i++){	
-if (${"dapedo_type".$i} == 0){	
-$pin44 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
-		  "<td style=\"text-align:center;\"></td>".
-		  "<td style=\"text-align:center;\">" . ${"dapedo_emvadon".$i} . "</td>".
-		  "<td style=\"text-align:center;\">" . ${"dapedo_u".$i} . "</td>".
-		  "<td style=\"text-align:center;\">" . ${"dapedo_bathos".$i} . "</td>".
+		 "<td style=\"text-align:center;width:10%;\">Β (χαρ.)</td>".
+		 "<td style=\"text-align:center;width:10%;\">Uxb [W/(m²K)]</td></tr>";
+for ($i=1;$i<=$rows_dapedo;$i++){
+$dapedo_thermo = check_zone_by_id(${"dapedo_id_zwnis".$i});
+if (${"dapedo_type".$i} == 1){	
+$pin44 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>";
+$pin44 .= "<td style=\"text-align:center;\">" . ${"dapedo_emvadon".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"dapedo_u".$i} . "</td>";
+		  
+if ($dapedo_thermo == 1){
+if (${"dapedo_u".$i}<=$domika417){$pin44 .= "<td style=\"text-align:center;\"><font color=\"green\">" . $domika417 . "</font></td>";}
+if (${"dapedo_u".$i}>$domika417){$pin44 .= "<td style=\"text-align:center;\"><font color=\"red\">" . $domika417 . "</font></td>";}
+}else{
+$pin44 .= "<td style=\"text-align:center;\"><font color=\"grey\"><b>ΜΘΧ</font></td>";
+}
+
+$pin44 .= "<td style=\"text-align:center;\">" . ${"dapedo_bathos".$i} . "</td>".
 		  "<td style=\"text-align:center;\"></td>".
 		  "<td style=\"text-align:center;\">" . ${"dapedo_perimetros".$i} . "</td>".
 		  "<td style=\"text-align:center;\">" . round(${"dapedo_xaraktiristiki".$i},3) . "</td>".
@@ -127,15 +146,77 @@ $pin44 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
 }
 }
 for ($i=1;$i<=$rows_groundt;$i++){		
-$pin44 .= "<tr><td style=\"text-align:left;\">" . ${"groundt_name".$i} . "</td>".
-		  "<td style=\"text-align:center;\"></td>".
-		  "<td style=\"text-align:center;\">" . ${"groundt_emvadon".$i} . "</td>".
-		  "<td style=\"text-align:center;\">" . ${"groundt_u".$i} . "</td>".
-		  "<td style=\"text-align:center;\">" . ${"groundt_k_bathos".$i} . "</td>".
+$ground_thermo = check_zone_by_id(${"groundt_id_zwnis".$i});
+if (${"groundt_type".$i}==1){
+$pin44 .= "<tr><td style=\"text-align:left;\">" . ${"groundt_name".$i} . "</td>";
+$pin44 .= "<td style=\"text-align:center;\">" . ${"groundt_emvadon".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"groundt_u".$i} . "</td>";
+if ($ground_thermo == 1){
+if (${"groundt_u".$i}<=$domika414){$pin44 .= "<td style=\"text-align:center;\"><font color=\"green\">".$domika414."</font></td>";}
+if (${"groundt_u".$i}>$domika414){$pin44 .= "<td style=\"text-align:center;\"><font color=\"red\">".$domika414."</font></td>";}
+}else{
+$pin44 .= "<td style=\"text-align:center;\"><font color=\"grey\">ΜΘΧ</font></td>";
+}
+$pin44 .= "<td style=\"text-align:center;\">" . ${"groundt_k_bathos".$i} . "</td>".
 		  "<td style=\"text-align:center;\">" . ${"groundt_a_bathos".$i} . "</td>".
 		  "<td style=\"text-align:center;\"></td>".
 		  "<td style=\"text-align:center;\"></td>".
 		  "<td style=\"text-align:center;\">" . round(${"groundt_u_is".$i},3) . "</td></tr>";
+}
+}
+$pin44 .= "</table>Οριζόντια και κατακόρυφα δομικά στοιχεία σε επαφή με κλειστούς Μη Θερμαινόμενους Χώρους (b=0.5). Εισήχθησαν ως διαχωριστικές επιφάνειες στο λογισμικό ΤΕΕ-ΚΕΝΑΚ.<br/><br/>";	
+
+	
+//ΣΕ ΕΠΑΦΗ ΜΕ ΤΟ ΕΔΑΦΟΣ
+$pin44 .= "<table>";
+$pin44 .= "<tr><td style=\"text-align:left;width:20%;\">Δομικό στοιχείο</td>".
+		 "<td style=\"text-align:center;width:10%;\">Εμβαδόν</td>".
+		 "<td style=\"text-align:center;width:10%;\">U [W/(m²K)]</td>".
+		 "<td style=\"text-align:center;width:10%;\">Umax [W/(m²K)]</td>".
+		 "<td style=\"text-align:center;width:10%;\">Κατώτερο βάθος z (m)</td>".
+		 "<td style=\"text-align:center;width:10%;\">Ανώτερο βάθος z (m)</td>".
+		 "<td style=\"text-align:center;width:10%;\">Περίμετρος</td>".
+		 "<td style=\"text-align:center;width:10%;\">Β (χαρ.)</td>".
+		 "<td style=\"text-align:center;width:10%;\">U' [W/(m²K)]</td></tr>";
+for ($i=1;$i<=$rows_dapedo;$i++){
+$dapedo_thermo = check_zone_by_id(${"dapedo_id_zwnis".$i});
+if (${"dapedo_type".$i} == 0){	
+$pin44 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>";
+$pin44 .= "<td style=\"text-align:center;\">" . ${"dapedo_emvadon".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"dapedo_u".$i} . "</td>";
+		  
+if ($dapedo_thermo == 1){
+if (${"dapedo_u".$i}<=$domika417){$pin44 .= "<td style=\"text-align:center;\"><font color=\"green\">" . $domika417 . "</font></td>";}
+if (${"dapedo_u".$i}>$domika417){$pin44 .= "<td style=\"text-align:center;\"><font color=\"red\">" . $domika417 . "</font></td>";}
+}else{
+$pin44 .= "<td style=\"text-align:center;\"><font color=\"grey\">ΜΘΧ</font></td>";
+}
+
+$pin44 .= "<td style=\"text-align:center;\">" . ${"dapedo_bathos".$i} . "</td>".
+		  "<td style=\"text-align:center;\"></td>".
+		  "<td style=\"text-align:center;\">" . ${"dapedo_perimetros".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . round(${"dapedo_xaraktiristiki".$i},3) . "</td>".
+		  "<td style=\"text-align:center;\">" . round(${"dapedo_u_is".$i},3) . "</td></tr>";
+}
+}
+for ($i=1;$i<=$rows_groundt;$i++){		
+$ground_thermo = check_zone_by_id(${"groundt_id_zwnis".$i});
+if (${"groundt_type".$i}==0){
+$pin44 .= "<tr><td style=\"text-align:left;\">" . ${"groundt_name".$i} . "</td>";
+$pin44 .= "<td style=\"text-align:center;\">" . ${"groundt_emvadon".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"groundt_u".$i} . "</td>";
+if ($ground_thermo == 1){
+if (${"groundt_u".$i}<=$domika414){$pin44 .= "<td style=\"text-align:center;\"><font color=\"green\">".$domika414."</font></td>";}
+if (${"groundt_u".$i}>$domika414){$pin44 .= "<td style=\"text-align:center;\"><font color=\"red\">".$domika414."</font></td>";}
+}else{
+$pin44 .= "<td style=\"text-align:center;\"><font color=\"grey\">ΜΘΧ</font></td>";
+}
+$pin44 .= "<td style=\"text-align:center;\">" . ${"groundt_k_bathos".$i} . "</td>".
+		  "<td style=\"text-align:center;\">" . ${"groundt_a_bathos".$i} . "</td>".
+		  "<td style=\"text-align:center;\"></td>".
+		  "<td style=\"text-align:center;\"></td>".
+		  "<td style=\"text-align:center;\">" . round(${"groundt_u_is".$i},3) . "</td></tr>";
+}
 }
 $pin44 .= "</table>";
 
@@ -172,6 +253,7 @@ if (${"aytomatismoi".$z} == 0){${"aytomatismoi".$z}="Α";}
 if (${"aytomatismoi".$z} == 1){${"aytomatismoi".$z}="Β";}
 if (${"aytomatismoi".$z} == 2){${"aytomatismoi".$z}="Γ";}
 if (${"aytomatismoi".$z} == 3){${"aytomatismoi".$z}="Δ";}
+if ($check_thermzwnes[$z] == 1){
 $pin6 .= "<table>";
 $pin6 .= "<tr><td colspan=\"3\">Ζώνη $z</td></tr>";
 $pin6 .= "<tr><td style=\"text-align:left;width:50%;\">Χρήση θερμικής ζώνης</td>".
@@ -185,11 +267,16 @@ $pin6 .= "</tr><tr><td style=\"text-align:left;\">Κατηγορία διατά�
 		  "<td style=\"text-align:center;\">Τ.Ο.Τ.Ε.Ε. 20701-1/2010,πίνακας 5.5</td>";
 $pin6 .= "</tr></table><br/>";
 }
+}
 //*********************************************************************************************
 $pin7 = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 $pin7 .= "<table>";
+if ($check_thermzwnes[$z] == 1){
 $pin7 .= "<tr><td colspan=\"3\">Ζώνη $z</td></tr>";
+}else{
+$pin7 .= "<tr><td colspan=\"3\">Ζώνη $z (ΜΘΧ)</td></tr>";
+}
 $pin7 .= "<tr><td style=\"text-align:left;width:40%;\">Διείσδυση αέρα (m³/h)</td>".
 		 "<td style=\"text-align:center;width:15%;\">${"dieisdysi_aera".$z}</td>".
 		 "<td style=\"text-align:center;width:15%;\">Τεύχος Υπολογισμών</td>";
@@ -217,6 +304,7 @@ $pin7 .= "</tr></table>";
 //$array_leitoyrgias = get_times("*", "energy_conditions", $drop_xrisi);
 $pin8 = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+if ($check_thermzwnes[$z] == 1){
 $pin8 .= "<table>";
 $pin8 .= "<tr><td colspan=\"2\">Ζώνη $z</td></tr>";
 $pin8 .= "<tr><td style=\"text-align:left;width:40%;\">Παράμετρος</td>".
@@ -272,6 +360,7 @@ $pin8 .= "<tr><td style=\"text-align:left;width:40%;\">Παράμετρος</td>
          "<td style=\"text-align:left;\">Ετεροχρ. ισχύς εξοπλ.</td>".
 		 "<td style=\"text-align:center;\">".${"array_leitoyrgias".$z}[0][25]."</td></tr></table>
 		 <p style=\"page-break-before:always;\">&nbsp;</p>";
+}
 }
 //*********************************************************************************************
 $pin9 = "";
@@ -667,12 +756,23 @@ if (${$an."anoig_eidos".$j} == 7) {$anoig_type = "Ανοιγόμενη πόρτ�
 if (${$an."anoig_eidos".$j} == 8) {$anoig_type = "Ανοιγόμενη πόρτα διπλή";}
 if (${$an."anoig_eidos".$j} == 9) {$anoig_type = "Επάλληλη πόρτα";}
 
+$window_thermo = check_window_by_tid(${$an."id_toixoy".$j},$t);
+if ($window_thermo==1){
+if (${$an."anoig_u".$j}<=$domika418){$pinkoyf_apaitisi="<font color=\"green\">OK</font>";}
+if (${$an."anoig_u".$j}>$domika418){$pinkoyf_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}
+}else{
+$pinkoyf_apaitisi="<font color=\"grey\">ΜΘΧ</font>";
+}
+
 $pinkoyf .= "<tr><td>" . ${$an."name".$j} . 
 			"</td><td>" . $anoig_type . 
-			"</td><td>" . ${$an."anoig_u".$j} . 
-			"</td><td>" . $domika418 . "</td>";
-if (${$an."anoig_u".$j}<=$domika418){$pinkoyf_apaitisi="<font color=\"green\">OK</font>";}
-if (${$an."anoig_u".$j}>$domika418){$pinkoyf_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}	
+			"</td><td>" . ${$an."anoig_u".$j};
+			
+if ($window_thermo==1){			
+$pinkoyf .= "</td><td>" . $domika418 . "</td>";
+}else{
+$pinkoyf .= "</td><td>-</td>";
+}
 $pinkoyf .= "<td>" . $pinkoyf_apaitisi . "</td>";		
 $pinkoyf .= "</tr>";
 }
@@ -692,10 +792,25 @@ if (${$an."anoig_eidos".$j} == 7) {$anoig_type = "Ανοιγόμενη πόρτ�
 if (${$an."anoig_eidos".$j} == 8) {$anoig_type = "Ανοιγόμενη πόρτα διπλή";}
 if (${$an."anoig_eidos".$j} == 9) {$anoig_type = "Επάλληλη πόρτα";}
 
+$window_thermo = check_window_by_tid(${$an."id_toixoy".$j},$t);
+if ($window_thermo==1){
 if (${$an."anoig_u".$j}<=$domika418){$pinkoyf_apaitisi="<font color=\"green\">OK</font>";}
-if (${$an."anoig_u".$j}>$domika418){$pinkoyf_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}	
+if (${$an."anoig_u".$j}>$domika418){$pinkoyf_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}
+}else{
+$pinkoyf_apaitisi="<font color=\"grey\">ΜΘΧ</font>";
+}
 
-$pinkoyf .= "<tr><td>" . ${$an."name".$j} . "</td><td>" . $anoig_type . "</td><td>" . ${$an."anoig_u".$j} . "</td><td>" . $domika418 . "</td><td>" . $pinkoyf_apaitisi . "</td></tr>";
+$pinkoyf .= "<tr><td>" . ${$an."name".$j} . 
+			"</td><td>" . $anoig_type . 
+			"</td><td>" . ${$an."anoig_u".$j};
+			
+if ($window_thermo==1){			
+$pinkoyf .= "</td><td>" . $domika418 . "</td>";
+}else{
+$pinkoyf .= "</td><td>-</td>";
+}
+$pinkoyf .= "<td>" . $pinkoyf_apaitisi . "</td>";		
+$pinkoyf .= "</tr>";
 }
 $pinkoyf .= "</table>";
 
@@ -713,10 +828,25 @@ if (${$an."anoig_eidos".$j} == 7) {$anoig_type = "Ανοιγόμενη πόρτ�
 if (${$an."anoig_eidos".$j} == 8) {$anoig_type = "Ανοιγόμενη πόρτα διπλή";}
 if (${$an."anoig_eidos".$j} == 9) {$anoig_type = "Επάλληλη πόρτα";}
 
+$window_thermo = check_window_by_tid(${$an."id_toixoy".$j},$t);
+if ($window_thermo==1){
 if (${$an."anoig_u".$j}<=$domika418){$pinkoyf_apaitisi="<font color=\"green\">OK</font>";}
-if (${$an."anoig_u".$j}>$domika418){$pinkoyf_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}	
+if (${$an."anoig_u".$j}>$domika418){$pinkoyf_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}
+}else{
+$pinkoyf_apaitisi="<font color=\"grey\">ΜΘΧ</font>";
+}	
 
-$pinkoyf .= "<tr><td>" . ${$an."name".$j} . "</td><td>" . $anoig_type . "</td><td>" . ${$an."anoig_u".$j} . "</td><td>" . $domika418 . "</td><td>" . $pinkoyf_apaitisi . "</td></tr>";
+$pinkoyf .= "<tr><td>" . ${$an."name".$j} . 
+			"</td><td>" . $anoig_type . 
+			"</td><td>" . ${$an."anoig_u".$j};
+			
+if ($window_thermo==1){			
+$pinkoyf .= "</td><td>" . $domika418 . "</td>";
+}else{
+$pinkoyf .= "</td><td>-</td>";
+}
+$pinkoyf .= "<td>" . $pinkoyf_apaitisi . "</td>";		
+$pinkoyf .= "</tr>";
 }
 $pinkoyf .= "</table>";
 
@@ -734,10 +864,25 @@ if (${$an."anoig_eidos".$j} == 7) {$anoig_type = "Ανοιγόμενη πόρτ�
 if (${$an."anoig_eidos".$j} == 8) {$anoig_type = "Ανοιγόμενη πόρτα διπλή";}
 if (${$an."anoig_eidos".$j} == 9) {$anoig_type = "Επάλληλη πόρτα";}
 
+$window_thermo = check_window_by_tid(${$an."id_toixoy".$j},$t);
+if ($window_thermo==1){
 if (${$an."anoig_u".$j}<=$domika418){$pinkoyf_apaitisi="<font color=\"green\">OK</font>";}
-if (${$an."anoig_u".$j}>$domika418){$pinkoyf_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}	
+if (${$an."anoig_u".$j}>$domika418){$pinkoyf_apaitisi="<font color=\"red\">ΠΡΟΣΟΧΗ!</font>";}
+}else{
+$pinkoyf_apaitisi="<font color=\"grey\">ΜΘΧ</font>";
+}
 
-$pinkoyf .= "<tr><td>" . ${$an."name".$j} . "</td><td>" . $anoig_type . "</td><td>" . ${$an."anoig_u".$j} . "</td><td>" . $domika418 . "</td><td>" . $pinkoyf_apaitisi . "</td></tr>";
+$pinkoyf .= "<tr><td>" . ${$an."name".$j} . 
+			"</td><td>" . $anoig_type . 
+			"</td><td>" . ${$an."anoig_u".$j};
+			
+if ($window_thermo==1){			
+$pinkoyf .= "</td><td>" . $domika418 . "</td>";
+}else{
+$pinkoyf .= "</td><td>-</td>";
+}
+$pinkoyf .= "<td>" . $pinkoyf_apaitisi . "</td>";		
+$pinkoyf .= "</tr>";
 }
 $pinkoyf .= "</table>";
 
@@ -746,15 +891,15 @@ $pinepar = "";
 $pinepar1 = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 if ($check_thermzwnes[$z] == 1){
-$pinepar .= "<br />Ζώνη ".$z;
+$pinepar .= "<br/>Ζώνη ".$z."<br/>";
 $pinepar .= "<table><tr><td>Είδος</td><td>Επιφάνεια</td><td>U*A</td></tr>";		
 $pinepar .= "<tr><td>Στοιχεία κατακόρυφων αδιαφανών</td><td>" . ${"a_kat_adiafanwn".$z} . "</td><td>" . ${"ua_kat_adiafanwn".$z} . "</td></tr>";
 $pinepar .= "<tr><td>Στοιχεία οριζόντιων αδιαφανών</td><td>" . ${"a_oriz_adiafanwn".$z} . "</td><td>" . ${"ua_oriz_adiafanwn".$z} . "</td></tr>";
 $pinepar .= "<tr><td>Στοιχεία διαφανών</td><td>" . ${"a_diafanwn".$z} . "</td><td>" . ${"ua_diafanwn".$z} . "</td></tr>";
 $pinepar .= "<tr><td>Σύνολο</td><td>" . ${"a_thermoperatotitas".$z} . "</td><td>" . ${"ua_thermoperatotitas".$z} . "</td></tr>";
-$pinepar .= "</table><br>";
+$pinepar .= "</table><br/>";
 
-$pinepar1 .= "<br />Ζώνη ".$z;
+$pinepar1 .= "<br />Ζώνη ".$z."<br/>";
 $pinepar1 .= "<table><tr><td>Είδος</td><td>Τιμή</td></tr>";	
 $pinepar1 .= "<tr><td>U*A θερμογεφυρών</td><td>" . ${"thermogefyres".$z} . "</td></tr>";
 $pinepar1 .= "<tr><td>Σύνολικό U*A</td><td>" . ${"sunolo_ua".$z} . "</td></tr>";
@@ -769,7 +914,7 @@ $pinepar1 .= "</table><br />";
 
 $pinepar1 .="<br />Όπως προέκυψε A/V = " . number_format(${"aprosv".$z},3,".",",") . " m<sup>-1</sup> το οποίο από τον πίνακα 4.1 αντιστοιχεί σε μέγιστο επιτρεπτό Um,max="
  . number_format(${"umax".$z},3,".",",") . " W/(m²K) (με χρήση γραμμικής παρεμβολής). ". ${"elegxosua".$z} . "<br />".
-"Στον πίνακα παρακάτω δίνονται συγκεντρωτικά τα εμβαδά των δομικών στοιχείων, τα αθροίσματα των U×A, καθώς και 
+"Στον πίνακα παραπάνω δίνονται συγκεντρωτικά τα εμβαδά των δομικών στοιχείων, τα αθροίσματα των U×A, καθώς και 
 τα αθροίσματα των Ψxl. Όπως προκύπτει, ο μέσος συντελεστής θερμοπερατότητας του κτιρίου ισούται με:".
 "Um= " . number_format(${"uadiaa".$z},3,".",",") . " W/(m²K) < Um,max= " . number_format(${"umax".$z},3,".",",") . " W/(m²K)".
 "<br />Συνεπώς, σύμφωνα με τις ελάχιστες απαιτήσεις του Κ.Εν.Α.Κ. για τον μέσο συντελεστή θερμοπερατότητας Um, το κτίριο  είναι
@@ -791,9 +936,15 @@ $f1 = "<table>".
 "<td style=\"text-align:center;width:15%;\"><b>Εμβαδόν</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>Όγκος</b></td></tr>";
 for($i = 1; $i <= $rows_xwroi; $i++) {
-$f1 .= "<tr><td style=\"text-align:left;\">Χώρος $i</td>".
-"<td style=\"text-align:center;\">${"xwroi_id_zwnis".$i}</td>".
-"<td style=\"text-align:center;\">${"xwroi_mikos".$i}</td>".
+$f1 .= "<tr><td style=\"text-align:left;\">${"xwroi_name".$i}</td>";
+$xwroi_thermo=check_zone_by_id(${"xwroi_id_zwnis".$i});
+if ($xwroi_thermo == 1){
+$f1 .= "<td style=\"text-align:center;\">ΘΧ</td>";
+}else{
+$f1 .= "<td style=\"text-align:center;\">ΜΘΧ</td>";
+}
+
+$f1 .= "<td style=\"text-align:center;\">${"xwroi_mikos".$i}</td>".
 "<td style=\"text-align:center;\">${"xwroi_platos".$i}</td>".
 "<td style=\"text-align:center;\">${"xwroi_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"xwroi_emvadon".$i}</td>".
@@ -813,15 +964,24 @@ $f1 .= "</table>";
 //*********************************************************************************************
 $f2 = "<table>".
 "<tr><td style=\"text-align:left;width:20%;\"><b>Είδος</b></td>".
+"<td style=\"text-align:center;width:10%;\"><b>Ζώνη</b></td>".
 "<td style=\"text-align:center;width:10%;\"><b>Εμβαδόν</b></td>".
 "<td style=\"text-align:center;width:10%;\"><b>U</b></td>".
-"<td style=\"text-align:center;width:15%;\"><b>b</b></td>".
-"<td style=\"text-align:center;width:15%;\"><b>Κατ. Βάθος</b></td>".
+"<td style=\"text-align:center;width:10%;\"><b>b</b></td>".
+"<td style=\"text-align:center;width:10%;\"><b>Κατ. Βάθος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>Περίμετρος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>UxA</b></td></tr>";
 for($i = 1; $i <= $rows_dapedo; $i++) {
-$f2 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
-"<td style=\"text-align:center;\">${"dapedo_emvadon".$i}</td>".
+$dapeda_thermo=check_zone_by_id(${"dapedo_id_zwnis".$i});
+$f2 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>";
+
+if ($dapeda_thermo==1){
+$f2 .= "<td style=\"text-align:center;\">ΘΧ</td>";
+}else{
+$f2 .= "<td style=\"text-align:center;\">ΜΘΧ</td>";
+}
+
+$f2 .= "<td style=\"text-align:center;\">${"dapedo_emvadon".$i}</td>".
 "<td style=\"text-align:center;\">${"dapedo_u".$i}</td>".
 "<td style=\"text-align:center;\">${"dapedo_b".$i}</td>".
 "<td style=\"text-align:center;\">${"dapedo_bathos".$i}</td>".
@@ -829,8 +989,14 @@ $f2 .= "<tr><td style=\"text-align:left;\">${"dapedo_name".$i}</td>".
 "<td style=\"text-align:center;\">${"dapedo_ua".$i}</td></tr>";
 }
 for($i = 1; $i <= $rows_orofes; $i++) {
-$f2 .= "<tr><td style=\"text-align:left;\">${"orofes_name".$i}</td>".
-"<td style=\"text-align:center;\">${"orofes_emvadon".$i}</td>".
+$orofes_thermo=check_zone_by_id(${"orofes_id_zwnis".$i});
+$f2 .= "<tr><td style=\"text-align:left;\">${"orofes_name".$i}</td>";
+if ($orofes_thermo==1){
+$f2 .= "<td style=\"text-align:center;\">ΘΧ</td>";
+}else{
+$f2 .= "<td style=\"text-align:center;\">ΜΘΧ</td>";
+}
+$f2 .= "<td style=\"text-align:center;\">${"orofes_emvadon".$i}</td>".
 "<td style=\"text-align:center;\">${"orofes_u".$i}</td>".
 "<td style=\"text-align:center;\">${"orofes_b".$i}</td>".
 "<td style=\"text-align:center;\"></td>".
@@ -846,23 +1012,41 @@ $f3 = "<table>".
 "<td style=\"text-align:center;width:15%;\"><b>Ύψος</b></td>".
 "<td style=\"text-align:center;width:15%;\"><b>UxΑ</b></td></tr>";
 for ($i = 1; $i <= $rows_es_g; $i++) {
-$f3 .= "<tr><td style=\"text-align:left;\">Ψ=-".${"thermo_esw_drop".$i}."-ΕΣΓ</td>".
-"<td style=\"text-align:center;\">${"thermo_esw_id_zwnis".$i}</td>".
-"<td style=\"text-align:center;\">${"thermo_esw_gwnia_p".$i}</td>".
+$f3 .= "<tr><td style=\"text-align:left;\">Ψ=".${"thermo_esw_drop".$i}."-ΕΣΓ<br/> 
+<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv3/images/thermo/esg/esg".${"thermo_esw_drop_array".$i}[1].".jpg\" width=\"150\" height=\"150\" ></td>";
+$thermo_esw_thermo=check_zone_by_id(${"thermo_esw_id_zwnis".$i});
+if ($thermo_esw_thermo == 1){
+$f3 .= "<td style=\"text-align:center;\">ΘΧ</td>";
+}else{
+$f3 .= "<td style=\"text-align:center;\">ΜΘΧ</td>";
+}
+$f3 .= "<td style=\"text-align:center;\">${"thermo_esw_gwnia_p".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_gwnia_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_esw_gwnia_ua".$i}</td></tr>";
 }
 for ($i = 1; $i <= $rows_eks_g; $i++) {
-$f3 .= "<tr><td style=\"text-align:left;\">Ψ=-".${"thermo_eksw_drop".$i}."-ΕΞΓ</td>".
-"<td style=\"text-align:center;\">${"thermo_eksw_id_zwnis".$i}</td>".
-"<td style=\"text-align:center;\">${"thermo_eksw_gwnia_p".$i}</td>".
+$f3 .= "<tr><td style=\"text-align:left;\">Ψ=".${"thermo_eksw_drop".$i}."-ΕΞΓ<br/> 
+<img src=\"http://".$_SERVER['HTTP_HOST']."/kenakv3/images/thermo/eksg/eksg".${"thermo_eksw_drop_array".$i}[1].".jpg\" width=\"150\" height=\"150\" ></td>";
+$thermo_eksw_thermo=check_zone_by_id(${"thermo_eksw_id_zwnis".$i});
+if ($thermo_eksw_thermo == 1){
+$f3 .= "<td style=\"text-align:center;\">ΘΧ</td>";
+}else{
+$f3 .= "<td style=\"text-align:center;\">ΜΘΧ</td>";
+}
+$f3 .= "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_p".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_eksw_gwnia_ua".$i}</td></tr>";
 }
 for ($i = 1; $i <= $rows_alles_g; $i++) {
-$f3 .= "<tr><td style=\"text-align:left;\">".${"thermo_alles_drop".$i}[1]."</td>".
-"<td style=\"text-align:center;\">${"thermo_alles_id_zwnis".$i}</td>".
-"<td style=\"text-align:center;\">${"thermo_alles_gwnia_p".$i}</td>".
+$thermoalles_img = getimg_thermo_alles(${"thermo_alles_drop".$i}[1]);
+$f3 .= "<tr><td style=\"text-align:left;\">".${"thermo_alles_drop".$i}[1]."<br/>".$thermoalles_img."</td>";
+$thermoalles_thermo=check_zone_by_id(${"thermo_alles_id_zwnis".$i});
+if ($thermoalles_thermo == 1){
+$f3 .= "<td style=\"text-align:center;\">ΘΧ</td>";
+}else{
+$f3 .= "<td style=\"text-align:center;\">ΜΘΧ</td>";
+}
+$f3 .= "<td style=\"text-align:center;\">${"thermo_alles_gwnia_p".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_alles_gwnia_ypsos".$i}</td>".
 "<td style=\"text-align:center;\">${"thermo_alles_gwnia_ua".$i}</td></tr>";
 }
@@ -972,9 +1156,9 @@ $f8 .= "<tr><td style=\"text-align:left;\">Σύνολο νότιων τοίχω�
 "<td style=\"text-align:center;\">$mikos_toixoy_n</td></tr>";
 $f8 .= "<tr><td style=\"text-align:left;\">Σύνολο δυτικών τοίχων (όλοι οι όροφοι)</td>".
 "<td style=\"text-align:center;\">$mikos_toixoy_d</td></tr>";
-$f8 .= "<tr><td style=\"text-align:left;\">Περίμετρος δαπέδου</td>".
+$f8 .= "<tr><td style=\"text-align:left;\">Περίμετρος</td>".
 "<td style=\"text-align:center;\">$perimetros</td></tr>";
-$f8 .= "<tr><td style=\"text-align:left;\">Όγκος ορόφου</td>".
+$f8 .= "<tr><td style=\"text-align:left;\">Όγκος</td>".
 "<td style=\"text-align:center;\">$synolikos_ogkos</td></tr>";
 $f8 .= "</table>";
 //*********************************************************************************************
@@ -1196,9 +1380,10 @@ $f14 .= "<tr><td>Ζώνη $z</td></tr>";
 $f14 .= "<tr><td>Η συνολική διείσδυση αέρα από κουφώματα είναι: ". number_format(${"dieisdysi_aera".$z},3,".",",") . " m³/h<br/>".
 "Η συνολική διείσδυση αέρα από καμινάδες είναι: ". number_format(${"dieisdysi_aera_kam".$z},3,".",",") . " m³/h<br/>".
 "Η συνολική διείσδυση αέρα από θυρίδες εξ. είναι: ". number_format(${"dieisdysi_aera_thyr".$z},3,".",",") . " m³/h<br/>".
-"Η συνολική διείσδυση αέρα είναι: ". number_format(${"dieisdysi_aera_syn".$z},3,".",",") . " m³/h<br/>".
-"Η απαιτούμενη διείσδυση αέρα είναι: " . number_format(${"apaitoymeni_dieisdysi_aera".$z},3,".",",") . " m³/h<br/>";
+"Η συνολική διείσδυση αέρα είναι: ". number_format(${"dieisdysi_aera_syn".$z},3,".",",") . " m³/h<br/>";
+
 if ($check_thermzwnes[$z] == 1){
+	$f14 .= "Η απαιτούμενη διείσδυση αέρα είναι: " . number_format(${"apaitoymeni_dieisdysi_aera".$z},3,".",",") . " m³/h<br/>";
 	if (${"apaitoymeni_dieisdysi_aera".$z} <= ${"dieisdysi_aera_syn".$z}){
 	$f14 .="Η απαίτηση ικανοποιείται.";
 	}else{
@@ -1307,6 +1492,7 @@ ${"toixoi".$tab}.="</tr></table>";
 //ΦΩΤΙΣΜΟΣ
 $pinfwtismos = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+if ($check_thermzwnes[$z] == 1){
 if (${"systemlight_rows".$z}==0){
 $pinfwtismos .= "<table>";
 $pinfwtismos .= "<tr><td>Ζώνη $z</td></tr>";
@@ -1408,10 +1594,12 @@ $pinfwtismos .= "</table><br/>";
 		}
 	}
 }
+}
 
 //ΥΓΡΑΝΣΗ
 $pinygransi = "";
 for ($z=1;$z<=$arithmos_thermzwnes;$z++){
+if ($check_thermzwnes[$z] == 1){
 	if (${"ygrp_rows".$z}==0){
 	$pinygransi .= "<table>";
 	$pinygransi .= "<tr><td>Ζώνη $z</td></tr>";
@@ -1423,6 +1611,7 @@ for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 		$pinygransi .= ""; //Χώρος για περιγραφή του συστήματος ύγρανσης
 		}
 	}
+}
 }	
 
 

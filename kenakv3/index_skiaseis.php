@@ -111,7 +111,7 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 						
 						<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
 						<tr>
-							<td colspan="2"><input type="submit" name="submit1" value="calculate" /></td>
+							<td colspan="2"><input type="submit" name="submit1" value="Παραγωγή εικόνων (beta)" /></td>
 							<td><button type="button" onclick="calc_fin(1);"/>Εκτύπωση αποτελεσμάτων</button></td>
 						</tr>
 						</table>
@@ -220,7 +220,7 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 						
 						<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
 						<tr>
-							<td><input type="submit" name="submit3" value="Παραγωγή εικόνων" /></td>
+							<td><input type="submit" name="submit3" value="Παραγωγή εικόνων (beta)" /></td>
 							<td><button type="button" onclick="calc_ov(1);"/>Εκτύπωση αποτελεσμάτων</button></td>
 						</tr>
 						</table>
@@ -272,7 +272,7 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 						
 						<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
 						<tr>
-							<td><input type="submit" name="submit4" value="calculate" /></td>
+							<td><input type="submit" name="submit4" value="Παραγωγή εικόνων (beta)" /></td>
 							<td><button type="button" onclick="calc_fin2(1);"/>Εκτύπωση αποτελεσμάτων</button></td>
 						</tr>
 						</table>
@@ -334,7 +334,7 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 						
 						<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
 						<tr>
-							<td><input type="submit" name="submit5" value="calculate" /></td>
+							<td><input type="submit" name="submit5" value="Παραγωγή εικόνων (Υπό κατασκευή)" /></td>
 							<td><button type="button" onclick="calc_ovt(1);"/>Εκτύπωση αποτελεσμάτων</button></td>
 						</tr>
 						</table>
@@ -382,7 +382,7 @@ include("includes/apotelesmata_skiaseis_dyo_meries.php");
 						
 						<table style="width:100%;text-align:center;background-color:#ffffff;border:1px #6699CC dotted;">
 						<tr>
-							<td><input type="submit" name="submit6" value="calculate" /></td>
+							<td><input type="submit" name="submit6" value="Παραγωγή εικόνων (Υπό κατασκευή)" /></td>
 							<td><button type="button" onclick="calc_fsh(1);"/>Εκτύπωση αποτελεσμάτων</button></td>
 						</tr>
 						</table>

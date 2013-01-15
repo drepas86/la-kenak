@@ -112,8 +112,8 @@ Ymax= <input type="text" id="ymax" style="width:50px;" onchange="setmax();">
 <input type="radio" id="d3" name="dtype" value="3" onclick="set_type();" />Άνοιγμα
 <input type="radio" id="d4" name="dtype" value="4" onclick="set_type();" />Υποστύλωμα
 <input type="radio" id="d6" name="dtype" value="6" onclick="set_type();" />Θερμογέφυρα
-<input type="button" id="savepngbtn" value="Save PNG" onclick="saveCanvas(document.getElementById('canvas_container'), 'PNG');">
-<input type="button" id="savejpgbtn" value="Save JPG" onclick="saveCanvas(document.getElementById('canvas_container'), 'JPEG');">
+<input type="button" id="savepngbtn" value="Save PNG" onclick="window.open( canvas.toDataURL( 'image/png' ), 'screenshot' );">
+<input type="button" id="savejpgbtn" value="Save JPG" onclick="window.open( canvas.toDataURL( 'image/jpeg' ), 'screenshot' );">
 </div>
 
 <div style="position:absolute;top:49px;left:60px;width:800px;height:1px;" id="drawbox" >
@@ -505,7 +505,7 @@ init();
 
 
 function iframe_exportdxf(){
-$(".iframe").colorbox({iframe:true, width:"80%", height:"90%"});
+$(".iframe").colorbox({iframe:true, width:"80%", height:"100%"});
 }
 </script>
 

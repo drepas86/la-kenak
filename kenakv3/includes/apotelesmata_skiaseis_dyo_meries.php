@@ -55,7 +55,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			echo "<img src=\"includes/image_creation_dyo_meries.php" . 
 			"?platos_toixoy=" . ${"platos_toixoy".$i} . "&apost_ar=" . ${"apost_ar".$i} . "&mikos_ar=" . 
 			${"mikos_ar".$i} . "&apost_de=" . ${"apost_de".$i} . "&mikos_de=" . ${"mikos_de".$i} . "&apostemp=" . 
-			${"apost_empod".$i} . "&ypsosemp=" . ${"ypsos_empod".$i} . "&pros=" . ${"pros".$i} . "&name=" . ${"name".$i} . "\"></img><br/>";
+			${"apost_empod".$i} . "&ypsosemp=" . ${"ypsos_empod".$i} . "&pros=" . ${"pros".$i} . "&name=" . ${"name".$i} . "\"></img>";
 			}
 			}
 			

@@ -141,8 +141,8 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			if (${"dapedo_type".$i}==0){
 			${"dapedo_u_is".$i} = isodynamos_dapedoy(${"dapedo_u".$i}, ${"dapedo_bathos".$i}, ${"dapedo_xaraktiristiki".$i});
 			}else{
-			${"dapedo_u".$i} = ${"dapedo_u".$i} * ${"dapedo_b".$i};
-			${"dapedo_u_is".$i} = ${"dapedo_u".$i};
+			${"dapedo_u_ypologismos".$i} = ${"dapedo_u".$i} * ${"dapedo_b".$i};
+			${"dapedo_u_is".$i} = ${"dapedo_u_ypologismos".$i};
 			}
 			
 			${"dapedo_ua".$i} = ${"dapedo_emvadon".$i} * ${"dapedo_u_is".$i};
@@ -238,7 +238,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			${"thermo_eksw_gwnia_p".$i} = $objResult["plithos"];
 			${"thermo_eksw_gwnia_ypsos".$i} = $objResult["ypsos"];
 			${"thermo_eksw_gwnia_ua".$i} = ${"thermo_eksw_gwnia_p".$i} * ${"thermo_eksw_gwnia_ypsos".$i} * ${"thermo_eksw_drop".$i};
-			
+			${"thermo_eksw_drop_array".$i} = explode("|", ${"thermo_eksw_drop".$i});
 				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 					if (${"thermo_eksw_id_zwnis".$i} == $id_thermzwnes[$z]){
 					${"thermo_eksw_gwnia_ua_zwnis".$z} += ${"thermo_eksw_gwnia_ua".$i}; //Θερμογέφυρες εξωτερικών γωνιών θερμικής ζώνης
@@ -259,7 +259,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			${"thermo_esw_gwnia_p".$i} = $objResult["plithos"];
 			${"thermo_esw_gwnia_ypsos".$i} = $objResult["ypsos"];
 			${"thermo_esw_gwnia_ua".$i} = ${"thermo_esw_gwnia_p".$i} * ${"thermo_esw_gwnia_ypsos".$i} * ${"thermo_esw_drop".$i};
-			
+			${"thermo_esw_drop_array".$i} = explode("|", ${"thermo_esw_drop".$i});
 				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 					if (${"thermo_esw_id_zwnis".$i} == $id_thermzwnes[$z]){
 					${"thermo_esw_gwnia_ua_zwnis".$z} += ${"thermo_esw_gwnia_ua".$i}; //Θερμογέφυρες εσωτερικών γωνιών θερμικής ζώνης
@@ -324,13 +324,12 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			
 				if (${"groundt_type".$i}==1){
 				${"groundt_b".$i} = 0.5;
-				${"groundt_u".$i} = ${"groundt_u".$i} * ${"groundt_b".$i};
-				${"groundt_u_is".$i} = ${"groundt_u".$i};
+				${"groundt_u_is".$i} = ${"groundt_u".$i} * ${"groundt_b".$i};
 				}
 				if (${"groundt_type".$i}==0){
 				${"groundt_u_is".$i} = isodynamos_katakoryfoy(${"groundt_u".$i}, ${"groundt_k_bathos".$i}, ${"groundt_a_bathos".$i});
 				}
-			${"groundt_ua".$i} = ${"groundt_emvadon".$i} * ${"groundt_is".$i};
+			${"groundt_ua".$i} = ${"groundt_emvadon".$i} * ${"groundt_u_is".$i};
 			
 				for ($z=1;$z<=$arithmos_thermzwnes;$z++){
 					if (${"groundt_id_zwnis".$i} == $id_thermzwnes[$z]){

@@ -53,7 +53,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 			for ($i=1;$i<=10;$i++){
 			if (${"name".$i}!=''){
 			echo "<img src=\"includes/image_creation_provolou.php" . "?ipsos_toixoy=" . ${"ipsos_toixoy".$i} . "&ipsos_portas=" . ${"ipsos_portas".$i} . "&ipsos_parath=" . 
-			${"ipsos_parath".$i} . "&ipsos_podias=" . ${"ipsos_podias".$i} . "&mikos_prov=" . ${"mikos_prov".$i} . "&pros=" . ${"pros".$i} . "&name=" . ${"name".$i} . "&apost_yalo=" . ${"apost_yalo".$i} . "\"></img><br/>";
+			${"ipsos_parath".$i} . "&ipsos_podias=" . ${"ipsos_podias".$i} . "&mikos_prov=" . ${"mikos_prov".$i} . "&pros=" . ${"pros".$i} . "&name=" . ${"name".$i} . "&apost_yalo=" . ${"apost_yalo".$i} . "\"></img>";
 			}
 			}
 			

@@ -304,37 +304,69 @@ for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 if (${"id_zwnis_".$t.$i} == ${"thermiki_zwni".$z}) { //ο τοίχος ανήκει σε αυτή τη ζώνη
 
 //Προσθήκη στο τέλος της κάθε array των τιμών για κάθε επανάληψη.
+//Προσθήκη δρομικού
+array_push(${"array_adiafani_type".$z}, $type_toixwn);
+array_push(${"array_adiafani_name".$z}, ${"name_".$t.$i});
+array_push(${"array_adiafani_g".$z}, $prosanatolismos);
+array_push(${"array_adiafani_b".$z}, $klisi_epifaneias);
+array_push(${"array_adiafani_edrom".$z}, ${"epifaneia_dromikoy_".$t.$i});
+array_push(${"array_adiafani_u".$z}, ${"u_".$t.$i});
+array_push(${"array_adiafani_a".$z}, $a_epifaneias);
+array_push(${"array_adiafani_e".$z}, $e_epifaneias);
+array_push(${"array_adiafani_fhorh".$z}, $fhorh_epifaneias);
+array_push(${"array_adiafani_fhorc".$z}, $fhorc_epifaneias);
+array_push(${"array_adiafani_fovh".$z}, $fovh_epifaneias);
+array_push(${"array_adiafani_fovc".$z}, $fovc_epifaneias);
+array_push(${"array_adiafani_ffinh".$z}, $ffinh_epifaneias);
+array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias);
+
 if (${"epifaneia_toixoy_syr_".$t.$i} != 0){
-array_push(${"array_adiafani_type".$z}, $type_toixwn, $type_ypost, $type_syr);
-array_push(${"array_adiafani_name".$z}, ${"name_".$t.$i}, "Δοκοί-Υποστ. ".${"name_".$t.$i}, "Συρόμ. ".${"name_".$t.$i});
-array_push(${"array_adiafani_g".$z}, $prosanatolismos, $prosanatolismos, $prosanatolismos);
-array_push(${"array_adiafani_b".$z}, $klisi_epifaneias, $klisi_epifaneias, $klisi_epifaneias);
-array_push(${"array_adiafani_edrom".$z}, ${"epifaneia_dromikoy_".$t.$i}, (${"epifaneia_dokos_".$t.$i} + ${"epifaneia_ypost_".$t.$i}), ${"epifaneia_toixoy_syr_".$t.$i});
-array_push(${"array_adiafani_u".$z}, ${"u_".$t.$i}, ${"u_dok_".$t.$i}, ${"u_syr_".$t.$i});
-array_push(${"array_adiafani_a".$z}, $a_epifaneias, $a_epifaneias, $a_epifaneias);
-array_push(${"array_adiafani_e".$z}, $e_epifaneias, $e_epifaneias, $e_epifaneias);
-array_push(${"array_adiafani_fhorh".$z}, $fhorh_epifaneias, $fhorh_epifaneias, $fhorh_epifaneias);
-array_push(${"array_adiafani_fhorc".$z}, $fhorc_epifaneias, $fhorc_epifaneias, $fhorc_epifaneias);
-array_push(${"array_adiafani_fovh".$z}, $fovh_epifaneias, $fovh_epifaneias, $fovh_epifaneias);
-array_push(${"array_adiafani_fovc".$z}, $fovc_epifaneias, $fovc_epifaneias, $fovc_epifaneias);
-array_push(${"array_adiafani_ffinh".$z}, $ffinh_epifaneias, $ffinh_epifaneias, $ffinh_epifaneias);
-array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias, $ffinc_epifaneias, $ffinc_epifaneias);
+array_push(${"array_adiafani_type".$z}, $type_syr);
+array_push(${"array_adiafani_name".$z}, "Συρόμ. ".${"name_".$t.$i});
+array_push(${"array_adiafani_g".$z}, $prosanatolismos);
+array_push(${"array_adiafani_b".$z}, $klisi_epifaneias);
+array_push(${"array_adiafani_edrom".$z}, ${"epifaneia_toixoy_syr_".$t.$i});
+array_push(${"array_adiafani_u".$z}, ${"u_syr_".$t.$i});
+array_push(${"array_adiafani_a".$z}, $a_epifaneias);
+array_push(${"array_adiafani_e".$z}, $e_epifaneias);
+array_push(${"array_adiafani_fhorh".$z}, $fhorh_epifaneias);
+array_push(${"array_adiafani_fhorc".$z}, $fhorc_epifaneias);
+array_push(${"array_adiafani_fovh".$z}, $fovh_epifaneias);
+array_push(${"array_adiafani_fovc".$z}, $fovc_epifaneias);
+array_push(${"array_adiafani_ffinh".$z}, $ffinh_epifaneias);
+array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias);
 }
-if (${"epifaneia_toixoy_syr_".$t.$i} == 0){
-array_push(${"array_adiafani_type".$z}, $type_toixwn, $type_ypost);
-array_push(${"array_adiafani_name".$z}, ${"name_".$t.$i}, "Δοκοί-Υποστ. ".${"name_".$t.$i});
-array_push(${"array_adiafani_g".$z}, $prosanatolismos, $prosanatolismos);
-array_push(${"array_adiafani_b".$z}, $klisi_epifaneias, $klisi_epifaneias);
-array_push(${"array_adiafani_edrom".$z}, ${"epifaneia_dromikoy_".$t.$i}, (${"epifaneia_dokos_".$t.$i} + ${"epifaneia_ypost_".$t.$i}));
-array_push(${"array_adiafani_u".$z}, ${"u_".$t.$i}, ${"u_dok_".$t.$i});
-array_push(${"array_adiafani_a".$z}, $a_epifaneias, $a_epifaneias);
-array_push(${"array_adiafani_e".$z}, $e_epifaneias, $e_epifaneias);
-array_push(${"array_adiafani_fhorh".$z}, $fhorh_epifaneias, $fhorh_epifaneias);
-array_push(${"array_adiafani_fhorc".$z}, $fhorc_epifaneias, $fhorc_epifaneias);
-array_push(${"array_adiafani_fovh".$z}, $fovh_epifaneias, $fovh_epifaneias);
-array_push(${"array_adiafani_fovc".$z}, $fovc_epifaneias, $fovc_epifaneias);
-array_push(${"array_adiafani_ffinh".$z}, $ffinh_epifaneias, $ffinh_epifaneias);
-array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias, $ffinc_epifaneias);
+if (${"epifaneia_dokos_".$t.$i} != 0){
+array_push(${"array_adiafani_type".$z}, $type_ypost);
+array_push(${"array_adiafani_name".$z}, "Δοκός ".${"name_".$t.$i});
+array_push(${"array_adiafani_g".$z}, $prosanatolismos);
+array_push(${"array_adiafani_b".$z}, $klisi_epifaneias);
+array_push(${"array_adiafani_edrom".$z}, ${"epifaneia_dokos_".$t.$i});
+array_push(${"array_adiafani_u".$z}, ${"u_dok_".$t.$i});
+array_push(${"array_adiafani_a".$z}, $a_epifaneias);
+array_push(${"array_adiafani_e".$z}, $e_epifaneias);
+array_push(${"array_adiafani_fhorh".$z}, $fhorh_epifaneias);
+array_push(${"array_adiafani_fhorc".$z}, $fhorc_epifaneias);
+array_push(${"array_adiafani_fovh".$z}, $fovh_epifaneias);
+array_push(${"array_adiafani_fovc".$z}, $fovc_epifaneias);
+array_push(${"array_adiafani_ffinh".$z}, $ffinh_epifaneias);
+array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias);
+}
+if (${"epifaneia_ypost_".$t.$i} != 0){
+array_push(${"array_adiafani_type".$z}, $type_ypost);
+array_push(${"array_adiafani_name".$z}, "Υποστ. ".${"name_".$t.$i});
+array_push(${"array_adiafani_g".$z}, $prosanatolismos);
+array_push(${"array_adiafani_b".$z}, $klisi_epifaneias);
+array_push(${"array_adiafani_edrom".$z}, ${"epifaneia_ypost_".$t.$i});
+array_push(${"array_adiafani_u".$z}, ${"u_ypost_".$t.$i});
+array_push(${"array_adiafani_a".$z}, $a_epifaneias);
+array_push(${"array_adiafani_e".$z}, $e_epifaneias);
+array_push(${"array_adiafani_fhorh".$z}, $fhorh_epifaneias);
+array_push(${"array_adiafani_fhorc".$z}, $fhorc_epifaneias);
+array_push(${"array_adiafani_fovh".$z}, $fovh_epifaneias);
+array_push(${"array_adiafani_fovc".$z}, $fovc_epifaneias);
+array_push(${"array_adiafani_ffinh".$z}, $ffinh_epifaneias);
+array_push(${"array_adiafani_ffinc".$z}, $ffinc_epifaneias);
 }
 
 }//ο τοίχος δεν ανήκει σε αυτή τη ζώνη
@@ -736,6 +768,7 @@ ${"array_diafani_ffinh".$z} = implode(",", ${"array_diafani_ffinh".$z});
 ${"array_diafani_ffinc".$z} = implode(",", ${"array_diafani_ffinc".$z});
 }
 
+//ΟΡΙΣΜΟΣ ARRAY
 //ΣΕ ΕΠΑΦΗ ΜΕ ΕΔΑΦΟΣ
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i=1;$i<=8;$i++){
@@ -743,11 +776,20 @@ ${"ground_column".$i.$z} = array();
 }
 }
 
-//Δάπεδα
+//ΔΑΠΕΔΑ ΣΕ ΕΠΑΦΗ ΜΕ ΜΘΧ - ΔΙΑΧΩΡΙΣΤΙΚΕΣ
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i=1;$i<=16;$i++){
+${"internal_column".$i.$z} = array();
+}
+}
+
+//Δάπεδα ΣΕ ΕΔΑΦΟΣ
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i = 1; $i <= $rows_dapedo; $i++) {
 
 if (${"dapedo_id_zwnis".$i}==${"thermiki_zwni".$z}){
+
+//εαν το δάπεδο είναι σε επαφή με έδαφος
 if (${"dapedo_type".$i}==0){
 array_push(${"ground_column1".$z}, "Δάπεδο");
 array_push(${"ground_column2".$z}, ${"dapedo_name".$i});
@@ -757,6 +799,26 @@ array_push(${"ground_column5".$z}, ${"dapedo_bathos".$i});
 array_push(${"ground_column6".$z}, "");
 array_push(${"ground_column7".$z}, ${"dapedo_perimetros".$i});
 }
+
+//εαν το δάπεδο είναι σε επαφή με ΜΘΧ (ΔΙΑΧΩΡΙΣΤΙΚΗ ΕΠΙΦΑΝΕΙΑ αναγκαστικά)
+if (${"dapedo_type".$i}==1){
+if (isset(${"dapedo_name".$i})){${"internal_nodes".$z}=1;}else{${"internal_nodes".$z}=0;}
+array_push(${"internal_column1".$z}, "Δάπεδο");
+array_push(${"internal_column2".$z}, ${"dapedo_name".$i});
+array_push(${"internal_column3".$z}, "180");
+array_push(${"internal_column4".$z}, "0");
+array_push(${"internal_column5".$z}, ${"dapedo_emvadon".$i});
+array_push(${"internal_column6".$z}, ${"dapedo_u".$i});
+array_push(${"internal_column7".$z}, "0"); //a
+array_push(${"internal_column8".$z}, "0"); //e
+array_push(${"internal_column9".$z}, "0");
+array_push(${"internal_column10".$z}, "0");
+array_push(${"internal_column11".$z}, "0");
+array_push(${"internal_column12".$z}, "0");
+array_push(${"internal_column13".$z}, "0");
+array_push(${"internal_column14".$z}, "0");
+}
+
 }
 }
 }
@@ -766,6 +828,9 @@ for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i = 1; $i <= $rows_groundt; $i++) {
 
 if (${"groundt_id_zwnis".$i}==${"thermiki_zwni".$z}){
+
+//εαν ο τοίχος είναι σε επαφή με έδαφος
+if (${"groundt_type".$i}==0){
 array_push(${"ground_column1".$z}, "Τοίχος");
 array_push(${"ground_column2".$z}, ${"groundt_name".$i});
 array_push(${"ground_column3".$z}, ${"groundt_emvadon".$i});
@@ -774,6 +839,30 @@ array_push(${"ground_column5".$z}, ${"groundt_k_bathos".$i});
 array_push(${"ground_column6".$z}, ${"groundt_a_bathos".$i});
 array_push(${"ground_column7".$z}, "");
 }
+
+//εαν ο τοίχος είναι σε επαφή με ΜΘΧ
+if (${"groundt_type".$i}==1){
+
+	if (${"internal_nodes".$z}==0){
+	if (isset(${"groundt_name".$i})){${"internal_nodes".$z}=1;}else{${"internal_nodes".$z}=0;}
+	}
+array_push(${"internal_column1".$z}, "Τοίχος");
+array_push(${"internal_column2".$z}, ${"groundt_name".$i});
+array_push(${"internal_column3".$z}, "0"); //Δεν ενδιαφέρει ο προσανατολισμός
+array_push(${"internal_column4".$z}, "90"); //κατακόρυφο στοιχείο
+array_push(${"internal_column5".$z}, ${"groundt_emvadon".$i});
+array_push(${"internal_column6".$z}, ${"groundt_u".$i}); //το ονομαστικό U
+array_push(${"internal_column7".$z}, "0"); //a
+array_push(${"internal_column8".$z}, "0"); //e
+array_push(${"internal_column9".$z}, "0");
+array_push(${"internal_column10".$z}, "0");
+array_push(${"internal_column11".$z}, "0");
+array_push(${"internal_column12".$z}, "0");
+array_push(${"internal_column13".$z}, "0");
+array_push(${"internal_column14".$z}, "0");
+}
+
+}
 }
 }
 
@@ -781,11 +870,18 @@ array_push(${"ground_column7".$z}, "");
 //Μετράω τις γραμμές
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 ${"count_ground".$z} = count(${"ground_column1".$z});
+${"count_internal".$z} = count(${"internal_column1".$z});
 }
 
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
 for ($i=1;$i<=8;$i++){
 ${"ground_column".$i.$z} = implode(",", ${"ground_column".$i.$z});
+}
+}
+
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+for ($i=1;$i<=16;$i++){
+${"internal_column".$i.$z} = implode(",", ${"internal_column".$i.$z});
 }
 }
 
@@ -1236,7 +1332,7 @@ $xml .= '<ENR_IN>'.$br;
 			$xml .= '<blg_climate>'.($climate_data_id-1).'</blg_climate>'.$br;
 			$xml .= '<blg_datasource>0000000000</blg_datasource>'.$br;
 			$xml .= '<blg_licence_data>'.$pol_grafeio.','.$pol_year.','.$pol_number.','.$pol_year_complete.',,,,,,,,,,,,,</blg_licence_data>'.$br;
-			$xml .= '<version_tee_kenak_dll>1.29.1.19</version_tee_kenak_dll>'.$br;
+			$xml .= '<version_tee_kenak_dll>'.VERSION_ΤΕΕ.'</version_tee_kenak_dll>'.$br;
 	$xml .= '</EPA_NR_PROJECT>'.$br;	
 	
 	$xml .= '<LIBRARIES rid="#2">'.$br;
@@ -1256,8 +1352,8 @@ $xml .= '<ENR_IN>'.$br;
 		$xml .= '<blg_parameter8>0</blg_parameter8>'.$br; //Ύψος τυπικού ορόφου (m)
 		$xml .= '<blg_parameter9>0</blg_parameter9>'.$br; //Ύψος ισογείου (m)
 		$xml .= '<blg_parameter10>-1</blg_parameter10>'.$br; //Έκθεση κτιρίου
-		$xml .= '<blg_parameter11>'.$arithmos_thermzwnes.'</blg_parameter11>'.$br; //θερμικές ζώνες
-		$xml .= '<blg_parameter12>0</blg_parameter12>'.$br; //Αριθμός μη θερμαινόμενων χώρων
+		$xml .= '<blg_parameter11>'.$arithmos_pragmatikesthermzwnes.'</blg_parameter11>'.$br; //θερμικές ζώνες
+		$xml .= '<blg_parameter12>'.$arithmos_pragmatikoimthx.'</blg_parameter12>'.$br; //Αριθμός μη θερμαινόμενων χώρων
 		$xml .= '<blg_parameter13>0</blg_parameter13>'.$br; //Αριθμός ηλιακών χώρων
 		$xml .= '<blg_parameter14>'.$xrisi_znx_iliakos.'</blg_parameter14>'.$br; // χρήση κτιρίου
 		$xml .= '<blg_parameter15>0000</blg_parameter15>'.$br; //Συνθήκες θερμικής άνεσης
@@ -1285,6 +1381,7 @@ $xml .= '<ENR_IN>'.$br;
 		$xml .= ''.$br;	
 	
 for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+if ($check_thermzwnes[$z] == 1){
 //ΟΝΟΜΑΤΑ ΧΡΗΣΕΩΝ ΖΩΝΗΣ
 if (${"drop_xrisi".$z}==1){${"xrisi_eid".$z}="Μονοκατοικία, πολυκατοικία";}
 if (${"drop_xrisi".$z}==2){${"xrisi_eid".$z}="Μονοκατοικία, πολυκατοικία";}
@@ -1393,7 +1490,7 @@ if (${"drop_xrisi".$z}==51){${"xrisi_eid".$z}="Βιβλιοθήκες";} //Βι�
 						$xml .= '<opaque_tb_column1>ΣΥΝΟΛΙΚΕΣ,</opaque_tb_column1>'.$br;
 						$xml .= '<opaque_tb_column2>1,</opaque_tb_column2>'.$br;
 						$xml .= '<opaque_tb_column3>'.${"thermogefyres".$z}.',</opaque_tb_column3>'.$br; //θερμογέφυρες κελύφους
-						$xml .= '<internal_nodes>0</internal_nodes>'.$br;
+						$xml .= '<internal_nodes>'.${"internal_nodes".$z}.'</internal_nodes>'.$br; //αριθμός διαχωριστικών επιφανειών
 						$xml .= '<direct_benefit_exist>0</direct_benefit_exist>'.$br;
 						$xml .= '<direct_benefit_rows>40</direct_benefit_rows>'.$br;
 						$xml .= '<direct_benefit_column1>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,</direct_benefit_column1>'.$br;
@@ -1416,21 +1513,21 @@ if (${"drop_xrisi".$z}==51){${"xrisi_eid".$z}="Βιβλιοθήκες";} //Βι�
 						//Διαχωριστικές επιφάνειες
 							$xml .= '<internal1 rid="1">'.$br;
 								$xml .= '<space_between>0</space_between>'.$br; //Διαχωρισμός με θερμαινόμενο ή ηλιακό χώρο (-1:χωρίς επιλογή, 0:για 1ο χώρο, 1:για δεύτερο κλπ)
-								$xml .= '<opaque_rows>1</opaque_rows>'.$br; //Αρ. Γραμμών πίνακα Αδιαφανείς επιφάνειες Διαχωριστικής
-								$xml .= '<opaque_column1>,</opaque_column1>'.$br; //Τοίχος ή Οροφή ή Δάπεδο ή Πόρτα
-								$xml .= '<opaque_column2>,</opaque_column2>'.$br;
-								$xml .= '<opaque_column3>,</opaque_column3>'.$br;
-								$xml .= '<opaque_column4>,</opaque_column4>'.$br;
-								$xml .= '<opaque_column5>,</opaque_column5>'.$br;
-								$xml .= '<opaque_column6>,</opaque_column6>'.$br;
-								$xml .= '<opaque_column7>,</opaque_column7>'.$br;
-								$xml .= '<opaque_column8>,</opaque_column8>'.$br;
-								$xml .= '<opaque_column9>,</opaque_column9>'.$br;
-								$xml .= '<opaque_column10>,</opaque_column10>'.$br;
-								$xml .= '<opaque_column11>,</opaque_column11>'.$br;
-								$xml .= '<opaque_column12>,</opaque_column12>'.$br;
-								$xml .= '<opaque_column13>,</opaque_column13>'.$br;
-								$xml .= '<opaque_column14>,</opaque_column14>'.$br;
+								$xml .= '<opaque_rows>'.${"count_internal".$z}.'</opaque_rows>'.$br; //Αρ. Γραμμών πίνακα Αδιαφανείς επιφάνειες Διαχωριστικής
+								$xml .= '<opaque_column1>'.${"internal_column1".$z}.',</opaque_column1>'.$br; //Τοίχος ή Οροφή ή Δάπεδο ή Πόρτα
+								$xml .= '<opaque_column2>'.${"internal_column2".$z}.',</opaque_column2>'.$br;
+								$xml .= '<opaque_column3>'.${"internal_column3".$z}.',</opaque_column3>'.$br;
+								$xml .= '<opaque_column4>'.${"internal_column4".$z}.',</opaque_column4>'.$br;
+								$xml .= '<opaque_column5>'.${"internal_column5".$z}.',</opaque_column5>'.$br;
+								$xml .= '<opaque_column6>'.${"internal_column6".$z}.',</opaque_column6>'.$br;
+								$xml .= '<opaque_column7>'.${"internal_column7".$z}.',</opaque_column7>'.$br;
+								$xml .= '<opaque_column8>'.${"internal_column8".$z}.',</opaque_column8>'.$br;
+								$xml .= '<opaque_column9>'.${"internal_column9".$z}.',</opaque_column9>'.$br;
+								$xml .= '<opaque_column10>'.${"internal_column10".$z}.',</opaque_column10>'.$br;
+								$xml .= '<opaque_column11>'.${"internal_column11".$z}.',</opaque_column11>'.$br;
+								$xml .= '<opaque_column12>'.${"internal_column12".$z}.',</opaque_column12>'.$br;
+								$xml .= '<opaque_column13>'.${"internal_column13".$z}.',</opaque_column13>'.$br;
+								$xml .= '<opaque_column14>'.${"internal_column14".$z}.',</opaque_column14>'.$br;
 								$xml .= '<opaque_column15>,</opaque_column15>'.$br;
 								$xml .= '<opaque_column16>,</opaque_column16>'.$br;
 								$xml .= '<transparent_rows>0</transparent_rows>'.$br; //Αρ. Γραμμών πίνακα Διαφανείς επιφάνειες Διαχωριστικής
@@ -1749,63 +1846,68 @@ $xml .= '<lighting rid="1">'.$br.
 $xml .= '</SYSTEM>'.$br;
 $xml .= "</ZONE".$z.">".$br;
 
-
+} //εδώ τελειώνει ο έλεγχος αν έχει επιλεγεί ΝΑΙ στη θερμομονωτική επάρκεια της ζώνης
 } //Εδώ τελειώνουν οι θερμικές ζώνες και ξεκινούν οι μη θερμαινόμενοι χώροι
 
+//Όλες οι θερμικές ζώνες που δηλώθηκε ΟΧΙ στον έλεγχο θερμομονωτικής επάρκειας περνούν σαν ΜΘΧ
+for ($z = 1; $z <= $arithmos_thermzwnes; $z++) {
+if ($check_thermzwnes[$z] == 0){
 $xml .= '<UNHEATED1 rid="1">'.$br;
-$xml .= '<un_parameter1></un_parameter1>'.$br; //Συνολική επιφάνεια (m²)
-$xml .= '<un_parameter2></un_parameter2>'.$br; //Διείσδυση αέρα (m³/h)
+$xml .= '<un_parameter1>'.${"synoliko_embadon".$z}.'</un_parameter1>'.$br; //Συνολική επιφάνεια (m²)
+$xml .= '<un_parameter2>'.${"dieisdysi_aera".$z}.'</un_parameter2>'.$br; //Διείσδυση αέρα (m³/h)
 
 $xml .= '<ENVELOPE rid="1">'.$br;
-$xml .= '<opaque_rows>0</opaque_rows>'.$br; //Αρ. Γραμμών πίνακα Αδιαφανείς επιφάνειες ΜΘΧ
-$xml .= '<opaque_column1>,</opaque_column1>'.$br; //Τοίχος ή Οροφή ή Πυλωτή ή Πόρτα
-$xml .= '<opaque_column2>adiafanes_mthx,</opaque_column2>'.$br; 
-$xml .= '<opaque_column3>,</opaque_column3>'.$br;
-$xml .= '<opaque_column4>,</opaque_column4>'.$br;
-$xml .= '<opaque_column5>,</opaque_column5>'.$br;
-$xml .= '<opaque_column6>,</opaque_column6>'.$br;
-$xml .= '<opaque_column7>,</opaque_column7>'.$br;
-$xml .= '<opaque_column8>,</opaque_column8>'.$br;
-$xml .= '<opaque_column9>,</opaque_column9>'.$br;
-$xml .= '<opaque_column10>,</opaque_column10>'.$br;
-$xml .= '<opaque_column11>,</opaque_column11>'.$br;
-$xml .= '<opaque_column12>,</opaque_column12>'.$br;
-$xml .= '<opaque_column13>,</opaque_column13>'.$br;
-$xml .= '<opaque_column14>,</opaque_column14>'.$br;
-$xml .= '<opaque_column15>,</opaque_column15>'.$br;
-$xml .= '<opaque_column16>,</opaque_column16>'.$br;
-$xml .= '<ground_rows>0</ground_rows>'.$br;
-$xml .= '<ground_column1>,</ground_column1>'.$br; //Τοίχος ή Δάπεδο
-$xml .= '<ground_column2>,</ground_column2>'.$br;
-$xml .= '<ground_column3>,</ground_column3>'.$br;
-$xml .= '<ground_column4>,</ground_column4>'.$br;
-$xml .= '<ground_column5>,</ground_column5>'.$br;
-$xml .= '<ground_column6>,</ground_column6>'.$br;
-$xml .= '<ground_column7>,</ground_column7>'.$br;
+$xml .= '<opaque_rows>'.${"count_adiafani".$z}.'</opaque_rows>'.$br; //Αρ. Γραμμών πίνακα Αδιαφανείς επιφάνειες ΜΘΧ
+$xml .= '<opaque_column1>'.${"array_adiafani_type".$z}.',</opaque_column1>'.$br; //Τοίχος ή Οροφή ή Πυλωτή ή Πόρτα
+$xml .= '<opaque_column2>'.${"array_adiafani_name".$z}.',</opaque_column2>'.$br; 
+$xml .= '<opaque_column3>'.${"array_adiafani_g".$z}.',</opaque_column3>'.$br;
+$xml .= '<opaque_column4>'.${"array_adiafani_b".$z}.',</opaque_column4>'.$br;
+$xml .= '<opaque_column5>'.${"array_adiafani_edrom".$z}.',</opaque_column5>'.$br;
+$xml .= '<opaque_column6>'.${"array_adiafani_u".$z}.',</opaque_column6>'.$br;
+$xml .= '<opaque_column7>'.${"array_adiafani_a".$z}.',</opaque_column7>'.$br;
+$xml .= '<opaque_column8>'.${"array_adiafani_a".$z}.',</opaque_column8>'.$br;
+$xml .= '<opaque_column9>'.${"array_adiafani_e".$z}.',</opaque_column9>'.$br;
+$xml .= '<opaque_column10>'.${"array_adiafani_fhorh".$z}.',</opaque_column10>'.$br;
+$xml .= '<opaque_column11>'.${"array_adiafani_fhorc".$z}.',</opaque_column11>'.$br;
+$xml .= '<opaque_column12>'.${"array_adiafani_fovh".$z}.',</opaque_column12>'.$br;
+$xml .= '<opaque_column13>'.${"array_adiafani_fovc".$z}.',</opaque_column13>'.$br;
+$xml .= '<opaque_column14>'.${"array_adiafani_ffinh".$z}.',</opaque_column14>'.$br;
+$xml .= '<opaque_column15>'.${"array_adiafani_ffinc".$z}.',</opaque_column15>'.$br;
+$xml .= '<opaque_column16>,,,,,,,</opaque_column16>'.$br;
+$xml .= '<ground_rows>'.${"count_ground".$z}.'</ground_rows>'.$br;
+$xml .= '<ground_column1>'.${"ground_column1".$z}.',</ground_column1>'.$br; //Τοίχος ή Δάπεδο
+$xml .= '<ground_column2>'.${"ground_column2".$z}.',</ground_column2>'.$br;
+$xml .= '<ground_column3>'.${"ground_column3".$z}.',</ground_column3>'.$br;
+$xml .= '<ground_column4>'.${"ground_column4".$z}.',</ground_column4>'.$br;
+$xml .= '<ground_column5>'.${"ground_column5".$z}.',</ground_column5>'.$br;
+$xml .= '<ground_column6>'.${"ground_column6".$z}.',</ground_column6>'.$br;
+$xml .= '<ground_column7>'.${"ground_column7".$z}.',</ground_column7>'.$br;
 $xml .= '<ground_column8>,</ground_column8>'.$br;
-$xml .= '<transparent_rows>1</transparent_rows>'.$br;
-$xml .= '<transparent_column1>,</transparent_column1>'.$br;
-$xml .= '<transparent_column2>,</transparent_column2>'.$br;
-$xml .= '<transparent_column3>,</transparent_column3>'.$br;
-$xml .= '<transparent_column4>,</transparent_column4>'.$br;
-$xml .= '<transparent_column5>,</transparent_column5>'.$br;
-$xml .= '<transparent_column6>,</transparent_column6>'.$br;
-$xml .= '<transparent_column7>,</transparent_column7>'.$br;
-$xml .= '<transparent_column8>,</transparent_column8>'.$br;
-$xml .= '<transparent_column9>,</transparent_column9>'.$br;
-$xml .= '<transparent_column10>,</transparent_column10>'.$br;
-$xml .= '<transparent_column11>,</transparent_column11>'.$br;
-$xml .= '<transparent_column12>,</transparent_column12>'.$br;
-$xml .= '<transparent_column13>,</transparent_column13>'.$br;
-$xml .= '<transparent_column14>,</transparent_column14>'.$br;
-$xml .= '<transparent_column15>,</transparent_column15>'.$br;
-$xml .= '<opaque_tb_rows>0</opaque_tb_rows>'.$br;
-$xml .= '<opaque_tb_column1></opaque_tb_column1>'.$br;
-$xml .= '<opaque_tb_column2></opaque_tb_column2>'.$br;
-$xml .= '<opaque_tb_column3></opaque_tb_column3>'.$br;
+$xml .= '<transparent_rows>'.${"count_diafani".$z}.'</transparent_rows>'.$br;
+$xml .= '<transparent_column1>'.${"array_diafani_type".$z}.',</transparent_column1>'.$br;
+$xml .= '<transparent_column2>'.${"array_diafani_name".$z}.',</transparent_column2>'.$br;
+$xml .= '<transparent_column3>'.${"array_diafani_g".$z}.',</transparent_column3>'.$br;
+$xml .= '<transparent_column4>'.${"array_diafani_b".$z}.',</transparent_column4>'.$br;
+$xml .= '<transparent_column5>'.${"array_diafani_edrom".$z}.',</transparent_column5>'.$br;
+$xml .= '<transparent_column6>'.${"array_diafani_typos".$z}.',</transparent_column6>'.$br;
+$xml .= '<transparent_column7>'.${"array_diafani_u".$z}.',</transparent_column7>'.$br;
+$xml .= '<transparent_column8>'.${"array_diafani_gw".$z}.',</transparent_column8>'.$br;
+$xml .= '<transparent_column9>'.${"array_diafani_fhorh".$z}.',</transparent_column9>'.$br;
+$xml .= '<transparent_column10>'.${"array_diafani_fhorc".$z}.',</transparent_column10>'.$br;
+$xml .= '<transparent_column11>'.${"array_diafani_fovh".$z}.',</transparent_column11>'.$br;
+$xml .= '<transparent_column12>'.${"array_diafani_fovc".$z}.',</transparent_column12>'.$br;
+$xml .= '<transparent_column13>'.${"array_diafani_ffinh".$z}.',</transparent_column13>'.$br;
+$xml .= '<transparent_column14>'.${"array_diafani_ffinc".$z}.',</transparent_column14>'.$br;
+$xml .= '<transparent_column15>,,,,,,,,,,,,,,,,,,,,,,</transparent_column15>'.$br;
+$xml .= '<opaque_tb_rows>1</opaque_tb_rows>'.$br;
+$xml .= '<opaque_tb_column1>ΣΥΝΟΛΙΚΕΣ,</opaque_tb_column1>'.$br;
+$xml .= '<opaque_tb_column2>1,</opaque_tb_column2>'.$br;
+$xml .= '<opaque_tb_column3>'.${"thermogefyres".$z}.'</opaque_tb_column3>'.$br;
 $xml .= '</ENVELOPE>'.$br;
 $xml .= '</UNHEATED1>'.$br;
 
+} //εδώ τελειώνει ο έλεγχος αν έχει επιλεγεί ΟΧΙ στη θερμομονωτική επάρκεια της ζώνης (ΕΙΣΑΓΩΓΗ ΣΑ ΜΘΧ)
+} //Εδώ τελειώνουν οι ΜΘΧ
 
 $xml .= '</BUILDING>'.$br;
 
@@ -1818,11 +1920,21 @@ fwrite($handle,$xml);
 echo "Το αρχείο user".$_SESSION['user_id']."-tee-kenak-" . $namefile . ".xml" . " εγγράφηκε επιτυχώς";
 echo "<br/>" . "<a href=\"".$_SESSION['user_id']."-tee-kenak-$namefile.xml\" >Κατεβάστε το αρχείο xml-tee</a>";
 echo "<br/><br/>Αριθμός θερμικών ζωνών=<b><font color=\"red\">".$arithmos_pragmatikesthermzwnes."</font></b> αριθμός ΜΘΧ=<b><font color=\"red\">".$arithmos_pragmatikoimthx."</font></b><br/><br/>";
-			echo "<font color=\"red\">ΠΡΟΣΟΧΗ:To Λογισμικό στην παρούσα έκδοση βρίσκεται σε κατάσταση development και δεν μεταφέρει διαχωριστικές επιφάνειες στο xml.<br/>
-			(αυτές οι επιφάνειες είτε προστίθενται στα κατακόρυφα αδιαφανή στοιχεία με το διορθωτικό b=0,5 είτε εισάγονται χειροκίνητα ως διαχωριστικές επιφάνειες.<br/>
-			Στην περίπτωση δαπέδου προς ΜΘΧ ο μοναδικός τρόπος εισαγωγής στο τεε-κενακ βρίσκεται σε διαχωριστικές επιφάνειες-αδιαφανείς επιφάνειες-δάπεδα)<br/>
-			Επίσης μεταφέρει τους ΜΘΧ ως ξεχωριστή ζώνη. (Μπορείτε να αντιγράψετε το κέλυφος της ζώνης που περιέχει το μθχ σε μη θερμαινόμενο χώρο στο λογισμικό ΤΕΕ-ΚΕΝΑΚ και έπειτα να 
-			διαγράψετε τη ζώνη.)</font>";
+			echo "<font color=\"green\">
+			ΠΡΟΣΟΧΗ:<br/>
+			Σε κάθε ζώνη έχουν προστεθεί τα αδιαφανή, διαφανή κατακόρυφα στοιχεία, οι οροφές και το δάπεδο επί εδάφους.<br/>
+			Σε κάθε ΜΘΧ έχουν προστεθεί τα αδιαφανή, διαφανή κατακόρυφα στοιχεία, οι οροφές και το δάπεδο επί εδάφους<br/>
+			Σε κάθε ζώνη εαν υπάρχει δάπεδο προς ΜΘΧ έχει προστεθεί ως αδιαφανές στοιχείο δαπέδου σε διαχωριστική επιφάνεια προς τον πρώτο ΜΘΧ.<br/> 
+			(Εάν υπάρχουν περισσότεροι του ενός ΜΘΧ πρέπει χειροκίνητα να δηλωθεί προς ποιό ΜΘΧ εφάπτεται η διαχωριστική επιφάνεια).<br/>
+			Κατακόρυφα στοιχεία προς ΜΘΧ πρέπει να προστεθούν με το μισό συντελεστή (b=0,5) στα αδιαφανή στοιχεία.<br/>
+			</font><br/>
+			<font color=\"red\">
+			ΔΕΝ ΞΕΧΝΩ: <br/>
+			Να δηλώσω σε ποιό ακριβώς ΜΘΧ εφάπτεται η διαχωριστική επιφάνεια.<br/>
+			Εάν υπάρχουν διαφορετικοί προσανατολισμοί (πχ κάποιο ημικύκλιο) στην ίδια όψη (Βόρεια, Ανατολική, Νότια, Δυτική) να τους προσθέσω χειροκίνητα.<br/>
+			Να προσθέσω τον πραγματικό συντελεστή Μαϊου στην ψύξη εάν εμφανίζεται μηδενικός.<br/>
+			</font>
+			";
 fclose($handle);
 
 ?>

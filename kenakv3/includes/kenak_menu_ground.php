@@ -26,7 +26,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 ?>
 		<!--/Δεύτερος τρόπος εισαγωγής δεδομένων στη βάση-->
 		<?php	if ($sel_page["id"] == 5)	{ ?>
-			<h2>ΚΕΝΑΚ - Κατακόρυφα δομικά σε επαφή με το έδαφος</h2>
+			<h2>ΚΕΝΑΚ - Κατακόρυφα δομικά σε επαφή με έδαφος/ΜΘΧ</h2>
 	  <script type="text/javascript">
 		document.getElementById('imgs').innerHTML="<img src=\"images/style/home.png\"></img>";
 	  </script>
@@ -82,7 +82,7 @@ $.colorbox({inline:true,  href:"#guidetypeground", width:"80%", height:"80%"});
 	<div id="tab-ground" class="tabdiv"> 
 					
 	<img src="images/style/ground.png"></img>
-	<h3>Τοίχοι (Κέλυφος - Σε επαφή με το έδαφος)</h3>
+	<h3>Τοίχοι (Κέλυφος - Σε επαφή με το έδαφος ή ΜΘΧ)</h3>
 	
 	<?php
 	$ped="kataskeyi_ground";

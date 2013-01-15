@@ -49,14 +49,14 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 		
 		if ( empty($errors) ) {
 			//Προβολή της στάνταρ εικόνας πλευρικών σκιάσεων
-			echo "<img src=\"images/pleyrika.png\"></img>&nbsp;&nbsp;";
+			echo "<img src=\"images/pleyrika.png\"></img><br/>";
 
 			//Προβολή της εικόνας από τα δεδομένα του χρήστη (χρήση img tag με τη σελίδα δημιουργίας)
 			for ($i=1;$i<=10;$i++){
 			if (${"name".$i}!=''){
 			echo "<img src=\"includes/image_creation_pleyrika.php" . 
 			"?platost=" . ${"platos_toixoy".$i} . "&aposte=" . ${"apost_empod".$i} . "&platosa=" . 
-			${"platos_anoig".$i} . "&aposta=" . ${"apost_anoig_empod".$i} . "&mikose=" . ${"mikos_empod".$i} . "&name=" . ${"name".$i} . "&apost_yalo=" .${"apost_yalo".$i} . "\"></img><br/>";
+			${"platos_anoig".$i} . "&aposta=" . ${"apost_anoig_empod".$i} . "&mikose=" . ${"mikos_empod".$i} . "&name=" . ${"name".$i} . "&apost_yalo=" .${"apost_yalo".$i} . "\"></img>";
 			}
 			}
 			

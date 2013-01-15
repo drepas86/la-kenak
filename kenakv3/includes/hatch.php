@@ -44,6 +44,15 @@ $ha[5]='../images/hatch/metal.png';
 $ha[6]='../images/hatch/wood.png';
 $ha[7]='../images/hatch/stone.png';
 $ha[8]='../images/hatch/tile.png';
+$ha[9]='../images/hatch/keramidia.png';
+$ha[10]='../images/hatch/concrete.png';
+$ha[11]='../images/hatch/extruded_polystyrene.png';
+$ha[12]='../images/hatch/petrovamvakas.png';
+$ha[13]='../images/hatch/polyourethani.png';
+$ha[14]='../images/hatch/granitis.png';
+$ha[15]='../images/hatch/granitis1.png';
+$ha[16]='../images/hatch/wood1.png';
+$ha[17]='../images/hatch/dirt.png';
 
 
 ?>

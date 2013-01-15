@@ -46,9 +46,20 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
         <link rel="stylesheet" type="text/css" href="stylesheets/accordion/style.css" />
 		<script type="text/javascript" src="javascripts/accordion/modernizr.custom.29473.js"></script>
 
-<?php 
-//
-?>
+		<script>
+		$(document).ready(function() {  
+		$('#tabvanilla').tabs();  
+		}); 
+		</script>
+		<script>
+		$(document).ready(function() {  
+		$('#helpme').tabs();  
+		}); 
+		</script>
+		
+		<script>
+		$("#kenakform").validator();
+		</script>
 
 	</head>
 	<body onload=get_active();>

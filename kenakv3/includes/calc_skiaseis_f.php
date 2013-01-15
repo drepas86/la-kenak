@@ -89,17 +89,17 @@ $print=$_GET["print"];
 	</tr>";
 	for ($i=1;$i<=10;$i++){
 	$result .= "<tr>
-	<td>".$i."</td>
-	<td>".${"name".$i}."</td>
-	<td>".${"hor_a".$i}."</td>
-	<td>".${"hor_b".$i}."</td>
-	<td>".${"hor_c".$i}."</td>
-	<td>".${"hor_d".$i}."</td>
-	<td>".${"hor_g".$i}."</td>
-	<td>".${"hor_e".$i}."</td>
-	<td>".${"hor_f".$i}."</td>
-	<td>".${"pros".$i}."</td>
-	</tr>";
+	<td>".$i."</td>";
+	if (${"name".$i} != "NaN"){$result .= "<td>".${"name".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"hor_a".$i} != "NaN"){$result .= "<td>".${"hor_a".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"hor_b".$i} != "NaN"){$result .= "<td>".${"hor_b".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"hor_c".$i} != "NaN"){$result .= "<td>".${"hor_c".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"hor_d".$i} != "NaN"){$result .= "<td>".${"hor_d".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"hor_g".$i} != "NaN"){$result .= "<td>".${"hor_g".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"hor_e".$i} != "NaN"){$result .= "<td>".${"hor_e".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"hor_f".$i} != "NaN"){$result .= "<td>".${"hor_f".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"pros".$i} != "NaN"){$result .= "<td>".${"pros".$i}."</td>";}else{$result .= "<td></td>";}
+	$result .= "</tr>";
 	}
 	$result .= "</table><br/>";
 	
@@ -202,16 +202,16 @@ $print=$_GET["print"];
 	</tr>";
 	for ($i=1;$i<=10;$i++){
 	$result .= "<tr>
-	<td>".$i."</td>
-	<td>".${"name".$i}."</td>
-	<td>".${"ov_a".$i}."</td>
-	<td>".${"ov_b".$i}."</td>
-	<td>".${"ov_c".$i}."</td>
-	<td>".${"ov_d".$i}."</td>
-	<td>".${"ov_g".$i}."</td>
-	<td>".${"ov_e".$i}."</td>
-	<td>".${"pros".$i}."</td>
-	</tr>";
+	<td>".$i."</td>";
+	if (${"name".$i} != "NaN"){$result .= "<td>".${"name".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"ov_a".$i} != "NaN"){$result .= "<td>".${"ov_a".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"ov_b".$i} != "NaN"){$result .= "<td>".${"ov_b".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"ov_c".$i} != "NaN"){$result .= "<td>".${"ov_c".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"ov_d".$i} != "NaN"){$result .= "<td>".${"ov_d".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"ov_g".$i} != "NaN"){$result .= "<td>".${"ov_g".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"ov_e".$i} != "NaN"){$result .= "<td>".${"ov_e".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"pros".$i} != "NaN"){$result .= "<td>".${"pros".$i}."</td>";}else{$result .= "<td></td>";}
+	$result .= "</tr>";
 	}
 	$result .= "</table><br/>";
 	
@@ -310,15 +310,15 @@ $print=$_GET["print"];
 	</tr>";
 	for ($i=1;$i<=10;$i++){
 	$result .= "<tr>
-	<td>".$i."</td>
-	<td>".${"name".$i}."</td>
-	<td>".${"fin2_a".$i}."</td>
-	<td>".${"fin2_b".$i}."</td>
-	<td>".${"fin2_c".$i}."</td>
-	<td>".${"fin2_d".$i}."</td>
-	<td>".${"fin2_e".$i}."</td>
-	<td>".${"pros".$i}."</td>
-	</tr>";
+	<td>".$i."</td>";
+	if (${"name".$i} != "NaN"){$result .= "<td>".${"name".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin2_a".$i} != "NaN"){$result .= "<td>".${"fin2_a".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin2_b".$i} != "NaN"){$result .= "<td>".${"fin2_b".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin2_c".$i} != "NaN"){$result .= "<td>".${"fin2_c".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin2_d".$i} != "NaN"){$result .= "<td>".${"fin2_d".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin2_e".$i} != "NaN"){$result .= "<td>".${"fin2_e".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"pros".$i} != "NaN"){$result .= "<td>".${"pros".$i}."</td>";}else{$result .= "<td></td>";}
+	$result .= "</tr>";
 	}
 	$result .= "</table><br/>";
 	
@@ -413,17 +413,17 @@ $print=$_GET["print"];
 	</tr>";
 	for ($i=1;$i<=10;$i++){
 	$result .= "<tr>
-	<td>".$i."</td>
-	<td>".${"name".$i}."</td>
-	<td>".${"fin_a".$i}."</td>
-	<td>".${"fin_b".$i}."</td>
-	<td>".${"fin_c".$i}."</td>
-	<td>".${"fin_d".$i}."</td>
-	<td>".${"fin_g".$i}."</td>
-	<td>".${"fin_e".$i}."</td>
-	<td>".${"fin_f".$i}."</td>
-	<td>".${"pros".$i}."</td>
-	</tr>";
+	<td>".$i."</td>";
+	if (${"name".$i} != "NaN"){$result .= "<td>".${"name".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin_a".$i} != "NaN"){$result .= "<td>".${"fin_a".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin_b".$i} != "NaN"){$result .= "<td>".${"fin_b".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin_c".$i} != "NaN"){$result .= "<td>".${"fin_c".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin_d".$i} != "NaN"){$result .= "<td>".${"fin_d".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin_g".$i} != "NaN"){$result .= "<td>".${"fin_g".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin_e".$i} != "NaN"){$result .= "<td>".${"fin_e".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"fin_f".$i} != "NaN"){$result .= "<td>".${"fin_f".$i}."</td>";}else{$result .= "<td></td>";}
+	if (${"pros".$i} != "NaN"){$result .= "<td>".${"pros".$i}."</td>";}else{$result .= "<td></td>";}
+	$result .= "</tr>";
 	}
 	$result .= "</table><br/>";
 	
