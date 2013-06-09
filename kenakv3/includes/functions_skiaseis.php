@@ -875,7 +875,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/gpl-3.0.html.
 					
 					$timesf72 = get_skiaseis_toixoy_pleyrika($stili1, $sqltable, $grammi2);
 					$f_h72 = $timesf72[0][0];
-					$f_c72_toixoy = $timesf72[1][0];
+					$f_c72 = $timesf72[1][0];
 					$timesf82 = get_skiaseis_toixoy_pleyrika($stili2, $sqltable, $grammi2);
 					$f_h82 = $timesf82[0][0];
 					$f_c82 = $timesf82[1][0];
